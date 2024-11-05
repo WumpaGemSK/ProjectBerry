@@ -17,7 +17,7 @@ func _ready():
 	options = find_child("Options")
 	options.pressed.connect(_on_options)
 	leaderboard = find_child("Leaderboard")
-	leaderboard.visible = FileAccess.file_exists("user://savegame.save")
+	leaderboard.visible = FileAccess.file_exists(Constants.SAVE_FILE_PATH)
 	leaderboard.pressed.connect(_on_leaderboard)
 
 func _on_start_game():
