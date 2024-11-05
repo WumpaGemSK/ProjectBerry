@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1d6n6gjcq7lu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/display_options.gd" id="1_748g2"]
+
+[node name="DisplayOptions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_748g2")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 116.0
+allow_search = false
+auto_height = true
+item_count = 5
+item_0/text = "1x"
+item_1/text = "2x"
+item_2/text = "3x"
+item_3/text = "4x"
+item_4/text = "5x"
+
+[connection signal="item_activated" from="ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
