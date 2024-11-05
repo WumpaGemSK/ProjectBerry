@@ -17,7 +17,7 @@ func _ready():
 	options = find_child("Options")
 	options.pressed.connect(_on_options)
 	leaderboard = find_child("Leaderboard")
-	leaderboard.visible = false # TODO: Set this based on the save file data
+	leaderboard.visible = FileAccess.file_exists("user://savegame.save")
 	leaderboard.pressed.connect(_on_leaderboard)
 
 func _on_start_game():
