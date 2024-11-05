@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Project Berry"
 config/tags=PackedStringArray("game_jam")
+run/main_scene="res://Scenes/UI/TitleScreen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
