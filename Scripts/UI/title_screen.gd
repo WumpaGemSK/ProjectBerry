@@ -4,11 +4,11 @@ var start : Button = null
 var options : Button = null
 var leaderboard : Button = null
 
-## Scene to switch to when Start Game is pressed
+## [PackedScene] to switch to when Start Game is pressed
 @export var game_scene : PackedScene
-## Scene to switch to when Options is pressed
+## [PackedScene] Scene to switch to when Options is pressed
 @export var options_scene : PackedScene
-## Scene to switch to when Leaderboard is pressed
+## [PackedScene] to switch to when Leaderboard is pressed
 @export var leaderboard_scene :  PackedScene
 
 func _ready():
