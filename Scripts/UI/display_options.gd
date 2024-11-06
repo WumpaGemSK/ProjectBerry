@@ -1,9 +1,15 @@
 extends Node
 @onready var item_list = $ItemList
 
-func _ready():
-	item_list.select(int(get_window().content_scale_factor)-1)
+## The arrays of items for the scale factor
+## Populates the item list
+@export var items : Array[float]
 
-## Update the scale factor for the window
+func _ready():
+	for item in items:
+		item_list.add_item("%.02f" % item)
+	#item_list.select(int(get_window().content_scale_factor)-1)
+
+## Multiply the window resolution by the scale factor
 func _on_item_list_item_selected(index):
-	get_window().content_scale_factor = float(index+1)
+	get_window().size = Constants.BASE_RESOLUTION * items[index]
