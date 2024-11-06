@@ -17,12 +17,6 @@ offset_right = 40.0
 offset_bottom = 116.0
 allow_search = false
 auto_height = true
-item_count = 5
-item_0/text = "1x"
-item_1/text = "2x"
-item_2/text = "3x"
-item_3/text = "4x"
-item_4/text = "5x"
 
 [connection signal="item_activated" from="ItemList" to="." method="_on_item_list_item_activated"]
 [connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
