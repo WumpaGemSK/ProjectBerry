@@ -19,3 +19,6 @@ func _ready():
 ## whichever nodes has the need to
 func _on_value_changed(value: float):
 	_slider_changed.emit(value)
+
+func set_value(value: float):
+	h_slider.set_value_no_signal(value)
