@@ -5,10 +5,12 @@ extends Node
 enum AudioBus {Main, Sounds, Music }
 signal _music_volume_changed(new_volume: float)
 signal _sounds_volume_changed(new_volume: float)
+signal _viewport_change_size(factor: float)
 
 func _ready():
 	_music_volume_changed.connect(_on_music_volume_changed)
 	_sounds_volume_changed.connect(_on_sound__volume_changed)
+	_viewport_change_size.connect(viewport_change_size)
 
 ## Change the volume for the Music audio bus
 func _on_music_volume_changed(value):
@@ -17,3 +19,6 @@ func _on_music_volume_changed(value):
 ## Change the volume for the Sounds audio bus
 func _on_sound__volume_changed(value):
 	AudioServer.set_bus_volume_db(AudioBus.Sounds, 	linear_to_db(value))
+
+func viewport_change_size(factor : float):
+	get_window().size = Constants.BASE_RESOLUTION * factor
