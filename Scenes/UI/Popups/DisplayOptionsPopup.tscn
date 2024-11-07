@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dviof3mjcqf3t"]
+
+[ext_resource type="PackedScene" uid="uid://d1d6n6gjcq7lu" path="res://Scenes/UI/DisplayOptions.tscn" id="1_1v1ov"]
+[ext_resource type="Script" path="res://Scripts/UI/Popups/display_options_popup.gd" id="1_s7bfa"]
+
+[node name="DisplayOptionsPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7bfa")
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+title = "Audio settings"
+
+[node name="DisplayOptions" parent="PopupPanel" instance=ExtResource("1_1v1ov")]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
