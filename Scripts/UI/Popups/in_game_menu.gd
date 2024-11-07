@@ -8,6 +8,7 @@ var sub_menu_open : bool = false
 func _ready():
 	display_options_popup.popup_panel.popup_hide.connect(hide_display_popup)
 	audio_settings_popup.popup_panel.popup_hide.connect(hide_audio_popup)
+
 	
 func _on_close():
 	display_options_popup.hide_popup()
@@ -40,3 +41,11 @@ func hide_audio_popup():
 
 func hide_display_popup():
 	display_options_popup.visible = false
+
+
+func _on_close_requested():
+	hide()
+
+
+func _on_return_pressed():
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/UI/TitleScreen.tscn")
