@@ -7,18 +7,28 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -288.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_748g2")
 items = Array[float]([1.0, 1.5, 2.0])
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
-offset_right = 62.0
-offset_bottom = 8.0
+offset_right = 195.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="HSplitContainer"]
+layout_mode = 2
+text = "Factor"
+
+[node name="ItemList" type="ItemList" parent="HSplitContainer"]
+layout_mode = 2
 allow_search = false
 auto_height = true
+max_columns = 3
 
-[connection signal="item_activated" from="ItemList" to="." method="_on_item_list_item_activated"]
-[connection signal="item_clicked" from="ItemList" to="." method="_on_item_list_item_clicked"]
-[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="item_activated" from="HSplitContainer/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_clicked" from="HSplitContainer/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="HSplitContainer/ItemList" to="." method="_on_item_list_item_selected"]

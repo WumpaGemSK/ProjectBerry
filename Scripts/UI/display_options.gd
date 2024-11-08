@@ -1,5 +1,5 @@
 extends Node
-@onready var item_list = $ItemList
+@onready var item_list = $HSplitContainer/ItemList
 
 ## The arrays of items for the scale factor
 ## Populates the item list
