@@ -30,6 +30,9 @@ text = "Audio settings
 [node name="AudioSettings" parent="VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_oa40a")]
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 

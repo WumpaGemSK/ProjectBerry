@@ -16,7 +16,7 @@ items = Array[float]([1.0, 1.5, 2.0])
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
-offset_right = 195.0
+offset_right = 186.0
 offset_bottom = 23.0
 
 [node name="Label" type="Label" parent="HSplitContainer"]
