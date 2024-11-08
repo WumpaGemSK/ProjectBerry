@@ -7,6 +7,7 @@ signal _music_volume_changed(new_volume: float)
 signal _sounds_volume_changed(new_volume: float)
 signal _viewport_change_size(factor: float)
 
+## Connect the Settings change signal to the appropiate function
 func _ready():
 	_music_volume_changed.connect(_on_music_volume_changed)
 	_sounds_volume_changed.connect(_on_sound__volume_changed)
@@ -20,5 +21,6 @@ func _on_music_volume_changed(value):
 func _on_sound__volume_changed(value):
 	AudioServer.set_bus_volume_db(AudioBus.Sounds, 	linear_to_db(value))
 
+## Sets the new window size multiplying the base resolution with the factor passed
 func viewport_change_size(factor : float):
 	get_window().size = Constants.BASE_RESOLUTION * factor
