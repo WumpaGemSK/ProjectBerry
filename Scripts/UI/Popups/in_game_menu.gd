@@ -1,52 +1,29 @@
-extends PopupPanel
+extends PanelContainer
 
-@onready var display_options_popup = $DisplayOptionsPopup
-@onready var audio_settings_popup = $AudioSettingsPopup
 @onready var resume = $VBoxContainer/Resume
 
-var sub_menu_open : bool = false
-
-func _ready():
-	display_options_popup.popup_panel.popup_hide.connect(hide_display_popup)
-	audio_settings_popup.popup_panel.popup_hide.connect(hide_audio_popup)
-
-	
-func _on_close():
-	display_options_popup.hide_popup()
-	audio_settings_popup.hide_popup()
-	audio_settings_popup.visible = false
-	display_options_popup.visible = false
-	sub_menu_open = false
+@export var audio_settings_popup : PackedScene
+@export var display_options_popup : PackedScene
 
 func _process(_delta):
-	if Input.is_action_pressed("options") and !sub_menu_open:
+	if Input.is_action_pressed("options"):
 		if !self.visible:
-			popup_centered(size)
+			show()
 			resume.grab_focus()
 
 func _on_resume_pressed():
 	hide()
 
 func _on_display_pressed():
-	sub_menu_open = true
-	display_options_popup.visible = true
-	display_options_popup.popup()
+	var display_scn = display_options_popup.instantiate()
+	add_child(display_scn)
+	display_scn.popup()
 
 
 func _on_audio_pressed():
-	sub_menu_open = true
-	audio_settings_popup.visible = true
-	audio_settings_popup.popup()
-
-func hide_audio_popup():
-	audio_settings_popup.visible = false
-
-func hide_display_popup():
-	display_options_popup.visible = false
-
-
-func _on_close_requested():
-	hide()
+	var audio_scn = audio_settings_popup.instantiate()
+	add_child(audio_scn)
+	audio_scn.popup()
 
 
 func _on_return_pressed():

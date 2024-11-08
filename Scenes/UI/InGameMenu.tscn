@@ -4,18 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://bdnq17l0bvtig" path="res://Scenes/UI/Popups/AudioSettingsPopup.tscn" id="2_swej2"]
 [ext_resource type="PackedScene" uid="uid://dviof3mjcqf3t" path="res://Scenes/UI/Popups/DisplayOptionsPopup.tscn" id="3_snbay"]
 
-[node name="InGameMenu" type="PopupPanel"]
-title = "Options"
-initial_position = 2
-size = Vector2i(143, 249)
-visible = true
+[node name="InGameMenu" type="PanelContainer"]
+visible = false
+offset_right = 143.0
+offset_bottom = 284.0
 script = ExtResource("1_vcfuv")
+audio_settings_popup = ExtResource("2_swej2")
+display_options_popup = ExtResource("3_snbay")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 139.0
-offset_bottom = 245.0
+layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
@@ -46,20 +44,6 @@ text = "Display options"
 layout_mode = 2
 text = "Return to title"
 
-[node name="DisplayOptionsPopup" parent="." instance=ExtResource("3_snbay")]
-visible = false
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 139.0
-offset_bottom = 245.0
-
-[node name="AudioSettingsPopup" parent="." instance=ExtResource("2_swej2")]
-visible = false
-offset_right = 139.0
-offset_bottom = 245.0
-
-[connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="popup_hide" from="." to="." method="_on_close"]
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="VBoxContainer/Display" to="." method="_on_display_pressed"]
