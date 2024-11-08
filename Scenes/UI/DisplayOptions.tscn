@@ -11,10 +11,11 @@ offset_right = -512.0
 offset_bottom = -288.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_748g2")
 items = Array[float]([1.0, 1.5, 2.0])
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="HSplitContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 offset_right = 186.0
 offset_bottom = 23.0
@@ -23,12 +24,19 @@ offset_bottom = 23.0
 layout_mode = 2
 text = "Factor"
 
-[node name="ItemList" type="ItemList" parent="HSplitContainer"]
+[node name="Left" type="Button" parent="HSplitContainer"]
 layout_mode = 2
-allow_search = false
-auto_height = true
-max_columns = 3
+focus_mode = 1
+text = "Left"
 
-[connection signal="item_activated" from="HSplitContainer/ItemList" to="." method="_on_item_list_item_activated"]
-[connection signal="item_clicked" from="HSplitContainer/ItemList" to="." method="_on_item_list_item_clicked"]
-[connection signal="item_selected" from="HSplitContainer/ItemList" to="." method="_on_item_list_item_selected"]
+[node name="Value" type="Label" parent="HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Right" type="Button" parent="HSplitContainer"]
+layout_mode = 2
+focus_mode = 1
+text = "Right"
+
+[connection signal="pressed" from="HSplitContainer/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="HSplitContainer/Right" to="." method="_on_right_pressed"]
