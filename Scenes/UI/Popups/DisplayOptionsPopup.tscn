@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dviof3mjcqf3t"]
 
 [ext_resource type="PackedScene" uid="uid://d1d6n6gjcq7lu" path="res://Scenes/UI/DisplayOptions.tscn" id="1_1v1ov"]
-[ext_resource type="Script" path="res://Scripts/UI/Popups/display_options_popup.gd" id="1_s7bfa"]
+[ext_resource type="Script" path="res://Scripts/UI/Popups/options_popup.gd" id="1_442vl"]
 
 [node name="DisplayOptionsPopup" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s7bfa")
+script = ExtResource("1_442vl")
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 title = "Display settings"
