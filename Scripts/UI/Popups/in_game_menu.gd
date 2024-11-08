@@ -2,6 +2,7 @@ extends PopupPanel
 
 @onready var display_options_popup = $DisplayOptionsPopup
 @onready var audio_settings_popup = $AudioSettingsPopup
+@onready var resume = $VBoxContainer/Resume
 
 var sub_menu_open : bool = false
 
@@ -21,6 +22,7 @@ func _process(_delta):
 	if Input.is_action_pressed("options") and !sub_menu_open:
 		if !self.visible:
 			popup_centered(size)
+			resume.grab_focus()
 
 func _on_resume_pressed():
 	hide()
@@ -28,7 +30,7 @@ func _on_resume_pressed():
 func _on_display_pressed():
 	sub_menu_open = true
 	display_options_popup.visible = true
-	display_options_popup.popup()	
+	display_options_popup.popup()
 
 
 func _on_audio_pressed():

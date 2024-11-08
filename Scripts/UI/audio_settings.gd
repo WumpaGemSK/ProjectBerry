@@ -19,3 +19,4 @@ func _ready():
 	var sound_volume = db_to_linear(AudioServer.get_bus_volume_db(Settings.AudioBus.Sounds))
 	music_control.set_value(music_volume)
 	sound_control.set_value(sound_volume)
+	music_control.set_focus()

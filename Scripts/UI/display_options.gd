@@ -8,6 +8,7 @@ extends Node
 func _ready():
 	for item in items:
 		item_list.add_item("%.02f" % item)
+	item_list.grab_focus()
 
 ## Multiply the window resolution by the scale factor
 func _on_item_list_item_selected(index):

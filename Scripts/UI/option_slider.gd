@@ -22,3 +22,6 @@ func _on_value_changed(value: float):
 
 func set_value(value: float):
 	h_slider.set_value_no_signal(value)
+
+func set_focus():
+	h_slider.grab_focus()
