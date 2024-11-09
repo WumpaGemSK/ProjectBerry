@@ -13,9 +13,15 @@ signal _slider_changed(value: float)
 func _ready():
 	label.text = option_name
 	h_slider.value_changed.connect(_on_value_changed)
-	
 
 ## Emits the value received from the _value_changed [HSlider] to be caught for
 ## whichever nodes has the need to
 func _on_value_changed(value: float):
 	_slider_changed.emit(value)
+
+## Sets the value passed as the value of the slider
+func set_value(value: float):
+	h_slider.set_value_no_signal(value)
+
+func set_focus():
+	h_slider.grab_focus()

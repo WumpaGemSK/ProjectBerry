@@ -19,6 +19,7 @@ func _ready():
 	leaderboard = find_child("Leaderboard")
 	leaderboard.visible = FileAccess.file_exists(Constants.SAVE_FILE_PATH)
 	leaderboard.pressed.connect(_on_leaderboard)
+	start.grab_focus()
 
 func _on_start_game():
 	get_tree().change_scene_to_packed(game_scene)

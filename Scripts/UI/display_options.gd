@@ -1,15 +1,32 @@
-extends Node
-@onready var item_list = $ItemList
+extends Control
+
+@onready var value_label = %Value
 
 ## The arrays of items for the scale factor
 ## Populates the item list
 @export var items : Array[float]
 
+var index = 0
+## Populate the list with the possible values
 func _ready():
-	for item in items:
-		item_list.add_item("%.02f" % item)
-	#item_list.select(int(get_window().content_scale_factor)-1)
+	#TODO: Find a way to preselect the option
+	update_label(items[index])
 
-## Multiply the window resolution by the scale factor
+## Emit the signal to change the viewport size with the factor as a parameter
 func _on_item_list_item_selected(index):
-	get_window().size = Constants.BASE_RESOLUTION * items[index]
+	Settings._viewport_change_size.emit(items[index])
+
+func _on_left_pressed():
+	index = clamp(index-1, 0, items.size()-1)
+	var factor = items[index]
+	update_label(factor)
+	Settings._viewport_change_size.emit(factor)
+
+func _on_right_pressed():
+	index = clamp(index+1, 0, items.size()-1)
+	var factor = items[index]
+	update_label(factor)
+	Settings._viewport_change_size.emit(factor)
+
+func update_label(number: float):
+	value_label.text = "x%.01f" % number
