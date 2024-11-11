@@ -3,6 +3,7 @@ class_name Item
 
 ## Types of item
 enum Item_type {
+	NONE,
 	## Medical pack, effect tells how much health to recover
 	MEDIPACK,
 	## Pistol ammo pack, effect tells how many bullets to add
@@ -30,6 +31,8 @@ enum Item_type {
 @export var type : Item_type
 ## Effect meaning depends on the type
 @export var effect : int = 0
+
+var quantity :int = 1
 
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
