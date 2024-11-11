@@ -33,7 +33,11 @@ text = "INVENTORY"
 layout_mode = 2
 dragger_visibility = 2
 
-[node name="InventoryGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HSplitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="InventoryGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HSplitContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 4
