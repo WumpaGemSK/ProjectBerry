@@ -4,6 +4,7 @@ class_name ItemSlot
 @onready var icon = %Icon
 @onready var count = %Count
 @onready var count_block = %Count_Block
+@onready var button = $PanelContainer/Button
 
 var quantity :int = 0:
 	set(value):
@@ -17,5 +18,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
+
+func grab_focus():
+	button.grab_focus()

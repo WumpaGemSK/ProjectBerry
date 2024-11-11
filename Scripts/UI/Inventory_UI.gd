@@ -13,9 +13,10 @@ func _ready():
 	inventory_updated()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
+		grid_container.get_child(0).grab_focus()
 
 func on_item_pickup(item: Item):
 	for child in grid_container.get_children():
