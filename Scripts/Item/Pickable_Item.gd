@@ -1,5 +1,5 @@
 extends Item
-class_name Pickable_Item
+class_name PickableItem
 
 @onready var pick_ui = %Pick_UI
 @onready var icon = %Icon
@@ -10,7 +10,7 @@ func _ready():
 	icon.texture = texture_icon
 
 func _process(_delta):
-	if Input.is_action_pressed("interact"):
+	if Input.is_action_pressed("interact") and player_in_range:
 		var item = Item.copy(self)
 		EventBus.pick_item.emit(item)
 		queue_free()

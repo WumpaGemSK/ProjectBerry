@@ -3,15 +3,15 @@ class_name Item
 
 ## Types of item
 enum Item_type {
-	## Medical pack, quantity tells how much health to recover
+	## Medical pack, effect tells how much health to recover
 	MEDIPACK,
-	## Pistol ammo pack, quantity tells how many bullets to add
+	## Pistol ammo pack, effect tells how many bullets to add
 	PISTOL_AMMO,
 	## Item is a serum
 	SERUM,
 	## Item is a chill pill
 	CHILL_PILL,
-	## Item is a key that can open doors, quanitity tells the tier
+	## Item is a key that can open doors, effect tells the tier
 	KEY,
 	## Item is a note, can be read in the inventory
 	NOTE,
@@ -21,15 +21,18 @@ enum Item_type {
 }
 
 ## The item name
-@export var item_name : StringName
+@export var item_name : String
 ## The icon to display
 @export var texture_icon : Texture2D
 ## Description of the item
-@export var description : StringName
+@export var description : String
 ## The type of the item
 @export var type : Item_type
-## Quantity meaning depends on the type
-@export var quantity : int = 0
+## Effect meaning depends on the type
+@export var effect : int = 0
+
+func is_equal(item: Item) -> bool:
+	return item.type == type and item.effect == effect and item.item_name == item_name
 
 ## Make a new copy of an item
 static func copy(item: Item) -> Item:
@@ -38,5 +41,5 @@ static func copy(item: Item) -> Item:
 	res.texture_icon = item.texture_icon
 	res.description = item.description
 	res.type = item.type
-	res.quantity = item.quantity
+	res.effect = item.effect
 	return res
