@@ -6,3 +6,5 @@ signal pause
 
 ## Signal to listen for the resume notification
 signal resume
+
+signal pick_item(item: Item)

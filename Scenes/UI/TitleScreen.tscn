@@ -1,10 +1,8 @@
-
 [gd_scene load_steps=4 format=3 uid="uid://f7kk4ik4y6nf"]
 
 [ext_resource type="Script" path="res://Scripts/UI/title_screen.gd" id="1_sjedc"]
 [ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="2_72ub3"]
 [ext_resource type="PackedScene" uid="uid://cdsvcila2e5bt" path="res://Scenes/UI/Options.tscn" id="2_tkngc"]
-
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -14,9 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sjedc")
-
 options_scene = ExtResource("2_tkngc")
-
 
 [node name="TempBG" type="ColorRect" parent="."]
 layout_mode = 1

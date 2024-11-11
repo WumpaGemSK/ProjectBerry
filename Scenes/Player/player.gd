@@ -18,10 +18,11 @@ var facing_direction := facing.DOWN
 var is_panicking := false 
 var is_sneaking := false
 
-
+var inventory : Array[Item] = []
 
 func _ready():
 	my_animation_player.play("idle_down")
+	EventBus.pick_item.connect(on_item_pickup)
 	
 
 func _physics_process(delta: float) -> void:
@@ -78,3 +79,8 @@ func match_idle():
 		
 		
 #endregion	
+
+#region inventory
+func on_item_pickup(item: Item):
+	inventory.append(item)
+#endregion
