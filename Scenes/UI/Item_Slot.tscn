@@ -10,6 +10,7 @@ width = 32
 height = 32
 
 [node name="ItemSlot" type="Control"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
