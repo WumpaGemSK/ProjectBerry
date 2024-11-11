@@ -8,6 +8,7 @@ var inventory : Array[ItemSlot] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.pick_item.connect(on_item_pickup)
+	EventBus.show_inventory.connect(func(): visible = true)
 	hide()
 	inventory_updated()
 

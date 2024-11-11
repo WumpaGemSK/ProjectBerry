@@ -8,3 +8,5 @@ signal pause
 signal resume
 
 signal pick_item(item: Item)
+
+signal show_inventory

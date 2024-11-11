@@ -36,3 +36,8 @@ func _on_audio_pressed():
 
 func _on_return_pressed():
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/UI/TitleScreen.tscn")
+
+
+func _on_inventory_pressed():
+	EventBus.show_inventory.emit()
+	hide()
