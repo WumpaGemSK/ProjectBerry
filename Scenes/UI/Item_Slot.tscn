@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbmwpmebgbi3k"]
+[gd_scene load_steps=3 format=3 uid="uid://bbmwpmebgbi3k"]
 
 [ext_resource type="Script" path="res://Scripts/Item/item_slot.gd" id="1_ppup3"]
-
-[sub_resource type="Gradient" id="Gradient_6gtcq"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j02yh"]
-gradient = SubResource("Gradient_6gtcq")
-width = 32
-height = 32
+[ext_resource type="StyleBox" uid="uid://wusxix43jc03" path="res://Assets/UI Themes/StyleBoxes/StyleBoxFlat_Button_Normal.tres" id="2_nujy3"]
 
 [node name="ItemSlot" type="Control"]
 custom_minimum_size = Vector2(32, 32)
@@ -21,10 +15,10 @@ script = ExtResource("1_ppup3")
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
+theme_override_styles/panel = ExtResource("2_nujy3")
 
 [node name="Icon" type="Sprite2D" parent="PanelContainer"]
 unique_name_in_owner = true
-texture = SubResource("GradientTexture2D_j02yh")
 centered = false
 
 [node name="Count_Block" type="MarginContainer" parent="PanelContainer"]
