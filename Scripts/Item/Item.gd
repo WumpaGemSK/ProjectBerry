@@ -45,6 +45,38 @@ enum Item_type {
 
 var quantity :int = 1
 
+## Helper function to see if the item is a consumable
+func is_consumable() -> bool:
+	match type:
+		Item_type.MEDIPACK, Item_type.PISTOL_AMMO, Item_type.SERUM, Item_type.CHILL_PILL:
+			return true
+		_:
+			return false
+			
+## Helper function to see if the item is a weapon
+func is_weapon() -> bool:
+	match type:
+		Item_type.PISTOL, Item_type.CRICKET_BAT:
+			return true
+		_:
+			return false
+
+## Helper function to see if the item is an upgrade
+func is_upgrade() -> bool:
+	match type:
+		Item_type.BARBED_WIRE_UPGRADE, Item_type.MAX_PISTOL_AMMO_UPGRADE, Item_type.PISTOL_DAMAGE_UPGRADE, Item_type.PISTOL_FIRE_RATE_UPGRADE:
+			return true
+		_:
+			return false
+
+## Helper function to see if the item is a key
+func is_key() -> bool:
+	return type == Item_type.KEY
+
+## Helper function to see if the item is a note/hint
+func is_note() -> bool:
+	return type == Item_type.NOTE
+
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
 
