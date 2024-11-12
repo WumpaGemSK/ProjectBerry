@@ -163,7 +163,8 @@ stream = SubResource("AudioStream_q5qjc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Inventory_UI" parent="CanvasLayer" instance=ExtResource("3_503nj")]
+[node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_503nj")]
+player = NodePath("../..")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
