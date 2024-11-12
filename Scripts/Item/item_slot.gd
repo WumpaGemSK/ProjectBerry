@@ -8,6 +8,9 @@ class_name ItemSlot
 
 var item_res : Item = null
 var quantity : int = 0
+
+signal focused
+signal pressed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#icon.texture = texture_icon
@@ -35,3 +38,15 @@ func set_focus():
 func update_count_label():
 	count.text = "%d" % quantity
 	count_block.visible = quantity > 1
+
+
+func _on_button_focus_entered():
+	focused.emit(item_res)
+
+
+func _on_button_pressed():
+	pressed.emit(item_res)
+
+
+func _on_button_mouse_entered():
+	button.grab_focus()

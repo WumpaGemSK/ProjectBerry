@@ -7,6 +7,8 @@ signal pause
 ## Signal to listen for the resume notification
 signal resume
 
+## Signal to send a picked up item to the inventory
 signal pick_item(item: Item)
 
+## Signal to show the inventory
 signal show_inventory
