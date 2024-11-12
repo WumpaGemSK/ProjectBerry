@@ -18,6 +18,9 @@ func _process(_delta):
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
+		var item = Item.copy(self)
+		EventBus.pick_item.emit(item)
+		queue_free()
 		player_in_range = true
 		pick_ui.visible = true
 
