@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b254kche65dbx"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_gsfp8"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_4f77a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrfm3"]
+atlas = ExtResource("2_4f77a")
+region = Rect2(80, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_gsfp8")
+item_name = "Serum"
+texture_icon = SubResource("AtlasTexture_rrfm3")
+description = "Extends the maximum health bar by one point"
+type = 3
+effect = 1
