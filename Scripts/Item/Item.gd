@@ -17,6 +17,8 @@ enum Item_type {
 	KEY,
 	## Item is a note, can be read in the inventory
 	NOTE,
+	## Item contains part of the code
+	CODE,
 	## Doubles the damage of the cricket bat
 	BARBED_WIRE_UPGRADE,
 	## Increases player damage by 'effect' amount
@@ -77,6 +79,10 @@ func is_key() -> bool:
 func is_note() -> bool:
 	return type == Item_type.NOTE
 
+## Helper function to see if the item contains part of the code
+func is_code() -> bool:
+	return type == Item_type.CODE
+	
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
 
