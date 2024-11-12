@@ -15,7 +15,7 @@ enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.DOWN
 
 
-var is_panicking := false 
+var is_panicking := false
 var is_sneaking := false
 
 
@@ -31,17 +31,27 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
-
-
-
 func _input(event: InputEvent) -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
 
+func is_full_health() -> bool:
+	return false
+
+func heal(amount: int) -> bool:
+	return false
 	
+func refill_ammo(amount : int) -> bool:
+	return false
+	
+func take_serum() -> bool:
+	return false
 
-
+func take_chill_pill() -> bool:
+	if is_panicking:
+		is_panicking = false
+		return true
+	return false
 
 #region animation
 ##Match the animation based on the movement direction

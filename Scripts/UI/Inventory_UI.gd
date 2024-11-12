@@ -41,21 +41,27 @@ func inventory_updated():
 		child.queue_free()
 	for i in range(inventory.size()):
 		if inventory[i] != null:
-			var new_slot : ItemSlot = item_slot.instantiate()
-			grid_container.add_child(new_slot)
-			new_slot.set_item(inventory[i])
-			new_slot.focused.connect(on_focused)
-			new_slot.pressed.connect(on_pressed)
+			if inventory[i].quantity != 0:
+				var new_slot : ItemSlot = item_slot.instantiate()
+				grid_container.add_child(new_slot)
+				new_slot.set_item(inventory[i])
+				new_slot.focused.connect(on_focused)
+				new_slot.pressed.connect(on_pressed)
+			else:
+				inventory[i] = null
 	while grid_container.get_child_count() < 16:
 		var slot = item_slot.instantiate()
 		grid_container.add_child(slot)
 		slot.set_empty()
 		slot.focused.connect(on_focused)
 		slot.pressed.connect(on_pressed)
+	# TODO: This makes the focus to shift to the first element when used
+	grid_container.get_child(0).set_focus()
 		
 func on_focused(item: Item):
 	item_detail.show_detail(item)
 
 func on_pressed(item : Item):
-	print("pressed")
-	pass
+	var should_update = item.interact(player)
+	if should_update:
+		inventory_updated()
