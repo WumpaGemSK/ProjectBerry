@@ -1,7 +1,7 @@
 extends Item
 class_name ItemSlot
 
-@onready var icon = %Icon
+@onready var icon : TextureRect = %Icon
 @onready var count = %Count
 @onready var count_block = %Count_Block
 @onready var button = $Button
