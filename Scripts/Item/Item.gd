@@ -34,6 +34,7 @@ enum Item_type {
 }
 #endregion
 
+#region Export variables
 ## The item name
 @export var item_name : String
 ## The icon to display
@@ -44,9 +45,11 @@ enum Item_type {
 @export var type : Item_type
 ## Effect meaning depends on the type
 @export var effect : int = 0
+#endregion
 
 var quantity :int = 1
 
+#region Helper functions
 ## Helper function to see if the item is a consumable
 func is_consumable() -> bool:
 	match type:
@@ -85,6 +88,14 @@ func is_code() -> bool:
 	
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
+
+#endregion
+
+#region Interactable
+## Does the action of the item. Returns true if the item should be removed completly
+func interact() -> bool:
+	return false
+#endregion
 
 ## Make a new copy of an item
 static func copy(item: Item) -> Item:
