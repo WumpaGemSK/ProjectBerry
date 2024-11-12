@@ -17,7 +17,7 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
-		grid_container.get_child(0).grab_focus()
+		grid_container.get_child(0).set_focus()
 
 func on_item_pickup(item: Item):
 	for i in range(inventory.size()):
@@ -43,4 +43,5 @@ func inventory_updated():
 	while grid_container.get_child_count() < 16:
 		var slot = item_slot.instantiate()
 		grid_container.add_child(slot)
+		slot.set_empty()
 		

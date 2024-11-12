@@ -1,25 +1,26 @@
-extends Item
+extends Node
 class_name PickableItem
 
 @onready var pick_ui = %Pick_UI
 @onready var icon = %Icon
 
 var player_in_range = false
+@export var item : Resource
 
 func _ready():
-	icon.texture = texture_icon
+	icon.texture = item.texture_icon
 
 func _process(_delta):
 	if Input.is_action_pressed("interact") and player_in_range:
-		var item = Item.copy(self)
-		EventBus.pick_item.emit(item)
+		var item_copy = Item.copy(item)
+		EventBus.pick_item.emit(item_copy)
 		queue_free()
 	
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
-		var item = Item.copy(self)
-		EventBus.pick_item.emit(item)
+		var item_copy = Item.copy(item)
+		EventBus.pick_item.emit(item_copy)
 		queue_free()
 		player_in_range = true
 		pick_ui.visible = true

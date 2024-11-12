@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name Item
 
 ## Types of item
@@ -24,7 +24,7 @@ enum Item_type {
 ## The item name
 @export var item_name : String
 ## The icon to display
-@export var texture_icon : Texture2D
+@export var texture_icon : AtlasTexture
 ## Description of the item
 @export var description : String
 ## The type of the item
