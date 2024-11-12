@@ -1,7 +1,8 @@
 extends Resource
 class_name Item
 
-## Types of item
+#region Item types
+## Types of items
 enum Item_type {
 	NONE,
 	## Medical pack, effect tells how much health to recover
@@ -16,10 +17,20 @@ enum Item_type {
 	KEY,
 	## Item is a note, can be read in the inventory
 	NOTE,
-	# NOTE: Can't choose which type
-	## Item is an upgrade
-	UPGRADE
+	## Doubles the damage of the cricket bat
+	BARBED_WIRE_UPGRADE,
+	## Increases player damage by 'effect' amount
+	PISTOL_DAMAGE_UPGRADE,
+	## Increases pistol fire rate by 'effect' amount
+	PISTOL_FIRE_RATE_UPGRADE,
+	## Increases max ammo by 'effect' amount
+	MAX_PISTOL_AMMO_UPGRADE,
+	## Cricket bat item, occupies melee weapon slot and is NOT added into the inventory
+	CRICKET_BAT,
+	## Pistol item, occupies ranged weapon slot and is NOT added into the inventory
+	PISTOL
 }
+#endregion
 
 ## The item name
 @export var item_name : String
@@ -27,7 +38,7 @@ enum Item_type {
 @export var texture_icon : AtlasTexture
 ## Description of the item
 @export var description : String
-## The type of the item
+## The type of the item [enum Item_type]
 @export var type : Item_type
 ## Effect meaning depends on the type
 @export var effect : int = 0

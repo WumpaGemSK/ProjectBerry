@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cx05wfq7xkn67"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_0k8jm"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_6bk1f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tffrm"]
+atlas = ExtResource("2_6bk1f")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_0k8jm")
+item_name = "Pistol"
+texture_icon = SubResource("AtlasTexture_tffrm")
+description = "Pistol"
+type = 11
+effect = 1
