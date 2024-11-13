@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://q5lbeif2mkr4"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_frcpt"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_f1y6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0me2"]
+atlas = ExtResource("2_f1y6o")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_frcpt")
+item_name = "Cricket bat"
+texture_icon = SubResource("AtlasTexture_d0me2")
+description = "Cricket bat"
+type = 10
+effect = 1

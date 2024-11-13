@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c6ap5w4fvil5l"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_vymjx"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_q5g5e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q55qe"]
+atlas = ExtResource("2_q5g5e")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_vymjx")
+item_name = "Pistol Ammo"
+texture_icon = SubResource("AtlasTexture_q55qe")
+description = "Adds 10 bullets to current ammo amount."
+type = 2
+effect = 10

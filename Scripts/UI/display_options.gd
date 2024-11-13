@@ -13,7 +13,8 @@ func _ready():
 	update_label(items[index])
 
 ## Emit the signal to change the viewport size with the factor as a parameter
-func _on_item_list_item_selected(index):
+func _on_item_list_item_selected(list_index):
+	index = list_index
 	Settings._viewport_change_size.emit(items[index])
 
 func _on_left_pressed():
