@@ -71,6 +71,7 @@ func take_chill_pill() -> bool:
 		return true
 	return false
 
+## Populate the appropiate weapon variable when a weapon is picked up
 func weapon_pickup(item : Item) -> bool:
 	if not item.is_weapon():
 		return false
@@ -81,6 +82,8 @@ func weapon_pickup(item : Item) -> bool:
 	equipped_weapon.emit(item)
 	return true
 
+## Function to handle weapon upgrades. Effect stores the "amount" of the upgrade.
+## This may need to be changed if you can get a ranged upgrade before having the pistol
 func weapon_upgrade(item: Item) -> bool:
 	if not item.is_upgrade():
 		return false
@@ -91,6 +94,7 @@ func weapon_upgrade(item: Item) -> bool:
 				return true
 		Item.Item_type.PISTOL_FIRE_RATE_UPGRADE:
 			if ranged_weapon != null:
+				# TODO: Update to when fire rate is implemented
 				return true
 		Item.Item_type.MAX_PISTOL_AMMO_UPGRADE:
 			max_pistol_ammo += item.effect
@@ -98,7 +102,7 @@ func weapon_upgrade(item: Item) -> bool:
 			return true
 		Item.Item_type.BARBED_WIRE_UPGRADE:
 			if melee_weapon != null:
-				melee_weapon.effect *= 2
+				melee_weapon.effect *= item.effect
 				return true
 	return false
 #region animation

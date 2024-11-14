@@ -2,11 +2,14 @@ extends Control
 
 @export var player : Player
 @onready var weapon_slot = $MarginContainer/WeaponSlot
+
+## Texture to show as the imput prompt
 @export var input_prompt : Texture2D
 
 func _ready():
 	player.equipped_weapon.connect(on_melee_weapon_equipped)
 	
+## Callback to show the cricket bat texture and the input prompt
 func on_melee_weapon_equipped(item : Item):
 	if item.type != Item.Item_type.CRICKET_BAT:
 		return

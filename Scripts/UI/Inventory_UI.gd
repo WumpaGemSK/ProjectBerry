@@ -21,6 +21,9 @@ func _process(_delta):
 		if visible:
 			grid_container.get_child(0).set_focus()
 
+## Callback to handle an item pickup. If it's a weapon or upgrade it isn't store in the inventory
+## and the upgrade is applied automatically
+## If it's an item it's added into the inventory or the quantity is increased if already present
 func on_item_pickup(item: Item):
 	if item.is_weapon() or item.is_upgrade():
 		item.interact(player)
@@ -36,6 +39,7 @@ func on_item_pickup(item: Item):
 			inventory_updated()
 			return
 
+## Populates the inventory UI based on the contents of the inventory
 func inventory_updated():
 	for child in grid_container.get_children():
 		grid_container.remove_child(child)

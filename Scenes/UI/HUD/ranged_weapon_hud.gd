@@ -4,6 +4,8 @@ extends Control
 @onready var ammo_label = %AmmoLabel
 
 @export var player : Player
+
+## Texture to show as the imput prompt
 @export var input_prompt : Texture2D
 
 var current_ammo : int
@@ -28,6 +30,7 @@ func on_pistol_ammo_upgrade(amount : int):
 func update_ammo_label():
 	ammo_label.text = "%d/%d" % [current_ammo, current_max_ammo]
 
+## Callback to show the pistol texture and the input prompt
 func on_ranged_weapon_equipped(item : Item):
 	if item.type != Item.Item_type.PISTOL:
 		return
