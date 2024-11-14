@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=76 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -6,6 +6,30 @@
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="4_4cfvg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op08w"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(192, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qirb"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(216, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbijb"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(0, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g1ux"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(24, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi3gb"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(48, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1gmj"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(72, 168, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ib6f6"]
 atlas = ExtResource("2_6mfvp")
@@ -257,6 +281,39 @@ region = Rect2(96, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ahdws"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op08w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qirb")
+}],
+"loop": true,
+"name": &"breath_down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbijb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g1ux")
+}],
+"loop": true,
+"name": &"breath_side",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi3gb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1gmj")
+}],
+"loop": true,
+"name": &"breath_up",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ib6f6")
@@ -532,9 +589,9 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"sneak_side_no_weapon"
+animation = &"breath_side"
 autoplay = "idle_down_semicalm_no_weapon"
-frame_progress = 0.710085
+frame_progress = 0.156092
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,
