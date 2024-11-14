@@ -66,19 +66,23 @@ func match_movement_animation():
 		my_animated_sprite.play("walk_side_semicalm_no_weapon")
 		my_animated_sprite.flip_h = false
 		facing_direction = facing.RIGHT
+		print("walk right")
 		
 	elif direction == Vector2.LEFT:
 		my_animated_sprite.play("walk_side_semicalm_no_weapon")
 		my_animated_sprite.flip_h = true
 		facing_direction = facing.LEFT	
+		print("walk left")
 		
 	elif direction == Vector2.DOWN:
 		my_animated_sprite.play("walk_down_semicalm_no_weapon")
 		facing_direction = facing.DOWN	
+		print("walk down")
 		
 	elif direction == Vector2.UP:
-		my_animated_sprite.play("walk_down_semicalm_no_weapon")
+		my_animated_sprite.play("walk_up_semicalm_no_weapon")
 		facing_direction = facing.UP
+		print("walk up")
 
 		
 ##Match the animation based on the idle direction		
@@ -87,16 +91,20 @@ func match_idle():
 	if facing_direction == facing.RIGHT:
 		my_animated_sprite.play("idle_side_semicalm_no_weapon")
 		my_animated_sprite.flip_h = false
+		print("idle right")
 		
 	elif facing_direction == facing.LEFT:
 		my_animated_sprite.play("idle_side_semicalm_no_weapon")
 		my_animated_sprite.flip_h = true
+		print("idle left")
 		
 	elif facing_direction == facing.DOWN:
 		my_animated_sprite.play("idle_down_semicalm_no_weapon")
+		print("idle down")
 		
 	elif facing_direction == facing.UP:
 		my_animated_sprite.play("idle_up_semicalm_no_weapon")
+		print("idle up")
 		
 		
 #endregion	
