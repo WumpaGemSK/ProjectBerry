@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://p830op7ipunt"]
 
 [ext_resource type="PackedScene" uid="uid://dy0ywoisr1r7c" path="res://Scenes/UI/HUD/WeaponSlot.tscn" id="1_q43qk"]
-[ext_resource type="Script" path="res://Scenes/UI/HUD/ranged_weapon_hud.gd" id="1_xs03t"]
+[ext_resource type="Script" path="res://Scripts/UI/HUD/ranged_weapon_hud.gd" id="1_xs03t"]
 
 [node name="RangedWeaponHud" type="Control"]
 visible = false

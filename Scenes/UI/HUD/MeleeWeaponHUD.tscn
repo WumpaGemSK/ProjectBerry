@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bglmgrs10epmm"]
 
-[ext_resource type="Script" path="res://Scenes/UI/HUD/melee_weapon_hud.gd" id="1_04rrf"]
+[ext_resource type="Script" path="res://Scripts/UI/HUD/melee_weapon_hud.gd" id="1_04rrf"]
 [ext_resource type="PackedScene" uid="uid://dy0ywoisr1r7c" path="res://Scenes/UI/HUD/WeaponSlot.tscn" id="1_agc11"]
 
 [node name="MeleeWeaponHud" type="Control"]
