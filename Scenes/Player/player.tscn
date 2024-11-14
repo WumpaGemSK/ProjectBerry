@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=20 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://c6phuyee6er7w" path="res://Assets/Textures/Player/Prototype/Player.png" id="2_3wa8a"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="4_4cfvg"]
 [ext_resource type="PackedScene" uid="uid://bglmgrs10epmm" path="res://Scenes/UI/HUD/MeleeWeaponHUD.tscn" id="5_bgkuo"]
 [ext_resource type="PackedScene" uid="uid://p830op7ipunt" path="res://Scenes/UI/HUD/RangedWeaponHUD.tscn" id="5_texib"]
+[ext_resource type="PackedScene" uid="uid://bcurgnhp8q87f" path="res://Scenes/UI/HUD/HealthHUD.tscn" id="6_ewwqx"]
+[ext_resource type="PackedScene" uid="uid://ccske06ximr3e" path="res://Scenes/UI/HUD/HealthUnit.tscn" id="7_js7k3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 
@@ -172,11 +174,10 @@ stream = SubResource("AudioStream_q5qjc")
 player = NodePath("../..")
 
 [node name="MeleeWeaponHud" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_bgkuo")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+player = NodePath("../..")
+
+[node name="HealthHUD" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_ewwqx")]
+health_unit_scene = ExtResource("7_js7k3")
 player = NodePath("../..")
 
 [node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_503nj")]

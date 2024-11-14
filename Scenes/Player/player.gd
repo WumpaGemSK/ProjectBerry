@@ -6,6 +6,7 @@ signal calm
 signal pistol_ammo_update(new_amount : int)
 signal pistol_ammo_upgrade(new_max : int)
 signal equipped_weapon(weapon: Item)
+signal health_changed(new_health: int)
 
 @onready var my_animation_player = $AnimationPlayer
 @onready var my_sprite := $Sprite2D
@@ -19,8 +20,8 @@ var facing_direction := facing.DOWN
 #region Stats
 var is_panicking := false
 var is_sneaking := false
-var health : int = 5
 @export var max_health : int = 5
+var health : int = max_health
 var pistol_ammo : int = 20
 @export var max_pistol_ammo : int = 50
 var invulnerable : bool = false
@@ -59,6 +60,7 @@ func is_full_health() -> bool:
 func heal(amount: int) -> bool:
 	if health < max_health:
 		health = clampi(health + amount, 0, max_health)
+		health_changed.emit(health)
 		return true
 	return false
 	
@@ -71,6 +73,7 @@ func refill_ammo(amount : int) -> bool:
 	
 func take_serum() -> bool:
 	max_health += 1
+	health_changed.emit(health)
 	return true
 
 func take_chill_pill() -> bool:

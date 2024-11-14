@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcurgnhp8q87f"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUD/health_hud.gd" id="1_hpiru"]
+
+[sub_resource type="Gradient" id="Gradient_avj26"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_stv51"]
+gradient = SubResource("Gradient_avj26")
+width = 32
+height = 32
+
+[node name="HealthHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("1_hpiru")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Heart" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_stv51")
+
+[node name="HealthUnits" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
