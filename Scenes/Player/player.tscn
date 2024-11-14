@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=79 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -66,6 +66,18 @@ region = Rect2(192, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_80nge"]
 atlas = ExtResource("2_6mfvp")
 region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vngp3"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(96, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sdpc"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(120, 168, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa7ga"]
+atlas = ExtResource("2_6mfvp")
+region = Rect2(144, 168, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6tmg2"]
 atlas = ExtResource("2_6mfvp")
@@ -372,6 +384,30 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 60.0,
+"texture": SubResource("AtlasTexture_vngp3")
+}],
+"loop": false,
+"name": &"relief_down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 60.0,
+"texture": SubResource("AtlasTexture_1sdpc")
+}],
+"loop": false,
+"name": &"relief_side",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 60.0,
+"texture": SubResource("AtlasTexture_sa7ga")
+}],
+"loop": false,
+"name": &"relief_up",
+"speed": 1.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6tmg2")
 }, {
@@ -589,9 +625,8 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"breath_side"
+animation = &"relief_side"
 autoplay = "idle_down_semicalm_no_weapon"
-frame_progress = 0.156092
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,
