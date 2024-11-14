@@ -802,9 +802,9 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -1)
+position = Vector2(4, -4)
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"walk_down_semicalm_no_weapon"
+animation = &"walk_up_semicalm_no_weapon"
 autoplay = "idle_down_semicalm_no_weapon"
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,

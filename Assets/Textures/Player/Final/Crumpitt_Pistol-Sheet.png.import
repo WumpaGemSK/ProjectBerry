@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqubq2aqvqhkc"
-path="res://.godot/imported/Crumpitt_Pistol.png-1fb473edb074f10bd20c65e889e01f72.ctex"
+uid="uid://ld5jhi1a6xw"
+path="res://.godot/imported/Crumpitt_Pistol-Sheet.png-447c2f9b39c6c33f6c32ffdedd71b8d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Player/Final/Crumpitt_Pistol.png"
-dest_files=["res://.godot/imported/Crumpitt_Pistol.png-1fb473edb074f10bd20c65e889e01f72.ctex"]
+source_file="res://Assets/Textures/Player/Final/Crumpitt_Pistol-Sheet.png"
+dest_files=["res://.godot/imported/Crumpitt_Pistol-Sheet.png-447c2f9b39c6c33f6c32ffdedd71b8d1.ctex"]
 
 [params]
 

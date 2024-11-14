@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bseap5o5fw8sm"
-path="res://.godot/imported/Crumpitt_Bat.png-9510f077f701cb1213922d8f2d415098.ctex"
+uid="uid://cihxcetvjdxrs"
+path="res://.godot/imported/Crumpitt_Bat-Sheet.png-d61a9958939222a93da9f18e208c6e56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Player/Final/Crumpitt_Bat.png"
-dest_files=["res://.godot/imported/Crumpitt_Bat.png-9510f077f701cb1213922d8f2d415098.ctex"]
+source_file="res://Assets/Textures/Player/Final/Crumpitt_Bat-Sheet.png"
+dest_files=["res://.godot/imported/Crumpitt_Bat-Sheet.png-d61a9958939222a93da9f18e208c6e56.ctex"]
 
 [params]
 
