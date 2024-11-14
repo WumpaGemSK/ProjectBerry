@@ -12,3 +12,4 @@ func on_melee_weapon_equipped(item : Item):
 		return
 	weapon_slot.set_texture(item.texture_icon)
 	weapon_slot.set_input_prompt(input_prompt)
+	show()

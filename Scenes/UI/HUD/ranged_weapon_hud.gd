@@ -33,3 +33,4 @@ func on_ranged_weapon_equipped(item : Item):
 		return
 	weapon_slot.set_texture(item.texture_icon)
 	weapon_slot.set_input_prompt(input_prompt, false)
+	show()

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/UI/HUD/ranged_weapon_hud.gd" id="1_xs03t"]
 
 [node name="RangedWeaponHud" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
