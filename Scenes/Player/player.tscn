@@ -363,7 +363,7 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 30.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8c1qn")
 }],
 "loop": false,
@@ -371,7 +371,7 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
-"duration": 30.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5hkqf")
 }],
 "loop": false,
@@ -379,7 +379,7 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
-"duration": 30.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v85mv")
 }],
 "loop": false,
@@ -563,28 +563,28 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 60.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vngp3")
 }],
 "loop": false,
 "name": &"relief_down",
-"speed": 1.0
+"speed": 2.0
 }, {
 "frames": [{
-"duration": 60.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1sdpc")
 }],
 "loop": false,
 "name": &"relief_side",
-"speed": 1.0
+"speed": 2.0
 }, {
 "frames": [{
-"duration": 60.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_sa7ga")
 }],
 "loop": false,
 "name": &"relief_up",
-"speed": 1.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -804,10 +804,8 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"death"
+animation = &"walk_down_semicalm_no_weapon"
 autoplay = "idle_down_semicalm_no_weapon"
-frame = 37
-frame_progress = 1.0
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,
