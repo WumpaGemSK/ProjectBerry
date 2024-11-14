@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-
 signal on_panic
 signal calm
 signal pistol_ammo_update(new_amount : int)
@@ -17,7 +16,7 @@ var direction : Vector2
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.DOWN
 
-
+#region Stats
 var is_panicking := false
 var is_sneaking := false
 var health : int = 5
@@ -25,26 +24,35 @@ var health : int = 5
 var pistol_ammo : int = 20
 @export var max_pistol_ammo : int = 50
 var invulnerable : bool = false
-
+#endregion
+#region Weapons
 var melee_weapon : Item = null
 var ranged_weapon : Item = null
+#endregion
 
 func _ready():
 	my_animation_player.play("idle_down")
 	
 
 func _physics_process(delta: float) -> void:
-
+	if Input.is_action_pressed("move_left"):
+		direction = Vector2.LEFT
+	elif Input.is_action_pressed("move_right"):
+		direction = Vector2.RIGHT
+	elif Input.is_action_pressed("move_down"):
+		direction = Vector2.DOWN
+	elif Input.is_action_pressed("move_up"):
+		direction = Vector2.UP
+	else:
+		direction = Vector2.ZERO
 	velocity = direction * speed
-	if velocity : match_movemnt_animation()
-	else: match_idle()
-	
+	if velocity:
+		match_movemnt_animation()
+	else:
+		match_idle()
 	move_and_slide()
 
-func _input(event: InputEvent) -> void:
-	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	
-
+#region Items
 func is_full_health() -> bool:
 	return health == max_health
 
@@ -105,6 +113,7 @@ func weapon_upgrade(item: Item) -> bool:
 				melee_weapon.effect *= item.effect
 				return true
 	return false
+#endregion
 #region animation
 ##Match the animation based on the movement direction
 func match_movemnt_animation():
