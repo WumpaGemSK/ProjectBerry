@@ -100,9 +100,9 @@ func interact(player : Player) -> bool:
 	if is_consumable():
 		return consume_item(player)
 	elif is_upgrade():
-		emit_upgrade(player)
+		return emit_upgrade(player)
 	elif is_weapon():
-		emit_weapon(player)
+		return emit_weapon(player)
 	
 	return false
 	
@@ -121,11 +121,12 @@ func consume_item(player : Player) -> bool:
 		quantity -= 1
 	return quantity <= 0
 
-func emit_upgrade(player : Player):
-	pass
+func emit_upgrade(player : Player) -> bool:
+	return player.weapon_upgrade(self)
 	
-func emit_weapon(player : Player):
-	pass
+func emit_weapon(player : Player) -> bool:
+	player.weapon_pickup(self)
+	return true
 #endregion
 
 ## Make a new copy of an item

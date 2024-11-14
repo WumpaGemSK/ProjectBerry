@@ -22,6 +22,9 @@ func _process(_delta):
 			grid_container.get_child(0).set_focus()
 
 func on_item_pickup(item: Item):
+	if item.is_weapon() or item.is_upgrade():
+		item.interact(player)
+		return
 	for i in range(inventory.size()):
 		var it : Item = inventory[i]
 		if it != null and it.type == item.type and it.effect == item.effect:

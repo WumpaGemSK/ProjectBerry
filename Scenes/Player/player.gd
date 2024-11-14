@@ -4,6 +4,9 @@ class_name Player
 
 signal on_panic
 signal calm
+signal pistol_ammo_update(new_amount : int)
+signal pistol_ammo_upgrade(new_max : int)
+signal equipped_weapon(weapon: Item)
 
 @onready var my_animation_player = $AnimationPlayer
 @onready var my_sprite := $Sprite2D
@@ -17,12 +20,14 @@ var facing_direction := facing.DOWN
 
 var is_panicking := false
 var is_sneaking := false
-var health : int = 3
+var health : int = 5
 @export var max_health : int = 5
-var pistol_ammo : int = 0
-@export var max_pistol_ammo : int = 10
+var pistol_ammo : int = 20
+@export var max_pistol_ammo : int = 50
 var invulnerable : bool = false
 
+var melee_weapon : Item = null
+var ranged_weapon : Item = null
 
 func _ready():
 	my_animation_player.play("idle_down")
@@ -52,6 +57,7 @@ func heal(amount: int) -> bool:
 func refill_ammo(amount : int) -> bool:
 	if pistol_ammo < max_pistol_ammo:
 		pistol_ammo = clampi(pistol_ammo + amount, 0, max_pistol_ammo)
+		pistol_ammo_update.emit(pistol_ammo)
 		return true
 	return false
 	
@@ -65,6 +71,36 @@ func take_chill_pill() -> bool:
 		return true
 	return false
 
+func weapon_pickup(item : Item) -> bool:
+	if not item.is_weapon():
+		return false
+	if item.type == Item.Item_type.PISTOL:
+		ranged_weapon = item
+	else:
+		melee_weapon = item
+	equipped_weapon.emit(item)
+	return true
+
+func weapon_upgrade(item: Item) -> bool:
+	if not item.is_upgrade():
+		return false
+	match item.type:
+		Item.Item_type.PISTOL_DAMAGE_UPGRADE:
+			if ranged_weapon != null:
+				ranged_weapon.effect += item.effect
+				return true
+		Item.Item_type.PISTOL_FIRE_RATE_UPGRADE:
+			if ranged_weapon != null:
+				return true
+		Item.Item_type.MAX_PISTOL_AMMO_UPGRADE:
+			max_pistol_ammo += item.effect
+			pistol_ammo_upgrade.emit(max_pistol_ammo)
+			return true
+		Item.Item_type.BARBED_WIRE_UPGRADE:
+			if melee_weapon != null:
+				melee_weapon.effect *= 2
+				return true
+	return false
 #region animation
 ##Match the animation based on the movement direction
 func match_movemnt_animation():

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://p830op7ipunt"]
+
+[ext_resource type="PackedScene" uid="uid://dy0ywoisr1r7c" path="res://Scenes/UI/HUD/WeaponSlot.tscn" id="1_q43qk"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/ranged_weapon_hud.gd" id="1_xs03t"]
+
+[node name="RangedWeaponHud" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_xs03t")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="WeaponSlot" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_q43qk")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AmmoLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20/50"

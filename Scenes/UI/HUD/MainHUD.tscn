@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c676wkgvtoiow"]
+
+[ext_resource type="PackedScene" uid="uid://dvx16y3wfjqmn" path="res://Scenes/UI/HUD/Countdown.tscn" id="1_oab7a"]
+
+[node name="MainHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Countdown" parent="." instance=ExtResource("1_oab7a")]
+layout_mode = 1
