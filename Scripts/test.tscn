@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=9 format=3 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="4_7nyix"]
 [ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="4_8mk7k"]
 [ext_resource type="Resource" uid="uid://b254kche65dbx" path="res://Resources/Items/serum.tres" id="6_pwaia"]
+[ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="7_y6icl"]
+[ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="8_kd66d"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,3 +33,11 @@ item = ExtResource("4_7nyix")
 [node name="Pickable_Item4" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(33, 99)
 item = ExtResource("6_pwaia")
+
+[node name="Pickable_Item5" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(81, 212)
+item = ExtResource("7_y6icl")
+
+[node name="Pickable_Item6" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(161, 183)
+item = ExtResource("8_kd66d")
