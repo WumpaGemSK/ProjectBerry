@@ -12,3 +12,6 @@ signal pick_item(item: Item)
 
 ## Signal to show the inventory
 signal show_inventory
+
+## Emitted when the countdown starts ticking down
+signal countdown_start

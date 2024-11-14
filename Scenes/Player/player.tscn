@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=16 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://c6phuyee6er7w" path="res://Assets/Textures/Player/Prototype/Player.png" id="2_3wa8a"]
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="3_503nj"]
+[ext_resource type="PackedScene" uid="uid://dvx16y3wfjqmn" path="res://Scenes/UI/HUD/Countdown.tscn" id="3_i76f0"]
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="4_4cfvg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
@@ -162,6 +163,8 @@ autoplay = "idle_down"
 stream = SubResource("AudioStream_q5qjc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Countdown" parent="CanvasLayer" instance=ExtResource("3_i76f0")]
 
 [node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_503nj")]
 player = NodePath("../..")

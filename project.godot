@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 Settings="*res://Scripts/Settings.gd"
 EventBus="*res://Scripts/EventBus.gd"
+CountdownTimer="*res://Scripts/CountdownTimer.gd"
 
 [display]
 
