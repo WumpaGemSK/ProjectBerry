@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcurgnhp8q87f"]
+[gd_scene load_steps=5 format=3 uid="uid://bcurgnhp8q87f"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD/health_hud.gd" id="1_hpiru"]
+[ext_resource type="PackedScene" uid="uid://ccske06ximr3e" path="res://Scenes/UI/HUD/HealthUnit.tscn" id="2_fpa21"]
 
 [sub_resource type="Gradient" id="Gradient_avj26"]
 
@@ -16,6 +17,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 script = ExtResource("1_hpiru")
+health_unit_scene = ExtResource("2_fpa21")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

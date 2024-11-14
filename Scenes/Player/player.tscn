@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bglmgrs10epmm" path="res://Scenes/UI/HUD/MeleeWeaponHUD.tscn" id="5_bgkuo"]
 [ext_resource type="PackedScene" uid="uid://p830op7ipunt" path="res://Scenes/UI/HUD/RangedWeaponHUD.tscn" id="5_texib"]
 [ext_resource type="PackedScene" uid="uid://bcurgnhp8q87f" path="res://Scenes/UI/HUD/HealthHUD.tscn" id="6_ewwqx"]
-[ext_resource type="PackedScene" uid="uid://ccske06ximr3e" path="res://Scenes/UI/HUD/HealthUnit.tscn" id="7_js7k3"]
+[ext_resource type="PackedScene" uid="uid://b4q1jbrqk6kk8" path="res://Scenes/UI/HUD/CharacterPortrait.tscn" id="7_11g0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 
@@ -168,17 +168,30 @@ stream = SubResource("AudioStream_q5qjc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Countdown" parent="CanvasLayer" instance=ExtResource("3_i76f0")]
+[node name="MainHud" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RangedWeaponHud" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_texib")]
-player = NodePath("../..")
+[node name="Countdown" parent="CanvasLayer/MainHud" instance=ExtResource("3_i76f0")]
+layout_mode = 1
 
-[node name="MeleeWeaponHud" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("5_bgkuo")]
-player = NodePath("../..")
+[node name="MeleeWeaponHud" parent="CanvasLayer/MainHud" node_paths=PackedStringArray("player") instance=ExtResource("5_bgkuo")]
+player = NodePath("../../..")
 
-[node name="HealthHUD" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_ewwqx")]
-health_unit_scene = ExtResource("7_js7k3")
-player = NodePath("../..")
+[node name="RangedWeaponHud" parent="CanvasLayer/MainHud" node_paths=PackedStringArray("player") instance=ExtResource("5_texib")]
+layout_mode = 1
+player = NodePath("../../..")
+
+[node name="HealthHUD" parent="CanvasLayer/MainHud" node_paths=PackedStringArray("player") instance=ExtResource("6_ewwqx")]
+layout_mode = 1
+player = NodePath("../../..")
+
+[node name="CharacterPortrait" parent="CanvasLayer/MainHud" instance=ExtResource("7_11g0x")]
+layout_mode = 1
 
 [node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_503nj")]
 visible = false

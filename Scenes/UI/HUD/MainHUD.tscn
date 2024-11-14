@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c676wkgvtoiow"]
+[gd_scene load_steps=6 format=3 uid="uid://c676wkgvtoiow"]
 
 [ext_resource type="PackedScene" uid="uid://dvx16y3wfjqmn" path="res://Scenes/UI/HUD/Countdown.tscn" id="1_oab7a"]
+[ext_resource type="PackedScene" uid="uid://bglmgrs10epmm" path="res://Scenes/UI/HUD/MeleeWeaponHUD.tscn" id="2_jsctl"]
+[ext_resource type="PackedScene" uid="uid://p830op7ipunt" path="res://Scenes/UI/HUD/RangedWeaponHUD.tscn" id="3_ty7e4"]
+[ext_resource type="PackedScene" uid="uid://bcurgnhp8q87f" path="res://Scenes/UI/HUD/HealthHUD.tscn" id="4_0leg8"]
+[ext_resource type="PackedScene" uid="uid://b4q1jbrqk6kk8" path="res://Scenes/UI/HUD/CharacterPortrait.tscn" id="5_w3ybx"]
 
 [node name="MainHud" type="Control"]
 layout_mode = 3
@@ -11,4 +15,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Countdown" parent="." instance=ExtResource("1_oab7a")]
+layout_mode = 1
+
+[node name="MeleeWeaponHud" parent="." instance=ExtResource("2_jsctl")]
+
+[node name="RangedWeaponHud" parent="." instance=ExtResource("3_ty7e4")]
+layout_mode = 1
+
+[node name="HealthHUD" parent="." instance=ExtResource("4_0leg8")]
+layout_mode = 1
+
+[node name="CharacterPortrait" parent="." instance=ExtResource("5_w3ybx")]
 layout_mode = 1
