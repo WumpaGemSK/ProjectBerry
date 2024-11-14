@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=7 format=3 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="3_ivusq"]
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="4_7nyix"]
 [ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="4_8mk7k"]
+[ext_resource type="Resource" uid="uid://b254kche65dbx" path="res://Resources/Items/serum.tres" id="6_pwaia"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,3 +27,7 @@ item = ExtResource("4_8mk7k")
 [node name="Pickable_Item3" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(108, 142)
 item = ExtResource("4_7nyix")
+
+[node name="Pickable_Item4" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(33, 99)
+item = ExtResource("6_pwaia")

@@ -17,6 +17,11 @@ var facing_direction := facing.DOWN
 
 var is_panicking := false
 var is_sneaking := false
+var health : int = 3
+@export var max_health : int = 5
+var pistol_ammo : int = 0
+@export var max_pistol_ammo : int = 10
+var invulnerable : bool = false
 
 
 func _ready():
@@ -36,16 +41,23 @@ func _input(event: InputEvent) -> void:
 	
 
 func is_full_health() -> bool:
-	return false
+	return health == max_health
 
 func heal(amount: int) -> bool:
+	if health < max_health:
+		health = clampi(health + amount, 0, max_health)
+		return true
 	return false
 	
 func refill_ammo(amount : int) -> bool:
+	if pistol_ammo < max_pistol_ammo:
+		pistol_ammo = clampi(pistol_ammo + amount, 0, max_pistol_ammo)
+		return true
 	return false
 	
 func take_serum() -> bool:
-	return false
+	max_health += 1
+	return true
 
 func take_chill_pill() -> bool:
 	if is_panicking:
