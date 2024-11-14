@@ -12,5 +12,5 @@ script = ExtResource("1_frcpt")
 item_name = "Cricket bat"
 texture_icon = SubResource("AtlasTexture_d0me2")
 description = "Cricket bat"
-type = 10
+type = 12
 effect = 1
