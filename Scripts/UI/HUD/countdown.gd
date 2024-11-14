@@ -1,10 +1,11 @@
 extends Control
 
-@onready var label : Label = $PanelContainer/Label
+@onready var label : Label = %Label
 @export var ease_mode : Tween.EaseType = Tween.EaseType.EASE_IN_OUT
 @export var transition_type : Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
 
 func _ready():
+	modulate.a = 0
 	CountdownTimer.timer_tick.connect(update_label)
 	var tween = create_tween()
 	tween.set_trans(transition_type)
