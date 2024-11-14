@@ -202,7 +202,6 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ahdws")
 animation = &"idle_down_semicalm_no_weapon"
 autoplay = "idle_down_semicalm_no_weapon"
-frame_progress = 0.315577
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,
@@ -226,6 +225,7 @@ stream = SubResource("AudioStream_q5qjc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_503nj")]
+visible = false
 player = NodePath("../..")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
