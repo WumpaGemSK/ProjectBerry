@@ -31,9 +31,7 @@ var ranged_weapon : Item = null
 #endregion
 
 func _ready():
-	my_animation_player.play("idle_down")
 	EventBus.use_item.connect(on_use_item)
-	
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 
 func _physics_process(_delta: float) -> void:
@@ -49,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 		direction = Vector2.ZERO
 	velocity = direction * speed
 	if velocity:
-		match_movemnt_animation()
+		match_movement_animation()
 	else:
 		match_idle()
 	move_and_slide()
