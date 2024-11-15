@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://currlhmdca55x"
+path="res://.godot/imported/Player_Portraits.aseprite-e4386cdbf8f538e709d12968656e592d.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Player/Final/Portraits/Player_Portraits.aseprite"
+dest_files=["res://.godot/imported/Player_Portraits.aseprite-e4386cdbf8f538e709d12968656e592d.res"]
+
+[params]
+

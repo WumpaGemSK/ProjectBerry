@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://wvhphvth4kar"
+path="res://.godot/imported/Player_Anims.aseprite-5c7ea346c7addea076df89e2c1f9260a.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Player/Final/Player_Anims.aseprite"
+dest_files=["res://.godot/imported/Player_Anims.aseprite-5c7ea346c7addea076df89e2c1f9260a.res"]
+
+[params]
+

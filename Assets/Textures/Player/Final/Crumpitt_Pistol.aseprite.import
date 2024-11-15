@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://l08xymnp7uy1"
+path="res://.godot/imported/Crumpitt_Pistol.aseprite-51e5701ab13f63939c1ee0f2e834739f.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Player/Final/Crumpitt_Pistol.aseprite"
+dest_files=["res://.godot/imported/Crumpitt_Pistol.aseprite-51e5701ab13f63939c1ee0f2e834739f.res"]
+
+[params]
+
