@@ -5,7 +5,10 @@ extends Control
 @onready var health_units = %HealthUnits
 
 func _ready():
-	pass#populate_health(player.health, player.max_health)
+	var nodes_in_group : Array = get_tree().get_nodes_in_group("Player")
+	player = nodes_in_group[0]
+	player.health_changed.connect(on_health_changed)
+	populate_health(player.health, player.max_health)
 
 func on_health_changed(new_health):
 	for child in health_units.get_children():
