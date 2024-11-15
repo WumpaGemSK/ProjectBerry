@@ -12,5 +12,5 @@ script = ExtResource("1_0k8jm")
 item_name = "Pistol"
 texture_icon = SubResource("AtlasTexture_tffrm")
 description = "Pistol"
-type = 11
+type = 13
 effect = 1

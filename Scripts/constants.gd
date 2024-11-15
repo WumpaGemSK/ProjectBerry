@@ -5,3 +5,8 @@ const SAVE_FILE_PATH = "user://savegame.save"
 
 
 const BASE_RESOLUTION = Vector2(512, 288)
+
+#region Countdown
+const COUNTDOWN_TIME_SECONDS : int = 1800
+const COUNDTDOWN_FADE_IN : float = 2.0
+#endregion

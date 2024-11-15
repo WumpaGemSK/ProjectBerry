@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 
 Settings="*res://Scripts/Settings.gd"
 EventBus="*res://Scripts/EventBus.gd"
+CountdownTimer="*res://Scripts/CountdownTimer.gd"
+Inventory="*res://Scripts/Inventory.gd"
 
 [display]
 
@@ -33,6 +35,10 @@ window/stretch/scale_mode="integer"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[global_group]
+
+Player="The player group"
 
 [input]
 

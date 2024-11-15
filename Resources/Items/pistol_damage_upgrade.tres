@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bo3tndsnwn8hf"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_78e8h"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_bemyf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6bxq"]
+atlas = ExtResource("2_bemyf")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_78e8h")
+item_name = "Pistol damage upgrade"
+texture_icon = SubResource("AtlasTexture_y6bxq")
+description = "Increases pistol damage"
+type = 9
+effect = 1

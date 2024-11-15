@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bwjdodifjd0xh"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_fq70m"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_t10w3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs08v"]
+atlas = ExtResource("2_t10w3")
+region = Rect2(48, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_fq70m")
+item_name = "Tier 2 Key"
+texture_icon = SubResource("AtlasTexture_qs08v")
+description = "Opens doors that are numbered level 1 and 2."
+type = 5
+effect = 2

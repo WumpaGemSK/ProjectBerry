@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bglmgrs10epmm"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUD/melee_weapon_hud.gd" id="1_04rrf"]
+[ext_resource type="PackedScene" uid="uid://dy0ywoisr1r7c" path="res://Scenes/UI/HUD/WeaponSlot.tscn" id="1_agc11"]
+
+[node name="MeleeWeaponHud" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_04rrf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="WeaponSlot" parent="MarginContainer" instance=ExtResource("1_agc11")]
+layout_mode = 2
