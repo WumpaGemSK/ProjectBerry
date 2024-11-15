@@ -16,7 +16,13 @@ func on_item_pickup(item: Item):
 	if item.is_weapon() or item.is_upgrade():
 		EventBus.use_item.emit(item)
 		return
-	
+	if item.is_key():
+		if inventory.has(item.type) and item.effect > inventory[item.type]:
+			inventory[item.type] = item
+		else:
+			inventory[item.type] = item
+		on_inventory_update.emit(inventory)
+		return # Early return to prevent increasing the quantity of keys
 	if inventory.has(item.type):
 		var existing_item : Item = inventory.get(item.type)
 		existing_item.quantity += 1
