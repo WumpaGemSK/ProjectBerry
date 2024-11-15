@@ -33,6 +33,7 @@ var ranged_weapon : Item = null
 
 func _ready():
 	my_animation_player.play("idle_down")
+	EventBus.use_item.connect(on_use_item)
 	
 
 func _physics_process(delta: float) -> void:
@@ -54,6 +55,31 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 #region Items
+func on_use_item(item: Item):
+	var item_used : bool = false
+	if item.is_weapon():
+		item_used = weapon_pickup(item)
+	elif item.is_upgrade():
+		item_used = weapon_upgrade(item)
+	elif item.is_consumable():
+		item_used = consume_item(item)
+	
+	if item_used:
+		EventBus.item_used.emit(item)
+
+func consume_item(item: Item) -> bool:
+	var effect = item.effect
+	match item.type:
+		Item.Item_type.MEDIPACK:
+			return heal(effect)
+		Item.Item_type.PISTOL_AMMO:
+			return refill_ammo(effect)
+		Item.Item_type.SERUM:
+			return take_serum()
+		Item.Item_type.CHILL_PILL:
+			return take_chill_pill()
+	return false
+
 func is_full_health() -> bool:
 	return health == max_health
 

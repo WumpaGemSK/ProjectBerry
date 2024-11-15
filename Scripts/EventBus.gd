@@ -10,6 +10,12 @@ signal resume
 ## Signal to send a picked up item to the inventory
 signal pick_item(item: Item)
 
+## Signal to send when an item should be used
+signal use_item(item: Item)
+
+## Signal to send when an item has been used
+signal item_used(item: Item)
+
 ## Signal to show the inventory
 signal show_inventory
 

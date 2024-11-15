@@ -91,43 +91,7 @@ func is_equal(item: Item) -> bool:
 
 #endregion
 
-#region Interactable
-## Does the action of the item. Returns true if the UI should update
-func interact(player : Player) -> bool:
-	if is_note() or is_code() or is_key():
-		return false
-	
-	if is_consumable():
-		return consume_item(player)
-	elif is_upgrade():
-		return emit_upgrade(player)
-	elif is_weapon():
-		return emit_weapon(player)
-	
-	return false
-	
-func consume_item(player : Player) -> bool:
-	var use_item : bool = false
-	match type:
-		Item_type.MEDIPACK:
-			use_item = player.heal(effect)
-		Item_type.PISTOL_AMMO:
-			use_item = player.refill_ammo(effect)
-		Item_type.SERUM:
-			use_item = player.take_serum()
-		Item_type.CHILL_PILL:
-			use_item = player.take_chill_pill()
-	if use_item:
-		quantity -= 1
-	return quantity <= 0
 
-func emit_upgrade(player : Player) -> bool:
-	return player.weapon_upgrade(self)
-	
-func emit_weapon(player : Player) -> bool:
-	player.weapon_pickup(self)
-	return true
-#endregion
 
 ## Make a new copy of an item
 static func copy(item: Item) -> Item:
