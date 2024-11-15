@@ -8,8 +8,7 @@ signal pistol_ammo_upgrade(new_max : int)
 signal equipped_weapon(weapon: Item)
 signal health_changed(new_health: int)
 
-@onready var my_animation_player = $AnimationPlayer
-@onready var my_sprite := $Sprite2D
+@onready var my_animated_sprite := $AnimatedSprite2D
 
 #movement variables
 var direction : Vector2
@@ -35,6 +34,7 @@ func _ready():
 	my_animation_player.play("idle_down")
 	EventBus.use_item.connect(on_use_item)
 	
+	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
@@ -103,9 +103,11 @@ func take_serum() -> bool:
 	return true
 
 func take_chill_pill() -> bool:
+	
 	if is_panicking:
 		is_panicking = false
 		return true
+		
 	return false
 
 ## Populate the appropiate weapon variable when a weapon is picked up
@@ -145,35 +147,51 @@ func weapon_upgrade(item: Item) -> bool:
 #endregion
 #region animation
 ##Match the animation based on the movement direction
-func match_movemnt_animation():
+func match_movement_animation():
+	
 	if direction == Vector2.RIGHT:
-		my_animation_player.play("walk_right")
-		my_sprite.flip_h = false
+		my_animated_sprite.play("walk_side_semicalm_no_weapon")
+		my_animated_sprite.flip_h = false
 		facing_direction = facing.RIGHT
+		print("walk right")
+		
 	elif direction == Vector2.LEFT:
-		my_animation_player.play("walk_right")
-		my_sprite.flip_h = true
+		my_animated_sprite.play("walk_side_semicalm_no_weapon")
+		my_animated_sprite.flip_h = true
 		facing_direction = facing.LEFT	
+		print("walk left")
+		
 	elif direction == Vector2.DOWN:
-		my_animation_player.play("walk_down")
+		my_animated_sprite.play("walk_down_semicalm_no_weapon")
 		facing_direction = facing.DOWN	
+		print("walk down")
+		
 	elif direction == Vector2.UP:
-		my_animation_player.play("walk_up")
+		my_animated_sprite.play("walk_up_semicalm_no_weapon")
 		facing_direction = facing.UP
+		print("walk up")
 
 		
 ##Match the animation based on the idle direction		
 func match_idle():
+	
 	if facing_direction == facing.RIGHT:
-		my_animation_player.play("idle_right")
-		my_sprite.flip_h = false
+		my_animated_sprite.play("idle_side_semicalm_no_weapon")
+		my_animated_sprite.flip_h = false
+		print("idle right")
+		
 	elif facing_direction == facing.LEFT:
-		my_animation_player.play("idle_right")
-		my_sprite.flip_h = true
+		my_animated_sprite.play("idle_side_semicalm_no_weapon")
+		my_animated_sprite.flip_h = true
+		print("idle left")
+		
 	elif facing_direction == facing.DOWN:
-		my_animation_player.play("idle_down")
+		my_animated_sprite.play("idle_down_semicalm_no_weapon")
+		print("idle down")
+		
 	elif facing_direction == facing.UP:
-		my_animation_player.play("idle_up")
+		my_animated_sprite.play("idle_up_semicalm_no_weapon")
+		print("idle up")
 		
 		
 #endregion	
