@@ -2039,7 +2039,7 @@ animations = [{
 
 [sub_resource type="AudioStream" id="AudioStream_q5qjc"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_mr2b3")
 
