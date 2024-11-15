@@ -2044,6 +2044,8 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_mr2b3")
+metadata/_edit_vertical_guides_ = [-25.0]
+metadata/_edit_horizontal_guides_ = [-25.0]
 
 [node name="MainCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cnwvd")
@@ -2071,6 +2073,21 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Assets/Textures/Player/Final/Portraits/Player_Portraits.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "7640fffa37483b249c9a1e2b6310a586"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -288
+limit_top = -288
+limit_right = 816
+limit_bottom = 576
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.15
+drag_right_margin = 0.1
+drag_bottom_margin = 0.15
+editor_draw_drag_margin = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStream_q5qjc")
