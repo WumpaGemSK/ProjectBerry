@@ -36,6 +36,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
+[global_group]
+
+Player="The player group"
+
 [input]
 
 move_up={
