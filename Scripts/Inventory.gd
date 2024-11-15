@@ -17,8 +17,9 @@ func on_item_pickup(item: Item):
 		EventBus.use_item.emit(item)
 		return
 	if item.is_key():
-		if inventory.has(item.type) and item.effect > inventory[item.type].effect:
-			inventory[item.type] = item
+		if inventory.has(item.type):
+			if item.effect > inventory[item.type].effect:
+				inventory[item.type] = item
 		else:
 			inventory[item.type] = item
 		on_inventory_update.emit(inventory)
