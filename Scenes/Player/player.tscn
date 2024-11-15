@@ -1,6 +1,6 @@
 [gd_scene load_steps=242 format=3 uid="uid://dbglcphu0b73y"]
 
-[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mr2b3"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
 [ext_resource type="Texture2D" uid="uid://ld5jhi1a6xw" path="res://Assets/Textures/Player/Final/Crumpitt_Pistol-Sheet.png" id="3_tammy"]
 [ext_resource type="Texture2D" uid="uid://d16x5yp33gos6" path="res://Assets/Textures/Player/Final/Crumpitt_Bat-Sheet-40x40.png" id="3_tn0c2"]
