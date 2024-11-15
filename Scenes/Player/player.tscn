@@ -1,11 +1,9 @@
-[gd_scene load_steps=244 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=242 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
-[ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="3_503nj"]
 [ext_resource type="Texture2D" uid="uid://ld5jhi1a6xw" path="res://Assets/Textures/Player/Final/Crumpitt_Pistol-Sheet.png" id="3_tammy"]
 [ext_resource type="Texture2D" uid="uid://d16x5yp33gos6" path="res://Assets/Textures/Player/Final/Crumpitt_Bat-Sheet-40x40.png" id="3_tn0c2"]
-[ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="4_4cfvg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 
@@ -2074,13 +2072,3 @@ metadata/_aseprite_wizard_source_file_hash_ = "7640fffa37483b249c9a1e2b6310a586"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStream_q5qjc")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_503nj")]
-visible = false
-player = NodePath("../..")
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="InGameMenu" parent="CanvasLayer2" instance=ExtResource("4_4cfvg")]
