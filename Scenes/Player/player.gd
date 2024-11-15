@@ -36,7 +36,7 @@ func _ready():
 	EventBus.use_item.connect(on_use_item)
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 	elif Input.is_action_pressed("move_right"):

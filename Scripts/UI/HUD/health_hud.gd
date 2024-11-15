@@ -5,8 +5,7 @@ extends Control
 @onready var health_units = %HealthUnits
 
 func _ready():
-	player.health_changed.connect(on_health_changed)
-	populate_health(player.health, player.max_health)
+	pass#populate_health(player.health, player.max_health)
 
 func on_health_changed(new_health):
 	for child in health_units.get_children():

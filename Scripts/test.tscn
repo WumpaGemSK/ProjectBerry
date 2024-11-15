@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=15 format=3 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -11,6 +11,9 @@
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="9_h2xk0"]
 [ext_resource type="Resource" uid="uid://bwjdodifjd0xh" path="res://Resources/Items/key_2.tres" id="10_v3abn"]
 [ext_resource type="Resource" uid="uid://cq8ie1ermp4br" path="res://Resources/Items/key_3.tres" id="11_5324t"]
+[ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="12_sv1q7"]
+[ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="17_tojv2"]
+[ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="18_dyp3j"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -56,3 +59,12 @@ item = ExtResource("10_v3abn")
 [node name="Pickable_Item9" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(198, 92)
 item = ExtResource("11_5324t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainHud" parent="CanvasLayer" instance=ExtResource("12_sv1q7")]
+
+[node name="Inventory_UI" parent="CanvasLayer" instance=ExtResource("17_tojv2")]
+visible = false
+
+[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("18_dyp3j")]

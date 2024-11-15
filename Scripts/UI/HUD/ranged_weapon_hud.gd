@@ -3,29 +3,27 @@ extends Control
 @onready var weapon_slot = $MarginContainer/VBoxContainer/WeaponSlot
 @onready var ammo_label = %AmmoLabel
 
-@export var player : Player
-
 ## Texture to show as the imput prompt
 @export var input_prompt : Texture2D
 
-var current_ammo : int
-var current_max_ammo : int
+var current_ammo : int = 0
+var current_max_ammo : int = 0
 
 func _ready():
-	current_ammo = player.pistol_ammo
-	current_max_ammo = player.max_pistol_ammo
-	player.pistol_ammo_update.connect(on_pistol_ammo_update)
-	player.pistol_ammo_upgrade.connect(on_pistol_ammo_upgrade)
-	player.equipped_weapon.connect(on_ranged_weapon_equipped)
+	EventBus.item_used.connect(on_ranged_weapon_equipped)
+	EventBus.item_used.connect(on_pistol_ammo_update)
+	EventBus.item_used.connect(on_pistol_ammo_upgrade)
 	update_ammo_label()
 	
-func on_pistol_ammo_update(amount : int):
-	current_ammo = amount
-	update_ammo_label()
+func on_pistol_ammo_update(item: Item):
+	if item.type == Item.Item_type.PISTOL_AMMO:
+		current_ammo += item.effect
+		update_ammo_label()
 	
-func on_pistol_ammo_upgrade(amount : int):
-	current_max_ammo = amount
-	update_ammo_label()
+func on_pistol_ammo_upgrade(item: Item):
+	if item.type == Item.Item_type.MAX_PISTOL_AMMO_UPGRADE:
+		current_max_ammo = item.effect
+		update_ammo_label()
 
 func update_ammo_label():
 	ammo_label.text = "%d/%d" % [current_ammo, current_max_ammo]

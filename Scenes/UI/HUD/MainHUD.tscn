@@ -23,6 +23,7 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="HealthHUD" parent="." instance=ExtResource("4_0leg8")]
+visible = false
 layout_mode = 1
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("5_w3ybx")]
