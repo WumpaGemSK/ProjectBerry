@@ -2044,8 +2044,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_mr2b3")
-metadata/_edit_vertical_guides_ = [-25.0]
-metadata/_edit_horizontal_guides_ = [-25.0]
 
 [node name="MainCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cnwvd")
