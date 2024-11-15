@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b11xwof4wy2b0"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_42iyf"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_v0mxp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcar8"]
+atlas = ExtResource("2_v0mxp")
+
+[resource]
+script = ExtResource("1_42iyf")
+item_name = ""
+texture_icon = SubResource("AtlasTexture_jcar8")
+description = ""
+type = 0
+effect = 0

@@ -5,11 +5,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7o0ju"]
 atlas = ExtResource("2_8dsmt")
-region = Rect2(112, 0, 16, 16)
+region = Rect2(32, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_lbuny")
-item_name = "Key"
+item_name = "Tier 1 Key"
 texture_icon = SubResource("AtlasTexture_7o0ju")
 description = "Opens doors that are numbered level 1."
 type = 5

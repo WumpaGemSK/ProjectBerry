@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://1e55es1vkmld"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_banth"]
+[ext_resource type="Texture2D" uid="uid://broklmcjnq4qv" path="res://Assets/Textures/Items/Items.png" id="2_0im7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us2sv"]
+atlas = ExtResource("2_0im7a")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_banth")
+item_name = "Pistol ammo upgrade"
+texture_icon = SubResource("AtlasTexture_us2sv")
+description = ""
+type = 11
+effect = 10
