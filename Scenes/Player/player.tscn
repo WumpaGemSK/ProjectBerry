@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnt8c6hbgy8gv" path="res://Assets/Textures/Player/Final/Crumpitt_Bat_40x40-Sheet.png" id="5_bqjlx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_op08w"]
 atlas = ExtResource("2_6mfvp")

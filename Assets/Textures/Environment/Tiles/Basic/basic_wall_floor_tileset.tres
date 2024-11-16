@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d7b6jb8080j1"]
 
-[ext_resource type="Texture2D" uid="uid://ct55aqn05cwxs" path="res://Assets/Textures/Environment/Tiles/Basic/Tiles_Walls-Floors-and-Doors.png" id="1_nfxmq"]
+[ext_resource type="Texture2D" uid="uid://ct55aqn05cwxs" path="res://Assets/Textures/Environment/Tiles/Basic/Tiles_Walls-Floors-and-Doors.png" id="1_ifylp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bnpj"]
 resource_name = "Test"
-texture = ExtResource("1_nfxmq")
+texture = ExtResource("1_ifylp")
 texture_region_size = Vector2i(24, 24)
 1:0/0 = 0
 1:0/0/terrain_set = 0
@@ -19,7 +19,7 @@ texture_region_size = Vector2i(24, 24)
 1:0/0/terrains_peering_bit/top_right_corner = 0
 2:0/0 = 0
 2:0/0/terrain_set = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, -4, -12, -4)
 3:0/0 = 0
 3:0/0/terrain_set = 0
 4:0/0 = 0
