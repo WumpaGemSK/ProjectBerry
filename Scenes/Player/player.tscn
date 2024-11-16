@@ -1,9 +1,10 @@
-[gd_scene load_steps=242 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=255 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
 [ext_resource type="Texture2D" uid="uid://ld5jhi1a6xw" path="res://Assets/Textures/Player/Final/Crumpitt_Pistol-Sheet.png" id="3_tammy"]
 [ext_resource type="Texture2D" uid="uid://d16x5yp33gos6" path="res://Assets/Textures/Player/Final/Crumpitt_Bat-Sheet-40x40.png" id="3_tn0c2"]
+[ext_resource type="Texture2D" uid="uid://cnt8c6hbgy8gv" path="res://Assets/Textures/Player/Final/Crumpitt_Bat_40x40-Sheet.png" id="5_bqjlx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 
@@ -174,6 +175,54 @@ region = Rect2(48, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_udstw"]
 atlas = ExtResource("3_tammy")
 region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rokxs"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(0, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5vw"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(40, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8jd6"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(80, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uwvo"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(120, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4vac"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(160, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r6ev"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(200, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq8ce"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(240, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_actec"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(280, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qivb2"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(320, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x17o6"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(360, 320, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfb1f"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(0, 360, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_776rg"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(40, 360, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1bgf"]
 atlas = ExtResource("3_tammy")
@@ -1282,6 +1331,57 @@ animations = [{
 }, {
 "frames": [{
 "duration": 4.0,
+"texture": SubResource("AtlasTexture_rokxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm5vw")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_f8jd6")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_1uwvo")
+}],
+"loop": false,
+"name": &"puts_away_cricket_bat_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_d4vac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r6ev")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xq8ce")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_actec")
+}],
+"loop": false,
+"name": &"puts_away_cricket_bat_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_qivb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x17o6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_kfb1f")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_776rg")
+}],
+"loop": false,
+"name": &"puts_away_cricket_bat_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_o1bgf")
 }, {
 "duration": 1.0,
@@ -2049,9 +2149,9 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"smack_w_cricket_bat_side"
+animation = &"puts_away_cricket_bat_side"
 autoplay = "idle_down_semicalm_no_weapon"
-frame = 6
+frame = 3
 frame_progress = 1.0
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
