@@ -5,11 +5,12 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcar8"]
 atlas = ExtResource("2_v0mxp")
+region = Rect2(16, 47.329, 16, 16.671)
 
 [resource]
 script = ExtResource("1_42iyf")
-item_name = ""
+item_name = "Barbed wire upgrade"
 texture_icon = SubResource("AtlasTexture_jcar8")
-description = ""
-type = 0
-effect = 0
+description = "Doubles the damage of the cricket bat"
+type = 8
+effect = 1
