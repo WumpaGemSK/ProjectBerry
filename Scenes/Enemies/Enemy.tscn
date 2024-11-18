@@ -8,8 +8,8 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd7fy"]
 radius = 80.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq8dc"]
-size = Vector2(90, 20)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8w11m"]
+points = PackedVector2Array(0, 0, 80, -40, 80, 40)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_5gn1u")
@@ -27,8 +27,10 @@ shape = SubResource("CircleShape2D_cd7fy")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FOV"]
-position = Vector2(35, 0)
-shape = SubResource("RectangleShape2D_nq8dc")
+shape = SubResource("ConvexPolygonShape2D_8w11m")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+simplify_path = true
+simplify_epsilon = 1.143
 debug_enabled = true
