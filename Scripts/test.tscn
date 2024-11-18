@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=13 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
@@ -11,8 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="17_tojv2"]
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="18_dyp3j"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qe0qa"]
-height = 38.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yry7s"]
+
+[sub_resource type="Curve2D" id="Curve2D_o8ast"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -59, 190, 0, 0, 0, 0, 276, 190, 0, 0, 0, 0, 292, 414, 0, 0, 0, 0, -51, 405, 0, 0, 0, 0, -59, 190)
+}
+point_count = 5
 
 [node name="Node2D" type="Node2D"]
 
@@ -52,9 +57,16 @@ visible = false
 
 [node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("18_dyp3j")]
 
-[node name="Enemy" parent="." instance=ExtResource("10_j2yku")]
-position = Vector2(22, 137)
-health = 10
+[node name="Enemy" parent="." node_paths=PackedStringArray("patrol_path") instance=ExtResource("10_j2yku")]
+position = Vector2(150, 257)
+investigating_speed = 50.0
+chasing_speed = 30.0
+rotation_speed = 2.0
+original_facing_dir = 3
+patrol_path = NodePath("../Path2D")
 
-[node name="Collision" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("CapsuleShape2D_qe0qa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CapsuleShape2D_yry7s")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o8ast")
