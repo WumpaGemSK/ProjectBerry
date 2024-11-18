@@ -26,7 +26,8 @@ enum States {
 	INVESTIGATING,
 	CHASING
 }
-
+@export var patrol_path : Path2D = null
+var path_follow: PathFollow2D
 var state : States = States.IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,12 +41,20 @@ func _ready():
 	fov.body_entered.connect(on_view)
 	resting_position = global_position
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
+	if patrol_path == null:
+		patrol_path = Path2D.new()
+		patrol_path.curve = Curve2D.new()
+		patrol_path.curve.add_point(resting_position)
+		add_child(patrol_path)
+	path_follow = PathFollow2D.new()
+	patrol_path.add_child(path_follow)
 
 func _process(delta):
 	rotate_fov(delta)
 	match state:
 		States.CHASING:
 			set_target_position(player.global_position)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
