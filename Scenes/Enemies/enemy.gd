@@ -44,14 +44,8 @@ func _ready():
 func _process(delta):
 	rotate_fov(delta)
 	match state:
-		States.IDLE:
-			set_target_position(resting_position)
-			movement_speed = investigating_speed
-		States.INVESTIGATING:
-			movement_speed = investigating_speed
 		States.CHASING:
 			set_target_position(player.global_position)
-			movement_speed = chasing_speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -70,6 +64,7 @@ func on_hearing(body : Node2D):
 		if not player.is_sneaking and state != States.CHASING:
 			state = States.INVESTIGATING
 			set_target_position(player.global_position)
+			movement_speed = investigating_speed
 
 func on_view(body: Node2D):
 	#TODO: Move timer start to body_exited?
@@ -78,10 +73,13 @@ func on_view(body: Node2D):
 			state = States.CHASING
 			set_target_position(player.global_position)
 			timer.start(5)
-			print(body)
+			movement_speed = chasing_speed
 
 func to_idle_state():
 	state = States.IDLE
+	timer.stop()
+	set_target_position(resting_position)
+	movement_speed = investigating_speed
 
 func set_target_position(target: Vector2):
 	navigation_agent_2d.set_target_position(target)
