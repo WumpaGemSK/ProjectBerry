@@ -32,3 +32,7 @@ path_metadata_flags = 0
 simplify_path = true
 simplify_epsilon = 1.143
 debug_enabled = true
+
+[node name="Prompt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -14)

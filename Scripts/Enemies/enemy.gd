@@ -11,9 +11,13 @@ var collision : CollisionShape2D = null
 @export var chasing_speed : float
 @export var rotation_speed : float
 
+var question_mark = preload("res://Assets/Textures/question_mark.tres")
+var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
+
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
 @export var original_facing_dir : facing = facing.RIGHT
+@onready var prompt = %Prompt
 
 var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
@@ -32,6 +36,7 @@ var path_follow: PathFollow2D = null
 var state : States = States.IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	prompt.texture = null
 	movement_speed = investigating_speed
 	timer = Timer.new()
 	timer.wait_time = 5
@@ -80,6 +85,7 @@ func on_hearing(body : Node2D):
 			state = States.INVESTIGATING
 			set_target_position(player.global_position)
 			movement_speed = investigating_speed
+			prompt.texture = question_mark
 
 func on_view(body: Node2D):
 	#TODO: Move timer start to body_exited?
@@ -89,12 +95,14 @@ func on_view(body: Node2D):
 			set_target_position(player.global_position)
 			timer.start(5)
 			movement_speed = chasing_speed
+			prompt.texture = exclamation_mark
 
 func to_idle_state():
 	state = States.IDLE
 	timer.stop()
 	set_target_position(resting_position)
 	movement_speed = investigating_speed
+	prompt.texture = null
 
 func set_target_position(target: Vector2):
 	navigation_agent_2d.set_target_position(target)
