@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://hpsxe32mlmp"
+path="res://.godot/imported/enemy_detection_curious.aseprite-f8cace7b4e347f5e374bcb79471ec048.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Prompts/enemy_detection_curious.aseprite"
+dest_files=["res://.godot/imported/enemy_detection_curious.aseprite-f8cace7b4e347f5e374bcb79471ec048.res"]
+
+[params]
+

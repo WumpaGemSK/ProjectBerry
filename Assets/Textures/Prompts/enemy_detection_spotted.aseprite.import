@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://doivuvh7fbgkc"
+path="res://.godot/imported/enemy_detection_spotted.aseprite-188e9c3efe49a34d9265b3eb7d01e8b9.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Prompts/enemy_detection_spotted.aseprite"
+dest_files=["res://.godot/imported/enemy_detection_spotted.aseprite-188e9c3efe49a34d9265b3eb7d01e8b9.res"]
+
+[params]
+
