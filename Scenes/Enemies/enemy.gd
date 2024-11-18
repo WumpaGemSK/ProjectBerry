@@ -50,6 +50,7 @@ func _process(delta):
 		States.INVESTIGATING:
 			movement_speed = investigating_speed
 		States.CHASING:
+			set_target_position(player.global_position)
 			movement_speed = chasing_speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
