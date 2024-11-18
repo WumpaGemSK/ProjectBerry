@@ -13,6 +13,7 @@ var collision : CollisionShape2D = null
 
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
+@export var original_facing_dir : facing = facing.RIGHT
 
 var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
@@ -54,7 +55,9 @@ func _process(delta):
 	match state:
 		States.CHASING:
 			set_target_position(player.global_position)
-
+		States.IDLE:
+			path_follow.progress += delta*movement_speed
+			set_target_position(path_follow.global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -63,7 +66,10 @@ func _physics_process(delta):
 	if navigation_agent_2d.is_navigation_finished():
 		if state != States.IDLE:
 			to_idle_state()
+		else:
+			facing_direction = original_facing_dir
 		return
+		
 	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
 	var new_vel : Vector2 = global_position.direction_to(next_pos)*movement_speed
 	on_velocity_computed(new_vel)
