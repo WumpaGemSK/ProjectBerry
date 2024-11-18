@@ -9,7 +9,7 @@ var collision : CollisionShape2D = null
 @onready var navigation_agent_2d = $NavigationAgent2D
 @export var investigating_speed : float = 10.0
 @export var chasing_speed : float = 20.0
-
+@export var rotation_speed : float = 3
 
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
@@ -42,7 +42,7 @@ func _ready():
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 
 func _process(delta):
-	fov.rotation_degrees = facing_rotation[facing_direction]
+	rotate_fov(delta)
 	match state:
 		States.IDLE:
 			set_target_position(resting_position)
@@ -74,10 +74,7 @@ func on_hearing(body : Node2D):
 func on_view(body: Node2D):
 	#TODO: Move timer start to body_exited?
 	if body is Player:
-		var space_state = get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, collision_mask, [self])
-		var result = space_state.intersect_ray(query)
-		if result.collider is Player:
+		if raycast_to_player(INF):
 			state = States.CHASING
 			set_target_position(player.global_position)
 			timer.start(5)
@@ -106,3 +103,14 @@ func direction_from_velocity(vel: Vector2):
 			return facing.DOWN
 		else:
 			return facing.UP
+
+func raycast_to_player(max_distance: float)-> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, collision_mask, [self])
+	var result = space_state.intersect_ray(query)
+	return result.collider is Player and global_position.distance_to(player.global_position) < max_distance
+
+func rotate_fov(delta: float):
+	var new_angle = deg_to_rad(facing_rotation[facing_direction])
+	var new_rotation = lerp_angle(fov.rotation, new_angle, delta*rotation_speed)
+	fov.rotation = new_rotation
