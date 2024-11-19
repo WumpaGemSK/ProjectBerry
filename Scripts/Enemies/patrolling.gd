@@ -1,6 +1,8 @@
 extends State
 
+## The speed in which the enemy will patrol
 @export var patrolling_speed: float
+## The path to follow by the enemy
 @export var patrol_path : Path2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0

@@ -7,3 +7,9 @@ func attack(from: Vector2, dest: Vector2):
 			attacking.emit()
 			r.take_damage(damage)
 		cooldown_timer.start(cooldown)
+		
+func upgrade(item: Item):
+	match item.type:
+		Item.Item_type.BARBED_WIRE_UPGRADE:
+			damage *= 2
+			EventBus.item_used.emit(item)

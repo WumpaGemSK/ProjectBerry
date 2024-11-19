@@ -3,8 +3,7 @@ class_name Player
 
 signal on_panic
 signal calm
-signal pistol_ammo_update(new_amount : int)
-signal pistol_ammo_upgrade(new_max : int)
+
 signal equipped_weapon(weapon: Item)
 signal health_changed(new_health: int)
 
@@ -75,7 +74,10 @@ func death():
 # Called when the player attacks, either melee or ranged
 func on_attack():
 	pass
+
 #region Items
+# TODO: Having this functions to return if item is used is messy.
+# Should be left to the actual function using it
 func on_use_item(item: Item):
 	var item_used : bool = false
 	if item.is_weapon():
@@ -112,13 +114,6 @@ func heal(amount: int) -> bool:
 		return true
 	return false
 	
-func refill_ammo(amount : int) -> bool:
-	if pistol_ammo < max_pistol_ammo:
-		pistol_ammo = clampi(pistol_ammo + amount, 0, max_pistol_ammo)
-		pistol_ammo_update.emit(pistol_ammo)
-		return true
-	return false
-	
 func take_serum() -> bool:
 	max_health += 1
 	health_changed.emit(health)
@@ -152,22 +147,13 @@ func weapon_upgrade(item: Item) -> bool:
 	if not item.is_upgrade():
 		return false
 	match item.type:
-		Item.Item_type.PISTOL_DAMAGE_UPGRADE:
-			if ranged_weapon != null:
-				ranged_weapon.effect += item.effect
-				return true
-		Item.Item_type.PISTOL_FIRE_RATE_UPGRADE:
-			if ranged_weapon != null:
-				# TODO: Update to when fire rate is implemented
-				return true
-		Item.Item_type.MAX_PISTOL_AMMO_UPGRADE:
-			max_pistol_ammo += item.effect
-			pistol_ammo_upgrade.emit(max_pistol_ammo)
-			return true
 		Item.Item_type.BARBED_WIRE_UPGRADE:
 			if melee_weapon != null:
-				melee_weapon.effect *= item.effect
-				return true
+				melee_weapon.upgrade(item)
+		_:
+			if ranged_weapon != null:
+				ranged_weapon.upgrade(item)
+		
 	return false
 #endregion
 #region animation

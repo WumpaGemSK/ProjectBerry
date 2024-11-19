@@ -1,7 +1,9 @@
 extends State
 
+## Speed in which the enemy will investigate a sound
 @export var investigating_speed: float
 
+## The resource to set as the enemy prompt texture
 var question_mark = preload("res://Assets/Textures/question_mark.tres")
 
 func enter(enemy: Enemy):

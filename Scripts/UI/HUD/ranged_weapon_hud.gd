@@ -14,8 +14,8 @@ func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
 	current_ammo = player.pistol_ammo
 	current_max_ammo = player.max_pistol_ammo
-	player.pistol_ammo_update.connect(on_pistol_ammo_update)
-	player.pistol_ammo_upgrade.connect(on_pistol_ammo_upgrade)
+	EventBus.pistol_ammo_update.connect(on_pistol_ammo_update)
+	EventBus.pistol_ammo_upgrade.connect(on_pistol_ammo_upgrade)
 	EventBus.item_used.connect(on_ranged_weapon_equipped)
 	update_ammo_label()
 	

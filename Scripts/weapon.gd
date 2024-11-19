@@ -2,11 +2,16 @@ extends Node2D
 class_name Weapon
 
 signal attacking
+signal hit
 
 @onready var cooldown_timer : Timer
+## How much time in seconds before attacking againg with the weapon
 @export var cooldown : float = 1.0
+## Range of the weapon in pixels
 @export var range: float
+## Damage caused by on attack of the weapon
 @export var damage: int
+## Is the weapon melee?
 @export var is_melee: bool
 
 func _ready():
@@ -28,3 +33,5 @@ func raycast_to_damageable(origin: Vector2, dir: Vector2):
 func reload(_amount: int) -> bool:
 	return false
 	
+func upgrade(item: Item):
+	return

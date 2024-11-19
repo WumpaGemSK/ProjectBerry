@@ -1,5 +1,6 @@
 extends State
 
+## The speed in which the enemy will return to the resting position
 @export var movement_speed: float
 
 func enter(enemy: Enemy):
