@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @export var health : int
 var player: Player = null
@@ -10,6 +11,9 @@ var collision : CollisionShape2D = null
 @export var investigating_speed : float
 @export var chasing_speed : float
 @export var rotation_speed : float
+@export var idle_state : State
+@export var investigating_state: State
+@export var chasing_state: State
 
 var question_mark = preload("res://Assets/Textures/question_mark.tres")
 var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
@@ -33,9 +37,10 @@ enum States {
 }
 @export var patrol_path : Path2D = null
 var path_follow: PathFollow2D = null
-var state : States = States.IDLE
+var state : State
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	state = idle_state
 	prompt.texture = null
 	movement_speed = investigating_speed
 	timer = Timer.new()
@@ -57,22 +62,15 @@ func _ready():
 
 func _process(delta):
 	rotate_fov(delta)
-	match state:
-		States.CHASING:
-			set_target_position(player.global_position)
+	state.update(self, delta)
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(delta):
 	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
 		return
 	if navigation_agent_2d.is_navigation_finished():
-		if state != States.IDLE:
+		if state != idle_state:
 			change_state(States.IDLE)
-		else:
-			facing_direction = original_facing_dir
-			path_follow.progress += delta*movement_speed
-			var new_pos = path_follow.global_position
-			set_target_position(new_pos)
 		return
 
 	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
@@ -81,7 +79,7 @@ func _physics_process(delta):
 
 func on_hearing(body : Node2D):
 	if body is Player:
-		if not player.is_sneaking and state != States.CHASING:
+		if not player.is_sneaking and state != chasing_state:
 			change_state(States.INVESTIGATING)
 
 func on_view(body: Node2D):
@@ -131,19 +129,20 @@ func rotate_fov(delta: float):
 func change_state(new_state: States):
 	match new_state:
 		States.IDLE:
-			state = States.IDLE
+			state = idle_state
 			timer.stop()
 			set_target_position(resting_position)
 			movement_speed = investigating_speed
 			prompt.texture = null
 		States.INVESTIGATING:
-			state = States.INVESTIGATING
+			state = investigating_state
 			set_target_position(player.global_position)
 			movement_speed = investigating_speed
 			prompt.texture = question_mark
 		States.CHASING:
-			state = States.CHASING
+			state = chasing_state
 			set_target_position(player.global_position)
 			timer.start(5)
 			movement_speed = chasing_speed
 			prompt.texture = exclamation_mark
+	state.enter(self)
