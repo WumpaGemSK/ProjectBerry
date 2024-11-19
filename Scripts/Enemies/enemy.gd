@@ -24,6 +24,10 @@ var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 var resting_position : Vector2
 var target_position : Vector2
 var movement_speed : float
+
+@export var weapon_scn: PackedScene
+var weapon: Weapon
+
 enum States {
 	IDLE,
 	INVESTIGATING,
@@ -32,6 +36,9 @@ enum States {
 var state : State
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	weapon = weapon_scn.instantiate()
+	add_child(weapon)
+	weapon.attacking.connect(on_attack)
 	idle_state.state_change.connect(change_state)
 	investigating_state.state_change.connect(change_state)
 	chasing_state.state_change.connect(change_state)
@@ -66,6 +73,17 @@ func on_hearing(body : Node2D):
 
 func on_view(body: Node2D):
 	state.on_view(body, self)
+
+func take_damage(amount: int):
+	health -= amount
+	if health <= 0:
+		death()
+
+func death():
+	pass
+
+func attack():
+	weapon.attack(global_position, player.global_position)
 
 # Needed for the signal
 func to_idle_state():
@@ -109,3 +127,7 @@ func change_state(new_state: States):
 		States.CHASING:
 			state = chasing_state
 	state.enter(self)
+
+## Called by attacking weapon signal
+func on_attack():
+	pass

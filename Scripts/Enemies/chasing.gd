@@ -4,6 +4,7 @@ var timer : Timer = null
 @export var chasing_speed: float
 var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
 
+# TODO: Prevent enemy from stop chasing after the timer runs out
 func enter(enemy: Enemy):
 	if timer == null:
 		timer = Timer.new()
@@ -17,6 +18,7 @@ func enter(enemy: Enemy):
 
 func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
+	enemy.attack()
 
 func exit():
 	timer.stop()

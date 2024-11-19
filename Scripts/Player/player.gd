@@ -34,6 +34,12 @@ func _ready():
 	EventBus.use_item.connect(on_use_item)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 
+func _process(delta):
+	if Input.is_action_just_pressed("interact") and melee_weapon != null:
+		melee_weapon.attack()
+	elif Input.is_action_pressed("use") and ranged_weapon != null:
+		ranged_weapon.attack()
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
@@ -51,6 +57,16 @@ func _physics_process(_delta: float) -> void:
 	else:
 		match_idle()
 	move_and_slide()
+
+func take_damage(amount: int):
+	health -= amount
+	health_changed.emit(health)
+	if health <= 0:
+		death()
+
+func death():
+	print("death")
+	pass
 
 #region Items
 func on_use_item(item: Item):
@@ -101,7 +117,6 @@ func take_serum() -> bool:
 	return true
 
 func take_chill_pill() -> bool:
-	
 	if is_panicking:
 		is_panicking = false
 		return true
