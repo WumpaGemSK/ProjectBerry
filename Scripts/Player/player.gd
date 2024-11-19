@@ -39,9 +39,9 @@ func _ready():
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and melee_weapon != null:
+	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
 		melee_weapon.attack(global_position, facing_vector[facing_direction])
-	elif Input.is_action_pressed("use") and ranged_weapon != null:
+	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
 		ranged_weapon.attack(global_position, facing_vector[facing_direction])
 
 func _physics_process(_delta: float) -> void:
