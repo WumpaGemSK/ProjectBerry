@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=13 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
@@ -6,16 +6,11 @@
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="3_ivusq"]
 [ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="4_8mk7k"]
 [ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="6_mspco"]
-[ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="10_j2yku"]
-[ext_resource type="Script" path="res://Scripts/Enemies/doze.gd" id="11_cl3as"]
-[ext_resource type="PackedScene" uid="uid://d2juikpxcp1ro" path="res://Scenes/MeleeWeapon.tscn" id="11_owj0r"]
-[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="12_py7l8"]
+[ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
+[ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="11_req0k"]
 [ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="12_sv1q7"]
-[ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="13_rqqdv"]
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="17_tojv2"]
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="18_dyp3j"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yry7s"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -60,30 +55,16 @@ visible = false
 
 [node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("18_dyp3j")]
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("10_j2yku")]
-position = Vector2(150, 257)
-health = 1
-rotation_speed = 2.0
-idle_state = NodePath("Idle")
-investigating_state = NodePath("Investigating")
-chasing_state = NodePath("Chasing")
-original_facing_dir = 3
-weapon_scn = ExtResource("11_owj0r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("CapsuleShape2D_yry7s")
-
-[node name="Idle" type="Node2D" parent="Enemy"]
-script = ExtResource("11_cl3as")
-movement_speed = 20.0
-
-[node name="Investigating" type="Node2D" parent="Enemy"]
-script = ExtResource("12_py7l8")
-investigating_speed = 30.0
-
-[node name="Chasing" type="Node2D" parent="Enemy"]
-script = ExtResource("13_rqqdv")
-chasing_speed = 30.0
-
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_o8ast")
+
+[node name="DozySoldier" parent="." instance=ExtResource("10_wtqid")]
+position = Vector2(-35, 154)
+
+[node name="PatrollingSoldier" parent="." instance=ExtResource("11_req0k")]
+
+[node name="Patrol" parent="PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
+patrolling_speed = 20.0
+patrol_path = NodePath("../../Path2D")
+
+[editable path="PatrollingSoldier"]
