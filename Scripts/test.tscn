@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=17 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
@@ -7,7 +7,8 @@
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="4_7nyix"]
 [ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="4_8mk7k"]
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="10_j2yku"]
-[ext_resource type="Script" path="res://Scripts/Enemies/stationary.gd" id="11_etqns"]
+[ext_resource type="Script" path="res://Scripts/Enemies/doze.gd" id="11_cl3as"]
+[ext_resource type="PackedScene" uid="uid://d2juikpxcp1ro" path="res://Scenes/MeleeWeapon.tscn" id="11_owj0r"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="12_py7l8"]
 [ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="12_sv1q7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="13_rqqdv"]
@@ -51,7 +52,6 @@ position = Vector2(108, 142)
 item = ExtResource("4_7nyix")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="MainHud" parent="CanvasLayer" instance=ExtResource("12_sv1q7")]
 
@@ -67,12 +67,13 @@ idle_state = NodePath("Idle")
 investigating_state = NodePath("Investigating")
 chasing_state = NodePath("Chasing")
 original_facing_dir = 3
+weapon_scn = ExtResource("11_owj0r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("CapsuleShape2D_yry7s")
 
 [node name="Idle" type="Node2D" parent="Enemy"]
-script = ExtResource("11_etqns")
+script = ExtResource("11_cl3as")
 movement_speed = 20.0
 
 [node name="Investigating" type="Node2D" parent="Enemy"]
