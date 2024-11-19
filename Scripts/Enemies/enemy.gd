@@ -67,7 +67,7 @@ func _physics_process(delta):
 		return
 	if navigation_agent_2d.is_navigation_finished():
 		if state != States.IDLE:
-			to_idle_state()
+			change_state(States.IDLE)
 		else:
 			facing_direction = original_facing_dir
 			path_follow.progress += delta*movement_speed
@@ -82,27 +82,17 @@ func _physics_process(delta):
 func on_hearing(body : Node2D):
 	if body is Player:
 		if not player.is_sneaking and state != States.CHASING:
-			state = States.INVESTIGATING
-			set_target_position(player.global_position)
-			movement_speed = investigating_speed
-			prompt.texture = question_mark
+			change_state(States.INVESTIGATING)
 
 func on_view(body: Node2D):
 	#TODO: Move timer start to body_exited?
 	if body is Player:
 		if raycast_to_player(INF):
-			state = States.CHASING
-			set_target_position(player.global_position)
-			timer.start(5)
-			movement_speed = chasing_speed
-			prompt.texture = exclamation_mark
+			change_state(States.CHASING)
 
+# Needed for the signal
 func to_idle_state():
-	state = States.IDLE
-	timer.stop()
-	set_target_position(resting_position)
-	movement_speed = investigating_speed
-	prompt.texture = null
+	change_state(States.IDLE)
 
 func set_target_position(target: Vector2):
 	navigation_agent_2d.set_target_position(target)
@@ -137,3 +127,23 @@ func rotate_fov(delta: float):
 	var new_angle = deg_to_rad(facing_rotation[facing_direction])
 	var new_rotation = lerp_angle(fov.rotation, new_angle, delta*rotation_speed)
 	fov.rotation = new_rotation
+
+func change_state(new_state: States):
+	match new_state:
+		States.IDLE:
+			state = States.IDLE
+			timer.stop()
+			set_target_position(resting_position)
+			movement_speed = investigating_speed
+			prompt.texture = null
+		States.INVESTIGATING:
+			state = States.INVESTIGATING
+			set_target_position(player.global_position)
+			movement_speed = investigating_speed
+			prompt.texture = question_mark
+		States.CHASING:
+			state = States.CHASING
+			set_target_position(player.global_position)
+			timer.start(5)
+			movement_speed = chasing_speed
+			prompt.texture = exclamation_mark
