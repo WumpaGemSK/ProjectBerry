@@ -28,6 +28,8 @@ var movement_speed : float
 @export var weapon_scn: PackedScene
 var weapon: Weapon
 
+var animated_sprite: AnimatedSprite2D
+
 enum States {
 	IDLE,
 	INVESTIGATING,
@@ -36,6 +38,7 @@ enum States {
 var state : State
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animated_sprite = get_node("AnimatedSprite2D")
 	weapon = weapon_scn.instantiate()
 	add_child(weapon)
 	weapon.attacking.connect(on_attack)
