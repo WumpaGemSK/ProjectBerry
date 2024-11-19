@@ -94,12 +94,6 @@ func direction_from_velocity(vel: Vector2):
 		else:
 			return facing.UP
 
-func raycast_to_player(max_distance: float)-> bool:
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, collision_mask, [self])
-	var result = space_state.intersect_ray(query)
-	return result.collider is Player and global_position.distance_to(player.global_position) < max_distance
-
 func rotate_fov(delta: float):
 	var new_angle = deg_to_rad(facing_rotation[facing_direction])
 	var new_rotation = lerp_angle(fov.rotation, new_angle, delta*rotation_speed)
