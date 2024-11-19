@@ -3,6 +3,7 @@ extends Control
 var start : Button = null
 var options : Button = null
 var leaderboard : Button = null
+var credits : Button = null
 
 ## [PackedScene] to switch to when Start Game is pressed
 @export var game_scene : PackedScene
@@ -10,22 +11,38 @@ var leaderboard : Button = null
 @export var options_scene : PackedScene
 ## [PackedScene] to switch to when Leaderboard is pressed
 @export var leaderboard_scene :  PackedScene
+## [PackedScene] to switch to when Leaderboard is pressed
+@export var credits_scene :  PackedScene
 
 func _ready():
+	
 	start = find_child("StartGame")
 	start.pressed.connect(_on_start_game)
+	
 	options = find_child("Options")
 	options.pressed.connect(_on_options)
+	
 	leaderboard = find_child("Leaderboard")
 	leaderboard.visible = FileAccess.file_exists(Constants.SAVE_FILE_PATH)
 	leaderboard.pressed.connect(_on_leaderboard)
+	
+	credits = find_child("Credits")
+	options.pressed.connect(_on_credits)
+	
 	start.grab_focus()
 
 func _on_start_game():
+	
 	get_tree().change_scene_to_packed(game_scene)
 	
 func _on_options():
+	
 	get_tree().change_scene_to_packed(options_scene)
 	
 func _on_leaderboard():
+	
 	get_tree().change_scene_to_packed(leaderboard_scene)
+
+func _on_credits():
+	
+	get_tree().change_scene_to_packed(credits_scene)
