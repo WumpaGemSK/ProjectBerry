@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=14 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="3_ivusq"]
 [ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="4_8mk7k"]
+[ext_resource type="Resource" uid="uid://1e55es1vkmld" path="res://Resources/Items/pistol_max_ammo_upgrade.tres" id="5_o8y2f"]
 [ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="6_mspco"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
 [ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="11_req0k"]
@@ -28,15 +29,15 @@ tile_set = ExtResource("1_6s21k")
 
 [node name="Player" parent="." instance=ExtResource("1_cxnel")]
 y_sort_enabled = true
-position = Vector2(140, 383)
+position = Vector2(189, 106)
 
 [node name="Item" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(72, 47)
 item = ExtResource("3_ivusq")
 
 [node name="Pickable_Item2" parent="." instance=ExtResource("2_0nvdr")]
-position = Vector2(121, 41)
-item = ExtResource("4_8mk7k")
+position = Vector2(228, 103)
+item = ExtResource("5_o8y2f")
 
 [node name="Pickable_Item" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(129, 95)
