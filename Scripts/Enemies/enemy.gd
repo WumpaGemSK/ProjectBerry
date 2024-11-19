@@ -8,15 +8,10 @@ var collision : CollisionShape2D = null
 @onready var hearing = %Hearing
 @onready var fov = %FOV
 @onready var navigation_agent_2d = $NavigationAgent2D
-@export var investigating_speed : float
-@export var chasing_speed : float
 @export var rotation_speed : float
 @export var idle_state : State
 @export var investigating_state: State
 @export var chasing_state: State
-
-var question_mark = preload("res://Assets/Textures/question_mark.tres")
-var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
 
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
@@ -28,37 +23,26 @@ var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 var resting_position : Vector2
 var target_position : Vector2
-var timer : Timer
-var movement_speed
+var movement_speed : float
 enum States {
 	IDLE,
 	INVESTIGATING,
 	CHASING
 }
-@export var patrol_path : Path2D = null
-var path_follow: PathFollow2D = null
 var state : State
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	idle_state.state_change.connect(change_state)
+	investigating_state.state_change.connect(change_state)
+	chasing_state.state_change.connect(change_state)
+	resting_position = global_position
 	state = idle_state
+	change_state(States.IDLE)
 	prompt.texture = null
-	movement_speed = investigating_speed
-	timer = Timer.new()
-	timer.wait_time = 5
-	timer.timeout.connect(to_idle_state)
-	add_child(timer)
 	player = get_tree().get_nodes_in_group("Player")[0]
 	hearing.body_entered.connect(on_hearing)
 	fov.body_entered.connect(on_view)
-	resting_position = global_position
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
-	if patrol_path == null:
-		patrol_path = Path2D.new()
-		patrol_path.curve = Curve2D.new()
-		patrol_path.curve.add_point(resting_position)
-		add_child(patrol_path)
-	path_follow = PathFollow2D.new()
-	patrol_path.add_child(path_follow)
 
 func _process(delta):
 	rotate_fov(delta)
@@ -78,15 +62,10 @@ func _physics_process(delta):
 	on_velocity_computed(new_vel)
 
 func on_hearing(body : Node2D):
-	if body is Player:
-		if not player.is_sneaking and state != chasing_state:
-			change_state(States.INVESTIGATING)
+	state.on_hearing(body, self)
 
 func on_view(body: Node2D):
-	#TODO: Move timer start to body_exited?
-	if body is Player:
-		if raycast_to_player(INF):
-			change_state(States.CHASING)
+	state.on_view(body, self)
 
 # Needed for the signal
 func to_idle_state():
@@ -127,22 +106,12 @@ func rotate_fov(delta: float):
 	fov.rotation = new_rotation
 
 func change_state(new_state: States):
+	state.exit()
 	match new_state:
 		States.IDLE:
 			state = idle_state
-			timer.stop()
-			set_target_position(resting_position)
-			movement_speed = investigating_speed
-			prompt.texture = null
 		States.INVESTIGATING:
 			state = investigating_state
-			set_target_position(player.global_position)
-			movement_speed = investigating_speed
-			prompt.texture = question_mark
 		States.CHASING:
 			state = chasing_state
-			set_target_position(player.global_position)
-			timer.start(5)
-			movement_speed = chasing_speed
-			prompt.texture = exclamation_mark
 	state.enter(self)
