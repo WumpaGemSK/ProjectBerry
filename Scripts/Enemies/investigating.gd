@@ -11,11 +11,7 @@ func enter(enemy: Enemy):
 	enemy.prompt.texture = question_mark
 
 func on_hearing(body: Node2D, enemy: Enemy):
-	if body is Player:
-		if not enemy.player.is_sneaking and enemy.state != enemy.chasing_state:
-			state_change.emit(Enemy.States.INVESTIGATING)
+	super(body, enemy)
 	
 func on_view(body: Node2D, enemy: Enemy):
-	if body is Player:
-		if enemy.raycast_to_player(INF):
-			state_change.emit(Enemy.States.CHASING)
+	super(body, enemy)
