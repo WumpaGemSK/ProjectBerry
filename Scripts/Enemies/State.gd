@@ -14,7 +14,7 @@ func exit():
 
 func on_hearing(body: Node2D, enemy: Enemy):
 	if body is Player:
-		if not enemy.player.is_sneaking and enemy.state != enemy.chasing_state:
+		if not body.is_sneaking:
 			state_change.emit(Enemy.States.INVESTIGATING)
 	
 func on_view(body: Node2D, enemy: Enemy):
