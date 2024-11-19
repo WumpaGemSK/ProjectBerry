@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://pmnrd8y6xych"]
+
+[ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_r1qu4"]
+[ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="2_mqyb5"]
+[ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="3_l78p3"]
+[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="4_7marf"]
+[ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="5_tuxl7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8t7p7"]
+
+[node name="PatrollingSoldier" type="Node2D"]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("1_r1qu4")]
+health = 15
+idle_state = NodePath("../Patrol")
+investigating_state = NodePath("../Inv")
+chasing_state = NodePath("../chase")
+weapon_scn = ExtResource("2_mqyb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CapsuleShape2D_l6yt1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+sprite_frames = SubResource("SpriteFrames_8t7p7")
+
+[node name="Patrol" type="Node2D" parent="."]
+script = ExtResource("3_l78p3")
+
+[node name="Inv" type="Node2D" parent="."]
+script = ExtResource("4_7marf")
+
+[node name="chase" type="Node2D" parent="."]
+script = ExtResource("5_tuxl7")

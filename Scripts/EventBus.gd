@@ -21,3 +21,9 @@ signal show_inventory
 
 ## Emitted when the countdown starts ticking down
 signal countdown_start
+
+## Emmited when the pistol ammo is updated
+signal pistol_ammo_update(new_amount : int)
+
+## Emmited when the pistol ammo is upgraded
+signal pistol_ammo_upgrade(new_max : int)

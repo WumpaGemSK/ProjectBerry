@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://mhpeev6v0e1o"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5gn1u"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f1f6h"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cd7fy"]
+radius = 80.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["Damageable"]]
+script = ExtResource("1_5gn1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_f1f6h")
+
+[node name="Hearing" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hearing"]
+shape = SubResource("CircleShape2D_cd7fy")
+
+[node name="FOV" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="FOV"]
+polygon = PackedVector2Array(0, 0, 80, -40, 80, 40)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+path_metadata_flags = 0
+simplify_path = true
+simplify_epsilon = 1.143
+debug_enabled = true
+
+[node name="Prompt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -14)

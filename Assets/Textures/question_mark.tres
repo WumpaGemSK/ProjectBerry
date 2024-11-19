@@ -1,0 +1,11 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=3 uid="uid://baeg11xs6dwr5"]
+
+[sub_resource type="Gradient" id="Gradient_7pvth"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_djnck"]
+gradient = SubResource("Gradient_7pvth")
+width = 8
+height = 8
+
+[resource]
+atlas = SubResource("GradientTexture2D_djnck")

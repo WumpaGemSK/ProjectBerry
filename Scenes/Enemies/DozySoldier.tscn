@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://d06b4tntvpwmv"]
+
+[ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_j0h6h"]
+[ext_resource type="Script" path="res://Scripts/Enemies/doze.gd" id="2_esmka"]
+[ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="2_p5bq5"]
+[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="3_w171h"]
+[ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="4_3jdau"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xcwa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo7hl"]
+
+[node name="DozySoldier" type="Node2D"]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("1_j0h6h")]
+health = 10
+idle_state = NodePath("../Sleeping")
+investigating_state = NodePath("../Investigating")
+chasing_state = NodePath("../Chasing")
+weapon_scn = ExtResource("2_p5bq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CapsuleShape2D_1xcwa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+sprite_frames = SubResource("SpriteFrames_xo7hl")
+
+[node name="Sleeping" type="Node2D" parent="."]
+script = ExtResource("2_esmka")
+movement_speed = 20.0
+
+[node name="Investigating" type="Node2D" parent="."]
+script = ExtResource("3_w171h")
+investigating_speed = 30.0
+
+[node name="Chasing" type="Node2D" parent="."]
+script = ExtResource("4_3jdau")
+chasing_speed = 30.0

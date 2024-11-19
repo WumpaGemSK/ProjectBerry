@@ -3,8 +3,7 @@ class_name Player
 
 signal on_panic
 signal calm
-signal pistol_ammo_update(new_amount : int)
-signal pistol_ammo_upgrade(new_max : int)
+
 signal equipped_weapon(weapon: Item)
 signal health_changed(new_health: int)
 
@@ -15,6 +14,8 @@ var direction : Vector2
 @export var speed : float = 100
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.DOWN
+var facing_rotation = [0, 180, 90, 270]
+var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 #region Stats
 var is_panicking := false
@@ -26,13 +27,21 @@ var pistol_ammo : int = 20
 var invulnerable : bool = false
 #endregion
 #region Weapons
-var melee_weapon : Item = null
-var ranged_weapon : Item = null
+@export var ranged_weapon_scn : PackedScene
+@export var melee_weapon_scn: PackedScene
+var melee_weapon : Weapon = null
+var ranged_weapon : Weapon = null
 #endregion
 
 func _ready():
 	EventBus.use_item.connect(on_use_item)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
+
+func _process(delta):
+	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
+		melee_weapon.attack(global_position, facing_vector[facing_direction])
+	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
+		ranged_weapon.attack(global_position, facing_vector[facing_direction])
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
@@ -52,7 +61,23 @@ func _physics_process(_delta: float) -> void:
 		match_idle()
 	move_and_slide()
 
+func take_damage(amount: int):
+	health -= amount
+	health_changed.emit(health)
+	if health <= 0:
+		death()
+
+func death():
+	print("death")
+	pass
+
+# Called when the player attacks, either melee or ranged
+func on_attack():
+	pass
+
 #region Items
+# TODO: Having this functions to return if item is used is messy.
+# Should be left to the actual function using it
 func on_use_item(item: Item):
 	var item_used : bool = false
 	if item.is_weapon():
@@ -71,7 +96,8 @@ func consume_item(item: Item) -> bool:
 		Item.Item_type.MEDIPACK:
 			return heal(effect)
 		Item.Item_type.PISTOL_AMMO:
-			return refill_ammo(effect)
+			if ranged_weapon!= null:
+				return ranged_weapon.reload(effect)
 		Item.Item_type.SERUM:
 			return take_serum()
 		Item.Item_type.CHILL_PILL:
@@ -88,20 +114,12 @@ func heal(amount: int) -> bool:
 		return true
 	return false
 	
-func refill_ammo(amount : int) -> bool:
-	if pistol_ammo < max_pistol_ammo:
-		pistol_ammo = clampi(pistol_ammo + amount, 0, max_pistol_ammo)
-		pistol_ammo_update.emit(pistol_ammo)
-		return true
-	return false
-	
 func take_serum() -> bool:
 	max_health += 1
 	health_changed.emit(health)
 	return true
 
 func take_chill_pill() -> bool:
-	
 	if is_panicking:
 		is_panicking = false
 		return true
@@ -113,9 +131,13 @@ func weapon_pickup(item : Item) -> bool:
 	if not item.is_weapon():
 		return false
 	if item.type == Item.Item_type.PISTOL:
-		ranged_weapon = item
+		ranged_weapon = ranged_weapon_scn.instantiate()
+		add_child(ranged_weapon)
+		ranged_weapon.attacking.connect(on_attack)
 	else:
-		melee_weapon = item
+		melee_weapon = melee_weapon_scn.instanciate()
+		add_child(melee_weapon)
+		melee_weapon.attacking.connect(on_attack)
 	equipped_weapon.emit(item)
 	return true
 
@@ -125,22 +147,13 @@ func weapon_upgrade(item: Item) -> bool:
 	if not item.is_upgrade():
 		return false
 	match item.type:
-		Item.Item_type.PISTOL_DAMAGE_UPGRADE:
-			if ranged_weapon != null:
-				ranged_weapon.effect += item.effect
-				return true
-		Item.Item_type.PISTOL_FIRE_RATE_UPGRADE:
-			if ranged_weapon != null:
-				# TODO: Update to when fire rate is implemented
-				return true
-		Item.Item_type.MAX_PISTOL_AMMO_UPGRADE:
-			max_pistol_ammo += item.effect
-			pistol_ammo_upgrade.emit(max_pistol_ammo)
-			return true
 		Item.Item_type.BARBED_WIRE_UPGRADE:
 			if melee_weapon != null:
-				melee_weapon.effect *= item.effect
-				return true
+				melee_weapon.upgrade(item)
+		_:
+			if ranged_weapon != null:
+				ranged_weapon.upgrade(item)
+		
 	return false
 #endregion
 #region animation
