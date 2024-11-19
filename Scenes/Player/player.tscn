@@ -1,7 +1,9 @@
-[gd_scene load_steps=265 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=267 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
+[ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="2_vyd0l"]
+[ext_resource type="PackedScene" uid="uid://d2juikpxcp1ro" path="res://Scenes/MeleeWeapon.tscn" id="3_ipmcy"]
 [ext_resource type="Texture2D" uid="uid://ld5jhi1a6xw" path="res://Assets/Textures/Player/Final/Crumpitt_Pistol-Sheet.png" id="3_tammy"]
 [ext_resource type="Texture2D" uid="uid://d16x5yp33gos6" path="res://Assets/Textures/Player/Final/Crumpitt_Bat-Sheet-40x40.png" id="3_tn0c2"]
 [ext_resource type="Texture2D" uid="uid://cnt8c6hbgy8gv" path="res://Assets/Textures/Player/Final/Crumpitt_Bat_40x40-Sheet.png" id="5_bqjlx"]
@@ -2228,6 +2230,8 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["Damageable", "Player"]]
 motion_mode = 1
 script = ExtResource("1_mr2b3")
+ranged_weapon_scn = ExtResource("2_vyd0l")
+melee_weapon_scn = ExtResource("3_ipmcy")
 
 [node name="MainCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cnwvd")

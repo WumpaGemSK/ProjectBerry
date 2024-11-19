@@ -15,6 +15,8 @@ var direction : Vector2
 @export var speed : float = 100
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.DOWN
+var facing_rotation = [0, 180, 90, 270]
+var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 #region Stats
 var is_panicking := false
@@ -26,8 +28,10 @@ var pistol_ammo : int = 20
 var invulnerable : bool = false
 #endregion
 #region Weapons
-var melee_weapon : Item = null
-var ranged_weapon : Item = null
+@export var ranged_weapon_scn : PackedScene
+@export var melee_weapon_scn: PackedScene
+var melee_weapon : Weapon = null
+var ranged_weapon : Weapon = null
 #endregion
 
 func _ready():
@@ -36,9 +40,9 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact") and melee_weapon != null:
-		melee_weapon.attack()
+		melee_weapon.attack(global_position, facing_vector[facing_direction])
 	elif Input.is_action_pressed("use") and ranged_weapon != null:
-		ranged_weapon.attack()
+		ranged_weapon.attack(global_position, facing_vector[facing_direction])
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
@@ -68,6 +72,9 @@ func death():
 	print("death")
 	pass
 
+# Called when the player attacks, either melee or ranged
+func on_attack():
+	pass
 #region Items
 func on_use_item(item: Item):
 	var item_used : bool = false
@@ -87,7 +94,8 @@ func consume_item(item: Item) -> bool:
 		Item.Item_type.MEDIPACK:
 			return heal(effect)
 		Item.Item_type.PISTOL_AMMO:
-			return refill_ammo(effect)
+			if ranged_weapon!= null:
+				return ranged_weapon.reload(effect)
 		Item.Item_type.SERUM:
 			return take_serum()
 		Item.Item_type.CHILL_PILL:
@@ -128,9 +136,13 @@ func weapon_pickup(item : Item) -> bool:
 	if not item.is_weapon():
 		return false
 	if item.type == Item.Item_type.PISTOL:
-		ranged_weapon = item
+		ranged_weapon = ranged_weapon_scn.instantiate()
+		add_child(ranged_weapon)
+		ranged_weapon.attacking.connect(on_attack)
 	else:
-		melee_weapon = item
+		melee_weapon = melee_weapon_scn.instanciate()
+		add_child(melee_weapon)
+		melee_weapon.attacking.connect(on_attack)
 	equipped_weapon.emit(item)
 	return true
 

@@ -80,10 +80,11 @@ func take_damage(amount: int):
 		death()
 
 func death():
+	print("enemy death")
 	pass
 
 func attack():
-	weapon.attack(global_position, player.global_position)
+	weapon.attack(global_position, facing_vector[facing_direction])
 
 # Needed for the signal
 func to_idle_state():

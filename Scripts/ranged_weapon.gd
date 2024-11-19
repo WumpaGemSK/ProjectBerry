@@ -3,10 +3,6 @@ extends Weapon
 @export var ammo: int
 @export var max_ammo: int
 
-func _ready():
-	super()
-	is_melee = false
-
 func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
 		ammo -= 1
@@ -16,6 +12,8 @@ func attack(from: Vector2, dest: Vector2):
 			r.take_damage(damage)
 		cooldown_timer.start(cooldown)
 
-func reload(amount: int):
+func reload(amount: int) -> bool:
 	if ammo < max_ammo:
 		ammo = clampi(ammo + amount, 0, max_ammo)
+		return true
+	return false
