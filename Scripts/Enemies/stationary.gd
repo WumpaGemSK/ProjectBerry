@@ -7,7 +7,7 @@ func enter(enemy: Enemy):
 	enemy.movement_speed = movement_speed
 	enemy.prompt.texture = null
 
-func update(enemy: Enemy, delta: float):
+func update(enemy: Enemy, _delta: float):
 	enemy.facing_direction = enemy.original_facing_dir
 	
 func on_hearing(body: Node2D, enemy: Enemy):

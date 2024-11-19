@@ -3,16 +3,16 @@ class_name State
 
 signal state_change(new_state: Enemy.States)
 
-func enter(enemy: Enemy):
+func enter(_enemy: Enemy):
 	return
 
-func update(enemy: Enemy, delta: float):
+func update(_enemy: Enemy, _delta: float):
 	return
 	
 func exit():
 	return
 
-func on_hearing(body: Node2D, enemy: Enemy):
+func on_hearing(body: Node2D, _enemy: Enemy):
 	if body is Player:
 		if not body.is_sneaking:
 			state_change.emit(Enemy.States.INVESTIGATING)

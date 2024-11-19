@@ -58,7 +58,7 @@ func _physics_process(delta):
 		return
 
 	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*movement_speed
+	var new_vel : Vector2 = global_position.direction_to(next_pos)*movement_speed*delta
 	on_velocity_computed(new_vel)
 
 func on_hearing(body : Node2D):

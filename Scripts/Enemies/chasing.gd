@@ -15,13 +15,13 @@ func enter(enemy: Enemy):
 	enemy.movement_speed = chasing_speed
 	enemy.prompt.texture = exclamation_mark
 
-func update(enemy: Enemy, delta: float):
+func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
 
 func exit():
 	timer.stop()
 
-func on_hearing(body: Node2D, enemy: Enemy):
+func on_hearing(_body: Node2D, _enemy: Enemy):
 	return
 	
 func on_view(body: Node2D, enemy: Enemy):
