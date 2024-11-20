@@ -14,6 +14,7 @@
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("1_j0h6h")]
 health = 10
+rotation_speed = 2.0
 idle_state = NodePath("../Sleeping")
 investigating_state = NodePath("../Investigating")
 chasing_state = NodePath("../Chasing")
