@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-signal on_panic
+signal panic
 signal calm
 
 signal equipped_weapon(weapon: Item)
@@ -39,8 +39,9 @@ func _ready():
 	speed = normal_speed
 	EventBus.use_item.connect(on_use_item)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
+	panic.connect(on_panic)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
 		melee_weapon.attack(global_position, facing_vector[facing_direction])
 	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
@@ -132,8 +133,8 @@ func take_serum() -> bool:
 func take_chill_pill() -> bool:
 	if is_panicking:
 		is_panicking = false
+		calm.emit()
 		return true
-		
 	return false
 
 ## Populate the appropiate weapon variable when a weapon is picked up
@@ -208,3 +209,6 @@ func match_idle():
 		
 		
 #endregion	
+
+func on_panic():
+	is_panicking = true

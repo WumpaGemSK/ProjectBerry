@@ -17,6 +17,7 @@ func enter(enemy: Enemy):
 	enemy.movement_speed = chasing_speed
 	enemy.prompt.texture = exclamation_mark
 	is_in_view = true
+	enemy.player.panic.emit()
 
 func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
