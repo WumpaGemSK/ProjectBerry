@@ -2228,6 +2228,7 @@ animations = [{
 [sub_resource type="AudioStream" id="AudioStream_q5qjc"]
 
 [node name="Player" type="CharacterBody2D" groups=["Damageable", "Player"]]
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_mr2b3")
 ranged_weapon_scn = ExtResource("2_vyd0l")
