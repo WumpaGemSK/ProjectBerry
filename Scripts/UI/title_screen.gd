@@ -27,7 +27,7 @@ func _ready():
 	leaderboard.pressed.connect(_on_leaderboard)
 	
 	credits = find_child("Credits")
-	options.pressed.connect(_on_credits)
+	credits.pressed.connect(_on_credits)
 	
 	start.grab_focus()
 

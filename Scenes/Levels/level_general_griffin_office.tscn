@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://p312dhpbtjn1"]
+[gd_scene load_steps=6 format=4 uid="uid://p312dhpbtjn1"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_wp05d"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="2_hr3yh"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hcuj"]
 size = Vector2(60, 74.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq2jg"]
+size = Vector2(24, 24)
 
 [node name="Level_GeneralGriffinOffice" type="Node2D"]
 
@@ -17,7 +20,7 @@ tile_set = ExtResource("1_wp05d")
 position = Vector2(300, 72)
 
 [node name="Desk" type="StaticBody2D" parent="."]
-position = Vector2(102, 105)
+position = Vector2(102, 108)
 
 [node name="Sprite" type="Sprite2D" parent="Desk"]
 texture = ExtResource("3_fatna")
@@ -25,3 +28,10 @@ texture = ExtResource("3_fatna")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
 position = Vector2(0, -10.25)
 shape = SubResource("RectangleShape2D_4hcuj")
+
+[node name="Terminal" type="Area2D" parent="Desk"]
+position = Vector2(-102, -105)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk/Terminal"]
+position = Vector2(108, 128)
+shape = SubResource("RectangleShape2D_fq2jg")
