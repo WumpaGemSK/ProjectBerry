@@ -2,18 +2,43 @@ extends State
 
 ## Speed in which the enemy will investigate a sound
 @export var investigating_speed: float
-
+@export var recheck_time: float = 0.5
+var timer: Timer = null
 ## The resource to set as the enemy prompt texture
 var question_mark = preload("res://Assets/Textures/question_mark.tres")
+var unit: Enemy
 
 func enter(enemy: Enemy):
+	if timer == null:
+		timer = Timer.new()
+		timer.one_shot = true
+		timer.wait_time = recheck_time
+		timer.autostart = false
+		add_child(timer)
+		timer.timeout.connect(on_recheck)
 	enemy.prompt.texture = question_mark
 	enemy.set_target_position(enemy.player.global_position)
 	enemy.movement_speed = investigating_speed
 	enemy.prompt.texture = question_mark
+	unit = enemy
+	timer.start(recheck_time)
 
-func on_hearing(body: Node2D, enemy: Enemy):
-	super(body, enemy)
-	
+func exit():
+	timer.stop()
+
+func on_hearing_exit(body: Node2D, _enemy: Enemy):
+	if body is Player:
+		timer.stop()
+
 func on_view(body: Node2D, enemy: Enemy):
-	super(body, enemy)
+	if body is Player:
+		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
+			state_change.emit(Enemy.States.CHASING)
+
+func should_switch_to_investigating(player_: Player):
+	timer.start(recheck_time)
+	if not player_.is_sneaking():
+		unit.set_target_position(unit.player.global_position)
+
+func on_recheck():
+	should_switch_to_investigating(unit.player)

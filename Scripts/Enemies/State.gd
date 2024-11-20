@@ -12,15 +12,17 @@ func update(_enemy: Enemy, _delta: float):
 func exit():
 	return
 
-func on_hearing(body: Node2D, _enemy: Enemy):
-	if body is Player:
-		if not body.is_sneaking:
-			state_change.emit(Enemy.States.INVESTIGATING)
-	
-func on_view(body: Node2D, enemy: Enemy):
-	if body is Player:
-		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
-			state_change.emit(Enemy.States.CHASING)
+func on_hearing(_body: Node2D, _enemy: Enemy):
+	return
+
+func on_hearing_exit(_body: Node2D, _enemy: Enemy):
+	return
+
+func on_view(_body: Node2D, _enemy: Enemy):
+	return
+
+func on_view_exit(_body: Node2D, _enemy: Enemy):
+	return
 
 func raycast_to_player(origin: Vector2, dest: Vector2, collision_mask, max_distance: float, exclude: Array[RID]):
 	var space_state = get_world_2d().direct_space_state
