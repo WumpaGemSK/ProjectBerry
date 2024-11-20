@@ -11,8 +11,15 @@ func enter(enemy: Enemy):
 func update(enemy: Enemy, _delta: float):
 	enemy.facing_direction = enemy.original_facing_dir
 	
-func on_hearing(body: Node2D, enemy: Enemy):
-	super(body, enemy)
+func on_hearing(body: Node2D, _enemy: Enemy):
+	if body is Player:
+		should_switch_to_investigating(body)
 	
 func on_view(body: Node2D, enemy: Enemy):
-	super(body, enemy)
+	if body is Player:
+		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
+			state_change.emit(Enemy.States.CHASING)
+
+func should_switch_to_investigating(player: Player):
+	if player != null and not player.is_sneaking:
+		state_change.emit(Enemy.States.INVESTIGATING)

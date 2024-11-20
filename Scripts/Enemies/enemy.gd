@@ -47,11 +47,13 @@ func _ready():
 	chasing_state.state_change.connect(change_state)
 	resting_position = global_position
 	state = idle_state
-	change_state(States.IDLE)
 	prompt.texture = null
 	player = get_tree().get_nodes_in_group("Player")[0]
+	change_state(States.IDLE)
 	hearing.body_entered.connect(on_hearing)
+	hearing.body_exited.connect(on_hearing_exit)
 	fov.body_entered.connect(on_view)
+	fov.body_exited.connect(on_view_exit)
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 
 func _process(delta):
@@ -73,9 +75,15 @@ func _physics_process(delta):
 
 func on_hearing(body : Node2D):
 	state.on_hearing(body, self)
-
+	
+func on_hearing_exit(body : Node2D):
+	state.on_hearing_exit(body, self)
+	
 func on_view(body: Node2D):
 	state.on_view(body, self)
+
+func on_view_exit(body: Node2D):
+	state.on_view_exit(body, self)
 
 func take_damage(amount: int):
 	health -= amount
