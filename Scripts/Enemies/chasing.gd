@@ -28,6 +28,7 @@ func enter(enemy: Enemy):
 
 func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
+	# TODO: The enemy may shoot even if the player is not in range and will lose all it's ammo
 	enemy.attack()
 
 func exit():

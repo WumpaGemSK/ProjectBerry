@@ -13,6 +13,7 @@ signal hit
 @export var damage: int
 ## Is the weapon melee?
 @export var is_melee: bool
+var is_player: bool
 
 func _ready():
 	cooldown_timer = Timer.new()
@@ -30,8 +31,8 @@ func raycast_to_damageable(origin: Vector2, dir: Vector2):
 	var result = space_state.intersect_ray(query)
 	return result.collider if result.size() > 0 and result.position.distance_to(origin) < weapon_range else null
 
-func reload(_amount: int) -> bool:
-	return false
+func reload(_item: Item):
+	return
 	
 func upgrade(_item: Item):
 	return

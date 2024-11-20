@@ -145,19 +145,19 @@ func take_chill_pill() -> bool:
 	return false
 
 ## Populate the appropiate weapon variable when a weapon is picked up
-func weapon_pickup(item : Item) -> bool:
-	if not item.is_weapon():
-		return false
+func weapon_pickup(item : Item):
 	if item.type == Item.Item_type.PISTOL:
 		ranged_weapon = ranged_weapon_scn.instantiate()
+		ranged_weapon.is_player = true
 		add_child(ranged_weapon)
 		ranged_weapon.attacking.connect(on_attack)
 	else:
 		melee_weapon = melee_weapon_scn.instanciate()
+		melee_weapon.is_player = true
 		add_child(melee_weapon)
 		melee_weapon.attacking.connect(on_attack)
 	equipped_weapon.emit(item)
-	return true
+	EventBus.item_used.emit(item)
 
 ## Function to handle weapon upgrades. Effect stores the "amount" of the upgrade.
 ## This may need to be changed if you can get a ranged upgrade before having the pistol

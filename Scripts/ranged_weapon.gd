@@ -13,12 +13,13 @@ func _ready():
 func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
 		ammo -= 1
-		EventBus.pistol_ammo_update.emit(ammo)
+		cooldown_timer.start(cooldown)
+		if is_player:
+			EventBus.pistol_ammo_update.emit(ammo)
 		var r = raycast_to_damageable(from, dest)
 		if r != null and r.is_in_group("Damageable"):
 			hit.emit()
 			r.take_damage(damage)
-		cooldown_timer.start(cooldown)
 
 func reload(amount: int) -> bool:
 	if ammo < max_ammo:

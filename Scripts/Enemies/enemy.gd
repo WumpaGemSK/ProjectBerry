@@ -40,6 +40,7 @@ var state : State
 func _ready():
 	animated_sprite = get_node("AnimatedSprite2D")
 	weapon = weapon_scn.instantiate()
+	weapon.is_player = false
 	add_child(weapon)
 	weapon.attacking.connect(on_attack)
 	idle_state.state_change.connect(change_state)
