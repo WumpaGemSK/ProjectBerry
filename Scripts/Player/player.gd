@@ -125,6 +125,7 @@ func heal(item: Item):
 	if health < max_health:
 		health = clampi(health + item.effect, 0, max_health)
 		health_changed.emit(health)
+		EventBus.item_used.emit(item)
 	
 func take_serum(item: Item):
 	if item.type != Item.Item_type.SERUM:
