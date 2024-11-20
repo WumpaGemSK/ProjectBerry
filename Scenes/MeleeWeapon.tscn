@@ -4,6 +4,6 @@
 
 [node name="MeleeWeapon" type="Node2D"]
 script = ExtResource("1_k866l")
-range = 20.0
+weapon_range = 20.0
 damage = 10
 is_melee = true

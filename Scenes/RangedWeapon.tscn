@@ -7,5 +7,5 @@ script = ExtResource("1_7lc3l")
 ammo = 2
 max_ammo = 5
 cooldown = 0.3
-range = 80.0
+weapon_range = 80.0
 damage = 2
