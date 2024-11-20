@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgi1brdlomfxi"]
+
+[ext_resource type="Texture2D" uid="uid://ch2ru4ltwegsj" path="res://Assets/Textures/Environment/Props/MovableCrate_Alt.png" id="1_fbb3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpvbg"]
+size = Vector2(24, 24)
+
+[node name="MovableCrate" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fbb3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rpvbg")
