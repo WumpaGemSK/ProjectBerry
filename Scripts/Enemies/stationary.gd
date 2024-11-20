@@ -27,7 +27,7 @@ func on_hearing(body: Node2D, _enemy: Enemy):
 	if body is Player:
 		should_switch_to_investigating(body)
 
-func on_hearing_exit(body: Node2D, enemy: Enemy):
+func on_hearing_exit(body: Node2D, _enemy: Enemy):
 	if body is Player:
 		timer.stop()
 

@@ -37,7 +37,7 @@ func exit():
 func on_hearing(_body: Node2D, _enemy: Enemy):
 	return
 
-func on_view(body: Node2D, _enemy: Enemy):
+func on_view(_body: Node2D, _enemy: Enemy):
 	recheck_timer.start(recheck_time)
 
 func on_view_exit(_body: Node2D, _enemy: Enemy):
