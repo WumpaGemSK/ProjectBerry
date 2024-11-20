@@ -38,7 +38,7 @@ func on_view(body: Node2D, enemy: Enemy):
 
 func should_switch_to_investigating(player_: Player):
 	timer.start(recheck_time)
-	if player_ != null and not player_.is_sneaking:
+	if player_ != null and not player_.is_sneaking():
 		timer.stop()
 		state_change.emit(Enemy.States.INVESTIGATING)
 

@@ -19,9 +19,13 @@ var facing_direction := facing.DOWN
 var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
+enum PlayerStates {
+	NORMAL,
+	SNEAKING,
+	PANICKING,
+}
+var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
-var is_panicking := false
-var is_sneaking := false
 @export var max_health : int = 5
 var health : int = max_health
 var pistol_ammo : int = 20
@@ -47,12 +51,10 @@ func _process(_delta):
 	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
 		ranged_weapon.attack(global_position, facing_vector[facing_direction])
 	
-	if Input.is_action_just_pressed("sneak") and not is_panicking:
-		is_sneaking = true
-		speed = sneaking_speed
-	if Input.is_action_just_released("sneak"):
-		is_sneaking = false
-		speed = normal_speed
+	if Input.is_action_just_pressed("sneak") and not is_panicking():
+		state = PlayerStates.SNEAKING
+	if Input.is_action_just_released("sneak") and not is_panicking():
+		state = PlayerStates.NORMAL
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
@@ -65,6 +67,11 @@ func _physics_process(_delta: float) -> void:
 		direction = Vector2.UP
 	else:
 		direction = Vector2.ZERO
+	match state:
+		PlayerStates.SNEAKING:
+			speed = sneaking_speed
+		_:
+			speed = normal_speed
 	velocity = direction * speed
 	if velocity:
 		match_movement_animation()
@@ -131,8 +138,8 @@ func take_serum() -> bool:
 	return true
 
 func take_chill_pill() -> bool:
-	if is_panicking:
-		is_panicking = false
+	if is_panicking():
+		state = PlayerStates.NORMAL
 		calm.emit()
 		return true
 	return false
@@ -211,4 +218,12 @@ func match_idle():
 #endregion	
 
 func on_panic():
-	is_panicking = true
+	state = PlayerStates.PANICKING
+
+#region Helper functions
+func is_sneaking() -> bool:
+	return state == PlayerStates.SNEAKING
+
+func is_panicking() -> bool:
+	return state == PlayerStates.PANICKING
+#endregion

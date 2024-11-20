@@ -33,5 +33,5 @@ func raycast_to_damageable(origin: Vector2, dir: Vector2):
 func reload(_amount: int) -> bool:
 	return false
 	
-func upgrade(item: Item):
+func upgrade(_item: Item):
 	return

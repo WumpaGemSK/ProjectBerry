@@ -37,7 +37,7 @@ func on_view(body: Node2D, enemy: Enemy):
 
 func should_switch_to_investigating(player_: Player):
 	timer.start(recheck_time)
-	if not player_.is_sneaking:
+	if not player_.is_sneaking():
 		unit.set_target_position(unit.player.global_position)
 
 func on_recheck():
