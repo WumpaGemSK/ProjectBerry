@@ -81,8 +81,8 @@ position = Vector2(495, 159)
 health = 15
 rotation_speed = 3.0
 idle_state = NodePath("../Patrol")
-investigating_state = NodePath("../Inv")
-chasing_state = NodePath("../chase")
+investigating_state = NodePath("../Investig")
+chasing_state = NodePath("../Chase")
 weapon_scn = ExtResource("13_0xhrp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PatrollingSoldier/Enemy"]
@@ -96,8 +96,8 @@ script = ExtResource("14_ast6e")
 patrolling_speed = 20.0
 patrol_path = NodePath("../../Path2D")
 
-[node name="Inv" type="Node2D" parent="PatrollingSoldier"]
+[node name="Investig" type="Node2D" parent="PatrollingSoldier"]
 script = ExtResource("15_c5eex")
 
-[node name="chase" type="Node2D" parent="PatrollingSoldier"]
+[node name="Chase" type="Node2D" parent="PatrollingSoldier"]
 script = ExtResource("16_mw07t")
