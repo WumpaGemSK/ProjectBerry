@@ -43,7 +43,7 @@ func _ready():
 	speed = normal_speed
 	EventBus.use_item.connect(on_use_item)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
-	panic.connect(on_panic)
+	#panic.connect(on_panic)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
@@ -217,6 +217,8 @@ func on_panic():
 func is_sneaking() -> bool:
 	return state == PlayerStates.SNEAKING
 
+# NOTE: Return always false since panicking is on hold for now
 func is_panicking() -> bool:
-	return state == PlayerStates.PANICKING
+	return false
+	#return state == PlayerStates.PANICKING
 #endregion
