@@ -1,10 +1,12 @@
 extends State
 
 @export var chasing_speed: float
+@export var chasing_time: float = 3
+@export var recheck_time: float = 0.5
 var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
 
 var chasing_timer: Timer
-var is_in_view: bool = false
+var recheck_timer: Timer
 # TODO: Prevent enemy from stop chasing after the timer runs out
 func enter(enemy: Enemy):
 	enemy.set_target_position(enemy.player.global_position)
@@ -13,10 +15,15 @@ func enter(enemy: Enemy):
 		add_child(chasing_timer)
 		chasing_timer.timeout.connect(on_chasing_timeout)
 		chasing_timer.one_shot = true
-	chasing_timer.start(5)
+	if recheck_timer == null:
+		recheck_timer = Timer.new()
+		recheck_timer.one_shot = false
+		recheck_timer.timeout.connect(on_recheck)
+		add_child(recheck_timer)
+	chasing_timer.start(chasing_time)
+	recheck_timer.start(recheck_time)
 	enemy.movement_speed = chasing_speed
 	enemy.prompt.texture = exclamation_mark
-	is_in_view = true
 	enemy.player.panic.emit()
 
 func update(enemy: Enemy, _delta: float):
@@ -25,12 +32,19 @@ func update(enemy: Enemy, _delta: float):
 
 func exit():
 	chasing_timer.stop()
+	recheck_timer.stop()
 
 func on_hearing(_body: Node2D, _enemy: Enemy):
 	return
 
+func on_view(body: Node2D, _enemy: Enemy):
+	recheck_timer.start(recheck_time)
+
 func on_view_exit(_body: Node2D, _enemy: Enemy):
-	is_in_view = false
+	recheck_timer.stop()
 
 func on_chasing_timeout():
 	state_change.emit(Enemy.States.IDLE)
+
+func on_recheck():
+	chasing_timer.start(chasing_time)
