@@ -14,194 +14,191 @@ tile_set = ExtResource("1_hg4ky")
 [node name="Player" parent="." instance=ExtResource("3_2olau")]
 position = Vector2(156, 276)
 
-[node name="StillCrates" type="Node2D" parent="."]
+[node name="Crates" type="Node2D" parent="."]
 position = Vector2(0, -24)
 
-[node name="StillCrate" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 228)
+[node name="StillCrate" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 24)
 
-[node name="StillCrate2" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 204)
+[node name="StillCrate2" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 48)
 
-[node name="StillCrate3" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 180)
+[node name="StillCrate3" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 72)
 
-[node name="StillCrate4" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 156)
+[node name="StillCrate4" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 96)
 
-[node name="StillCrate5" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 84)
+[node name="MovableCrate" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(36, 96)
 
-[node name="StillCrate6" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 60)
+[node name="StillCrate5" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(60, 96)
 
-[node name="StillCrate7" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 36)
+[node name="StillCrate6" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(84, 96)
 
-[node name="StillCrate8" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(12, 12)
+[node name="StillCrate7" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(108, 96)
 
-[node name="StillCrate9" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(36, 228)
+[node name="StillCrate8" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(132, 96)
 
-[node name="StillCrate10" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(60, 228)
+[node name="StillCrate9" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(156, 96)
 
-[node name="StillCrate11" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(60, 156)
+[node name="StillCrate10" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(180, 96)
 
-[node name="StillCrate12" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(60, 132)
+[node name="StillCrate11" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(204, 96)
 
-[node name="StillCrate13" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(60, 84)
+[node name="StillCrate12" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 96)
 
-[node name="StillCrate14" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(84, 84)
+[node name="StillCrate13" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(276, 96)
 
-[node name="StillCrate15" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(84, 108)
+[node name="StillCrate14" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(300, 96)
 
-[node name="StillCrate16" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(84, 132)
+[node name="StillCrate15" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(84, 120)
 
-[node name="StillCrate17" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(84, 156)
+[node name="StillCrate16" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(156, 120)
 
-[node name="StillCrate18" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(84, 204)
+[node name="StillCrate17" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(180, 120)
 
-[node name="StillCrate19" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(84, 228)
+[node name="StillCrate18" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(204, 120)
 
-[node name="StillCrate20" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(108, 228)
+[node name="StillCrate19" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 120)
 
-[node name="StillCrate21" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(108, 84)
+[node name="StillCrate20" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(276, 120)
 
-[node name="StillCrate22" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(132, 84)
+[node name="StillCrate21" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(300, 120)
 
-[node name="StillCrate23" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(132, 156)
+[node name="StillCrate22" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(60, 144)
 
-[node name="StillCrate24" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(132, 180)
+[node name="StillCrate23" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(84, 144)
 
-[node name="StillCrate25" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(132, 228)
+[node name="StillCrate24" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(204, 144)
 
-[node name="StillCrate26" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(156, 228)
+[node name="StillCrate25" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 144)
 
-[node name="StillCrate27" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(156, 108)
+[node name="StillCrate26" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(276, 144)
 
-[node name="StillCrate28" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(156, 84)
+[node name="StillCrate27" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(300, 144)
 
-[node name="StillCrate29" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(180, 84)
+[node name="StillCrate28" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 168)
 
-[node name="StillCrate30" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(180, 108)
+[node name="StillCrate29" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(60, 168)
 
-[node name="StillCrate31" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(180, 180)
+[node name="StillCrate30" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(84, 168)
 
-[node name="StillCrate32" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(180, 228)
+[node name="StillCrate31" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(132, 168)
 
-[node name="StillCrate33" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(204, 156)
+[node name="StillCrate32" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(204, 168)
 
-[node name="StillCrate34" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(204, 132)
+[node name="StillCrate33" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 168)
 
-[node name="StillCrate35" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(204, 108)
+[node name="StillCrate34" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(276, 168)
 
-[node name="StillCrate36" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(204, 84)
+[node name="StillCrate35" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(300, 168)
 
-[node name="StillCrate37" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 84)
+[node name="StillCrate36" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 192)
 
-[node name="StillCrate38" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 108)
+[node name="MovableCrate2" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(84, 192)
 
-[node name="StillCrate39" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 132)
+[node name="StillCrate37" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(132, 192)
 
-[node name="StillCrate40" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 156)
+[node name="MovableCrate3" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(156, 192)
 
-[node name="StillCrate41" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 180)
+[node name="StillCrate38" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(180, 192)
 
-[node name="StillCrate42" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 204)
+[node name="StillCrate39" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 192)
 
-[node name="StillCrate43" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(228, 228)
+[node name="StillCrate40" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(276, 192)
 
-[node name="StillCrate44" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(252, 228)
+[node name="StillCrate41" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(300, 192)
 
-[node name="StillCrate45" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(300, 228)
+[node name="StillCrate42" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 216)
 
-[node name="StillCrate46" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(300, 180)
+[node name="StillCrate43" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(84, 216)
 
-[node name="StillCrate47" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(276, 180)
+[node name="MovableCrate4" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(180, 216)
 
-[node name="StillCrate48" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(276, 156)
+[node name="StillCrate44" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 216)
 
-[node name="StillCrate49" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(300, 156)
+[node name="MovableCrate5" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(276, 216)
 
-[node name="StillCrate50" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(300, 132)
+[node name="StillCrate45" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(12, 240)
 
-[node name="StillCrate51" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(276, 132)
+[node name="StillCrate46" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(36, 240)
 
-[node name="StillCrate52" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(276, 108)
+[node name="StillCrate47" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(60, 240)
 
-[node name="StillCrate53" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(300, 108)
+[node name="StillCrate48" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(84, 240)
 
-[node name="StillCrate54" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(300, 84)
+[node name="StillCrate49" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(108, 240)
 
-[node name="StillCrate55" parent="StillCrates" instance=ExtResource("3_6ets0")]
-position = Vector2(276, 84)
+[node name="StillCrate50" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(132, 240)
 
-[node name="MovableCrates" type="Node2D" parent="."]
-position = Vector2(0, -24)
+[node name="StillCrate51" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(156, 240)
 
-[node name="MovableCrate" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(36, 84)
+[node name="StillCrate52" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(180, 240)
 
-[node name="MovableCrate2" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(84, 180)
+[node name="MovableCrate6" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(204, 240)
 
-[node name="MovableCrate3" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(156, 180)
+[node name="StillCrate53" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(228, 240)
 
-[node name="MovableCrate4" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(180, 204)
+[node name="StillCrate54" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(252, 240)
 
-[node name="MovableCrate5" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(204, 228)
+[node name="MovableCrate7" parent="Crates" instance=ExtResource("3_nopmr")]
+position = Vector2(276, 240)
 
-[node name="MovableCrate6" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(276, 228)
-
-[node name="MovableCrate7" parent="MovableCrates" instance=ExtResource("3_nopmr")]
-position = Vector2(276, 204)
+[node name="StillCrate55" parent="Crates" instance=ExtResource("3_6ets0")]
+position = Vector2(300, 240)
