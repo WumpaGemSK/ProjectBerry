@@ -21,12 +21,11 @@ func attack(from: Vector2, dest: Vector2):
 			hit.emit()
 			r.take_damage(damage)
 
-func reload(amount: int) -> bool:
+func reload(item: Item):
 	if ammo < max_ammo:
-		ammo = clampi(ammo + amount, 0, max_ammo)
+		ammo = clampi(ammo + item.effect, 0, max_ammo)
 		EventBus.pistol_ammo_update.emit(ammo)
-		return true
-	return false
+		EventBus.item_used.emit(item)
 
 func upgrade(item: Item):
 	match item.type:

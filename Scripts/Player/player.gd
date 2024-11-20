@@ -97,52 +97,47 @@ func on_attack():
 # TODO: Having this functions to return if item is used is messy.
 # Should be left to the actual function using it
 func on_use_item(item: Item):
-	var item_used : bool = false
-	if item.is_weapon():
-		item_used = weapon_pickup(item)
-	elif item.is_upgrade():
-		item_used = weapon_upgrade(item)
-	elif item.is_consumable():
-		item_used = consume_item(item)
-	
-	if item_used:
-		EventBus.item_used.emit(item)
-
-func consume_item(item: Item) -> bool:
-	var effect = item.effect
 	match item.type:
 		Item.Item_type.MEDIPACK:
-			return heal(effect)
+			heal(item)
 		Item.Item_type.PISTOL_AMMO:
 			if ranged_weapon!= null:
-				return ranged_weapon.reload(effect)
+				ranged_weapon.reload(item)
 		Item.Item_type.SERUM:
-			return take_serum()
+			take_serum(item)
 		Item.Item_type.CHILL_PILL:
-			return take_chill_pill()
-	return false
+			take_chill_pill(item)
+		Item.Item_type.NOTE:
+			pass
+			
+	if item.is_weapon():
+		weapon_pickup(item)
+	elif item.is_upgrade():
+		weapon_upgrade(item)
+	
 
 func is_full_health() -> bool:
 	return health == max_health
 #
-func heal(amount: int) -> bool:
+func heal(item: Item):
+	if item.type != Item.Item_type.MEDIPACK:
+		return
 	if health < max_health:
-		health = clampi(health + amount, 0, max_health)
+		health = clampi(health + item.effect, 0, max_health)
 		health_changed.emit(health)
-		return true
-	return false
 	
-func take_serum() -> bool:
+func take_serum(item: Item):
+	if item.type != Item.Item_type.SERUM:
+		return
 	max_health += 1
 	health_changed.emit(health)
-	return true
+	EventBus.item_used.emit(item)
 
-func take_chill_pill() -> bool:
-	if is_panicking():
+func take_chill_pill(item: Item):
+	if item.type == Item.Item_type.CHILL_PILL and is_panicking():
 		state = PlayerStates.NORMAL
 		calm.emit()
-		return true
-	return false
+		EventBus.item_used.emit(item)
 
 ## Populate the appropiate weapon variable when a weapon is picked up
 func weapon_pickup(item : Item):
@@ -161,9 +156,9 @@ func weapon_pickup(item : Item):
 
 ## Function to handle weapon upgrades. Effect stores the "amount" of the upgrade.
 ## This may need to be changed if you can get a ranged upgrade before having the pistol
-func weapon_upgrade(item: Item) -> bool:
+func weapon_upgrade(item: Item):
 	if not item.is_upgrade():
-		return false
+		return
 	match item.type:
 		Item.Item_type.BARBED_WIRE_UPGRADE:
 			if melee_weapon != null:
@@ -171,8 +166,6 @@ func weapon_upgrade(item: Item) -> bool:
 		_:
 			if ranged_weapon != null:
 				ranged_weapon.upgrade(item)
-		
-	return false
 #endregion
 #region animation
 ##Match the animation based on the movement direction
