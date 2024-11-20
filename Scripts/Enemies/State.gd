@@ -12,16 +12,16 @@ func update(_enemy: Enemy, _delta: float):
 func exit():
 	return
 
-func on_hearing(body: Node2D, _enemy: Enemy):
+func on_hearing(_body: Node2D, _enemy: Enemy):
 	return
 
-func on_hearing_exit(body: Node2D, _enemy: Enemy):
+func on_hearing_exit(_body: Node2D, _enemy: Enemy):
 	return
 
-func on_view(body: Node2D, enemy: Enemy):
+func on_view(_body: Node2D, _enemy: Enemy):
 	return
 
-func on_view_exit(body: Node2D, enemy: Enemy):
+func on_view_exit(_body: Node2D, _enemy: Enemy):
 	return
 
 func raycast_to_player(origin: Vector2, dest: Vector2, collision_mask, max_distance: float, exclude: Array[RID]):

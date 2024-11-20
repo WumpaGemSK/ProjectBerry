@@ -13,7 +13,7 @@ func enter(enemy: Enemy):
 	enemy.movement_speed = investigating_speed
 	enemy.prompt.texture = question_mark
 
-func on_hearing(body: Node2D, enemy: Enemy):
+func on_hearing(body: Node2D, _enemy: Enemy):
 	if body is Player:
 		if not body.is_sneaking:
 			state_change.emit(Enemy.States.INVESTIGATING)

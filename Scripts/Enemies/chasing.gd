@@ -29,7 +29,7 @@ func exit():
 func on_hearing(_body: Node2D, _enemy: Enemy):
 	return
 
-func on_view_exit(body: Node2D, enemy: Enemy):
+func on_view_exit(_body: Node2D, _enemy: Enemy):
 	is_in_view = false
 
 func on_chasing_timeout():
