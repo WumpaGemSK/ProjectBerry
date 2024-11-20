@@ -29,6 +29,7 @@ sprite_frames = SubResource("SpriteFrames_xo7hl")
 [node name="Sleeping" type="Node2D" parent="."]
 script = ExtResource("2_esmka")
 movement_speed = 20.0
+recheck_time = 0.5
 
 [node name="Investigating" type="Node2D" parent="."]
 script = ExtResource("3_w171h")
