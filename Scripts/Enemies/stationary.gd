@@ -2,7 +2,7 @@ extends State
 
 ## The speed in which the enemy will return to the resting position
 @export var movement_speed: float
-@export var recheck_time: float
+@export var recheck_time: float = 0.5
 
 var timer: Timer = null
 var player: Player
