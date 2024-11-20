@@ -11,7 +11,9 @@ signal health_changed(new_health: int)
 
 #movement variables
 var direction : Vector2
-@export var speed : float = 100
+@export var normal_speed : float = 100
+@export var sneaking_speed : float= 50
+var speed: float
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.DOWN
 var facing_rotation = [0, 180, 90, 270]
@@ -34,6 +36,7 @@ var ranged_weapon : Weapon = null
 #endregion
 
 func _ready():
+	speed = normal_speed
 	EventBus.use_item.connect(on_use_item)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 
@@ -42,6 +45,13 @@ func _process(delta):
 		melee_weapon.attack(global_position, facing_vector[facing_direction])
 	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
 		ranged_weapon.attack(global_position, facing_vector[facing_direction])
+	
+	if Input.is_action_just_pressed("sneak") and not is_panicking:
+		is_sneaking = true
+		speed = sneaking_speed
+	if Input.is_action_just_released("sneak"):
+		is_sneaking = false
+		speed = normal_speed
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
