@@ -24,19 +24,19 @@ func on_item_pickup(item: Item):
 			inventory[item.type] = item
 		on_inventory_update.emit(inventory)
 		return # Early return to prevent increasing the quantity of keys
-	if inventory.has(item.type):
-		var existing_item : Item = inventory.get(item.type)
+	if inventory.has(item.unique_key()):
+		var existing_item : Item = inventory.get(item.unique_key())
 		existing_item.quantity += 1
 	else:
-		inventory.get_or_add(item.type, item)
+		inventory.get_or_add(item.unique_key(), item)
 	
 	on_inventory_update.emit(inventory)
 
 ## Update the inventory after the item has been used
 func on_item_used(item: Item):
-	if inventory.has(item.type):
-		var it : Item = inventory.get(item.type)
+	if inventory.has(item.unique_key()):
+		var it : Item = inventory.get(item.unique_key())
 		it.quantity -= 1
 		if it.quantity == 0:
-			inventory.erase(item.type)
+			inventory.erase(item.unique_key())
 		on_inventory_update.emit(inventory)

@@ -30,7 +30,9 @@ enum Item_type {
 	## Cricket bat item, occupies melee weapon slot and is NOT added into the inventory
 	CRICKET_BAT,
 	## Pistol item, occupies ranged weapon slot and is NOT added into the inventory
-	PISTOL
+	PISTOL,
+	## Type that has tells how many different types there're
+	ITEM_COUNT,
 }
 #endregion
 
@@ -88,6 +90,10 @@ func is_code() -> bool:
 	
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
+
+## Helper function to compute a unique key based on the type and the effect.
+func unique_key() -> int:
+	return type+Item_type.ITEM_COUNT+effect
 
 #endregion
 
