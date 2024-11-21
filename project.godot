@@ -22,6 +22,7 @@ Settings="*res://Scripts/Settings.gd"
 EventBus="*res://Scripts/EventBus.gd"
 CountdownTimer="*res://Scripts/CountdownTimer.gd"
 Inventory="*res://Scripts/Inventory.gd"
+Game="*res://Scripts/Game.gd"
 
 [display]
 

@@ -10,6 +10,8 @@ func _ready():
 
 func on_code_correct():
 	correct_bulb.activate()
+	incorrect_bulb.deactivate()
 
 func on_code_incorrect():
 	incorrect_bulb.activate()
+	correct_bulb.deactivate()
