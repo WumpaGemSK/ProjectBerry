@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://xrlnutj02eow"
+path="res://.godot/imported/MovableCrate.aseprite-4ce0cbc51cdfd1f2d98855fa526930f3.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/MovableCrate.aseprite"
+dest_files=["res://.godot/imported/MovableCrate.aseprite-4ce0cbc51cdfd1f2d98855fa526930f3.res"]
+
+[params]
+

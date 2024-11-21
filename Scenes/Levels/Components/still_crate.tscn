@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj6tssr61kdkv"]
+
+[ext_resource type="Texture2D" uid="uid://c6pdq4aj4rhkq" path="res://Assets/Textures/Environment/Props/StillCrate.png" id="1_w37cm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpvbg"]
+size = Vector2(22, 22)
+
+[node name="StillCrate" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("1_w37cm")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_rpvbg")

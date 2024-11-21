@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bd8mqireeuysl"
+path="res://.godot/imported/StillCrate.aseprite-83d0445d7e6a08175674382486df818d.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/StillCrate.aseprite"
+dest_files=["res://.godot/imported/StillCrate.aseprite-83d0445d7e6a08175674382486df818d.res"]
+
+[params]
+
