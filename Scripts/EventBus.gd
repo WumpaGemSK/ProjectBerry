@@ -27,3 +27,12 @@ signal pistol_ammo_update(new_amount : int)
 
 ## Emmited when the pistol ammo is upgraded
 signal pistol_ammo_upgrade(new_max : int)
+
+## Signal to send codes for trying
+signal try_code(code: String)
+
+## Signal when the code has been inputted incorrectly
+signal code_incorrect
+
+## Signal when the code has been inputted correctly
+signal code_correct

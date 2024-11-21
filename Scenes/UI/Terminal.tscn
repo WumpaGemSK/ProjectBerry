@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2ylc066dbc24"]
+
+[ext_resource type="Script" path="res://Scripts/UI/terminal.gd" id="1_ftfjq"]
+[ext_resource type="PackedScene" uid="uid://d04w0asci7apg" path="res://Scenes/UI/CodeInput.tscn" id="1_gmysd"]
+[ext_resource type="PackedScene" uid="uid://2k5ire51woed" path="res://Scenes/UI/CodeBulbs.tscn" id="2_nrffk"]
+
+[node name="Terminal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftfjq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 159.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CodeList" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="CodeInput" parent="MarginContainer/VBoxContainer/CodeList" instance=ExtResource("1_gmysd")]
+layout_mode = 2
+
+[node name="CodeInput2" parent="MarginContainer/VBoxContainer/CodeList" instance=ExtResource("1_gmysd")]
+layout_mode = 2
+
+[node name="CodeInput3" parent="MarginContainer/VBoxContainer/CodeList" instance=ExtResource("1_gmysd")]
+layout_mode = 2
+
+[node name="CodeInput4" parent="MarginContainer/VBoxContainer/CodeList" instance=ExtResource("1_gmysd")]
+layout_mode = 2
+
+[node name="CodeInput5" parent="MarginContainer/VBoxContainer/CodeList" instance=ExtResource("1_gmysd")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -101.0
+offset_right = 295.0
+grow_vertical = 0
+
+[node name="CodeBulbs" parent="MarginContainer2" instance=ExtResource("2_nrffk")]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -102.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="SendCode" type="Button" parent="MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Send"
+
+[connection signal="pressed" from="MarginContainer3/SendCode" to="." method="_on_send_code_pressed"]
