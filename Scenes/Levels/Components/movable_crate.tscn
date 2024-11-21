@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cp3dhcs16eyr5" path="res://Assets/Textures/Environment/Props/MovableCrate.png" id="1_8naq5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpvbg"]
-size = Vector2(24, 24)
+size = Vector2(22, 22)
 
 [node name="MovableCrate" type="RigidBody2D"]
 gravity_scale = 0.0

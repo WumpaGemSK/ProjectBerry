@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://dbsg4c21utypq"]
+[gd_scene load_steps=6 format=4 uid="uid://dbsg4c21utypq"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_hg4ky"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="3_2olau"]
 [ext_resource type="PackedScene" uid="uid://cj6tssr61kdkv" path="res://Scenes/Levels/Components/still_crate.tscn" id="3_6ets0"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="3_nopmr"]
+[ext_resource type="Texture2D" uid="uid://bpwn7cyavqdn6" path="res://Assets/Textures/Environment/Props/StillCrate_Alt.png" id="5_o3jsx"]
 
 [node name="Level_StorageArea" type="Node2D"]
 
@@ -202,3 +203,11 @@ position = Vector2(276, 240)
 
 [node name="StillCrate55" parent="Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 240)
+
+[node name="StillCrateAlt" type="Sprite2D" parent="Crates"]
+position = Vector2(132, 156)
+texture = ExtResource("5_o3jsx")
+
+[node name="StillCrateAlt2" type="Sprite2D" parent="Crates"]
+position = Vector2(60, 132)
+texture = ExtResource("5_o3jsx")

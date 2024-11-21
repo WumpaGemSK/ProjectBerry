@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6pdq4aj4rhkq" path="res://Assets/Textures/Environment/Props/StillCrate.png" id="1_w37cm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpvbg"]
-size = Vector2(24, 24)
+size = Vector2(22, 22)
 
 [node name="StillCrate" type="StaticBody2D"]
 
