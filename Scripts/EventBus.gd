@@ -41,4 +41,7 @@ signal try_code(code: String)
 signal code_incorrect
 
 ## Signal when the code has been inputted correctly
-signal code_correct
+signal code_correct(score: Game.GameScore)
+
+## Signal emitted when a secret is picked up
+signal secret_pickup

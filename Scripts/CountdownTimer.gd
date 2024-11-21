@@ -34,3 +34,7 @@ func on_pause():
 	
 func on_resume():
 	timer.paused = false
+
+func time_left() -> float:
+	timer.paused = true
+	return timer.time_left
