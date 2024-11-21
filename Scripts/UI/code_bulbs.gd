@@ -8,7 +8,7 @@ func _ready():
 	EventBus.code_correct.connect(on_code_correct)
 	EventBus.code_incorrect.connect(on_code_incorrect)
 
-func on_code_correct():
+func on_code_correct(_score):
 	correct_bulb.activate()
 	incorrect_bulb.deactivate()
 

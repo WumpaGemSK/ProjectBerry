@@ -19,18 +19,11 @@ enum Ranking {
 	A
 }
 
-class GameScore:
-	## The ranking of the run
-	var ranking: Ranking
-	## Time left in seconds
-	var time_left: float
-	## Two element array: First the number of secrets found, second the total amount of secrets
-	var secrets: Array[int] 
-
 func _ready():
 	selected_code = Constants.CODES.pick_random()
 	EventBus.try_code.connect(on_code_try)
-	
+	score = GameScore.new()
+
 func on_code_try(code: String):
 	if code == selected_code:
 		score = compute_score()
@@ -40,20 +33,20 @@ func on_code_try(code: String):
 		EventBus.code_incorrect.emit()
 
 func compute_score() -> GameScore:
-	var score = GameScore.new()
 	var time_left = CountdownTimer.time_left()
 	score.ranking = compute_ranking(time_left, secret_count, max_secret_amount)
 	score.time_left = CountdownTimer.time_left()
-	score.secrets = [secret_count, max_secret_amount]
+	score.secrets.append_array([secret_count, max_secret_amount])
 	return score
 
-func compute_ranking(time_left: float, secret_count: int, max_secret_count: int) -> Ranking:
+func compute_ranking(time_left: float, count: int, max_count: int) -> Ranking:
 	var ranking: Ranking = Ranking.D
 	if time_left >= max_time_left:
-		ranking += 1
-	if secret_count == max_secret_amount and max_secret_count != 0:
-		ranking += 1
-	
+		ranking = Ranking.C
+	if count == max_count and max_count != 0:
+		ranking = Ranking.B
+	if time_left >= max_time_left and (count == max_count and max_count != 0):
+		ranking = Ranking.A
 	return ranking
 
 func on_secret_pickup():
