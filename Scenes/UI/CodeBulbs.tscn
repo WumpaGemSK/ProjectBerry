@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://2k5ire51woed"]
+
+[ext_resource type="PackedScene" uid="uid://b5qg3kguoxqbw" path="res://Scenes/UI/Bulb.tscn" id="1_33trr"]
+[ext_resource type="Script" path="res://Scripts/UI/code_bulbs.gd" id="1_qanxn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wgtdd"]
+size = Vector2(24, 24)
+
+[sub_resource type="Gradient" id="Gradient_r5ufb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_whl17"]
+gradient = SubResource("Gradient_r5ufb")
+width = 24
+height = 24
+
+[sub_resource type="Gradient" id="Gradient_o0ubh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oh452"]
+gradient = SubResource("Gradient_o0ubh")
+width = 24
+height = 24
+fill_from = Vector2(0.316514, 0.37156)
+fill_to = Vector2(0.509174, 0.266055)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rjt2p"]
+size = Vector2(24, 24)
+
+[sub_resource type="Gradient" id="Gradient_1xn1j"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bkeda"]
+gradient = SubResource("Gradient_1xn1j")
+width = 24
+height = 24
+fill_from = Vector2(0.811927, 0.775229)
+
+[sub_resource type="Gradient" id="Gradient_nk3xw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhtxw"]
+gradient = SubResource("Gradient_nk3xw")
+width = 24
+height = 24
+fill_to = Vector2(0.133028, 0.394495)
+
+[node name="CodeBulbs" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qanxn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="IncorrectBulb" parent="MarginContainer/HBoxContainer/MarginContainer" instance=ExtResource("1_33trr")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+normal_state_texture = SubResource("PlaceholderTexture2D_wgtdd")
+active_state_texture = SubResource("GradientTexture2D_whl17")
+icon_texture = SubResource("GradientTexture2D_oh452")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="CorrectBulb" parent="MarginContainer/HBoxContainer/MarginContainer2" instance=ExtResource("1_33trr")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+normal_state_texture = SubResource("PlaceholderTexture2D_rjt2p")
+active_state_texture = SubResource("GradientTexture2D_bkeda")
+icon_texture = SubResource("GradientTexture2D_qhtxw")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://d04w0asci7apg"]
+
+[ext_resource type="Script" path="res://Scripts/UI/code_input.gd" id="1_sr8sm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qn60t"]
+size = Vector2(24, 24)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_id06j"]
+size = Vector2(24, 24)
+
+[node name="CodeInput" type="Control"]
+custom_minimum_size = Vector2(40, 79)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sr8sm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="UP" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_qn60t")
+stretch_mode = 0
+
+[node name="Code" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DOWN" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_id06j")
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/UP" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/DOWN" to="." method="_on_down_pressed"]
