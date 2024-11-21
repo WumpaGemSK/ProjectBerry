@@ -78,6 +78,15 @@ func _physics_process(_delta: float) -> void:
 	else:
 		match_idle()
 	move_and_slide()
+	#region Push moveable boxes
+	if Input.is_action_pressed("sneak"):
+		for i in get_slide_collision_count():
+			var coll = get_slide_collision(i)
+			var collider = coll.get_collider()
+			if collider is RigidBody2D:
+				var force = speed
+				collider.apply_central_impulse(-coll.get_normal()*force)
+	#endregion
 
 func take_damage(amount: int):
 	health -= amount
