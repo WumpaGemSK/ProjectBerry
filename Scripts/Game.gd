@@ -22,10 +22,10 @@ enum Ranking {
 func _ready():
 	selected_code = Constants.CODES.pick_random()
 	EventBus.try_code.connect(on_code_try)
-	score = GameScore.new()
 
 func on_code_try(code: String):
 	if code == selected_code:
+		score = GameScore.new()
 		score = compute_score()
 		EventBus.code_correct.emit(score)
 		get_tree().change_scene_to_packed(status_scn)
@@ -35,7 +35,7 @@ func on_code_try(code: String):
 func compute_score() -> GameScore:
 	var time_left = CountdownTimer.time_left()
 	score.ranking = compute_ranking(time_left, secret_count, max_secret_amount)
-	score.time_left = CountdownTimer.time_left()
+	score.total_time = Constants.COUNTDOWN_TIME_SECONDS - CountdownTimer.time_left()
 	score.secrets.append_array([secret_count, max_secret_amount])
 	return score
 
