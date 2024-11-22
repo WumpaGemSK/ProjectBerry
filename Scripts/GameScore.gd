@@ -6,6 +6,7 @@ class_name GameScore
 @export var total_time: float
 	## Two element array: First the number of secrets found, second the total amount of secrets
 @export var secrets: Array[int] 
+@export var initials: String = ""
 
 static func order(a: GameScore, b: GameScore):
 	return a.ranking > b.ranking or a.total_time < b.total_time

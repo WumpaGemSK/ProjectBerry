@@ -44,6 +44,12 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Initials" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter initials"
+max_length = 3
+
 [node name="LeaderboadButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8

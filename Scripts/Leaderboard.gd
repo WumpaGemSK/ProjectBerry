@@ -7,9 +7,9 @@ func _ready():
 		scores = load(Constants.SAVE_FILE_PATH)
 	else:
 		scores = GameScoreList.new()
-	EventBus.code_correct.connect(on_code_correct)
+	EventBus.new_score.connect(on_new_score)
 	
-func on_code_correct(score: GameScore):
+func on_new_score(score: GameScore):
 	scores.append(score)
 	var file_path = Constants.SAVE_FILE_PATH
 	var error : Error = ResourceSaver.save(scores, file_path)
