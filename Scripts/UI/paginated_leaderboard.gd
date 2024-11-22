@@ -10,13 +10,18 @@ extends Control
 var current_page: int = 0
 
 var scores : Array[GameScore]
-# Called when the node enters the scene tree for the first time.
+var data: Array
+
 func _ready():
-	scores = Leaderboard.scores.scores
+	prev.visible = false
+	next.visible = false
+
+func set_elements(array):
+	data = array
 	render()
 
 func render():
-	var elements_left = scores.size() - current_page*elements_per_page
+	var elements_left = data.size() - current_page*elements_per_page
 	next.visible = elements_left > elements_per_page
 	prev.visible = current_page > 0
 	render_list()
@@ -25,11 +30,11 @@ func render_list():
 	for child in list.get_children():
 		list.remove_child(child)
 	var starting_index = current_page*elements_per_page
-	var end_index = min(starting_index+elements_per_page, scores.size())
+	var end_index = min(starting_index+elements_per_page, data.size())
 	for i in range(starting_index, end_index):
 		var entry = element_scn.instantiate()
 		list.add_child(entry)
-		var score = scores[i]
+		var score = data[i]
 		entry.set_data("Test", "Data %d" % i)
 
 func _on_prev_pressed():
