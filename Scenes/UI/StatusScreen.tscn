@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btabe7lri4kc3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/status_screen.gd" id="1_46mue"]
-[ext_resource type="PackedScene" uid="uid://bomjep5sgdeku" path="res://Scenes/UI/StatusLine.tscn" id="1_p4lup"]
+[ext_resource type="PackedScene" uid="uid://bomjep5sgdeku" path="res://Scenes/UI/Components/StatusLine.tscn" id="1_p4lup"]
 
 [node name="StatusScreen" type="Control"]
 layout_mode = 3

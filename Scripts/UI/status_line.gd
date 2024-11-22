@@ -8,7 +8,7 @@ class_name StatusLine
 func set_data(field_name: String, data_text: String):
 	field.text = field_name
 	data.text = data_text
-	call_deferred("set_filler")
+	#call_deferred("set_filler")
 
 func set_filler():
 	var field_width = field.size.x

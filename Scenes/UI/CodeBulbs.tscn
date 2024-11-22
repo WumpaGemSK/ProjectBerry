@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://2k5ire51woed"]
 
-[ext_resource type="PackedScene" uid="uid://b5qg3kguoxqbw" path="res://Scenes/UI/Bulb.tscn" id="1_33trr"]
+[ext_resource type="PackedScene" uid="uid://b5qg3kguoxqbw" path="res://Scenes/UI/Components/Bulb.tscn" id="1_33trr"]
 [ext_resource type="Script" path="res://Scripts/UI/code_bulbs.gd" id="1_qanxn"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wgtdd"]
