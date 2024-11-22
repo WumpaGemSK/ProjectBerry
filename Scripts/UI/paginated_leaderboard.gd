@@ -35,7 +35,7 @@ func render_list():
 		var entry = element_scn.instantiate()
 		list.add_child(entry)
 		var score = data[i]
-		entry.set_data("Test", "Data %d" % i)
+		entry.set_score(i+1, score)
 
 func _on_prev_pressed():
 	current_page -= 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6clpjw1d7r4c"]
+[gd_scene load_steps=5 format=3 uid="uid://c6clpjw1d7r4c"]
 
 [ext_resource type="Script" path="res://Scripts/UI/leaderboard_ui.gd" id="1_ho52q"]
 [ext_resource type="PackedScene" uid="uid://bomjep5sgdeku" path="res://Scenes/UI/Components/StatusLine.tscn" id="2_r4kvf"]
 [ext_resource type="PackedScene" uid="uid://cwtts77uj8iko" path="res://Scenes/UI/PaginatedLeaderboard.tscn" id="4_ie36t"]
+[ext_resource type="PackedScene" uid="uid://cy1swvux1v2b0" path="res://Scenes/UI/Components/LeaderboardLine.tscn" id="4_kelvc"]
 
 [node name="LeaderboardUi" type="Control"]
 layout_mode = 3
@@ -34,16 +35,15 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Leaderboards"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 
-[node name="PaginatedLeaderboard" parent="MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("4_ie36t")]
+[node name="PaginatedLeaderboard" parent="MarginContainer/VBoxContainer/MarginContainer2" instance=ExtResource("4_ie36t")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 4
-element_scn = ExtResource("2_r4kvf")
+element_scn = ExtResource("4_kelvc")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
