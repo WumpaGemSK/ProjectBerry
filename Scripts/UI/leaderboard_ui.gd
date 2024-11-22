@@ -1,7 +1,6 @@
 extends Control
 
 @export var line_scn : PackedScene
-@export var title_screen_scn : PackedScene
 @onready var paginated_leaderboard = %PaginatedLeaderboard
 
 func _ready():
@@ -10,4 +9,5 @@ func _ready():
 	paginated_leaderboard.set_elements(scores)
 
 func _on_button_pressed():
-	get_tree().change_scene_to_packed(title_screen_scn)
+	# Hardcoded as using an exported packed scene broke TitleScreen and LeaderboardUI scenes for some reason
+	get_tree().change_scene_to_packed(load("res://Scenes/UI/TitleScreen.tscn"))
