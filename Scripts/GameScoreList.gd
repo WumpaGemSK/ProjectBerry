@@ -5,3 +5,7 @@ class_name GameScoreList
 
 func append(score: GameScore):
 	scores.append(score)
+
+func return_sorted() -> Array[GameScore]:
+	scores.sort_custom(GameScore.order)
+	return scores
