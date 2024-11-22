@@ -47,3 +47,6 @@ layout_mode = 2
 [node name="LeaderboadButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+text = "Leaderboard"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LeaderboadButton" to="." method="_on_leaderboad_button_pressed"]
