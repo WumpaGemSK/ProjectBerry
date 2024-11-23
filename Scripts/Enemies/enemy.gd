@@ -32,6 +32,11 @@ var animated_sprite: AnimatedSprite2D
 
 var paused: bool = false
 
+#region Faze in
+@onready var phase_in : Timer = Timer.new()
+@export var phase_in_time: float = 1.0
+#endregion
+
 enum States {
 	IDLE,
 	INVESTIGATING,
@@ -59,7 +64,9 @@ func _ready():
 	fov.body_exited.connect(on_view_exit)
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 	EventBus.pause.connect(func(): paused = true)
-	EventBus.resume.connect(func(): paused = false)
+	EventBus.resume.connect(func(): phase_in.start(phase_in_time))
+	phase_in.timeout.connect(func(): paused=false)
+	add_child(phase_in)
 
 func _process(delta):
 	if paused:
