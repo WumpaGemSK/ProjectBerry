@@ -26,8 +26,9 @@ enum PlayerStates {
 }
 var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
+const default_health: int = 3
 @export var max_health : int = 5
-var health : int = max_health
+var health : int = default_health
 var pistol_ammo : int = 20
 @export var max_pistol_ammo : int = 50
 var invulnerable : bool = false
@@ -39,13 +40,21 @@ var melee_weapon : Weapon = null
 var ranged_weapon : Weapon = null
 #endregion
 
+## Set this to stop input
+var paused: bool = false
+
 func _ready():
 	speed = normal_speed
 	EventBus.use_item.connect(on_use_item)
+	EventBus.pause.connect(func(): paused= true)
+	EventBus.resume.connect(func(): paused= false)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
+	EventBus.retry_continue.connect(on_retry_continue)
 	#panic.connect(on_panic)
 
 func _process(_delta):
+	if paused:
+		return
 	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
 		melee_weapon.attack(global_position, facing_vector[facing_direction])
 	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
@@ -57,6 +66,8 @@ func _process(_delta):
 		state = PlayerStates.NORMAL
 
 func _physics_process(_delta: float) -> void:
+	if paused:
+		return
 	if Input.is_action_pressed("move_left"):
 		direction = Vector2.LEFT
 	elif Input.is_action_pressed("move_right"):
@@ -90,13 +101,13 @@ func _physics_process(_delta: float) -> void:
 
 func take_damage(amount: int):
 	health -= amount
+	clamp(health, 0, max_health)
 	health_changed.emit(health)
 	if health <= 0:
 		death()
 
 func death():
-	print("death")
-	pass
+	EventBus.player_death.emit()
 
 # Called when the player attacks, either melee or ranged
 func on_attack():
@@ -232,3 +243,7 @@ func is_panicking() -> bool:
 	return false
 	#return state == PlayerStates.PANICKING
 #endregion
+
+func on_retry_continue():
+	health = default_health
+	pass

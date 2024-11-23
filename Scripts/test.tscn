@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=22 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="1_cxnel"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="6_mspco"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="7_l5ku5"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
+[ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="11_bife5"]
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="12_rv2q1"]
 [ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="12_sv1q7"]
 [ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="13_0xhrp"]
@@ -68,6 +69,8 @@ item = ExtResource("7_l5ku5")
 visible = false
 
 [node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("18_dyp3j")]
+
+[node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("11_bife5")]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_o8ast")
