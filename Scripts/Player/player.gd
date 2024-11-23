@@ -26,8 +26,9 @@ enum PlayerStates {
 }
 var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
+const default_health: int = 3
 @export var max_health : int = 5
-var health : int = max_health
+var health : int = default_health
 var pistol_ammo : int = 20
 @export var max_pistol_ammo : int = 50
 var invulnerable : bool = false
@@ -243,5 +244,5 @@ func is_panicking() -> bool:
 #endregion
 
 func on_retry_continue():
-	health = 5
+	health = default_health
 	pass
