@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://btabe7lri4kc3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/status_screen.gd" id="1_46mue"]
+[ext_resource type="PackedScene" uid="uid://bomjep5sgdeku" path="res://Scenes/UI/Components/StatusLine.tscn" id="1_p4lup"]
+
+[node name="StatusScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 52.0
+offset_right = -78.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_46mue")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Status"
+
+[node name="Ranking" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_p4lup")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Total time" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_p4lup")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Secrets" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_p4lup")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Initials" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter initials"
+max_length = 3
+
+[node name="LeaderboadButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Leaderboard"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LeaderboadButton" to="." method="_on_leaderboad_button_pressed"]
