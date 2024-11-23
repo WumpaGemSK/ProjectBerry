@@ -1,7 +1,7 @@
 extends Node
 class_name Constants
 
-const SAVE_FILE_PATH = "user://savegame.save"
+const SAVE_FILE_PATH = "user://savegame.tres"
 
 
 const BASE_RESOLUTION = Vector2(512, 288)

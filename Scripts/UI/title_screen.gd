@@ -11,7 +11,7 @@ var credits : Button = null
 @export var options_scene : PackedScene
 ## [PackedScene] to switch to when Leaderboard is pressed
 @export var leaderboard_scene :  PackedScene
-## [PackedScene] to switch to when Leaderboard is pressed
+## [PackedScene] to switch to when Credits is pressed
 @export var credits_scene :  PackedScene
 
 func _ready():
@@ -32,17 +32,13 @@ func _ready():
 	start.grab_focus()
 
 func _on_start_game():
-	
 	get_tree().change_scene_to_packed(game_scene)
 	
 func _on_options():
-	
 	get_tree().change_scene_to_packed(options_scene)
 	
 func _on_leaderboard():
-	
 	get_tree().change_scene_to_packed(leaderboard_scene)
 
 func _on_credits():
-	
 	get_tree().change_scene_to_packed(credits_scene)

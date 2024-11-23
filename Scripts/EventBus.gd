@@ -41,4 +41,16 @@ signal try_code(code: String)
 signal code_incorrect
 
 ## Signal when the code has been inputted correctly
-signal code_correct
+signal code_correct(score: GameScore)
+
+## Signal emitted when a secret is picked up
+signal secret_pickup
+
+## Signal to append a score to the list of scores.
+signal new_score(score: GameScore)
+
+## Signal emitted when the player dies
+signal player_death
+
+## Signal emmited when the user has pressed a key in the continue screen
+signal retry_continue

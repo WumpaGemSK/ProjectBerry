@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2ylc066dbc24"]
 
 [ext_resource type="Script" path="res://Scripts/UI/terminal.gd" id="1_ftfjq"]
-[ext_resource type="PackedScene" uid="uid://d04w0asci7apg" path="res://Scenes/UI/CodeInput.tscn" id="1_gmysd"]
+[ext_resource type="PackedScene" uid="uid://d04w0asci7apg" path="res://Scenes/UI/Components/CodeInput.tscn" id="1_gmysd"]
 [ext_resource type="PackedScene" uid="uid://2k5ire51woed" path="res://Scenes/UI/CodeBulbs.tscn" id="2_nrffk"]
 
 [node name="Terminal" type="Control"]

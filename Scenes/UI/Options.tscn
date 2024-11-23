@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdsvcila2e5bt"]
+[gd_scene load_steps=4 format=3 uid="uid://cdsvcila2e5bt"]
 
+[ext_resource type="Script" path="res://Scripts/UI/options.gd" id="1_3ragc"]
 [ext_resource type="PackedScene" uid="uid://drjv0owirpjnj" path="res://Scenes/UI/AudioSettings.tscn" id="1_oa40a"]
 [ext_resource type="PackedScene" uid="uid://d1d6n6gjcq7lu" path="res://Scenes/UI/DisplayOptions.tscn" id="2_ru4mw"]
 
@@ -10,17 +11,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3ragc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -35,9 +42,11 @@ layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -45,3 +54,9 @@ text = "Display settings"
 
 [node name="DisplayOptions" parent="VBoxContainer/MarginContainer2/VBoxContainer" instance=ExtResource("2_ru4mw")]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
