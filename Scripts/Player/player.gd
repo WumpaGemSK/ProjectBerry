@@ -101,6 +101,7 @@ func _physics_process(_delta: float) -> void:
 
 func take_damage(amount: int):
 	health -= amount
+	clamp(health, 0, max_health)
 	health_changed.emit(health)
 	if health <= 0:
 		death()
