@@ -3,10 +3,13 @@ extends Control
 @onready var label : Label = %Label
 @export var ease_mode : Tween.EaseType = Tween.EaseType.EASE_IN_OUT
 @export var transition_type : Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
+@export var timer: Timer = null
 
 func _ready():
 	modulate.a = 0
-	CountdownTimer.timer_tick.connect(update_label)
+	if timer == null:
+		timer = CountdownTimer.timer
+	timer.stop()
 	var tween = create_tween()
 	tween.set_trans(transition_type)
 	tween.set_ease(ease_mode)
@@ -22,3 +25,6 @@ func format_time(time_left: float) -> String:
 
 func update_label(time_left: float):
 	label.text = format_time(time_left)
+
+func _process(delta):
+	update_label(timer.time_left)
