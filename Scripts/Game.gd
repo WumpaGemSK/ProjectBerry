@@ -2,14 +2,18 @@ extends Node
 
 ## The selected code for the run
 var selected_code: String
+#region Secrets
 ## The maximum amount of secrets
 var max_secret_amount: int = 0
 ## The amount of secrets picked up
 var secret_count: int = 0
+#endregion
 var status_scn: PackedScene = preload("res://Scenes/UI/StatusScreen.tscn")
 
 ## Time left in seconds to get ranked
 var max_time_left: float = 60
+
+var retries: int = 3
 
 var score : GameScore = null
 enum Ranking {
@@ -22,6 +26,7 @@ enum Ranking {
 func _ready():
 	selected_code = Constants.CODES.pick_random()
 	EventBus.try_code.connect(on_code_try)
+	EventBus.player_death.connect(on_player_death)
 
 func on_code_try(code: String):
 	if code == selected_code:
@@ -57,3 +62,7 @@ func set_max_secret_amount(amount: int):
 
 func get_score() -> GameScore:
 	return score
+
+func on_player_death():
+	retries -= 1
+	EventBus.pause.emit()

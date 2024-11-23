@@ -48,3 +48,6 @@ signal secret_pickup
 
 ## Signal to append a score to the list of scores.
 signal new_score(score: GameScore)
+
+## Signal emitted when the player dies
+signal player_death

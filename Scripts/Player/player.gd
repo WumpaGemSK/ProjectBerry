@@ -95,8 +95,7 @@ func take_damage(amount: int):
 		death()
 
 func death():
-	print("death")
-	pass
+	EventBus.player_death.emit()
 
 # Called when the player attacks, either melee or ranged
 func on_attack():
