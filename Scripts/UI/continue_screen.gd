@@ -12,6 +12,7 @@ func _ready():
 func _input(event):
 	if visible and event.is_action_type():
 		visible = false
+		timer.stop()
 		EventBus.resume.emit()
 
 func on_timeout():
