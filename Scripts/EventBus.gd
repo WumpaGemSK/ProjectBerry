@@ -51,3 +51,6 @@ signal new_score(score: GameScore)
 
 ## Signal emitted when the player dies
 signal player_death
+
+## Signal emmited when the user has pressed a key in the continue screen
+signal retry_continue

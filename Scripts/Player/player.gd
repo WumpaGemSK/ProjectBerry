@@ -48,6 +48,7 @@ func _ready():
 	EventBus.pause.connect(func(): paused= true)
 	EventBus.resume.connect(func(): paused= false)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
+	EventBus.retry_continue.connect(on_retry_continue)
 	#panic.connect(on_panic)
 
 func _process(_delta):
@@ -240,3 +241,7 @@ func is_panicking() -> bool:
 	return false
 	#return state == PlayerStates.PANICKING
 #endregion
+
+func on_retry_continue():
+	health = 5
+	pass
