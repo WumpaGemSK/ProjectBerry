@@ -30,6 +30,8 @@ var weapon: Weapon
 
 var animated_sprite: AnimatedSprite2D
 
+var paused: bool = false
+
 enum States {
 	IDLE,
 	INVESTIGATING,
@@ -56,13 +58,19 @@ func _ready():
 	fov.body_entered.connect(on_view)
 	fov.body_exited.connect(on_view_exit)
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
+	EventBus.pause.connect(func(): paused = true)
+	EventBus.resume.connect(func(): paused = false)
 
 func _process(delta):
+	if paused:
+		return
 	rotate_fov(delta)
 	state.update(self, delta)
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(delta):
+	if paused:
+		return
 	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
 		return
 	if navigation_agent_2d.is_navigation_finished():
