@@ -1,6 +1,7 @@
 extends Control
 
 @onready var timer = $Timer
+@onready var tries = %Tries
 
 func _ready():
 	visible = false
@@ -23,6 +24,7 @@ func on_pause():
 	var tries_left = Game.retries
 	visible = true
 	if tries_left > 0:
+		tries.text = "%d tries left." % [tries_left]
 		timer.start()
 	else:
 		switch_to_game_over()
