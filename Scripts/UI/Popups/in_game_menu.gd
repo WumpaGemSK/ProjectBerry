@@ -41,3 +41,7 @@ func _on_return_pressed():
 func _on_inventory_pressed():
 	EventBus.show_inventory.emit()
 	hide()
+
+
+func _on_restart_pressed():
+	get_tree().call_deferred("reload_current_scene")
