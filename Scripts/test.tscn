@@ -26,6 +26,8 @@ _data = {
 point_count = 5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
+radius = 8.0
+height = 18.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8t7p7"]
 
@@ -71,6 +73,7 @@ visible = false
 [node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("18_dyp3j")]
 
 [node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("11_bife5")]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_o8ast")
@@ -97,7 +100,6 @@ sprite_frames = SubResource("SpriteFrames_8t7p7")
 
 [node name="Patrol" type="Node2D" parent="PatrollingSoldier" node_paths=PackedStringArray("patrol_path")]
 script = ExtResource("14_ast6e")
-patrolling_speed = 20.0
 patrol_path = NodePath("../../Path2D")
 
 [node name="Investig" type="Node2D" parent="PatrollingSoldier"]
