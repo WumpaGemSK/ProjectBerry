@@ -102,9 +102,11 @@ patrol_path = NodePath("../../Path2D")
 
 [node name="Investig" type="Node2D" parent="PatrollingSoldier"]
 script = ExtResource("15_c5eex")
+investigating_speed = 10.0
 
 [node name="Chase" type="Node2D" parent="PatrollingSoldier"]
 script = ExtResource("16_mw07t")
+chasing_speed = 10.0
 
 [node name="MovableCrate" parent="." instance=ExtResource("17_bpocm")]
 position = Vector2(282, 171)
