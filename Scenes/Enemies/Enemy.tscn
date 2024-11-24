@@ -9,6 +9,7 @@ size = Vector2(16, 16)
 radius = 80.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Damageable"]]
+motion_mode = 1
 script = ExtResource("1_5gn1u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

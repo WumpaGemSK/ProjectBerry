@@ -28,7 +28,6 @@ sprite_frames = SubResource("SpriteFrames_eqb7v")
 
 [node name="Idle" type="Node2D" parent="."]
 script = ExtResource("3_icy7j")
-movement_speed = 20.0
 
 [node name="Investigating" type="Node2D" parent="."]
 script = ExtResource("4_q5jlp")

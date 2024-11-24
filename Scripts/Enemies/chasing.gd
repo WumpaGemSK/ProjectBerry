@@ -1,6 +1,6 @@
 extends State
 
-@export var chasing_speed: float
+@export var chasing_speed: float = 20
 @export var chasing_time: float = 3
 @export var recheck_time: float = 0.5
 var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")

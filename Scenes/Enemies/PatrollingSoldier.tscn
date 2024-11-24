@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="5_tuxl7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
+radius = 8.0
+height = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8t7p7"]
 

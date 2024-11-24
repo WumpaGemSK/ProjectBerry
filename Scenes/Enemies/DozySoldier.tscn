@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="4_3jdau"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xcwa"]
+radius = 8.0
+height = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xo7hl"]
 
@@ -28,7 +30,6 @@ sprite_frames = SubResource("SpriteFrames_xo7hl")
 
 [node name="Sleeping" type="Node2D" parent="."]
 script = ExtResource("2_esmka")
-movement_speed = 20.0
 
 [node name="Investigating" type="Node2D" parent="."]
 script = ExtResource("3_w171h")

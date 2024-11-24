@@ -1,7 +1,7 @@
 extends State
 
 ## Speed in which the enemy will investigate a sound
-@export var investigating_speed: float
+@export var investigating_speed: float = 20
 @export var recheck_time: float = 0.5
 var timer: Timer = null
 ## The resource to set as the enemy prompt texture
