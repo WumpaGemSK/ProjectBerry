@@ -5,11 +5,12 @@ var prev_scene: Node = null
 var prev_position: Vector2
 var player: Player
 
-func change_scene(scene: PackedScene):
+func change_scene(scene: PackedScene, trigger: Node2D):
 	prev_scene = get_current_scene()
 	get_scene_holder().call_deferred("remove_child", get_current_scene())
 	player = get_tree().get_nodes_in_group("Player")[0]
-	prev_position = player.global_position
+	# Offset player from the collider to prevent instantly switching the scene
+	prev_position = player.global_position + ((player.global_position - trigger.global_position)+Vector2(0,1))
 	var new_scene = scene.instantiate()
 	get_scene_holder().call_deferred("add_child",new_scene)
 	var spawn_point: Marker2D = new_scene.find_child("SpawnPoint")

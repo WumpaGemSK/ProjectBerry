@@ -11,4 +11,4 @@ func _switch_scene(body: Node2D):
 		if to_previous:
 			SceneSwitcher.to_previous()
 		else:
-			SceneSwitcher.change_scene(scn)
+			SceneSwitcher.change_scene(scn, self)
