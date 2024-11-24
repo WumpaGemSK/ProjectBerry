@@ -6,22 +6,22 @@ var prev_position: Vector2
 var player: Player
 
 func change_scene(scene: PackedScene):
-	prev_scene = get_current_scene().duplicate()
-	get_scene_holder().remove_child(get_current_scene())
+	prev_scene = get_current_scene()
+	get_scene_holder().call_deferred("remove_child", get_current_scene())
 	player = get_tree().get_nodes_in_group("Player")[0]
 	prev_position = player.global_position
 	var new_scene = scene.instantiate()
-	get_scene_holder().add_child(new_scene)
+	get_scene_holder().call_deferred("add_child",new_scene)
 	var spawn_point: Marker2D = new_scene.find_child("SpawnPoint")
-	player.global_position = spawn_point.global_position
+	player.set_deferred("global_position", spawn_point.global_position)
 	
 func to_previous():
-	player = get_tree().get_nodes_in_group("Player")[0]
-	get_tree().root.remove_child(get_tree().current_scene)
-	get_tree().root.add_child(prev_scene)
-	player.global_position = prev_position
-	get_tree().root.add_child(prev_scene)
-	prev_scene.add_child(player)
+	if prev_scene == null:
+		print("No scene to return to")
+		return
+	get_scene_holder().call_deferred("remove_child", get_current_scene())
+	get_scene_holder().call_deferred("add_child", prev_scene)
+	player.set_deferred("global_position", prev_position)
 
 func get_current_scene() -> Node:
 	var holder = get_scene_holder()

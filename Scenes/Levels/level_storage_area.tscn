@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://dbsg4c21utypq"]
+[gd_scene load_steps=6 format=4 uid="uid://dbsg4c21utypq"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_hg4ky"]
 [ext_resource type="PackedScene" uid="uid://cj6tssr61kdkv" path="res://Scenes/Levels/Components/still_crate.tscn" id="3_6ets0"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="3_nopmr"]
+[ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="5_jo5n8"]
 [ext_resource type="Texture2D" uid="uid://bpwn7cyavqdn6" path="res://Assets/Textures/Environment/Props/StillCrate_Alt.png" id="5_o3jsx"]
 
 [node name="Level_StorageArea" type="Node2D"]
@@ -209,4 +210,8 @@ position = Vector2(60, 132)
 texture = ExtResource("5_o3jsx")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(158, 295)
+position = Vector2(156, 288)
+
+[node name="Portal" parent="." instance=ExtResource("5_jo5n8")]
+position = Vector2(157, 316)
+to_previous = true
