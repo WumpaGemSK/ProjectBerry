@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://qd52tygcd2ia"]
 
 [ext_resource type="Script" path="res://Scripts/scene_portal.gd" id="1_gwnmn"]
-[ext_resource type="Texture2D" uid="uid://c73ju054brhos" path="res://Assets/Textures/Environment/Props/Doors_Sheet_Alt2.png" id="2_vlcfq"]
+[ext_resource type="Texture2D" uid="uid://fxtxm7fhx8iw" path="res://Assets/Textures/Environment/Props/Doors_Sheet_Alt2.png" id="2_vlcfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nqss1"]
 

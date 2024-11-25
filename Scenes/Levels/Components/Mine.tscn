@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ca7dlt5ty4k4i"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/mine.gd" id="1_ol5lf"]
-[ext_resource type="Texture2D" uid="uid://ing6owon4h0j" path="res://Assets/Textures/Environment/Props/TrainingRoom_Mine_Sheet.png" id="2_43kqj"]
+[ext_resource type="Texture2D" uid="uid://co1bcg0xrafkn" path="res://Assets/Textures/Environment/Props/TrainingRoom_Mine_Sheet.png" id="2_43kqj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxype"]
 atlas = ExtResource("2_43kqj")

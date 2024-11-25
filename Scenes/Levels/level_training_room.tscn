@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_t81xo"]
 [ext_resource type="PackedScene" uid="uid://ca7dlt5ty4k4i" path="res://Scenes/Levels/Components/Mine.tscn" id="3_8pt56"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="3_pkiv8"]
-[ext_resource type="Texture2D" uid="uid://ctsml4j6fcde3" path="res://Assets/Textures/Environment/Props/TrainingRoom_Barrier_Sheet.png" id="4_cf3pp"]
+[ext_resource type="Texture2D" uid="uid://dvwols70wqu5y" path="res://Assets/Textures/Environment/Props/TrainingRoom_Barrier_Sheet.png" id="4_cf3pp"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/barrier.gd" id="6_wrn78"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryfg7"]
