@@ -40,3 +40,8 @@ func on_item_used(item: Item):
 		if it.quantity == 0:
 			inventory.erase(item.unique_key())
 		on_inventory_update.emit(inventory)
+
+func get_key_tier():
+	var key = inventory.get(Item.Item_type.KEY)
+	return key.effect if key != null else 0
+	
