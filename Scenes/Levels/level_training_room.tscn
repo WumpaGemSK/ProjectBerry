@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfpb1xlfmeq4"]
+
+[ext_resource type="Script" path="res://Scripts/Puzzles/mine_manager.gd" id="1_k613r"]
+
+[node name="LevelTrainingRoom" type="Node2D"]
+
+[node name="MineManager" type="Node" parent="."]
+script = ExtResource("1_k613r")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
