@@ -6,6 +6,7 @@ var steps_left: int
 
 func _ready():
 	steps_left = steps
+	EventBus.reload_scene.connect(func(): steps_left = steps)
 
 # TODO: Fix ghost collision causing the mine to have one less step than what's expected
 func _on_area_2d_body_entered(body):

@@ -46,7 +46,5 @@ func get_scene_holder() -> Node:
 	return get_tree().root.get_child(-1).get_child(0)
 
 func reload_scene():
-	var new_scene = packed_scenes[0].instantiate()
 	player.global_position =  prev_position.back()
-	get_scene_holder().call_deferred("remove_child", get_current_scene())
-	get_scene_holder().call_deferred("add_child", new_scene)
+	EventBus.reload_scene.emit()
