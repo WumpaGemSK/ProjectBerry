@@ -249,4 +249,4 @@ func is_panicking() -> bool:
 
 func on_retry_continue():
 	health = default_health
-	pass
+	health_changed.emit(health)

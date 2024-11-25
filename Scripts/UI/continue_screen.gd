@@ -14,12 +14,13 @@ func _input(event):
 		visible = false
 		timer.stop()
 		EventBus.resume.emit()
+		EventBus.retry_continue.emit()
 
 func on_timeout():
 	switch_to_game_over()
 
 func switch_to_game_over():
-	get_tree().change_scene_to_file("res://Scenes/GameOverScene.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOverScene.tscn")
 
 func on_pause():
 	var tries_left = Game.retries
