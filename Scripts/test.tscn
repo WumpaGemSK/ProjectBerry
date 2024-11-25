@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="15_c5eex"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="16_mw07t"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
-[ext_resource type="PackedScene" uid="uid://ca7dlt5ty4k4i" path="res://Scenes/Puzzles/Mine.tscn" id="17_1760f"]
+[ext_resource type="PackedScene" uid="uid://ca7dlt5ty4k4i" path="res://Scenes/Levels/Components/Mine.tscn" id="17_1760f"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
 
