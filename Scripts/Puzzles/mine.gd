@@ -2,6 +2,7 @@ extends Node2D
 
 ## Number of times the player can step on it before exploding
 @export var steps: int = 1
+@onready var sprite_2d = $Sprite2D
 
 ## When the mine reaches 0 steps_left
 signal deactivated
@@ -18,6 +19,7 @@ func _on_area_2d_entered(area: Area2D):
 		if steps_left > 0:
 			steps_left -= 1
 			if steps_left == 0:
+				sprite_2d.region_rect.position.x += 24
 				deactivated.emit()
 		else:
 			body.take_damage(1)

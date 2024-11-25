@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca7dlt5ty4k4i"]
+[gd_scene load_steps=5 format=3 uid="uid://ca7dlt5ty4k4i"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/mine.gd" id="1_ol5lf"]
+[ext_resource type="Texture2D" uid="uid://ing6owon4h0j" path="res://Assets/Textures/Environment/Props/TrainingRoom_Mine_Sheet.png" id="2_43kqj"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f28k0"]
-size = Vector2(24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxype"]
+atlas = ExtResource("2_43kqj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44l5j"]
 
@@ -11,7 +12,9 @@ size = Vector2(24, 24)
 script = ExtResource("1_ol5lf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_f28k0")
+texture = SubResource("AtlasTexture_mxype")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 24)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
