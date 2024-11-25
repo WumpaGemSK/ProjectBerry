@@ -5,13 +5,13 @@ var prev_scene: Array[Node] = []
 var prev_position: Array[Vector2] = []
 var player: Player = null
 
-var packed_scenes: Array[PackedScene] = []
+func _ready():
+	var p = get_tree().get_nodes_in_group("Player")
+	player = p[0]
+	prev_position.push_back(player.global_position)
 
 func change_scene(scene: PackedScene, trigger: Node2D):
-	if player == null:
-		player = get_tree().get_nodes_in_group("Player")[0]
 	prev_position.push_back(player.global_position)
-	packed_scenes.push_back(scene)
 	var new_scene = scene.instantiate()
 	var spawn_point: Marker2D = new_scene.find_child("SpawnPoint")
 	if spawn_point == null:
@@ -43,5 +43,6 @@ func get_scene_holder() -> Node:
 	return get_tree().root.get_child(-1).get_child(0)
 
 func reload_scene():
-	player.global_position = prev_position.back()
+	if not prev_position.is_empty():
+		player.global_position = prev_position.back()
 	EventBus.reload_scene.emit()
