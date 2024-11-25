@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bl7o3h6sp8iim"
+path="res://.godot/imported/TrainingRoom_Barrier.aseprite-fadafb4055a2b7650b4a992015534720.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/TrainingRoom_Barrier.aseprite"
+dest_files=["res://.godot/imported/TrainingRoom_Barrier.aseprite-fadafb4055a2b7650b4a992015534720.res"]
+
+[params]
+
