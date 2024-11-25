@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 #region Export variables
 ## Scene to switch to
@@ -35,6 +35,11 @@ func _switch_scene(body: Node2D):
 			SceneSwitcher.to_previous()
 		else:
 			SceneSwitcher.change_scene(scn, self)
+
+func _check_keys(body: Node2D):
+	if body is Player:
+		var highest_key_tier = Inventory.get_key_tier()
+		open_door(highest_key_tier)
 
 func update_sprite():
 	var element = base + direction*2 + int(opened)
