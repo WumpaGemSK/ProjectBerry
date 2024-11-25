@@ -18,10 +18,12 @@ func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
-	EventBus.countdown_start.connect(func(): timer.start())
+	EventBus.countdown_start.connect(on_countdown_start)
 	add_child(timer)
 
-
+func on_countdown_start():
+	timer.stop()
+	timer.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	timer_tick.emit(timer.time_left)
