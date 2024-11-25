@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://qd52tygcd2ia"]
+[gd_scene load_steps=4 format=3 uid="uid://qd52tygcd2ia"]
 
 [ext_resource type="Script" path="res://Scripts/scene_portal.gd" id="1_gwnmn"]
+[ext_resource type="Texture2D" uid="uid://dnuj8vkeop7bj" path="res://Assets/Textures/Environment/Tiles/Basic/Tiles_Walls-Floors-and-Doors_Alt.png" id="2_ryfmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nqss1"]
 
@@ -9,5 +10,10 @@ script = ExtResource("1_gwnmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nqss1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ryfmb")
+region_enabled = true
+region_rect = Rect2(48, 48, 24, 24)
 
 [connection signal="body_entered" from="." to="." method="_switch_scene"]
