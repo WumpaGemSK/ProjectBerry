@@ -1,40 +1,41 @@
 extends Node
 
-var prev_scene: Node = null
+var prev_scene: Array[Node] = []
 
-var prev_position: Vector2
+var prev_position: Array[Vector2] = []
 var player: Player
 
 var packed_scenes: Array[PackedScene] = []
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
-	prev_position = player.global_position
 	var pack = PackedScene.new()
 	pack.pack(get_current_scene())
-	packed_scenes.push_front(pack)
+	packed_scenes.push_back(pack)
+	prev_scene.push_back(get_current_scene())
+	prev_position.push_back(player.global_position)
 
 func change_scene(scene: PackedScene, trigger: Node2D):
-	packed_scenes.push_front(scene)
+	packed_scenes.push_back(scene)
 	var new_scene = scene.instantiate()
 	var spawn_point: Marker2D = new_scene.find_child("SpawnPoint")
 	if spawn_point == null:
 		print("No SpawnPoint found in the new scene %s" % scene.resource_name)
 		return
-	prev_scene = get_current_scene()
+	prev_scene.push_back(get_current_scene())
 	get_scene_holder().call_deferred("remove_child", get_current_scene())
 	# Offset player from the collider to prevent instantly switching the scene
-	prev_position = player.global_position + ((player.global_position - trigger.global_position)+Vector2(0,1))
+	prev_position.push_back(player.global_position + ((player.global_position - trigger.global_position)+Vector2(0,1)))
 	get_scene_holder().call_deferred("add_child",new_scene)
 	player.set_deferred("global_position", spawn_point.global_position)
 	
 func to_previous():
-	if prev_scene == null:
+	if prev_scene.is_empty():
 		print("No scene to return to")
 		return
 	get_scene_holder().call_deferred("remove_child", get_current_scene())
-	get_scene_holder().call_deferred("add_child", prev_scene)
-	player.set_deferred("global_position", prev_position)
+	get_scene_holder().call_deferred("add_child", prev_scene.pop_back())
+	player.set_deferred("global_position", prev_position.pop_back())
 
 func get_current_scene() -> Node:
 	var holder = get_scene_holder()
@@ -46,6 +47,6 @@ func get_scene_holder() -> Node:
 
 func reload_scene():
 	var new_scene = packed_scenes[0].instantiate()
-	player.global_position =  prev_position
+	player.global_position =  prev_position.back()
 	get_scene_holder().call_deferred("remove_child", get_current_scene())
 	get_scene_holder().call_deferred("add_child", new_scene)
