@@ -27,9 +27,7 @@ enum Direction {
 }
 
 func _ready():
-	var element = base + direction*2 + int(opened)
-	print(element)
-	sprite_2d.region_rect = Rect2((element%sprites_per_row)*tile_width, (element/sprites_per_row)*tile_height, tile_width,tile_height)
+	update_sprite()
 
 func _switch_scene(body: Node2D):
 	if opened and body is Player:
@@ -37,3 +35,11 @@ func _switch_scene(body: Node2D):
 			SceneSwitcher.to_previous()
 		else:
 			SceneSwitcher.change_scene(scn, self)
+
+func update_sprite():
+	var element = base + direction*2 + int(opened)
+	sprite_2d.region_rect = Rect2((element%sprites_per_row)*tile_width, (element/sprites_per_row)*tile_height, tile_width,tile_height)
+
+func open_door():
+	opened = true
+	update_sprite()
