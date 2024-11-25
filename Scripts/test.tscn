@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=20 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="14_n3067"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="15_c5eex"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="16_mw07t"]
+[ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
 
@@ -98,5 +99,9 @@ position = Vector2(282, 171)
 position = Vector2(255, 175)
 
 [node name="Portal" parent="." instance=ExtResource("14_n3067")]
-position = Vector2(503, 365)
+position = Vector2(503, 377)
 scn = ExtResource("20_n8i2e")
+
+[node name="Pickable_Item5" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(314, 337)
+item = ExtResource("16_wnpv7")

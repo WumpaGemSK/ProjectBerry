@@ -1,13 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://qd52tygcd2ia"]
+[gd_scene load_steps=5 format=3 uid="uid://qd52tygcd2ia"]
 
 [ext_resource type="Script" path="res://Scripts/scene_portal.gd" id="1_gwnmn"]
+[ext_resource type="Texture2D" uid="uid://dnuj8vkeop7bj" path="res://Assets/Textures/Environment/Tiles/Basic/Tiles_Walls-Floors-and-Doors_Alt.png" id="2_ryfmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nqss1"]
 
-[node name="Portal" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n43pp"]
+radius = 81.0247
+
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_gwnmn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ryfmb")
+region_enabled = true
+region_rect = Rect2(48, 48, 24, 24)
+
+[node name="Portal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
 shape = SubResource("CircleShape2D_nqss1")
 
-[connection signal="body_entered" from="." to="." method="_switch_scene"]
+[node name="CheckKeys" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckKeys"]
+shape = SubResource("CircleShape2D_n43pp")
+
+[connection signal="body_entered" from="Portal" to="." method="_switch_scene"]
+[connection signal="body_entered" from="CheckKeys" to="." method="_check_keys"]
