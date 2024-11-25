@@ -40,6 +40,7 @@ func update_sprite():
 	var element = base + direction*2 + int(opened)
 	sprite_2d.region_rect = Rect2((element%sprites_per_row)*tile_width, (element/sprites_per_row)*tile_height, tile_width,tile_height)
 
-func open_door():
-	opened = true
-	update_sprite()
+func open_door(tier: int):
+	if tier >= door_tier:
+		opened = true
+		update_sprite()
