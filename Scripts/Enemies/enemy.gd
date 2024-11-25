@@ -63,10 +63,10 @@ func _ready():
 	fov.body_entered.connect(on_view)
 	fov.body_exited.connect(on_view_exit)
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
+	add_child(phase_in)
 	EventBus.pause.connect(func(): paused = true)
 	EventBus.resume.connect(func(): phase_in.start(phase_in_time))
 	phase_in.timeout.connect(func(): paused=false)
-	add_child(phase_in)
 
 func _process(delta):
 	if paused:
