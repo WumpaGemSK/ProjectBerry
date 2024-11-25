@@ -1,6 +1,10 @@
 extends Node2D
 
+## Number of times the player can step on it before exploding
 @export var steps: int = 1
+
+## When the mine reaches 0 steps_left
+signal deactivated
 
 var steps_left: int
 
@@ -13,6 +17,8 @@ func _on_area_2d_entered(area: Area2D):
 	if body is Player:
 		if steps_left > 0:
 			steps_left -= 1
+			if steps_left == 0:
+				deactivated.emit()
 		else:
 			body.take_damage(1)
 			SceneSwitcher.reload_scene()
