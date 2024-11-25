@@ -8,8 +8,8 @@ func _ready():
 	steps_left = steps
 	EventBus.reload_scene.connect(func(): steps_left = steps)
 
-# TODO: Fix ghost collision causing the mine to have one less step than what's expected
-func _on_area_2d_body_entered(body):
+func _on_area_2d_entered(area: Area2D):
+	var body = area.get_parent()
 	if body is Player:
 		if steps_left > 0:
 			steps_left -= 1
