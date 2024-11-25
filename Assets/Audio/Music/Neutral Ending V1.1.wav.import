@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bijxx88caawsm"
+path="res://.godot/imported/Neutral Ending V1.1.wav-08205a8751e57bf386b9b92868cf56d6.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Neutral Ending V1.1.wav"
+dest_files=["res://.godot/imported/Neutral Ending V1.1.wav-08205a8751e57bf386b9b92868cf56d6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jo4jxlf7dws6"
+path="res://.godot/imported/Title Screen V1.1.wav-c0f6f2af8f7b9647b18e0b4e72eb0c8d.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Title Screen V1.1.wav"
+dest_files=["res://.godot/imported/Title Screen V1.1.wav-c0f6f2af8f7b9647b18e0b4e72eb0c8d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

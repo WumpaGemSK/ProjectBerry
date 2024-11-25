@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv5exeai36epl"
+path="res://.godot/imported/About to Die V1.1.wav-b1c3cebea2fd2e06ae2d2608d83858ca.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/About to Die V1.1.wav"
+dest_files=["res://.godot/imported/About to Die V1.1.wav-b1c3cebea2fd2e06ae2d2608d83858ca.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
