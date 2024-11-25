@@ -1,6 +1,7 @@
 extends Node2D
 class_name State
 
+@warning_ignore("unused_signal")
 signal state_change(new_state: Enemy.States)
 
 func enter(_enemy: Enemy):
