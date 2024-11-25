@@ -11,7 +11,7 @@ var steps_left: int
 
 func _ready():
 	steps_left = steps
-	EventBus.reload_scene.connect(func(): steps_left = steps)
+	EventBus.reload_scene.connect(on_reload)
 
 func _on_area_2d_entered(area: Area2D):
 	var body = area.get_parent()
@@ -24,3 +24,7 @@ func _on_area_2d_entered(area: Area2D):
 		else:
 			body.take_damage(1)
 			SceneSwitcher.reload_scene()
+
+func on_reload():
+	steps_left = steps
+	sprite_2d.region_rect = Rect2(0, 0, 24, 24)
