@@ -98,5 +98,5 @@ position = Vector2(282, 171)
 position = Vector2(255, 175)
 
 [node name="Portal" parent="." instance=ExtResource("14_n3067")]
-position = Vector2(503, 365)
+position = Vector2(503, 377)
 scn = ExtResource("20_n8i2e")
