@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/game_over_scene.gd" id="1_wp27c"]
 [ext_resource type="PackedScene" uid="uid://f7kk4ik4y6nf" path="res://Scenes/UI/TitleScreen.tscn" id="2_0016e"]
-[ext_resource type="PackedScene" uid="uid://xahefqpgkdu8" path="res://Scripts/test.tscn" id="3_vgugs"]
+[ext_resource type="PackedScene" uid="uid://dfp5nw57jtl8c" path="res://Scenes/Main.tscn" id="3_rmwvh"]
 
 [node name="GameOverScene" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wp27c")
 title_scn = ExtResource("2_0016e")
-restart_scn = ExtResource("3_vgugs")
+restart_scn = ExtResource("3_rmwvh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -37,6 +37,7 @@ horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Restart"
 

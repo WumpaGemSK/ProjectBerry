@@ -4,7 +4,9 @@ extends Control
 @export var restart_scn : PackedScene
 
 func _on_restart_pressed():
-	get_tree().change_scene_to_packed(restart_scn)
+	pass
+	# This causes problem when reloading. Disabled until is fixed
+	#get_tree().change_scene_to_packed(restart_scn)
 
 
 func _on_title_screen_pressed():

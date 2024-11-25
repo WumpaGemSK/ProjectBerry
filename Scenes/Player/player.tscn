@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=268 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -2227,6 +2227,9 @@ animations = [{
 
 [sub_resource type="AudioStream" id="AudioStream_q5qjc"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cou53"]
+radius = 3.0
+
 [node name="Player" type="CharacterBody2D" groups=["Damageable", "Player"]]
 z_index = 1
 motion_mode = 1
@@ -2278,3 +2281,11 @@ editor_draw_drag_margin = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStream_q5qjc")
+
+[node name="FeetCollision" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeetCollision"]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_cou53")

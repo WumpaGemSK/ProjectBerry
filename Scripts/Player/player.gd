@@ -1,7 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+@warning_ignore("unused_signal")
 signal panic
+
+@warning_ignore("unused_signal")
 signal calm
 
 signal equipped_weapon(weapon: Item)
@@ -246,4 +249,4 @@ func is_panicking() -> bool:
 
 func on_retry_continue():
 	health = default_health
-	pass
+	health_changed.emit(health)

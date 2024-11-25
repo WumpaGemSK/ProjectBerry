@@ -14,8 +14,8 @@ extends Node2D
 @onready var sprite_2d = $Sprite2D
 
 ## The position of the first door
-var base: int = 12
-var sprites_per_row: int = 5
+var base: int = 0
+var sprites_per_row: int = 2
 var tile_width: int = 24
 var tile_height: int = 24
 
