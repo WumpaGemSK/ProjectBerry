@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://dha465jh4krfi"]
+
+[ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_y4c6m"]
+[ext_resource type="PackedScene" uid="uid://bhrb7dlchlw0a" path="res://Scenes/Levels/Components/switch.tscn" id="2_vuhgk"]
+[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="3_y1j7i"]
+
+[node name="Communications_Room" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+
+[node name="Node2D" parent="." instance=ExtResource("1_y4c6m")]
+to_previous = true
+opened = true
+
+[node name="Player" parent="." instance=ExtResource("3_y1j7i")]
+position = Vector2(79, 210)
+
+[node name="SwitchManager" type="Node" parent="."]
+
+[node name="Switch" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(76, 142)
+neighbor1 = NodePath("../Switch2")
+neighbor2 = NodePath("../Switch8")
+
+[node name="Switch2" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(2, 140)
+neighbor1 = NodePath("../Switch")
+neighbor2 = NodePath("../Switch3")
+
+[node name="Switch3" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(-2, 212)
+neighbor1 = NodePath("../Switch2")
+neighbor2 = NodePath("../Switch4")
+
+[node name="Switch4" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(-2, 288)
+neighbor1 = NodePath("../Switch3")
+neighbor2 = NodePath("../Switch5")
+
+[node name="Switch5" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(73, 288)
+neighbor1 = NodePath("../Switch4")
+neighbor2 = NodePath("../Switch6")
+
+[node name="Switch6" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(152, 283)
+neighbor1 = NodePath("../Switch5")
+neighbor2 = NodePath("../Switch7")
+
+[node name="Switch7" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(154, 213)
+neighbor1 = NodePath("../Switch6")
+neighbor2 = NodePath("../Switch8")
+
+[node name="Switch8" parent="SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
+position = Vector2(152, 143)
+neighbor1 = NodePath("../Switch7")
+neighbor2 = NodePath("../Switch")
