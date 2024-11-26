@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhrb7dlchlw0a"]
+
+[ext_resource type="PackedScene" uid="uid://bmu6uq8i1ooaw" path="res://Scenes/Interactable.tscn" id="1_iubmy"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/switch.gd" id="1_kvhlu"]
+
+[node name="Switch" type="Node2D"]
+script = ExtResource("1_kvhlu")
+
+[node name="Interactable" parent="." instance=ExtResource("1_iubmy")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
