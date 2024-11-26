@@ -11,7 +11,7 @@
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 
-[node name="Node2D" parent="." instance=ExtResource("1_y4c6m")]
+[node name="Portal" parent="." instance=ExtResource("1_y4c6m")]
 to_previous = true
 opened = true
 
