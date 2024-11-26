@@ -12,5 +12,14 @@ func _ready():
 ## Toggle the state of the switch and return the current state
 func toggle() -> bool:
 	active = !active
-	sprite_2d.region_rect.position.x += 24 if active else -24
+	update_sprite()
+	toggled.emit(active)
 	return active
+
+func reset():
+	if active:
+		active = false
+		update_sprite()
+
+func update_sprite():
+	sprite_2d.region_rect.position.x += 24 if active else -24
