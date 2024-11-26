@@ -7,9 +7,9 @@ var total_switches: int = 0
 
 func _ready():
 	total_switches = get_child_count()
-	for child: Switch in get_children():
+	for child: Switchboard in get_children():
 		toggled_switches += 1 if child.active else 0
-		child.toggled.connect(on_toggled)
+		child.toggled_many.connect(on_toggled)
 
 func on_toggled(states: Array[bool]):
 	for state in states:

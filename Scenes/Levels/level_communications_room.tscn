@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dha465jh4krfi"]
 
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_y4c6m"]
-[ext_resource type="PackedScene" uid="uid://bhrb7dlchlw0a" path="res://Scenes/Levels/Components/switch.tscn" id="2_vuhgk"]
-[ext_resource type="Script" path="res://Scripts/Puzzles/switch_manager.gd" id="3_rjsnr"]
+[ext_resource type="PackedScene" uid="uid://bhrb7dlchlw0a" path="res://Scenes/Levels/Components/switchboard.tscn" id="2_vuhgk"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/switchboard_manager.gd" id="3_rjsnr"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="3_y1j7i"]
 
 [node name="Communications_Room" type="Node2D"]
