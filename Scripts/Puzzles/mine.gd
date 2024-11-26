@@ -10,7 +10,7 @@ signal deactivated
 var steps_left: int
 
 func _ready():
-	steps_left = steps
+	on_reload()
 	EventBus.reload_scene.connect(on_reload)
 
 func _on_area_2d_entered(area: Area2D):
@@ -19,7 +19,7 @@ func _on_area_2d_entered(area: Area2D):
 		if steps_left > 0:
 			steps_left -= 1
 			if steps_left == 0:
-				sprite_2d.region_rect.position.x += 24
+				update_sprite()
 				deactivated.emit()
 		else:
 			body.take_damage(1)
@@ -27,4 +27,7 @@ func _on_area_2d_entered(area: Area2D):
 
 func on_reload():
 	steps_left = steps
-	sprite_2d.region_rect = Rect2(0, 0, 24, 24)
+	update_sprite()
+
+func update_sprite():
+	sprite_2d.region_rect = Rect2((1-steps_left)*24, 0, 24, 24)
