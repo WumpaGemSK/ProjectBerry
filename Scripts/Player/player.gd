@@ -27,6 +27,7 @@ enum PlayerStates {
 	SNEAKING,
 	PANICKING,
 	ATTACKING,
+	PUSHING,
 }
 var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
@@ -100,10 +101,7 @@ func _physics_process(_delta: float) -> void:
 	elif direction == Vector2.UP:
 		facing_direction = facing.UP
 	velocity = direction * speed
-	if velocity:
-		match_movement_animation()
-	else:
-		match_idle()
+	play_animation()
 	move_and_slide()
 	#region Push moveable boxes
 	if Input.is_action_pressed("sneak"):
@@ -112,6 +110,7 @@ func _physics_process(_delta: float) -> void:
 			var collider = coll.get_collider()
 			if collider is RigidBody2D:
 				var force = speed
+				state = PlayerStates.PUSHING
 				collider.apply_central_impulse(-coll.get_normal()*force)
 	#endregion
 
@@ -205,19 +204,29 @@ func weapon_upgrade(item: Item):
 				ranged_weapon.upgrade(item)
 #endregion
 #region animation
+func play_animation():
+	var anim_name: String = ""
+	match state:
+		PlayerStates.NORMAL, PlayerStates.SNEAKING:
+			if velocity:
+				anim_name = match_movement_animation()
+			else:
+				anim_name = match_idle()
+		PlayerStates.ATTACKING:
+			anim_name = smashing_animation()
+		PlayerStates.PUSHING:
+			anim_name = pushing_animation()
+	my_animated_sprite.play(anim_name)
+
 ##Match the animation based on the movement direction
-func match_movement_animation():
+func match_movement_animation()->String:
 	var animation_name: String = ""
 	match state:
 		PlayerStates.NORMAL:
 			animation_name = normal_animation()
 		PlayerStates.SNEAKING:
 			animation_name = sneak_animation()
-		PlayerStates.ATTACKING:
-			animation_name = "smack_w_cricket_bat_side"
-	if my_animated_sprite.animation == animation_name:
-		return
-	my_animated_sprite.play(animation_name)
+	return animation_name
 
 func smashing_animation() -> String:
 	var anim_name = "smack_w_cricket_bat_" + check_facing_direction()
@@ -229,6 +238,10 @@ func sneak_animation() -> String:
 
 func normal_animation() -> String:
 	var anim_name = "walk_" + check_facing_direction() + "_semicalm_" + weapon_name()
+	return anim_name
+	
+func pushing_animation() -> String:
+	var anim_name = "push_" + check_facing_direction()
 	return anim_name
 
 func weapon_name() -> String:
@@ -254,12 +267,12 @@ func check_facing_direction() -> String:
 	return dir
 
 ##Match the animation based on the idle direction		
-func match_idle():
+func match_idle() -> String:
 	var animation_name = "idle_" + check_facing_direction()
 	animation_name += "_semicalm_" + weapon_name()
 	if state == PlayerStates.ATTACKING:
 		animation_name = smashing_animation()
-	my_animated_sprite.play(animation_name)
+	return animation_name
 #endregion	
 
 func on_panic():
