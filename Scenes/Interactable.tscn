@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmu6uq8i1ooaw"]
+
+[ext_resource type="Script" path="res://Scripts/interactable.gd" id="1_rwqux"]
+[ext_resource type="Texture2D" uid="uid://d8mugyc7rgrt" path="res://Assets/Textures/interact_prompt.tres" id="2_jf7dw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3knh3"]
+
+[node name="Interactable" type="Node2D"]
+script = ExtResource("1_rwqux")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3knh3")
+
+[node name="Prompt" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1.19209e-07, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jf7dw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

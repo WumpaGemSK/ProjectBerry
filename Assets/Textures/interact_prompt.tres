@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://d8mugyc7rgrt"]
+
+[ext_resource type="Texture2D" uid="uid://bln464c2kqojr" path="res://Assets/Textures/Prompts/enemy_detection_spotted.png" id="1_pg4eb"]
+
+[resource]
+atlas = ExtResource("1_pg4eb")
