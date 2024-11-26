@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="3_ivusq"]
+[ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="5_86y1g"]
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="5_uur5g"]
 [ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="6_mspco"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="7_l5ku5"]
@@ -14,7 +15,6 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="15_c5eex"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="16_mw07t"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="17_2wedc"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
 
@@ -52,6 +52,10 @@ item = ExtResource("3_ivusq")
 
 [node name="Pickable_Item3" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(75, 378)
+item = ExtResource("5_86y1g")
+
+[node name="Pickable_Item6" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(259, 386)
 item = ExtResource("6_mspco")
 
 [node name="Pickable_Item4" parent="." instance=ExtResource("2_0nvdr")]
@@ -106,6 +110,3 @@ scn = ExtResource("20_n8i2e")
 [node name="Pickable_Item5" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(314, 337)
 item = ExtResource("16_wnpv7")
-
-[node name="Player" parent="." instance=ExtResource("17_2wedc")]
-position = Vector2(120, 264)
