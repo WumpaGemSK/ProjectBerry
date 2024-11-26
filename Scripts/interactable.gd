@@ -15,9 +15,11 @@ func _input(event):
 		interact.emit()
 
 func _on_area_2d_body_entered(body):
-	prompt.visible = true
-	player_near = true
+	if body is Player:
+		prompt.visible = true
+		player_near = true
 
 func _on_area_2d_body_exited(body):
-	prompt.visible = false
-	player_near = false
+	if body is Player:
+		prompt.visible = false
+		player_near = false
