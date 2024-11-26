@@ -1,11 +1,6 @@
-[gd_resource type="AtlasTexture" load_steps=3 format=3 uid="uid://baeg11xs6dwr5"]
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://baeg11xs6dwr5"]
 
-[sub_resource type="Gradient" id="Gradient_7pvth"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_djnck"]
-gradient = SubResource("Gradient_7pvth")
-width = 8
-height = 8
+[ext_resource type="Texture2D" uid="uid://dwg2yq5ndr3ew" path="res://Assets/Textures/Prompts/enemy_detection_curious.png" id="1_sismb"]
 
 [resource]
-atlas = SubResource("GradientTexture2D_djnck")
+atlas = ExtResource("1_sismb")

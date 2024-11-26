@@ -1,7 +1,6 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b52ps8kfvyvki"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mmip2"]
-size = Vector2(8, 8)
+[ext_resource type="Texture2D" uid="uid://bln464c2kqojr" path="res://Assets/Textures/Prompts/enemy_detection_spotted.png" id="1_s3dak"]
 
 [resource]
-atlas = SubResource("PlaceholderTexture2D_mmip2")
+atlas = ExtResource("1_s3dak")
