@@ -2,7 +2,7 @@ extends Node2D
 class_name Switch
 
 ## Sends the state of the switch after the toggle
-signal toggled(state: bool)
+signal toggled(state: Array[bool])
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @export var active: bool
@@ -14,11 +14,13 @@ func _ready():
 	sprite_2d.region_rect.position = Vector2(0, 0) if not active else Vector2(24, 0)
 
 func _on_interactable_interact():
-	toggle()
-	neighbor1.toggle()
-	neighbor2.toggle()
+	var states: Array[bool] = []
+	states.append(toggle())
+	states.append(neighbor1.toggle())
+	states.append(neighbor2.toggle())
+	toggled.emit(states)
 
-func toggle():
+func toggle() -> bool:
 	active = !active
 	sprite_2d.region_rect.position.x += 24 if active else -24
-	toggled.emit(active)
+	return active

@@ -11,7 +11,8 @@ func _ready():
 		toggled_switches += 1 if child.active else 0
 		child.toggled.connect(on_toggled)
 
-func on_toggled(state: bool):
-	toggled_switches += 1 if state else -1
+func on_toggled(states: Array[bool]):
+	for state in states:
+		toggled_switches += 1 if state else -1
 	if toggled_switches == total_switches:
 		puzzle_complete.emit()
