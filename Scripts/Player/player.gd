@@ -171,7 +171,7 @@ func weapon_pickup(item : Item):
 		add_child(ranged_weapon)
 		ranged_weapon.attacking.connect(on_attack)
 	else:
-		melee_weapon = melee_weapon_scn.instanciate()
+		melee_weapon = melee_weapon_scn.instantiate()
 		melee_weapon.is_player = true
 		add_child(melee_weapon)
 		melee_weapon.attacking.connect(on_attack)
