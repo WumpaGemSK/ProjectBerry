@@ -220,16 +220,16 @@ func match_movement_animation():
 	my_animated_sprite.play(animation_name)
 
 func smashing_animation() -> String:
-	var name = "smack_w_cricket_bat_" + check_facing_direction()
-	return name
+	var anim_name = "smack_w_cricket_bat_" + check_facing_direction()
+	return anim_name
 
 func sneak_animation() -> String:
-	var name = "sneak_" + check_facing_direction() + "_" + weapon_name()
-	return name
+	var anim_name = "sneak_" + check_facing_direction() + "_" + weapon_name()
+	return anim_name
 
 func normal_animation() -> String:
-	var name = "walk_" + check_facing_direction() + "_semicalm_" + weapon_name()
-	return name
+	var anim_name = "walk_" + check_facing_direction() + "_semicalm_" + weapon_name()
+	return anim_name
 
 func weapon_name() -> String:
 	if ranged_weapon != null:
