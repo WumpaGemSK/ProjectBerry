@@ -1,6 +1,7 @@
 extends Node2D
 class_name Switch
 
+## Sends the state of the switch after the toggle
 signal toggled(state: bool)
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -11,12 +12,6 @@ signal toggled(state: bool)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite_2d.region_rect.position = Vector2(0, 0) if not active else Vector2(24, 0)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_interactable_interact():
 	toggle()
