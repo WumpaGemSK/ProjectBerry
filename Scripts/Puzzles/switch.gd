@@ -13,6 +13,8 @@ signal toggled(state: Array[bool])
 func _ready():
 	sprite_2d.region_rect.position = Vector2(0, 0) if not active else Vector2(24, 0)
 
+## Toggle the neighbors and itself, collect the new states and send the signal with the states.
+## The interacted Switch is the responsible of sending the signal
 func _on_interactable_interact():
 	var states: Array[bool] = []
 	states.append(toggle())
@@ -20,6 +22,7 @@ func _on_interactable_interact():
 	states.append(neighbor2.toggle())
 	toggled.emit(states)
 
+## Toggle the state of the switch and return the current state
 func toggle() -> bool:
 	active = !active
 	sprite_2d.region_rect.position.x += 24 if active else -24
