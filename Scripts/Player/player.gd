@@ -26,6 +26,8 @@ enum PlayerStates {
 	NORMAL,
 	SNEAKING,
 	PANICKING,
+	ATTACKING,
+	PUSHING,
 }
 var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
@@ -53,6 +55,7 @@ func _ready():
 	EventBus.resume.connect(func(): paused= false)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 	EventBus.retry_continue.connect(on_retry_continue)
+	my_animated_sprite.animation_finished.connect(func(): state = PlayerStates.NORMAL)
 	#panic.connect(on_panic)
 
 func _process(_delta):
@@ -60,6 +63,7 @@ func _process(_delta):
 		return
 	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
 		melee_weapon.attack(global_position, facing_vector[facing_direction])
+		state = PlayerStates.ATTACKING
 	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
 		ranged_weapon.attack(global_position, facing_vector[facing_direction])
 	
@@ -86,11 +90,18 @@ func _physics_process(_delta: float) -> void:
 			speed = sneaking_speed
 		_:
 			speed = normal_speed
+	if direction == Vector2.RIGHT:
+		my_animated_sprite.flip_h = false
+		facing_direction = facing.RIGHT
+	elif direction == Vector2.LEFT:
+		my_animated_sprite.flip_h = true
+		facing_direction = facing.LEFT
+	elif direction == Vector2.DOWN:
+		facing_direction = facing.DOWN
+	elif direction == Vector2.UP:
+		facing_direction = facing.UP
 	velocity = direction * speed
-	if velocity:
-		match_movement_animation()
-	else:
-		match_idle()
+	play_animation()
 	move_and_slide()
 	#region Push moveable boxes
 	if Input.is_action_pressed("sneak"):
@@ -99,6 +110,7 @@ func _physics_process(_delta: float) -> void:
 			var collider = coll.get_collider()
 			if collider is RigidBody2D:
 				var force = speed
+				state = PlayerStates.PUSHING
 				collider.apply_central_impulse(-coll.get_normal()*force)
 	#endregion
 
@@ -171,7 +183,7 @@ func weapon_pickup(item : Item):
 		add_child(ranged_weapon)
 		ranged_weapon.attacking.connect(on_attack)
 	else:
-		melee_weapon = melee_weapon_scn.instanciate()
+		melee_weapon = melee_weapon_scn.instantiate()
 		melee_weapon.is_player = true
 		add_child(melee_weapon)
 		melee_weapon.attacking.connect(on_attack)
@@ -192,46 +204,75 @@ func weapon_upgrade(item: Item):
 				ranged_weapon.upgrade(item)
 #endregion
 #region animation
-##Match the animation based on the movement direction
-func match_movement_animation():
-	
-	if direction == Vector2.RIGHT:
-		my_animated_sprite.play("walk_side_semicalm_no_weapon")
-		my_animated_sprite.flip_h = false
-		facing_direction = facing.RIGHT
-		
-	elif direction == Vector2.LEFT:
-		my_animated_sprite.play("walk_side_semicalm_no_weapon")
-		my_animated_sprite.flip_h = true
-		facing_direction = facing.LEFT	
-		
-	elif direction == Vector2.DOWN:
-		my_animated_sprite.play("walk_down_semicalm_no_weapon")
-		facing_direction = facing.DOWN	
-		
-	elif direction == Vector2.UP:
-		my_animated_sprite.play("walk_up_semicalm_no_weapon")
-		facing_direction = facing.UP
+func play_animation():
+	var anim_name: String = ""
+	match state:
+		PlayerStates.NORMAL, PlayerStates.SNEAKING:
+			if velocity:
+				anim_name = match_movement_animation()
+			else:
+				anim_name = match_idle()
+		PlayerStates.ATTACKING:
+			anim_name = smashing_animation()
+		PlayerStates.PUSHING:
+			anim_name = pushing_animation()
+	my_animated_sprite.play(anim_name)
 
-		
-##Match the animation based on the idle direction		
-func match_idle():
+##Match the animation based on the movement direction
+func match_movement_animation()->String:
+	var animation_name: String = ""
+	match state:
+		PlayerStates.NORMAL:
+			animation_name = normal_animation()
+		PlayerStates.SNEAKING:
+			animation_name = sneak_animation()
+	return animation_name
+
+func smashing_animation() -> String:
+	var anim_name = "smack_w_cricket_bat_" + check_facing_direction()
+	return anim_name
+
+func sneak_animation() -> String:
+	var anim_name = "sneak_" + check_facing_direction() + "_" + weapon_name()
+	return anim_name
+
+func normal_animation() -> String:
+	var anim_name = "walk_" + check_facing_direction() + "_semicalm_" + weapon_name()
+	return anim_name
 	
-	if facing_direction == facing.RIGHT:
-		my_animated_sprite.play("idle_side_semicalm_no_weapon")
-		my_animated_sprite.flip_h = false
-		
-	elif facing_direction == facing.LEFT:
-		my_animated_sprite.play("idle_side_semicalm_no_weapon")
-		my_animated_sprite.flip_h = true
-		
-	elif facing_direction == facing.DOWN:
-		my_animated_sprite.play("idle_down_semicalm_no_weapon")
-		
-	elif facing_direction == facing.UP:
-		my_animated_sprite.play("idle_up_semicalm_no_weapon")
-		
-		
+func pushing_animation() -> String:
+	var anim_name = "push_" + check_facing_direction()
+	return anim_name
+
+func weapon_name() -> String:
+	if ranged_weapon != null:
+		return "pistol"
+	elif melee_weapon != null:
+		return "cricket_bat"
+	return"no_weapon"
+
+func check_facing_direction() -> String:
+	var dir = ""
+	match facing_direction:
+		facing.LEFT:
+			dir += "side"
+			my_animated_sprite.flip_h = true
+		facing.UP:
+			dir += "up"
+		facing.DOWN:
+			dir += "down"
+		facing.RIGHT:
+			dir += "side"
+			my_animated_sprite.flip_h = false
+	return dir
+
+##Match the animation based on the idle direction		
+func match_idle() -> String:
+	var animation_name = "idle_" + check_facing_direction()
+	animation_name += "_semicalm_" + weapon_name()
+	if state == PlayerStates.ATTACKING:
+		animation_name = smashing_animation()
+	return animation_name
 #endregion	
 
 func on_panic():
