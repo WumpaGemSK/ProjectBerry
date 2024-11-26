@@ -11,7 +11,7 @@ func _ready():
 	prompt.visible = false
 
 func _input(event):
-	if event.is_action("interact") and player_near:
+	if event.is_action_pressed("interact") and player_near:
 		interact.emit()
 
 func _on_area_2d_body_entered(body):
