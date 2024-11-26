@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c4k8avgkwf1ex"
+path="res://.godot/imported/CodeFaxes.aseprite-8565d12edcaa9e8d909357f357feb4a7.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Items/CodeFaxes.aseprite"
+dest_files=["res://.godot/imported/CodeFaxes.aseprite-8565d12edcaa9e8d909357f357feb4a7.res"]
+
+[params]
+

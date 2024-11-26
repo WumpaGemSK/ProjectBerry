@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dpj8klbo0kgd5"
+path="res://.godot/imported/FaxMachine.aseprite-2bb8f5daf85a7e4285e80a2da13c5e07.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/FaxMachine.aseprite"
+dest_files=["res://.godot/imported/FaxMachine.aseprite-2bb8f5daf85a7e4285e80a2da13c5e07.res"]
+
+[params]
+
