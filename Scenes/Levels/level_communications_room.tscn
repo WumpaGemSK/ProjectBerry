@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dha465jh4krfi"]
+[gd_scene load_steps=7 format=3 uid="uid://dha465jh4krfi"]
 
+[ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_communications_room.gd" id="1_s5uxb"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_y4c6m"]
 [ext_resource type="PackedScene" uid="uid://bhrb7dlchlw0a" path="res://Scenes/Levels/Components/switchboard.tscn" id="2_vuhgk"]
+[ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="3_rf8v2"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/switchboard_manager.gd" id="3_rjsnr"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="3_y1j7i"]
 
 [node name="Communications_Room" type="Node2D"]
+script = ExtResource("1_s5uxb")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -17,6 +20,9 @@ opened = true
 
 [node name="Player" parent="." instance=ExtResource("3_y1j7i")]
 position = Vector2(79, 210)
+
+[node name="FaxMachine" parent="." instance=ExtResource("3_rf8v2")]
+room = 1
 
 [node name="SwitchManager" type="Node" parent="."]
 script = ExtResource("3_rjsnr")
