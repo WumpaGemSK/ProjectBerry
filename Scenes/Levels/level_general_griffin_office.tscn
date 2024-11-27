@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://p312dhpbtjn1"]
+[gd_scene load_steps=7 format=4 uid="uid://p312dhpbtjn1"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_wp05d"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="3_bpe7f"]
 [ext_resource type="Texture2D" uid="uid://05ls38iiiya0" path="res://Assets/Textures/Environment/Props/GeneralGriffinDesk.png" id="3_fatna"]
+[ext_resource type="PackedScene" uid="uid://d0a7dou47agdx" path="res://Scenes/Levels/level_corridors.tscn" id="4_jtqvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hcuj"]
 size = Vector2(60, 74.5)
@@ -36,7 +37,8 @@ shape = SubResource("RectangleShape2D_fq2jg")
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(274, 87)
 
-[node name="Node2D" parent="." instance=ExtResource("3_bpe7f")]
+[node name="Portal" parent="." instance=ExtResource("3_bpe7f")]
 position = Vector2(302, 85)
+scn = ExtResource("4_jtqvp")
 direction = 2
 opened = true
