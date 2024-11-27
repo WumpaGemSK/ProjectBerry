@@ -24,6 +24,9 @@ func on_item_pickup(item: Item):
 			inventory[item.type] = item
 		on_inventory_update.emit(inventory)
 		return # Early return to prevent increasing the quantity of keys
+	if item.is_code():
+		inventory.get_or_add(item.item_name)
+		return
 	if inventory.has(item.unique_key()):
 		var existing_item : Item = inventory.get(item.unique_key())
 		existing_item.quantity += 1
@@ -34,6 +37,8 @@ func on_item_pickup(item: Item):
 
 ## Update the inventory after the item has been used
 func on_item_used(item: Item):
+	if item.is_code():
+		return
 	if inventory.has(item.unique_key()):
 		var it : Item = inventory.get(item.unique_key())
 		it.quantity -= 1

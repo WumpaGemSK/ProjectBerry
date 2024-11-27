@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhrb7dlchlw0a"]
+
+[ext_resource type="PackedScene" uid="uid://bmu6uq8i1ooaw" path="res://Scenes/Interactable.tscn" id="1_iubmy"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/switchboard.gd" id="1_kvhlu"]
+[ext_resource type="Texture2D" uid="uid://dpobfakvfkid5" path="res://Assets/Textures/Environment/Props/switchboard_sprite_sheet.png" id="2_tyyk8"]
+
+[node name="Switchboard" type="Node2D"]
+script = ExtResource("1_kvhlu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tyyk8")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 42)
+
+[node name="Interactable" parent="." instance=ExtResource("1_iubmy")]
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

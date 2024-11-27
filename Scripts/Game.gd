@@ -2,6 +2,7 @@ extends Node
 
 ## The selected code for the run
 var selected_code: String
+var shuffled_code: String
 #region Secrets
 ## The maximum amount of secrets
 var max_secret_amount: int = 0
@@ -23,8 +24,16 @@ enum Ranking {
 	A
 }
 
+enum Room {
+	COMMAND,
+	COMMUNICATIONS,
+	STORAGE,
+	TRAINING_ROOM,
+}
+
 func _ready():
 	selected_code = Constants.CODES.pick_random()
+	shuffled_code = shuffle_string(selected_code)
 	EventBus.try_code.connect(on_code_try)
 	EventBus.player_death.connect(on_player_death)
 
@@ -66,3 +75,20 @@ func get_score() -> GameScore:
 func on_player_death():
 	retries -= 1
 	EventBus.pause.emit()
+
+func get_fax_item(room: Room) -> Resource:
+	var item_scn: Resource = null
+	var path = "res://Resources/Codes/%s.tres"
+	item_scn = load(path % shuffled_code[room])
+	if item_scn:
+		return item_scn
+	else:
+		return null
+
+func shuffle_string(s: String):
+	var a: Array = []
+	for c in s:
+		a.append(c)
+	randomize()
+	a.shuffle()
+	return "".join(a)

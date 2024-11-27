@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://d8mugyc7rgrt"]
+
+[ext_resource type="Texture2D" uid="uid://ctfyh0vbbi6ts" path="res://Assets/Textures/Prompts/interaction_prompt.png" id="1_y403x"]
+
+[resource]
+atlas = ExtResource("1_y403x")

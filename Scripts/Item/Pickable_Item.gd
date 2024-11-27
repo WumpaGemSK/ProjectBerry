@@ -8,7 +8,8 @@ var player_in_range = false
 @export var item : Resource
 
 func _ready():
-	icon.texture = item.texture_icon
+	if item:
+		icon.texture = item.texture_icon
 
 func _process(_delta):
 	if Input.is_action_pressed("interact") and player_in_range:
@@ -30,3 +31,7 @@ func _on_area_2d_body_exited(body):
 	if body is Player:
 		player_in_range = false
 		pick_ui.visible = false
+
+func set_item(new_item: Resource):
+	item = new_item
+	icon.texture = item.texture_icon
