@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://bbg0x48lynegm"]
+[gd_scene load_steps=7 format=4 uid="uid://bbg0x48lynegm"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_research_lab.gd" id="1_81482"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_e45ia"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_8dnon"]
 [ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="3_javyl"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/lottery_manager.gd" id="5_f0iy8"]
+[ext_resource type="PackedScene" uid="uid://c17kva4tp2ejg" path="res://Scenes/Levels/Components/Flask.tscn" id="6_4n8dr"]
 
 [node name="LevelResearchLab" type="Node2D"]
 script = ExtResource("1_81482")
@@ -23,3 +25,18 @@ position = Vector2(249, 101)
 
 [node name="FaxMachine" parent="." instance=ExtResource("3_javyl")]
 position = Vector2(119, 30)
+
+[node name="LotteryManager" type="Node" parent="."]
+script = ExtResource("5_f0iy8")
+
+[node name="Flask" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
+position = Vector2(335, 354)
+
+[node name="Flask2" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
+position = Vector2(335, 325)
+
+[node name="Flask3" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
+position = Vector2(335, 383)
+
+[node name="Flask4" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
+position = Vector2(335, 412)
