@@ -14,6 +14,9 @@ config/name="Project Berry"
 config/tags=PackedStringArray("game_jam")
 run/main_scene="res://Scenes/UI/TitleScreen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.0509804, 0.101961, 0.101961, 1)
+boot_splash/image="res://Assets/Textures/UI Screens/shifty_kitty_logo_new_frame1.png"
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]

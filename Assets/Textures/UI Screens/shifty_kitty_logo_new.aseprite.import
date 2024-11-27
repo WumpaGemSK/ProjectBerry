@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c7jbi31lwxtpb"
+path="res://.godot/imported/shifty_kitty_logo_new.aseprite-004db34ac663438c25ec64378c1da0d6.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/shifty_kitty_logo_new.aseprite"
+dest_files=["res://.godot/imported/shifty_kitty_logo_new.aseprite-004db34ac663438c25ec64378c1da0d6.res"]
+
+[params]
+

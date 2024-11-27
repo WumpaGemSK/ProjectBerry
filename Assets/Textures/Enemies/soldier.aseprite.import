@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://lcj4yisda6vp"
+path="res://.godot/imported/soldier.aseprite-d1e9203e214d3a87ba736f75d07c50e4.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Enemies/soldier.aseprite"
+dest_files=["res://.godot/imported/soldier.aseprite-d1e9203e214d3a87ba736f75d07c50e4.res"]
+
+[params]
+
