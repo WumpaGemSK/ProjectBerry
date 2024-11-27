@@ -326,4 +326,4 @@ script = ExtResource("6_wrn78")
 [node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/StaticBody2D"]
-polygon = PackedVector2Array(-112, -31, -111, 17, 111, 16, 111, -32, 104, -32, 105, 7, -104, 8, -103, -31)
+polygon = PackedVector2Array(-111, -27, -111, 15, 111, 15, 111, -27, 105, -27, 105, 9, -105, 9, -105, -27)
