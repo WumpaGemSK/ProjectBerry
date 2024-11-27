@@ -225,7 +225,7 @@ direction = 1
 opened = true
 
 [node name="FaxMachine" parent="." instance=ExtResource("6_5o141")]
-position = Vector2(157, -12)
+position = Vector2(156, -18)
 room = 2
 
 [node name="PuzzleCompleteCollider" type="Area2D" parent="."]
