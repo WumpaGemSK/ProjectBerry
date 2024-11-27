@@ -18,7 +18,7 @@ tile_set = ExtResource("2_rnpyl")
 [node name="SpawnPoint" type="Marker2D" parent="."]
 
 [node name="Portal" parent="." instance=ExtResource("1_i02go")]
-position = Vector2(3, 68)
+position = Vector2(10, 96)
 to_previous = true
 direction = 3
 opened = true
