@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsluri14eaxp3"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/switch_toggle.gd" id="1_801dx"]
-[ext_resource type="Texture2D" uid="uid://co1bcg0xrafkn" path="res://Assets/Textures/Environment/Props/TrainingRoom_Mine_Sheet.png" id="2_xosvx"]
+[ext_resource type="Texture2D" uid="uid://bmq0p3c6tadnb" path="res://Assets/Textures/Environment/Props/computer_sprite_sheet.png" id="2_1va4r"]
 [ext_resource type="PackedScene" uid="uid://bmu6uq8i1ooaw" path="res://Scenes/Interactable.tscn" id="3_wgois"]
 
 [node name="Switch" type="Node2D"]
 script = ExtResource("1_801dx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xosvx")
+texture = ExtResource("2_1va4r")
 region_enabled = true
-region_rect = Rect2(0, 0, 24, 24)
+region_rect = Rect2(0, 0, 48, 50)
 
 [node name="Interactable" parent="." instance=ExtResource("3_wgois")]
 
