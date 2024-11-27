@@ -16,6 +16,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAA
 tile_set = ExtResource("2_rnpyl")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(37, 97)
 
 [node name="Portal" parent="." instance=ExtResource("1_i02go")]
 position = Vector2(10, 96)
