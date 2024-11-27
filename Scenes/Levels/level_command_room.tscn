@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4be8ocshheuf"]
+[gd_scene load_steps=7 format=3 uid="uid://d4be8ocshheuf"]
 
+[ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_command_room.gd" id="1_6yvgb"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_i02go"]
+[ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="2_0kvwq"]
 [ext_resource type="PackedScene" uid="uid://bsluri14eaxp3" path="res://Scenes/Levels/Components/switchtoggle.tscn" id="2_komfk"]
 [ext_resource type="Script" path="res://Scenes/Levels/switch_toggle_manager.gd" id="2_opqmx"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="4_x3hm1"]
 
 [node name="LevelCommandRoom" type="Node2D"]
+script = ExtResource("1_6yvgb")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -14,6 +17,9 @@
 [node name="Portal" parent="." instance=ExtResource("1_i02go")]
 to_previous = true
 opened = true
+
+[node name="FaxMachine" parent="." instance=ExtResource("2_0kvwq")]
+position = Vector2(374, 38)
 
 [node name="SwitchManager" type="Node" parent="." node_paths=PackedStringArray("toggle_order")]
 script = ExtResource("2_opqmx")
@@ -38,3 +44,4 @@ position = Vector2(311, 101)
 position = Vector2(358, 101)
 
 [node name="Player" parent="." instance=ExtResource("4_x3hm1")]
+position = Vector2(80, 160)
