@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://d4be8ocshheuf"]
+[gd_scene load_steps=7 format=4 uid="uid://d4be8ocshheuf"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_command_room.gd" id="1_6yvgb"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_i02go"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bsluri14eaxp3" path="res://Scenes/Levels/Components/switchtoggle.tscn" id="2_komfk"]
 [ext_resource type="Script" path="res://Scenes/Levels/switch_toggle_manager.gd" id="2_opqmx"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="2_rnpyl"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="4_x3hm1"]
 
 [node name="LevelCommandRoom" type="Node2D"]
 script = ExtResource("1_6yvgb")
@@ -48,6 +47,3 @@ position = Vector2(300, 243)
 
 [node name="Switch6" parent="SwitchManager" instance=ExtResource("2_komfk")]
 position = Vector2(208, 150)
-
-[node name="Player" parent="." instance=ExtResource("4_x3hm1")]
-position = Vector2(80, 160)
