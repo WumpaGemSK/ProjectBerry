@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://xxoletpljrds"
+path="res://.godot/imported/switchboard_sprite.aseprite-92809f0f0669194d2230d015eba27742.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/switchboard_sprite.aseprite"
+dest_files=["res://.godot/imported/switchboard_sprite.aseprite-92809f0f0669194d2230d015eba27742.res"]
+
+[params]
+
