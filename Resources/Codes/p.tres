@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://tm6fodlp5d22"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_iqgm6"]
+[ext_resource type="Texture2D" uid="uid://b5sye7iu6xgyo" path="res://Assets/Textures/Items/CodeFaxes_Sheet.png" id="2_ltu4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pl13"]
+atlas = ExtResource("2_ltu4r")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_iqgm6")
+item_name = "P"
+texture_icon = SubResource("AtlasTexture_1pl13")
+description = ""
+type = 7
+effect = 1

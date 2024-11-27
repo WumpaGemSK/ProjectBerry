@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3 uid="uid://b6gygp2gyhnlm"]
+
+[ext_resource type="Texture2D" uid="uid://jj1d7eb06hqw" path="res://Assets/Textures/Environment/Props/FaxMachine_Sheet.png" id="1_a8ok0"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/fax_machine.gd" id="1_akx1y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83k73"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(0, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx71x"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(48, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bldoc"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(96, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbp4r"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(144, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w7uq"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(192, 0, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glqxy"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(0, 36, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2w4y"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(48, 36, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1eby"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(96, 36, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2nwr"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(144, 36, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv7vy"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(192, 36, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jah7u"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(0, 72, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g0hd"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(48, 72, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vavu5"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(96, 72, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf7ru"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(144, 72, 48, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s648j"]
+atlas = ExtResource("1_a8ok0")
+region = Rect2(192, 72, 48, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8066b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83k73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx71x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bldoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbp4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w7uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glqxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2w4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1eby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2nwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv7vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jah7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g0hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vavu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf7ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s648j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FaxMachine" type="Node2D"]
+script = ExtResource("1_akx1y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8066b")
+frame = 9
+frame_progress = 0.693966

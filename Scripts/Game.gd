@@ -23,6 +23,13 @@ enum Ranking {
 	A
 }
 
+enum Room {
+	COMMAND,
+	COMMUNICATIONS,
+	STORAGE,
+	TRAINING_ROOM,
+}
+
 func _ready():
 	selected_code = Constants.CODES.pick_random()
 	EventBus.try_code.connect(on_code_try)
@@ -66,3 +73,12 @@ func get_score() -> GameScore:
 func on_player_death():
 	retries -= 1
 	EventBus.pause.emit()
+
+func get_fax_item(room: Room) -> Resource:
+	var item_scn: Resource = null
+	var path = "res://Resources/Codes/%s.tres"
+	item_scn = load(path % selected_code[room])
+	if item_scn:
+		return item_scn
+	else:
+		return null
