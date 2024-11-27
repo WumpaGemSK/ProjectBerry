@@ -2263,10 +2263,10 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "7640fffa37483b249c9a1e2b6310a586"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -288
-limit_top = -288
-limit_right = 816
-limit_bottom = 576
+limit_left = -500
+limit_top = -500
+limit_right = 1000
+limit_bottom = 1000
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true

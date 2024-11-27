@@ -7,8 +7,8 @@ extends Node2D
 @export var to_previous: bool = false
 ## The direction of the door
 @export var direction: Direction = Direction.UP
-## The tier of the door. Between 1 and 3
-@export_range(1, 3) var door_tier: int = 1
+## The tier of the door. Between 0 and 3
+@export_range(0, 3) var door_tier: int = 0
 @export var opened: bool = false
 #endregion
 @onready var sprite_2d = $Sprite2D

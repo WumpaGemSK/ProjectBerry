@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfp5nw57jtl8c"]
 
-[ext_resource type="PackedScene" uid="uid://xahefqpgkdu8" path="res://Scripts/test.tscn" id="1_ry0sx"]
+[ext_resource type="PackedScene" uid="uid://p312dhpbtjn1" path="res://Scenes/Levels/level_general_griffin_office.tscn" id="1_dhlcu"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="2_rp6ky"]
 [ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="3_f4d7a"]
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="4_j8gre"]
@@ -11,10 +11,10 @@
 
 [node name="SceneHolder" type="Node" parent="."]
 
-[node name="Node2D" parent="SceneHolder" instance=ExtResource("1_ry0sx")]
+[node name="Level_GeneralGriffinOffice" parent="SceneHolder" instance=ExtResource("1_dhlcu")]
 
 [node name="Player" parent="." instance=ExtResource("2_rp6ky")]
-position = Vector2(408, 403)
+position = Vector2(223, 126)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
