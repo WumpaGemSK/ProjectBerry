@@ -14,5 +14,5 @@ position = Vector2(60, -12)
 to_previous = true
 door_tier = 3
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(60, 12)

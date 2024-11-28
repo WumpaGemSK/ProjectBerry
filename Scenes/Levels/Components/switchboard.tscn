@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhrb7dlchlw0a"]
+[gd_scene load_steps=6 format=3 uid="uid://bhrb7dlchlw0a"]
 
 [ext_resource type="PackedScene" uid="uid://bmu6uq8i1ooaw" path="res://Scenes/Interactable.tscn" id="1_iubmy"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/switchboard.gd" id="1_kvhlu"]
 [ext_resource type="Texture2D" uid="uid://dpobfakvfkid5" path="res://Assets/Textures/Environment/Props/switchboard_sprite_sheet.png" id="2_tyyk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16wju"]
+size = Vector2(24, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aup68"]
+size = Vector2(8, 3)
 
 [node name="Switchboard" type="Node2D"]
 script = ExtResource("1_kvhlu")
@@ -13,5 +19,15 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 42)
 
 [node name="Interactable" parent="." instance=ExtResource("1_iubmy")]
+
+[node name="Collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(2, -7.5)
+shape = SubResource("RectangleShape2D_16wju")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision"]
+position = Vector2(2, -19.5)
+shape = SubResource("RectangleShape2D_aup68")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

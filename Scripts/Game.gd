@@ -79,7 +79,7 @@ func on_player_death():
 func get_fax_item(room: Room) -> Resource:
 	var item_scn: Resource = null
 	var path = "res://Resources/Codes/%s.tres"
-	item_scn = load(path % shuffled_code[room])
+	item_scn = load(path % shuffled_code[room].to_lower())
 	if item_scn:
 		return item_scn
 	else:

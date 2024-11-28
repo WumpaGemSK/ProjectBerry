@@ -10,6 +10,8 @@ func _ready():
 func on_mine_deactivated():
 	total_mines -= 1
 	if total_mines == 0:
+		for child in get_children():
+			child.deactivate()
 		puzzle_complete.emit()
 
 func mines_left():

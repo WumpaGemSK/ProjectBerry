@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://bbh2fonbqlnrn"]
+[gd_scene load_steps=5 format=4 uid="uid://bbh2fonbqlnrn"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_1ltkl"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_w786r"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="3_qka7t"]
+[ext_resource type="Resource" uid="uid://cq8ie1ermp4br" path="res://Resources/Items/key_3.tres" id="4_70jnm"]
 
 [node name="Level_Dormitory" type="Node2D"]
 
@@ -17,3 +19,7 @@ door_tier = 2
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(156, 276)
+
+[node name="Pickable_Item" parent="." instance=ExtResource("3_qka7t")]
+position = Vector2(36, 252)
+item = ExtResource("4_70jnm")

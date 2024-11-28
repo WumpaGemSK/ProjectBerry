@@ -9,11 +9,15 @@ signal deactivated
 
 var steps_left: int
 
+var active: bool = true
+
 func _ready():
 	on_reload()
 	EventBus.reload_scene.connect(on_reload)
 
 func _on_area_2d_entered(area: Area2D):
+	if not active:
+		return
 	var body = area.get_parent()
 	if body is Player:
 		if steps_left > 0:
@@ -31,3 +35,6 @@ func on_reload():
 
 func update_sprite():
 	sprite_2d.region_rect = Rect2((1-steps_left)*24, 0, 24, 24)
+
+func deactivate():
+	active = false
