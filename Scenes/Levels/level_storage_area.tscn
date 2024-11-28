@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dbsg4c21utypq"]
+[gd_scene load_steps=11 format=4 uid="uid://dbsg4c21utypq"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_storage_area.gd" id="1_6p5kb"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_hg4ky"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="5_jo5n8"]
 [ext_resource type="Texture2D" uid="uid://bpwn7cyavqdn6" path="res://Assets/Textures/Environment/Props/StillCrate_Alt.png" id="5_o3jsx"]
 [ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="6_5o141"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="8_gnvsa"]
+[ext_resource type="Resource" uid="uid://bwjdodifjd0xh" path="res://Resources/Items/key_2.tres" id="9_di2w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idlql"]
 radius = 28.1603
@@ -234,3 +236,7 @@ position = Vector2(56, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleCompleteCollider"]
 shape = SubResource("CircleShape2D_idlql")
+
+[node name="Key2" parent="." instance=ExtResource("8_gnvsa")]
+position = Vector2(252, 108)
+item = ExtResource("9_di2w2")

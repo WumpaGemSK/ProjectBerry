@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dw4b4dljyr732"
+path="res://.godot/imported/chair_sprite.aseprite-9443a54dc97fba7a44c86dae617ba28c.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/chair_sprite.aseprite"
+dest_files=["res://.godot/imported/chair_sprite.aseprite-9443a54dc97fba7a44c86dae617ba28c.res"]
+
+[params]
+
