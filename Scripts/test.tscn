@@ -1,9 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=26 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="3_ivusq"]
-[ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="5_86y1g"]
+[ext_resource type="Resource" uid="uid://b5u6bn75ob8bt" path="res://Resources/Codes/b.tres" id="5_h3q1f"]
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="5_uur5g"]
 [ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="6_mspco"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="7_l5ku5"]
@@ -16,7 +16,12 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="16_mw07t"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
+[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="18_wcrhm"]
+[ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="19_fwl81"]
+[ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="20_ao55k"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
+[ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="21_gx6so"]
+[ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="22_txcaq"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -52,7 +57,7 @@ item = ExtResource("3_ivusq")
 
 [node name="Pickable_Item3" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(75, 378)
-item = ExtResource("5_86y1g")
+item = ExtResource("5_h3q1f")
 
 [node name="Pickable_Item6" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(259, 386)
@@ -110,3 +115,18 @@ scn = ExtResource("20_n8i2e")
 [node name="Pickable_Item5" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(314, 337)
 item = ExtResource("16_wnpv7")
+
+[node name="Player" parent="." instance=ExtResource("18_wcrhm")]
+position = Vector2(121, 390)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainHud" parent="CanvasLayer" instance=ExtResource("19_fwl81")]
+
+[node name="Inventory_UI" parent="CanvasLayer" instance=ExtResource("20_ao55k")]
+visible = false
+
+[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("21_gx6so")]
+
+[node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("22_txcaq")]
+visible = false
