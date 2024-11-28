@@ -32,6 +32,8 @@ func _ready():
 	start.grab_focus()
 
 func _on_start_game():
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
 	get_tree().change_scene_to_packed(game_scene)
 	
 func _on_options():
