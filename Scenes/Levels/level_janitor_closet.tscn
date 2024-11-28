@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=4 uid="uid://21wnnmifx0jc"]
+[gd_scene load_steps=3 format=4 uid="uid://d2jm3hkkc6pu1"]
 
-[ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_nrqx3"]
-[ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_av5o7"]
+[ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_aioyk"]
+[ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_rwm87"]
 
-[node name="Level_Restroom" type="Node2D"]
+[node name="Level_Janitor_Closet" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAFAAIAAAABAAAAAAAFAAEAAAABAAAAAAAFAAAAAAABAAAAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAD//wIAAAAEAAAAAAABAAMAAAAAAAEAAAAAAAMAAAAAAAEAAAD//wMAAAADAAEAAAACAP//AAACAAAAAAACAAMAAAAAAAEAAAADAP//AAACAAAAAAADAAMAAAAAAAEAAAAEAP//AAACAAAAAAAEAAMAAAAAAAEAAAAFAP//AAACAAAAAAAFAAMAAAAAAAEAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAP//AAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAEAAEAAAAGAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAA=")
-tile_set = ExtResource("1_nrqx3")
+tile_set = ExtResource("1_aioyk")
 
-[node name="Portal" parent="." instance=ExtResource("2_av5o7")]
-position = Vector2(84, 60)
+[node name="Portal" parent="." instance=ExtResource("2_rwm87")]
+position = Vector2(60, 60)
 to_previous = true
 direction = 1
+door_tier = 3
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(84, 36)
+position = Vector2(60, 36)
