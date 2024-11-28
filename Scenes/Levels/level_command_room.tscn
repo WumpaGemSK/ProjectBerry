@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_i02go"]
 [ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="2_0kvwq"]
 [ext_resource type="PackedScene" uid="uid://bsluri14eaxp3" path="res://Scenes/Levels/Components/switchtoggle.tscn" id="2_komfk"]
-[ext_resource type="Script" path="res://Scenes/Levels/switch_toggle_manager.gd" id="2_opqmx"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/switch_toggle_manager.gd" id="2_opqmx"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="2_rnpyl"]
 
 [node name="LevelCommandRoom" type="Node2D"]
