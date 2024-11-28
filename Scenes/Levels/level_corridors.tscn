@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=14 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
 [ext_resource type="PackedScene" uid="uid://bfpb1xlfmeq4" path="res://Scenes/Levels/level_training_room.tscn" id="3_eu2yk"]
+[ext_resource type="PackedScene" uid="uid://d4be8ocshheuf" path="res://Scenes/Levels/level_command_room.tscn" id="4_jglsb"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="4_lh0ix"]
 [ext_resource type="PackedScene" uid="uid://dha465jh4krfi" path="res://Scenes/Levels/level_communications_room.tscn" id="5_3rb8y"]
 [ext_resource type="PackedScene" uid="uid://bbh2fonbqlnrn" path="res://Scenes/Levels/level_dormitory.tscn" id="5_pu52i"]
@@ -21,19 +22,20 @@ tile_set = ExtResource("1_mvrkh")
 
 [node name="Portals" type="Node2D" parent="."]
 
-[node name="Door_to_TrainingRoom" parent="Portals" instance=ExtResource("2_hhp8c")]
-position = Vector2(-156, 300)
-scn = ExtResource("3_eu2yk")
-door_tier = 3
+[node name="Door_to_GriffinOffice" parent="Portals" instance=ExtResource("2_hhp8c")]
+position = Vector2(442, 853)
+to_previous = true
+direction = 3
 
 [node name="Door_to_StorageArea" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(276, 300)
 scn = ExtResource("4_lh0ix")
 door_tier = 1
 
-[node name="Door_to_Dormitory" parent="Portals" instance=ExtResource("2_hhp8c")]
-position = Vector2(708, 300)
-scn = ExtResource("5_pu52i")
+[node name="Door_to_CommandRoom" parent="Portals" instance=ExtResource("2_hhp8c")]
+position = Vector2(-228, 492)
+scn = ExtResource("4_jglsb")
+direction = 2
 door_tier = 2
 
 [node name="Door_to_Communications" parent="Portals" instance=ExtResource("2_hhp8c")]
@@ -41,6 +43,11 @@ position = Vector2(778, 493)
 scn = ExtResource("5_3rb8y")
 direction = 3
 door_tier = 2
+
+[node name="Door_to_TrainingRoom" parent="Portals" instance=ExtResource("2_hhp8c")]
+position = Vector2(-156, 300)
+scn = ExtResource("3_eu2yk")
+door_tier = 3
 
 [node name="Door_to_ResearchLab" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(729, 732)
@@ -52,6 +59,17 @@ door_tier = 3
 position = Vector2(225, 517)
 scn = ExtResource("7_8m3ur")
 direction = 3
+
+[node name="Door_to_Dormitory" parent="Portals" instance=ExtResource("2_hhp8c")]
+position = Vector2(708, 300)
+scn = ExtResource("5_pu52i")
+door_tier = 2
+
+[node name="Door_to_Cafeteria" parent="Portals" instance=ExtResource("2_hhp8c")]
+position = Vector2(-276, 660)
+scn = ExtResource("12_5p1a4")
+direction = 1
+door_tier = 3
 
 [node name="Door_to_HealthClinic" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(327, 517)
@@ -67,17 +85,6 @@ scn = ExtResource("10_8axoh")
 position = Vector2(396, 660)
 scn = ExtResource("11_6ujim")
 door_tier = 3
-
-[node name="Door_to_Cafeteria" parent="Portals" instance=ExtResource("2_hhp8c")]
-position = Vector2(-276, 660)
-scn = ExtResource("12_5p1a4")
-direction = 1
-door_tier = 3
-
-[node name="Door_to_GriffinOffice" parent="Portals" instance=ExtResource("2_hhp8c")]
-position = Vector2(442, 853)
-to_previous = true
-direction = 3
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(469.07, 855)
