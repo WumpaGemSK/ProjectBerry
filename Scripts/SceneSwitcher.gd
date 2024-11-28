@@ -4,11 +4,16 @@ var prev_scene: Array[Node] = []
 
 var prev_position: Array[Vector2] = []
 var player: Player = null
+var offset_distance: float = 30
 
-func change_scene(scene: PackedScene, trigger: Node2D):
+var scenes: Dictionary = {}
+
+func change_scene(scene: PackedScene, trigger: ScenePortal):
 	if not player:
 		player = get_tree().get_nodes_in_group("Player")[0]
-	var new_scene = scene.instantiate()
+	if not scenes.has(scene.resource_name):
+		scenes.get_or_add(scene.resource_path, scene.instantiate())
+	var new_scene = scenes.get(scene.resource_path)
 	var spawn_point: Marker2D = new_scene.find_child("SpawnPoint")
 	if spawn_point == null:
 		print("No SpawnPoint found in the new scene %s" % scene.resource_name)
@@ -18,7 +23,9 @@ func change_scene(scene: PackedScene, trigger: Node2D):
 	prev_scene.push_back(get_current_scene())
 	get_scene_holder().call_deferred("remove_child", get_current_scene())
 	# Offset player from the collider to prevent instantly switching the scene
-	prev_position.push_back(player.global_position + ((player.global_position - trigger.global_position)+Vector2(0,1)))
+	var offset: Vector2 = direction_to_push(trigger.direction)*offset_distance
+	var prev_pos = trigger.global_position + offset
+	prev_position.push_back(prev_pos)
 	get_scene_holder().call_deferred("add_child",new_scene)
 	player.set_deferred("global_position", spawn_point.global_position)
 	prev_position.push_back(spawn_point.global_position)
@@ -46,3 +53,15 @@ func reload_scene():
 	if not prev_position.is_empty():
 		player.global_position = prev_position.back()
 	EventBus.reload_scene.emit()
+
+func direction_to_push(dir: ScenePortal.Direction) -> Vector2:
+	match dir:
+		ScenePortal.Direction.UP:
+			return Vector2.DOWN
+		ScenePortal.Direction.DOWN:
+			return Vector2.UP
+		ScenePortal.Direction.LEFT:
+			return Vector2.RIGHT
+		ScenePortal.Direction.RIGHT:
+			return Vector2.LEFT
+	return Vector2.ZERO

@@ -1,4 +1,5 @@
 extends Node2D
+class_name ScenePortal
 
 #region Export variables
 ## Scene to switch to

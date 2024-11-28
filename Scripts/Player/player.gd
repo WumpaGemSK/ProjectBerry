@@ -46,7 +46,7 @@ var ranged_weapon : Weapon = null
 #endregion
 
 ## Set this to stop input
-var paused: bool = false
+var paused: bool = true
 
 func _ready():
 	speed = normal_speed
@@ -55,6 +55,7 @@ func _ready():
 	EventBus.resume.connect(func(): paused= false)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 	EventBus.retry_continue.connect(on_retry_continue)
+	EventBus.countdown_start.connect(func(): paused = false)
 	my_animated_sprite.animation_finished.connect(func(): state = PlayerStates.NORMAL)
 	#panic.connect(on_panic)
 
@@ -66,7 +67,6 @@ func _process(_delta):
 		state = PlayerStates.ATTACKING
 	elif Input.is_action_pressed("ranged_attack") and ranged_weapon != null:
 		ranged_weapon.attack(global_position, facing_vector[facing_direction])
-	
 	if Input.is_action_just_pressed("sneak") and not is_panicking():
 		state = PlayerStates.SNEAKING
 	if Input.is_action_just_released("sneak") and not is_panicking():
@@ -104,14 +104,16 @@ func _physics_process(_delta: float) -> void:
 	play_animation()
 	move_and_slide()
 	#region Push moveable boxes
-	if Input.is_action_pressed("sneak"):
-		for i in get_slide_collision_count():
-			var coll = get_slide_collision(i)
-			var collider = coll.get_collider()
-			if collider is RigidBody2D:
-				var force = speed
-				state = PlayerStates.PUSHING
-				collider.apply_central_impulse(-coll.get_normal()*force)
+	var coll_count = get_slide_collision_count()
+	for i in coll_count:
+		var coll = get_slide_collision(i)
+		var collider = coll.get_collider()
+		if collider is RigidBody2D:
+			var force = speed
+			state = PlayerStates.PUSHING
+			collider.apply_central_impulse(-coll.get_normal()*force)
+	if coll_count == 0:
+		state = PlayerStates.NORMAL
 	#endregion
 
 func take_damage(amount: int):

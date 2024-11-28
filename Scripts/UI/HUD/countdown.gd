@@ -20,4 +20,5 @@ func update_label(time_left: float):
 	label.text = Utils.format_time(time_left)
 
 func _process(_delta):
-	update_label(timer.time_left)
+	if timer.time_left > 0:
+		update_label(timer.time_left)
