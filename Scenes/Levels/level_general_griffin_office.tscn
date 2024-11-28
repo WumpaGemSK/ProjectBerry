@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://p312dhpbtjn1"]
+[gd_scene load_steps=10 format=4 uid="uid://p312dhpbtjn1"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_wp05d"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="3_bpe7f"]
 [ext_resource type="Texture2D" uid="uid://05ls38iiiya0" path="res://Assets/Textures/Environment/Props/GeneralGriffinDesk.png" id="3_fatna"]
 [ext_resource type="Texture2D" uid="uid://dw42j5mh4fo6b" path="res://Assets/Textures/Environment/Props/terminal.png" id="3_i8ujw"]
 [ext_resource type="PackedScene" uid="uid://d0a7dou47agdx" path="res://Scenes/Levels/level_corridors.tscn" id="4_jtqvp"]
+[ext_resource type="Texture2D" uid="uid://dodyr8eirans4" path="res://Assets/Textures/Environment/Props/chair_sprite_alt.png" id="6_c4p3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hcuj"]
 size = Vector2(60, 74.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq2jg"]
 size = Vector2(36, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6tt8"]
+size = Vector2(35, 18)
 
 [node name="Level_GeneralGriffinOffice" type="Node2D"]
 
@@ -46,3 +50,13 @@ texture = ExtResource("3_i8ujw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Desk/Terminal"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_fq2jg")
+
+[node name="Chair" type="StaticBody2D" parent="."]
+position = Vector2(42, 102)
+
+[node name="Sprite2D" type="Sprite2D" parent="Chair"]
+texture = ExtResource("6_c4p3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_b6tt8")

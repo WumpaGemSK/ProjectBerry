@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=4 uid="uid://dyjh511xabodo"]
+[gd_scene load_steps=10 format=4 uid="uid://dyjh511xabodo"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_c051a"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_tfy1d"]
+[ext_resource type="Texture2D" uid="uid://dko0gkb76etqb" path="res://Assets/Textures/Environment/Props/storage_cabinets_health_cabinet_sprite.png" id="3_lb5rl"]
+[ext_resource type="Texture2D" uid="uid://bv0yylu3rnpfx" path="res://Assets/Textures/Environment/Props/health_clinic_desk.png" id="4_m0py1"]
+[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="5_byb8n"]
+[ext_resource type="Texture2D" uid="uid://dodyr8eirans4" path="res://Assets/Textures/Environment/Props/chair_sprite_alt.png" id="5_frsh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slori"]
+size = Vector2(144, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gc7wd"]
+size = Vector2(48, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foyu3"]
+size = Vector2(35, 18)
 
 [node name="Level_HealthClinic" type="Node2D"]
 
@@ -17,3 +30,46 @@ door_tier = 3
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(36, 84)
+
+[node name="StorageCabinets" type="StaticBody2D" parent="."]
+position = Vector2(72, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="StorageCabinets"]
+texture = ExtResource("3_lb5rl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StorageCabinets"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_slori")
+
+[node name="Desk" type="StaticBody2D" parent="."]
+position = Vector2(72, 138)
+
+[node name="Sprite2D" type="Sprite2D" parent="Desk"]
+texture = ExtResource("4_m0py1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
+shape = SubResource("RectangleShape2D_gc7wd")
+
+[node name="Chair" type="StaticBody2D" parent="."]
+position = Vector2(24, 138)
+
+[node name="Sprite2D" type="Sprite2D" parent="Chair"]
+texture = ExtResource("5_frsh8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_foyu3")
+
+[node name="Chair2" type="StaticBody2D" parent="."]
+position = Vector2(120, 138)
+
+[node name="Sprite2D" type="Sprite2D" parent="Chair2"]
+texture = ExtResource("5_frsh8")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair2"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_foyu3")
+
+[node name="Player" parent="." instance=ExtResource("5_byb8n")]
+position = Vector2(120, 84)

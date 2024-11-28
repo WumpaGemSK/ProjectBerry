@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bjoy6k8tw8h7i"
+path="res://.godot/imported/health_clinic_desk.aseprite-934669bdb7dc0a84e9dddf34452922aa.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/health_clinic_desk.aseprite"
+dest_files=["res://.godot/imported/health_clinic_desk.aseprite-934669bdb7dc0a84e9dddf34452922aa.res"]
+
+[params]
+
