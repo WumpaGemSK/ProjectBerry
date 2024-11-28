@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=9 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dha465jh4krfi" path="res://Scenes/Levels/level_communications_room.tscn" id="5_3rb8y"]
 [ext_resource type="PackedScene" uid="uid://bbg0x48lynegm" path="res://Scenes/Levels/level_research_lab.tscn" id="6_thq15"]
 [ext_resource type="PackedScene" uid="uid://cl8j6qti8ybd2" path="res://Scenes/Levels/level_crumpitt_office.tscn" id="7_8m3ur"]
+[ext_resource type="PackedScene" uid="uid://dyjh511xabodo" path="res://Scenes/Levels/level_health_clinic.tscn" id="8_ttnr5"]
 
 [node name="Level_Corridors" type="Node2D"]
 
@@ -49,6 +50,7 @@ direction = 3
 
 [node name="Door_to_HealthClinic" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(327, 517)
+scn = ExtResource("8_ttnr5")
 direction = 2
 door_tier = 3
 
