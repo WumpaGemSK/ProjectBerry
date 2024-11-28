@@ -18,6 +18,7 @@ tile_set = ExtResource("1_e45ia")
 position = Vector2(276, 84)
 to_previous = true
 direction = 2
+door_tier = 3
 opened = true
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
