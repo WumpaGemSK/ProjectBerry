@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bgwnnsec7o721"
+path="res://.godot/imported/exchange_officer_desk.aseprite-52ffad56eeab6ffdbecfdb5bcf4c1c19.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/exchange_officer_desk.aseprite"
+dest_files=["res://.godot/imported/exchange_officer_desk.aseprite-52ffad56eeab6ffdbecfdb5bcf4c1c19.res"]
+
+[params]
+

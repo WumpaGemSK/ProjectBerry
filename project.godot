@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Berry"
 config/tags=PackedStringArray("game_jam")
-run/main_scene="res://Scenes/UI/TitleScreen.tscn"
+run/main_scene="res://Scenes/UI/Start/ShiftyKittyLogo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.0509804, 0.101961, 0.101961, 1)
 boot_splash/image="res://Assets/Textures/UI Screens/shifty_kitty_logo_new_frame1.png"
@@ -28,6 +28,7 @@ Inventory="*res://Scripts/Inventory.gd"
 Game="*res://Scripts/Game.gd"
 Leaderboard="*res://Scripts/Leaderboard.gd"
 SceneSwitcher="*res://Scripts/SceneSwitcher.gd"
+TransitionScreen="*res://Scenes/UI/TransitionScreen.tscn"
 
 [display]
 

@@ -21,6 +21,7 @@ position = Vector2(36, 84)
 position = Vector2(12, 84)
 to_previous = true
 direction = 3
+door_tier = 2
 opened = true
 
 [node name="FaxMachine" parent="." instance=ExtResource("2_0kvwq")]
