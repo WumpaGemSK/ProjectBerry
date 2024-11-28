@@ -46,7 +46,7 @@ var ranged_weapon : Weapon = null
 #endregion
 
 ## Set this to stop input
-var paused: bool = false
+var paused: bool = true
 
 func _ready():
 	speed = normal_speed
@@ -55,6 +55,7 @@ func _ready():
 	EventBus.resume.connect(func(): paused= false)
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 	EventBus.retry_continue.connect(on_retry_continue)
+	EventBus.countdown_start.connect(func(): paused = false)
 	my_animated_sprite.animation_finished.connect(func(): state = PlayerStates.NORMAL)
 	#panic.connect(on_panic)
 
