@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=13 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
 [ext_resource type="PackedScene" uid="uid://bfpb1xlfmeq4" path="res://Scenes/Levels/level_training_room.tscn" id="3_eu2yk"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="4_lh0ix"]
 [ext_resource type="PackedScene" uid="uid://dha465jh4krfi" path="res://Scenes/Levels/level_communications_room.tscn" id="5_3rb8y"]
+[ext_resource type="PackedScene" uid="uid://bbh2fonbqlnrn" path="res://Scenes/Levels/level_dormitory.tscn" id="5_pu52i"]
 [ext_resource type="PackedScene" uid="uid://bbg0x48lynegm" path="res://Scenes/Levels/level_research_lab.tscn" id="6_thq15"]
 [ext_resource type="PackedScene" uid="uid://cl8j6qti8ybd2" path="res://Scenes/Levels/level_crumpitt_office.tscn" id="7_8m3ur"]
 [ext_resource type="PackedScene" uid="uid://dyjh511xabodo" path="res://Scenes/Levels/level_health_clinic.tscn" id="8_ttnr5"]
+[ext_resource type="PackedScene" uid="uid://21wnnmifx0jc" path="res://Scenes/Levels/level_restroom.tscn" id="10_8axoh"]
+[ext_resource type="PackedScene" uid="uid://d2jm3hkkc6pu1" path="res://Scenes/Levels/level_janitor_closet.tscn" id="11_6ujim"]
+[ext_resource type="PackedScene" uid="uid://0qp2y6fsdulr" path="res://Scenes/Levels/level_cafeteria.tscn" id="12_5p1a4"]
 
 [node name="Level_Corridors" type="Node2D"]
 
@@ -29,6 +33,7 @@ door_tier = 1
 
 [node name="Door_to_Dormitory" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(708, 300)
+scn = ExtResource("5_pu52i")
 door_tier = 2
 
 [node name="Door_to_Communications" parent="Portals" instance=ExtResource("2_hhp8c")]
@@ -56,13 +61,16 @@ door_tier = 3
 
 [node name="Door_to_Restroom" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(156, 660)
+scn = ExtResource("10_8axoh")
 
 [node name="Door_to_JanitorCloset" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(396, 660)
+scn = ExtResource("11_6ujim")
 door_tier = 3
 
 [node name="Door_to_Cafeteria" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(-276, 660)
+scn = ExtResource("12_5p1a4")
 direction = 1
 door_tier = 3
 
