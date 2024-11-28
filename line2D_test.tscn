@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://67f6p55c0ckk"]
+
+[ext_resource type="Texture2D" uid="uid://b20iqs8nyalvw" path="res://Project Berry - Level Design - Research Lab - Mockup (Alt).png" id="1_7qd8e"]
+[ext_resource type="Script" path="res://line_2d_test.gd" id="1_51heg"]
+[ext_resource type="Texture2D" uid="uid://bpwn7cyavqdn6" path="res://Assets/Textures/Environment/Props/StillCrate_Alt.png" id="3_t7khf"]
+
+[sub_resource type="Curve2D" id="Curve2D_o1o7j"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 75, 72, 0, 0, 0, 0, 75, 63, 0, 0, 0, 0, 93, 63, 0, 0, 0, 0, 93, 102, 0, 0, 0, 0, 111, 102, 0, 0, 0, 0, 111, 141, 0, 0, 0, 0, 153, 141, 0, 0, 0, 0, 153, 183, 0, 0, 0, 0, 171, 183, 0, 0, 0, 0, 171, 141, 0, 0, 0, 0, 213, 141, 0, 0, 0, 0, 213, 102, 0, 0, 0, 0, 255, 102, 0, 0, 0, 0, 255, 60, 0, 0, 0, 0, 273, 60, 0, 0, 0, 0, 273, 102, 0, 0, 0, 0, 315, 102, 0, 0, 0, 0, 315, 141, 0, 0, 0, 0, 354, 141, 0, 0, 0, 0, 354, 183, 0, 0, 0, 0, 414, 183, 0, 0, 0, 0, 414, 144, 0, 0, 0, 0, 438, 144, 0, 0, 0, 0, 438, 153)
+}
+point_count = 24
+
+[sub_resource type="Animation" id="Animation_chnj1"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l75ye"]
+_data = {
+"RESET": SubResource("Animation_chnj1")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_51heg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(256, 144)
+scale = Vector2(0.235, 0.235)
+texture = ExtResource("1_7qd8e")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(75, 72)
+rotation = -1.5708
+default_color = Color(0, 0, 0, 1)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o1o7j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(75, 72)
+rotation = -1.5708
+
+[node name="Marker2D" type="Marker2D" parent="Path2D/PathFollow2D"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_t7khf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l75ye")
+}
