@@ -27,6 +27,9 @@ position = Vector2(442, 853)
 to_previous = true
 direction = 3
 
+[node name="SpawnPoint" type="Marker2D" parent="Portals/Door_to_GriffinOffice"]
+position = Vector2(26, -1)
+
 [node name="Door_to_StorageArea" parent="Portals" instance=ExtResource("2_hhp8c")]
 position = Vector2(276, 300)
 scn = ExtResource("4_lh0ix")
@@ -85,6 +88,3 @@ scn = ExtResource("10_8axoh")
 position = Vector2(396, 660)
 scn = ExtResource("11_6ujim")
 door_tier = 3
-
-[node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(469.07, 855)
