@@ -26,6 +26,7 @@ func on_item_pickup(item: Item):
 		return # Early return to prevent increasing the quantity of keys
 	if item.is_code():
 		inventory.get_or_add(item.item_name, item)
+		on_inventory_update.emit(inventory)
 		return
 	if inventory.has(item.unique_key()):
 		var existing_item : Item = inventory.get(item.unique_key())
