@@ -13,10 +13,10 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.05, 0.1, 0.1, 0), Color(0.0503268, 0.100654, 0.100654, 0.333333), Color(0.0506536, 0.101307, 0.101307, 0.666667), Color(0.0509804, 0.101961, 0.101961, 1)]
+"values": [Color(0.05, 0.1, 0.1, 0), Color(0.0501634, 0.100327, 0.100327, 0.166667), Color(0.0503268, 0.100654, 0.100654, 0.333333), Color(0.0504901, 0.10098, 0.10098, 0.5), Color(0.0506536, 0.101307, 0.101307, 0.666667), Color(0.050817, 0.101634, 0.101634, 0.833333), Color(0.0509804, 0.101961, 0.101961, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_e828y"]
@@ -45,10 +45,10 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.0509804, 0.101961, 0.101961, 1), Color(0.0509804, 0.101961, 0.101961, 0.666667), Color(0.0509804, 0.101961, 0.101961, 0.333333), Color(0.05, 0.1, 0.1, 0)]
+"values": [Color(0.0509804, 0.101961, 0.101961, 1), Color(0.050817, 0.101634, 0.101634, 0.833333), Color(0.0506536, 0.101307, 0.101307, 0.666667), Color(0.0504902, 0.10098, 0.10098, 0.5), Color(0.0503268, 0.100654, 0.100654, 0.333333), Color(0.0501634, 0.100327, 0.100327, 0.166667), Color(0.05, 0.1, 0.1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85l33"]

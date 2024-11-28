@@ -28,6 +28,7 @@ Inventory="*res://Scripts/Inventory.gd"
 Game="*res://Scripts/Game.gd"
 Leaderboard="*res://Scripts/Leaderboard.gd"
 SceneSwitcher="*res://Scripts/SceneSwitcher.gd"
+TransitionScreen="*res://Scenes/UI/TransitionScreen.tscn"
 
 [display]
 
