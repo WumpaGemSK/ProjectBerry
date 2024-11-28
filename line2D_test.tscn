@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bpwn7cyavqdn6" path="res://Assets/Textures/Environment/Props/StillCrate_Alt.png" id="3_t7khf"]
 
 [sub_resource type="Curve2D" id="Curve2D_o1o7j"]
-bake_interval = 0.01
+bake_interval = 0.86
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 75, 72, 0, 0, 0, 0, 75, 63, 0, 0, 0, 0, 93, 63, 0, 0, 0, 0, 93, 102, 0, 0, 0, 0, 111, 102, 0, 0, 0, 0, 111, 141, 0, 0, 0, 0, 153, 141, 0, 0, 0, 0, 153, 183, 0, 0, 0, 0, 171, 183, 0, 0, 0, 0, 171, 141, 0, 0, 0, 0, 213, 141, 0, 0, 0, 0, 213, 102, 0, 0, 0, 0, 255, 102, 0, 0, 0, 0, 255, 60, 0, 0, 0, 0, 273, 60, 0, 0, 0, 0, 273, 102, 0, 0, 0, 0, 315, 102, 0, 0, 0, 0, 315, 141, 0, 0, 0, 0, 354, 141, 0, 0, 0, 0, 354, 183, 0, 0, 0, 0, 414, 183, 0, 0, 0, 0, 414, 144, 0, 0, 0, 0, 438, 144, 0, 0, 0, 0, 438, 153)
+"points": PackedVector2Array(0, 0, 0, 0, 75, 72, 0, 0, 0, 0, 75, 63, 0, 0, 0, 0, 93, 63, 0, 0, 0, 0, 93, 102, 0, 0, 0, 0, 111, 102, 0, 0, 0, 0, 111, 141, 0, 0, 0, 0, 153, 141, 0, 0, 0, 0, 152, 182, 0, 0, 0, 0, 172, 183, 0, 0, 0, 0, 171, 141, 0, 0, 0, 0, 213, 141, 0, 0, 0, 0, 213, 102, 0, 0, 0, 0, 253, 102, 0, 0, 0, 0, 253, 60, 0, 0, 0, 0, 273, 60, 0, 0, 0, 0, 273, 102, 0, 0, 0, 0, 315, 102, 0, 0, 0, 0, 315, 141, 0, 0, 0, 0, 354, 141, 0, 0, 0, 0, 354, 183, 0, 0, 0, 0, 414, 183, 0, 0, 0, 0, 414, 144, 0, 0, 0, 0, 438, 144, 0, 0, 0, 0, 438, 162)
 }
 point_count = 24
 
@@ -20,17 +20,18 @@ scale = Vector2(0.235, 0.235)
 texture = ExtResource("1_7qd8e")
 
 [node name="Line2D" type="Line2D" parent="."]
-position = Vector2(75, 72)
-rotation = -1.5708
+unique_name_in_owner = true
 default_color = Color(0, 0, 0, 1)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_o1o7j")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Path2D"]
+position = Vector2(75, 72)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_t7khf")
+
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(75, 72)
 rotation = -1.5708
-
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_t7khf")

@@ -2,16 +2,21 @@ extends Node2D
 
 @onready var path_2d: Path2D = $Path2D
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
-@onready var line_2d: Line2D = $Line2D
+@onready var line_2d: Line2D = %Line2D
+
+var anim: bool = false
 
 func _process(delta: float) -> void:
-	
 	if Input.is_action_just_pressed("ui_accept"):
-		
 		print("DRAW!!")
-		
+		anim = true
 		var tween = create_tween()
-		tween.tween_property(path_follow_2d, "progress_ratio", 1, 10)
-		
-		var point = path_follow_2d.position
+		# If the final value is 1, it add one extra point that goes back to the start of the path
+		# With 0.99 it doesn't happen
+		tween.tween_property(path_follow_2d, "progress_ratio", 0.99, 10)
+		tween.finished.connect(func(): anim = false)
+	
+	if anim:
+		# Point spam but it shouldn't matter
+		var point = to_global(path_follow_2d.position)
 		line_2d.add_point(point)
