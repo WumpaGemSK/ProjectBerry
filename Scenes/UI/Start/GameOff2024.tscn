@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjfywdhaawc64"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Start/game_off_2024.gd" id="1_1r2ds"]
+[ext_resource type="Texture2D" uid="uid://h5sup8e4ha0a" path="res://Assets/Textures/UI Screens/Made-for-Game-Off.png" id="1_cl2mu"]
+[ext_resource type="PackedScene" uid="uid://f7kk4ik4y6nf" path="res://Scenes/UI/TitleScreen.tscn" id="2_qv55p"]
+
+[node name="GameOff2024" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1r2ds")
+next_scene = ExtResource("2_qv55p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cl2mu")
