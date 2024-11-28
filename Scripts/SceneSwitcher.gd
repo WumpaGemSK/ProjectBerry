@@ -5,10 +5,14 @@ var prev_scene: Array[Node] = []
 var prev_position: Array[Vector2] = []
 var player: Player = null
 
+var scenes: Dictionary = {}
+
 func change_scene(scene: PackedScene, trigger: Node2D):
 	if not player:
 		player = get_tree().get_nodes_in_group("Player")[0]
-	var new_scene = scene.instantiate()
+	if not scenes.has(scene.resource_name):
+		scenes.get_or_add(scene.resource_path, scene.instantiate())
+	var new_scene = scenes.get(scene.resource_path)
 	var spawn_point: Marker2D = new_scene.find_child("SpawnPoint")
 	if spawn_point == null:
 		print("No SpawnPoint found in the new scene %s" % scene.resource_name)
