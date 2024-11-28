@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bfnjq8lryncn8"
+path="res://.godot/imported/CommandRoomScreen.aseprite-40749cffa1dd4c232abb376c55897d4d.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Environment/Props/CommandRoomScreen.aseprite"
+dest_files=["res://.godot/imported/CommandRoomScreen.aseprite-40749cffa1dd4c232abb376c55897d4d.res"]
+
+[params]
+

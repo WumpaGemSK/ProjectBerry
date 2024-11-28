@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://d4be8ocshheuf"]
+[gd_scene load_steps=9 format=4 uid="uid://d4be8ocshheuf"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_command_room.gd" id="1_6yvgb"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_i02go"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bsluri14eaxp3" path="res://Scenes/Levels/Components/switchtoggle.tscn" id="2_komfk"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/switch_toggle_manager.gd" id="2_opqmx"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="2_rnpyl"]
+[ext_resource type="Texture2D" uid="uid://cqf3pygkageq1" path="res://Assets/Textures/Environment/Props/CommandRoomScreen.png" id="7_vi7g7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qhdx"]
+size = Vector2(132, 30)
 
 [node name="LevelCommandRoom" type="Node2D"]
 script = ExtResource("1_6yvgb")
@@ -26,6 +30,16 @@ opened = true
 
 [node name="FaxMachine" parent="." instance=ExtResource("2_0kvwq")]
 position = Vector2(60, 30)
+
+[node name="CommandRoomScreen" type="StaticBody2D" parent="."]
+position = Vector2(174, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="CommandRoomScreen"]
+texture = ExtResource("7_vi7g7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandRoomScreen"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_1qhdx")
 
 [node name="SwitchManager" type="Node" parent="." node_paths=PackedStringArray("toggle_order")]
 script = ExtResource("2_opqmx")
