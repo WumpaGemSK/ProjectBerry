@@ -42,7 +42,7 @@ position = Vector2(0, -10.25)
 shape = SubResource("RectangleShape2D_4hcuj")
 
 [node name="Terminal" type="Area2D" parent="Desk"]
-position = Vector2(6, 18)
+position = Vector2(6, 17)
 
 [node name="Sprite2D" type="Sprite2D" parent="Desk/Terminal"]
 texture = ExtResource("3_i8ujw")

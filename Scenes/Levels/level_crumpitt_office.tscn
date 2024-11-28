@@ -50,7 +50,7 @@ position = Vector2(86, 58)
 item = ExtResource("7_ynarm")
 
 [node name="Key1" parent="." instance=ExtResource("6_mqxqr")]
-position = Vector2(85, 112)
+position = Vector2(86, 108)
 item = ExtResource("8_7i7gx")
 
 [node name="Chair" type="StaticBody2D" parent="."]

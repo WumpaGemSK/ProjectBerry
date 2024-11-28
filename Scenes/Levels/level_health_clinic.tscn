@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dyjh511xabodo"]
+[gd_scene load_steps=9 format=4 uid="uid://dyjh511xabodo"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_c051a"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_tfy1d"]
 [ext_resource type="Texture2D" uid="uid://dko0gkb76etqb" path="res://Assets/Textures/Environment/Props/storage_cabinets_health_cabinet_sprite.png" id="3_lb5rl"]
 [ext_resource type="Texture2D" uid="uid://bv0yylu3rnpfx" path="res://Assets/Textures/Environment/Props/health_clinic_desk.png" id="4_m0py1"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="5_byb8n"]
 [ext_resource type="Texture2D" uid="uid://dodyr8eirans4" path="res://Assets/Textures/Environment/Props/chair_sprite_alt.png" id="5_frsh8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slori"]
@@ -70,6 +69,3 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chair2"]
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_foyu3")
-
-[node name="Player" parent="." instance=ExtResource("5_byb8n")]
-position = Vector2(120, 84)
