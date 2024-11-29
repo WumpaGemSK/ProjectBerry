@@ -1,13 +1,15 @@
 [gd_scene load_steps=6 format=4 uid="uid://d2jm3hkkc6pu1"]
 
-[ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_janitor_closet.gd" id="1_15xpe"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_aioyk"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_hxx32"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_rwm87"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="4_42vn2"]
 [ext_resource type="Resource" uid="uid://6tgl5sm2kh4q" path="res://Resources/Envelopes/hint_bivou.tres" id="5_5qj4g"]
 
-[node name="Level_Janitor_Closet" type="Node2D"]
-script = ExtResource("1_15xpe")
+[node name="Level_Janitor_Closet" type="Node2D" node_paths=PackedStringArray("pickable_item")]
+script = ExtResource("1_hxx32")
+pickable_item = NodePath("Pickable_Item")
+code = "BIVOU"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAFAAIAAAABAAAAAAAFAAEAAAABAAAAAAAFAAAAAAABAAAAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAD//wIAAAAEAAAAAAABAAMAAAAAAAEAAAAAAAMAAAAAAAEAAAD//wMAAAADAAEAAAACAP//AAACAAAAAAACAAMAAAAAAAEAAAADAP//AAACAAAAAAADAAMAAAAAAAEAAAAEAP//AAACAAAAAAAEAAMAAAAAAAEAAAAFAP//AAACAAAAAAAFAAMAAAAAAAEAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAP//AAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAEAAEAAAAGAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAA=")
