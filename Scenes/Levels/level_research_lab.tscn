@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bbg0x48lynegm"]
+[gd_scene load_steps=14 format=4 uid="uid://bbg0x48lynegm"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_research_lab.gd" id="1_81482"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_e45ia"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4mnt7gop2447" path="res://Assets/Textures/Environment/Props/research_lab_table_alt.png" id="8_5fpv5"]
 [ext_resource type="Texture2D" uid="uid://b0404pk3tnags" path="res://Assets/Textures/Environment/Props/research_lab_distiller.png" id="8_rrali"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/research_lab_line.gd" id="10_qu6qp"]
+[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="11_po0kb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpk3b"]
 size = Vector2(216, 103)
@@ -40,6 +41,7 @@ position = Vector2(240, 84)
 
 [node name="FaxMachine" parent="." instance=ExtResource("3_javyl")]
 position = Vector2(192, 30)
+room = 4
 
 [node name="LotteryManager" type="Node" parent="." node_paths=PackedStringArray("correct_flask")]
 script = ExtResource("5_f0iy8")
@@ -126,3 +128,6 @@ curve = SubResource("Curve2D_hdiog")
 [node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LineRenderer/Path2D"]
 position = Vector2(180, 271)
 rotation = -1.5708
+
+[node name="Player" parent="." instance=ExtResource("11_po0kb")]
+position = Vector2(148, 145)
