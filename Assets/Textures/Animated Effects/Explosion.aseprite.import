@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c34exxnkjk04f"
+path="res://.godot/imported/Explosion.aseprite-dd77fd7d1f16098bf4c2b3a9b96427d8.res"
+
+[deps]
+
+source_file="res://Assets/Textures/Animated Effects/Explosion.aseprite"
+dest_files=["res://.godot/imported/Explosion.aseprite-dd77fd7d1f16098bf4c2b3a9b96427d8.res"]
+
+[params]
+
