@@ -17,9 +17,9 @@ size = Vector2(216, 103)
 [sub_resource type="Curve2D" id="Curve2D_s3c4d"]
 bake_interval = 0.86
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 179, 273, 0, 0, 0, 0, 179, 268, 0, 0, 0, 0, 300, 268, 0, 0, 0, 0, 420, 268, 0, 0, 0, 0, 420, 276)
+"points": PackedVector2Array(0, 0, 0, 0, 179, 273, 0, 0, 0, 0, 179, 268, 0, 0, 0, 0, 222, 269, 0, 0, 0, 0, 222, 244, 0, 0, 0, 0, 233, 244, 0, 0, 0, 0, 232, 269, 0, 0, 0, 0, 295, 269, 0, 0, 0, 0, 295, 245, 0, 0, 0, 0, 305, 245, 0, 0, 0, 0, 305, 269, 0, 0, 0, 0, 421, 268, 0, 0, 0, 0, 420, 278)
 }
-point_count = 5
+point_count = 12
 
 [node name="LevelResearchLab" type="Node2D"]
 script = ExtResource("1_81482")
