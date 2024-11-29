@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cecumay55j86w"]
+
+[ext_resource type="Texture2D" uid="uid://0qa07uph8rjx" path="res://Assets/Textures/Environment/Props/cafeteria_table.png" id="1_ofb64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsl74"]
+size = Vector2(40, 76)
+
+[node name="CafeteriaTable" type="StaticBody2D"]
+position = Vector2(66, 96)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ofb64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_tsl74")
