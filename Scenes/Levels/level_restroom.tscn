@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://21wnnmifx0jc"]
+[gd_scene load_steps=9 format=4 uid="uid://21wnnmifx0jc"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_nrqx3"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_av5o7"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b0x0ssd1klkd7" path="res://Assets/Textures/Environment/Props/toilet.png" id="4_pvjhn"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="5_soda7"]
 [ext_resource type="Resource" uid="uid://cffypxfbe1pgc" path="res://Resources/Secrets/general_griffin_log.tres" id="6_5ismf"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="7_vkjfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wab2p"]
 size = Vector2(144, 16)
@@ -51,6 +50,3 @@ shape = SubResource("RectangleShape2D_8wq22")
 [node name="Pickable_Item" parent="." instance=ExtResource("5_soda7")]
 position = Vector2(60, 0)
 item = ExtResource("6_5ismf")
-
-[node name="Player" parent="." instance=ExtResource("7_vkjfy")]
-position = Vector2(126, 48)
