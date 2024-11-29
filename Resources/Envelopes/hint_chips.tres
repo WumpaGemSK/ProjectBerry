@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bb1o5y6knvbb3"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_6ksbw"]
+
+[resource]
+script = ExtResource("1_6ksbw")
+item_name = "Envelope 2"
+description = "I wish they could’ve kept the snack vending machine in the corridor. "
+type = 6
+effect = 1

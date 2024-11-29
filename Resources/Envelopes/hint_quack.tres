@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://do3jk14fo27gw"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_birae"]
+
+[resource]
+script = ExtResource("1_birae")
+item_name = "Envelope 4"
+description = "I hope nobody ever notices that I never passed medical school. Certainly not Mr. Crumpitt who came with a case of salmonella. He would call me what you would hear a duck say, for some reason."
+type = 6
+effect = 1

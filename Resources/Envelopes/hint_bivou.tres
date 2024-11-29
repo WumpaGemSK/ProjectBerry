@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://6tgl5sm2kh4q"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_xn6ec"]
+
+[resource]
+script = ExtResource("1_xn6ec")
+item_name = "Envelope 1"
+description = "I got an itch that you'ditch you’d find the answer from an outsider of great commentary."
+type = 6
+effect = 1
