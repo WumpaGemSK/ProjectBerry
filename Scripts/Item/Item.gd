@@ -31,6 +31,8 @@ enum Item_type {
 	CRICKET_BAT,
 	## Pistol item, occupies ranged weapon slot and is NOT added into the inventory
 	PISTOL,
+	## Secret collectible, is counted on the secrets tally in the status screen, influencing which ranking the player earns
+	SECRET,
 	## Type that has tells how many different types there're
 	ITEM_COUNT,
 }

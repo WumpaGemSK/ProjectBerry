@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://cl8j6qti8ybd2"]
+[gd_scene load_steps=14 format=4 uid="uid://cl8j6qti8ybd2"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_3v52g"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_p2c5d"]
 [ext_resource type="Texture2D" uid="uid://d4hsmls8ihcrv" path="res://Assets/Textures/Environment/Props/exchange_officer_desk.png" id="3_0243m"]
 [ext_resource type="Texture2D" uid="uid://dodyr8eirans4" path="res://Assets/Textures/Environment/Props/chair_sprite_alt.png" id="4_efnrk"]
-[ext_resource type="Texture2D" uid="uid://di2xsj5u7kgwf" path="res://Assets/Textures/Items/SecretItems_Sheet.png" id="5_hml0g"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="6_mqxqr"]
 [ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="7_ynarm"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="8_7i7gx"]
+[ext_resource type="Texture2D" uid="uid://cu005wqmhcmdc" path="res://Assets/Textures/Environment/Props/paper_waste_basket_full.png" id="8_25kg6"]
+[ext_resource type="Texture2D" uid="uid://b65a58j3jvw05" path="res://Assets/Textures/Environment/Props/paper_waste_basket_overlay.png" id="9_gfitf"]
+[ext_resource type="Resource" uid="uid://p3j3obuyohxw" path="res://Resources/Secrets/davenport_daily_newspaper.tres" id="9_hbwa8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tny7"]
 size = Vector2(48, 62)
@@ -15,11 +17,8 @@ size = Vector2(48, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owlfm"]
 size = Vector2(35, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpf8m"]
-size = Vector2(16, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_iul6n"]
-radius = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6g0o"]
+size = Vector2(24, 7)
 
 [node name="Level_CrumpittOffice" type="Node2D"]
 
@@ -63,19 +62,19 @@ texture = ExtResource("4_efnrk")
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_owlfm")
 
-[node name="WasteBasket" type="StaticBody2D" parent="."]
-position = Vector2(24, 20)
+[node name="PaperWasteBasket" type="StaticBody2D" parent="."]
+position = Vector2(24, 18)
 
-[node name="Sprite2D" type="Sprite2D" parent="WasteBasket"]
-texture = ExtResource("5_hml0g")
-hframes = 3
-vframes = 2
-frame = 3
+[node name="FullSprite" type="Sprite2D" parent="PaperWasteBasket"]
+texture = ExtResource("8_25kg6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WasteBasket"]
-shape = SubResource("RectangleShape2D_qpf8m")
+[node name="Pickable_Item" parent="PaperWasteBasket" instance=ExtResource("6_mqxqr")]
+position = Vector2(2, 1)
+item = ExtResource("9_hbwa8")
 
-[node name="InteractArea" type="Area2D" parent="WasteBasket"]
+[node name="Overlay" type="Sprite2D" parent="PaperWasteBasket"]
+texture = ExtResource("9_gfitf")
 
-[node name="InteractCollisionShape" type="CollisionShape2D" parent="WasteBasket/InteractArea"]
-shape = SubResource("CircleShape2D_iul6n")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaperWasteBasket"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_a6g0o")
