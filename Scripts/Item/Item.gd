@@ -78,6 +78,9 @@ func is_upgrade() -> bool:
 		_:
 			return false
 
+func is_secret() -> bool:
+	return type == Item_type.SECRET
+
 ## Helper function to see if the item is a key
 func is_key() -> bool:
 	return type == Item_type.KEY

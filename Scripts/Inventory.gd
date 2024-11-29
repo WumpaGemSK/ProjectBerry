@@ -16,6 +16,9 @@ func on_item_pickup(item: Item):
 	if item.is_weapon() or item.is_upgrade():
 		EventBus.use_item.emit(item)
 		return
+	if item.is_secret():
+		EventBus.secret_pickup.emit()
+		return
 	if item.is_key():
 		if inventory.has(item.type):
 			if item.effect > inventory[item.type].effect:

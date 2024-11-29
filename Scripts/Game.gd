@@ -37,6 +37,7 @@ func _ready():
 	shuffled_code = shuffle_string(selected_code)
 	EventBus.try_code.connect(on_code_try)
 	EventBus.player_death.connect(on_player_death)
+	EventBus.secret_pickup.connect(on_secret_pickup)
 
 func on_code_try(code: String):
 	if code == selected_code:
