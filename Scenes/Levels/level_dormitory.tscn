@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bbh2fonbqlnrn"]
+[gd_scene load_steps=8 format=4 uid="uid://bbh2fonbqlnrn"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_1ltkl"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_57dhs"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="3_qka7t"]
 [ext_resource type="Resource" uid="uid://cq8ie1ermp4br" path="res://Resources/Items/key_3.tres" id="4_70jnm"]
 [ext_resource type="Resource" uid="uid://b2xxwufwi5gq6" path="res://Resources/Envelopes/hint_knots.tres" id="6_h008i"]
-
+[ext_resource type="Resource" uid="uid://1rjfvetd3lme" path="res://Resources/Secrets/teddy_bear.tres" id="7_iefpp"]
 
 [node name="Level_Dormitory" type="Node2D" node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("1_57dhs")
@@ -26,10 +26,14 @@ door_tier = 2
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(156, 276)
 
-[node name="Pickable_Item" parent="." instance=ExtResource("3_qka7t")]
+[node name="Tier3Key" parent="." instance=ExtResource("3_qka7t")]
 position = Vector2(36, 252)
 item = ExtResource("4_70jnm")
 
 [node name="Hint" parent="." instance=ExtResource("3_qka7t")]
-position = Vector2(35, 51)
+position = Vector2(36, 60)
 item = ExtResource("6_h008i")
+
+[node name="TeddyBear" parent="." instance=ExtResource("3_qka7t")]
+position = Vector2(300, 60)
+item = ExtResource("7_iefpp")
