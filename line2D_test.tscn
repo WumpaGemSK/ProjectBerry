@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://67f6p55c0ckk"]
 
 [ext_resource type="Texture2D" uid="uid://b20iqs8nyalvw" path="res://Project Berry - Level Design - Research Lab - Mockup (Alt).png" id="1_7qd8e"]
-[ext_resource type="Script" path="res://line_2d_test.gd" id="1_51heg"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/research_lab_line.gd" id="1_51heg"]
 
 [sub_resource type="Curve2D" id="Curve2D_o1o7j"]
 bake_interval = 0.86
