@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bbg0x48lynegm"]
+[gd_scene load_steps=16 format=4 uid="uid://bbg0x48lynegm"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_research_lab.gd" id="1_81482"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_e45ia"]
@@ -10,10 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://c4mnt7gop2447" path="res://Assets/Textures/Environment/Props/research_lab_table_alt.png" id="8_5fpv5"]
 [ext_resource type="Texture2D" uid="uid://b0404pk3tnags" path="res://Assets/Textures/Environment/Props/research_lab_distiller.png" id="8_rrali"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/research_lab_line.gd" id="10_qu6qp"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="11_po0kb"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="12_w2n4o"]
+[ext_resource type="Resource" uid="uid://bo3tndsnwn8hf" path="res://Resources/Items/pistol_damage_upgrade.tres" id="13_5l23v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpk3b"]
 size = Vector2(216, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gr1e"]
+size = Vector2(20, 10)
 
 [sub_resource type="Curve2D" id="Curve2D_hdiog"]
 bake_interval = 0.01
@@ -48,10 +52,10 @@ script = ExtResource("5_f0iy8")
 correct_flask = NodePath("Flask4")
 
 [node name="Flask" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
-position = Vector2(180, 228)
+position = Vector2(180, 204)
 
 [node name="Flask2" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
-position = Vector2(180, 204)
+position = Vector2(180, 228)
 
 [node name="Flask3" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
 position = Vector2(180, 252)
@@ -69,11 +73,15 @@ texture = ExtResource("8_5fpv5")
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_rpk3b")
 
-[node name="Distiller" type="Node2D" parent="LotteryManager"]
+[node name="Distiller" type="StaticBody2D" parent="LotteryManager"]
 position = Vector2(420, 229)
 
 [node name="Sprite2D" type="Sprite2D" parent="LotteryManager/Distiller"]
 texture = ExtResource("8_rrali")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LotteryManager/Distiller"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_2gr1e")
 
 [node name="Tips" type="Node2D" parent="LotteryManager"]
 
@@ -129,5 +137,6 @@ curve = SubResource("Curve2D_hdiog")
 position = Vector2(180, 271)
 rotation = -1.5708
 
-[node name="Player" parent="." instance=ExtResource("11_po0kb")]
-position = Vector2(148, 145)
+[node name="DamageUpgrade" parent="." instance=ExtResource("12_w2n4o")]
+position = Vector2(156, 84)
+item = ExtResource("13_5l23v")

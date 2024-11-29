@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=4 uid="uid://d2jm3hkkc6pu1"]
+[gd_scene load_steps=10 format=4 uid="uid://d2jm3hkkc6pu1"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_aioyk"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_hxx32"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_rwm87"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="4_42vn2"]
 [ext_resource type="Resource" uid="uid://6tgl5sm2kh4q" path="res://Resources/Envelopes/hint_bivou.tres" id="5_5qj4g"]
+[ext_resource type="Texture2D" uid="uid://do4ksn62ioub8" path="res://Assets/Textures/Environment/Props/janitor_broom.png" id="6_wtlqa"]
+[ext_resource type="Texture2D" uid="uid://b7vupjqsgulld" path="res://Assets/Textures/Environment/Props/janitor_water_bucket.png" id="7_tkg75"]
+[ext_resource type="Resource" uid="uid://1e55es1vkmld" path="res://Resources/Items/pistol_max_ammo_upgrade.tres" id="8_l3med"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1cft"]
+size = Vector2(20, 4)
 
 [node name="Level_Janitor_Closet" type="Node2D" node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("1_hxx32")
-pickable_item = NodePath("Pickable_Item")
+pickable_item = NodePath("Hint")
 code = "BIVOU"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -24,6 +30,24 @@ door_tier = 3
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(60, 36)
 
-[node name="Pickable_Item" parent="." instance=ExtResource("4_42vn2")]
+[node name="Hint" parent="." instance=ExtResource("4_42vn2")]
 position = Vector2(131, 59)
 item = ExtResource("5_5qj4g")
+
+[node name="JanitorBroom" type="Sprite2D" parent="."]
+position = Vector2(120, 12)
+texture = ExtResource("6_wtlqa")
+
+[node name="WaterBucket" type="StaticBody2D" parent="."]
+position = Vector2(84, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="WaterBucket"]
+texture = ExtResource("7_tkg75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterBucket"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_d1cft")
+
+[node name="MaxAmmoUpgrade" parent="." instance=ExtResource("4_42vn2")]
+position = Vector2(12, 12)
+item = ExtResource("8_l3med")

@@ -20,7 +20,7 @@ size = Vector2(35, 18)
 
 [node name="Level_HealthClinic" type="Node2D" node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("1_bqk3b")
-pickable_item = NodePath("Pickable_Item")
+pickable_item = NodePath("Hint")
 code = "QUACK"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -76,6 +76,6 @@ flip_h = true
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_foyu3")
 
-[node name="Pickable_Item" parent="." instance=ExtResource("6_fvuvt")]
+[node name="Hint" parent="." instance=ExtResource("6_fvuvt")]
 position = Vector2(37, -1)
 item = ExtResource("7_22xmn")
