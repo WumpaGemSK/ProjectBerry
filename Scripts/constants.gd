@@ -15,7 +15,7 @@ const COUNDTDOWN_FADE_IN : float = 2.0
 const CODES = [
 	"KNOTS",
 	"BIVOU",
-	"TUOCS",
-	"CHIPS"
+	"CHIPS",
+	"QUACK",
 ]
 #endregion
