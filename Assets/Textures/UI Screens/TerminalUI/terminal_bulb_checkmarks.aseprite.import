@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c7fsxonqsi2kr"
+path="res://.godot/imported/terminal_bulb_checkmarks.aseprite-0511810c16d5fa925a41f1b01d3b9511.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/TerminalUI/terminal_bulb_checkmarks.aseprite"
+dest_files=["res://.godot/imported/terminal_bulb_checkmarks.aseprite-0511810c16d5fa925a41f1b01d3b9511.res"]
+
+[params]
+
