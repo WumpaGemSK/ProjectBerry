@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c17kva4tp2ejg"]
+[gd_scene load_steps=4 format=3 uid="uid://c17kva4tp2ejg"]
 
 [ext_resource type="PackedScene" uid="uid://bmu6uq8i1ooaw" path="res://Scenes/Interactable.tscn" id="1_1sesv"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/flask.gd" id="1_vum7i"]
+[ext_resource type="Texture2D" uid="uid://bgiym5fpgnvrk" path="res://Assets/Textures/Environment/Props/research_lab_flask_2.png" id="2_pawfx"]
 
 [node name="Flask" type="Node2D"]
 script = ExtResource("1_vum7i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pawfx")
 
 [node name="Interactable" parent="." instance=ExtResource("1_1sesv")]
 

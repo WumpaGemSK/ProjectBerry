@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bbg0x48lynegm"]
+[gd_scene load_steps=11 format=4 uid="uid://bbg0x48lynegm"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_research_lab.gd" id="1_81482"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_e45ia"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="3_javyl"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/lottery_manager.gd" id="5_f0iy8"]
 [ext_resource type="PackedScene" uid="uid://c17kva4tp2ejg" path="res://Scenes/Levels/Components/Flask.tscn" id="6_4n8dr"]
+[ext_resource type="Texture2D" uid="uid://bhiu8o4irpkgm" path="res://Assets/Textures/Environment/Props/research_lab_tip.png" id="7_ikxb1"]
+[ext_resource type="Texture2D" uid="uid://c4mnt7gop2447" path="res://Assets/Textures/Environment/Props/research_lab_table_alt.png" id="8_5fpv5"]
+[ext_resource type="Texture2D" uid="uid://b0404pk3tnags" path="res://Assets/Textures/Environment/Props/research_lab_distiller.png" id="8_rrali"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpk3b"]
+size = Vector2(216, 103)
 
 [node name="LevelResearchLab" type="Node2D"]
 script = ExtResource("1_81482")
@@ -41,3 +47,57 @@ position = Vector2(180, 252)
 
 [node name="Flask4" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
 position = Vector2(180, 276)
+
+[node name="Table" type="StaticBody2D" parent="LotteryManager"]
+position = Vector2(300, 244)
+
+[node name="Sprite2D" type="Sprite2D" parent="LotteryManager/Table"]
+texture = ExtResource("8_5fpv5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LotteryManager/Table"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_rpk3b")
+
+[node name="Distiller" type="Node2D" parent="LotteryManager"]
+position = Vector2(420, 277)
+
+[node name="Sprite2D" type="Sprite2D" parent="LotteryManager/Distiller"]
+texture = ExtResource("8_rrali")
+
+[node name="Tips" type="Node2D" parent="LotteryManager"]
+
+[node name="Sprite2D" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(180, 206)
+texture = ExtResource("7_ikxb1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(180, 230)
+texture = ExtResource("7_ikxb1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(180, 254)
+texture = ExtResource("7_ikxb1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(180, 278)
+texture = ExtResource("7_ikxb1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(420, 206)
+texture = ExtResource("7_ikxb1")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(420, 230)
+texture = ExtResource("7_ikxb1")
+flip_h = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(420, 254)
+texture = ExtResource("7_ikxb1")
+flip_h = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="LotteryManager/Tips"]
+position = Vector2(420, 278)
+texture = ExtResource("7_ikxb1")
+flip_h = true
