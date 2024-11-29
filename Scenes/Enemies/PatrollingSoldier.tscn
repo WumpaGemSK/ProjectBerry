@@ -26,7 +26,7 @@ shape = SubResource("CapsuleShape2D_l6yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = ExtResource("3_fpsx0")
-animation = &"idle_down"
+animation = &"draw_weapon_side"
 
 [node name="Patrol" type="Node2D" parent="."]
 script = ExtResource("3_l78p3")
