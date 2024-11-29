@@ -26,7 +26,7 @@ shape = SubResource("CapsuleShape2D_1xcwa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = ExtResource("3_fkjk1")
-animation = &"idle_down"
+animation = &"walk_up"
 autoplay = "idle_down"
 
 [node name="Sleeping" type="Node2D" parent="."]
