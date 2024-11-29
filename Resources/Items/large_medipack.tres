@@ -9,7 +9,7 @@ region = Rect2(48, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_077ny")
-item_name = "Large medipack"
+item_name = "Large Medipack"
 texture_icon = SubResource("AtlasTexture_ilc7y")
 description = "Restores up to three units of health."
 type = 1

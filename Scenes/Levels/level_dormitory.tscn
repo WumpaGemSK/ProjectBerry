@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://cq8ie1ermp4br" path="res://Resources/Items/key_3.tres" id="4_70jnm"]
 [ext_resource type="Resource" uid="uid://b2xxwufwi5gq6" path="res://Resources/Envelopes/hint_knots.tres" id="6_h008i"]
 
+
 [node name="Level_Dormitory" type="Node2D" node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("1_57dhs")
 pickable_item = NodePath("Hint")
