@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://o4exvv41n83p"]
+
+[ext_resource type="Texture2D" uid="uid://dhs6vhi3lwhgw" path="res://Assets/Textures/Enemies/soldierv2_sheet.png" id="1_h74el"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grnoe"]
+atlas = ExtResource("1_h74el")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o455q"]
+atlas = ExtResource("1_h74el")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv0f7"]
+atlas = ExtResource("1_h74el")
+region = Rect2(48, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grnoe")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o455q")
+}],
+"loop": true,
+"name": &"idle_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv0f7")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 10.0
+}]
