@@ -91,9 +91,9 @@ func is_code() -> bool:
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
 
-## Helper function to compute a unique key based on the type and the effect.
-func unique_key() -> int:
-	return type+Item_type.ITEM_COUNT+effect
+## Returns the name of the item to use as a key. It should be unique for each item
+func key() -> String:
+	return item_name
 
 #endregion
 

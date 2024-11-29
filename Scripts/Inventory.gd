@@ -24,15 +24,15 @@ func on_item_pickup(item: Item):
 			inventory[item.type] = item
 		on_inventory_update.emit(inventory)
 		return # Early return to prevent increasing the quantity of keys
-	if item.is_code():
-		inventory.get_or_add(item.item_name, item)
-		on_inventory_update.emit(inventory)
-		return
-	if inventory.has(item.unique_key()):
-		var existing_item : Item = inventory.get(item.unique_key())
+	#if item.is_code():
+		#inventory.get_or_add(item.key(), item)
+		#on_inventory_update.emit(inventory)
+		#return
+	if inventory.has(item.key()):
+		var existing_item : Item = inventory.get(item.key())
 		existing_item.quantity += 1
 	else:
-		inventory.get_or_add(item.unique_key(), item)
+		inventory.get_or_add(item.key(), item)
 	
 	on_inventory_update.emit(inventory)
 
@@ -40,11 +40,11 @@ func on_item_pickup(item: Item):
 func on_item_used(item: Item):
 	if item.is_code():
 		return
-	if inventory.has(item.unique_key()):
-		var it : Item = inventory.get(item.unique_key())
+	if inventory.has(item.key()):
+		var it : Item = inventory.get(item.key())
 		it.quantity -= 1
 		if it.quantity == 0:
-			inventory.erase(item.unique_key())
+			inventory.erase(item.key())
 		on_inventory_update.emit(inventory)
 
 func get_key_tier():
