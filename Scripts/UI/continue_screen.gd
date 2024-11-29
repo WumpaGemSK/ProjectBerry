@@ -7,7 +7,7 @@ var phase_in: Timer
 func _ready():
 	visible = false
 	timer.timeout.connect(on_timeout)
-	EventBus.pause.connect(on_pause)
+	EventBus.continue_screen.connect(on_continue_screen)
 	phase_in = Timer.new()
 	add_child(phase_in)
 	phase_in.stop()
@@ -29,7 +29,7 @@ func on_timeout():
 func switch_to_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOverScene.tscn")
 
-func on_pause():
+func on_continue_screen():
 	var tries_left = Game.retries
 	visible = true
 	phase_in.start(1)

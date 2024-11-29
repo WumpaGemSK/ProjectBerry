@@ -45,7 +45,11 @@ func on_code_try(code: String):
 		EventBus.code_correct.emit(score)
 		get_tree().change_scene_to_packed(status_scn)
 	else:
-		EventBus.code_incorrect.emit()
+		retries -= 1
+		if retries > 0:
+			EventBus.code_incorrect.emit()
+		else:
+			EventBus.continue_screen.emit()
 
 func compute_score() -> GameScore:
 	var time_left = CountdownTimer.time_left()
