@@ -95,6 +95,9 @@ func is_equal(item: Item) -> bool:
 func key() -> String:
 	return item_name
 
+func should_be_used() -> bool:
+	return is_consumable()
+
 #endregion
 
 

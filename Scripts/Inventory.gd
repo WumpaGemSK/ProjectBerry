@@ -34,14 +34,13 @@ func on_item_pickup(item: Item):
 
 ## Update the inventory after the item has been used
 func on_item_used(item: Item):
-	if item.is_code():
-		return
-	if inventory.has(item.key()):
-		var it : Item = inventory.get(item.key())
-		it.quantity -= 1
-		if it.quantity == 0:
-			inventory.erase(item.key())
-		on_inventory_update.emit(inventory)
+	if item.should_be_used():
+		if inventory.has(item.key()):
+			var it : Item = inventory.get(item.key())
+			it.quantity -= 1
+			if it.quantity == 0:
+				inventory.erase(item.key())
+			on_inventory_update.emit(inventory)
 
 func get_key_tier():
 	var key = inventory.get(Item.Item_type.KEY)
