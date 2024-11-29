@@ -5,7 +5,7 @@ var selected_code: String
 var shuffled_code: String
 #region Secrets
 ## The maximum amount of secrets
-var max_secret_amount: int = 0
+var max_secret_amount: int = 10
 ## The amount of secrets picked up
 var secret_count: int = 0
 #endregion
