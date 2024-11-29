@@ -40,6 +40,7 @@ position = Vector2(240, 84)
 
 [node name="FaxMachine" parent="." instance=ExtResource("3_javyl")]
 position = Vector2(192, 30)
+room = 4
 
 [node name="LotteryManager" type="Node" parent="." node_paths=PackedStringArray("correct_flask")]
 script = ExtResource("5_f0iy8")
