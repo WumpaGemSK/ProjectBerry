@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cswwibyiwq3ei"
+path="res://.godot/imported/terminal_select_cursor_up_down_button.aseprite-31905926ccf868a7c0496ac9d040b612.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/TerminalUI/terminal_select_cursor_up_down_button.aseprite"
+dest_files=["res://.godot/imported/terminal_select_cursor_up_down_button.aseprite-31905926ccf868a7c0496ac9d040b612.res"]
+
+[params]
+

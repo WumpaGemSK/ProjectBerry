@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cw48tw25s5ead"
+path="res://.godot/imported/terminal_select_cursor_send_button.aseprite-183a254f4c9be1e61955ecdcbeb49844.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/TerminalUI/terminal_select_cursor_send_button.aseprite"
+dest_files=["res://.godot/imported/terminal_select_cursor_send_button.aseprite-183a254f4c9be1e61955ecdcbeb49844.res"]
+
+[params]
+

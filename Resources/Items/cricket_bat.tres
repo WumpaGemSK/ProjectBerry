@@ -9,7 +9,7 @@ region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_frcpt")
-item_name = "Cricket bat"
+item_name = "Cricket Bat"
 texture_icon = SubResource("AtlasTexture_d0me2")
 description = "Cricket bat"
 type = 12

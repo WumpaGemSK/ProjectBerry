@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_birae")
-item_name = "Envelope 4"
+item_name = "Envelope"
 texture_icon = ExtResource("2_fvyp0")
 description = "I hope nobody ever notices that I never passed medical school. Certainly not Mr. Crumpitt who came with a case of salmonella. He would call me what you would hear a duck say, for some reason."
 type = 6

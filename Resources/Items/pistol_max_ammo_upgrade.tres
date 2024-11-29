@@ -9,7 +9,7 @@ region = Rect2(0, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_banth")
-item_name = "Pistol ammo upgrade"
+item_name = "Ammo Upgrade"
 texture_icon = SubResource("AtlasTexture_us2sv")
 description = ""
 type = 11

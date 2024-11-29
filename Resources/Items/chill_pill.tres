@@ -9,7 +9,7 @@ region = Rect2(16, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_fn6th")
-item_name = "Chill pill"
+item_name = "Chill Pill"
 texture_icon = SubResource("AtlasTexture_xkvo4")
 description = "Immediately shifts Crumpitt’s mood from Panicked to Semi-Calm"
 type = 4

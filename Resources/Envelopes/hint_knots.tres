@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_3kkva")
-item_name = "Envelope 3"
+item_name = "Envelope"
 texture_icon = ExtResource("2_yme3v")
 description = "Where is my delivery of velcro shoes at? I can’t let people notice I never learned to tie a knot ever since I was a kid."
 type = 6
