@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://vvh2db15wlf8"
+path="res://.godot/imported/terminal_down_button.aseprite-9a1826c4783631c9707314a61696927f.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/TerminalUI/terminal_down_button.aseprite"
+dest_files=["res://.godot/imported/terminal_down_button.aseprite-9a1826c4783631c9707314a61696927f.res"]
+
+[params]
+
