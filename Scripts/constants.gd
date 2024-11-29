@@ -16,7 +16,6 @@ const CODES = [
 	"KNOTS",
 	"BIVOU",
 	"TUOCS",
-	"CHIPS",
-	"QUACK"
+	"CHIPS"
 ]
 #endregion

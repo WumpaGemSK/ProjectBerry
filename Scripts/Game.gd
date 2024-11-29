@@ -29,6 +29,7 @@ enum Room {
 	COMMUNICATIONS,
 	STORAGE,
 	TRAINING_ROOM,
+	RESEARCH_LAB
 }
 
 func _ready():
