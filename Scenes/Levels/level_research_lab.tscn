@@ -14,12 +14,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpk3b"]
 size = Vector2(216, 103)
 
-[sub_resource type="Curve2D" id="Curve2D_s3c4d"]
-bake_interval = 0.86
+[sub_resource type="Curve2D" id="Curve2D_hdiog"]
+bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 179, 273, 0, 0, 0, 0, 179, 268, 0, 0, 0, 0, 222, 269, 0, 0, 0, 0, 222, 244, 0, 0, 0, 0, 233, 244, 0, 0, 0, 0, 232, 269, 0, 0, 0, 0, 295, 269, 0, 0, 0, 0, 295, 245, 0, 0, 0, 0, 305, 245, 0, 0, 0, 0, 305, 269, 0, 0, 0, 0, 421, 268, 0, 0, 0, 0, 420, 278)
+"points": PackedVector2Array(0, 0, 0, 0, 180, 271, 0, 0, 0, 0, 180, 269, 0, 0, 0, 0, 207, 269, 0, 0, 0, 0, 207, 244, 0, 0, 0, 0, 226, 244, 0, 0, 0, 0, 226, 220, 0, 0, 0, 0, 243, 220, 0, 0, 0, 0, 243, 196, 0, 0, 0, 0, 255, 196, 0, 0, 0, 0, 255, 220, 0, 0, 0, 0, 274, 220, 0, 0, 0, 0, 274, 245, 0, 0, 0, 0, 291, 245, 0, 0, 0, 0, 291, 268, 0, 0, 0, 0, 303, 268, 0, 0, 0, 0, 303, 245, 0, 0, 0, 0, 322, 245, 0, 0, 0, 0, 322, 220, 0, 0, 0, 0, 338, 220, 0, 0, 0, 0, 338, 197, 0, 0, 0, 0, 387, 197, 0, 0, 0, 0, 387, 221, 0, 0, 0, 0, 422, 221)
 }
-point_count = 12
+point_count = 23
 
 [node name="LevelResearchLab" type="Node2D"]
 script = ExtResource("1_81482")
@@ -68,7 +68,7 @@ position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_rpk3b")
 
 [node name="Distiller" type="Node2D" parent="LotteryManager"]
-position = Vector2(420, 277)
+position = Vector2(420, 229)
 
 [node name="Sprite2D" type="Sprite2D" parent="LotteryManager/Distiller"]
 texture = ExtResource("8_rrali")
@@ -121,8 +121,8 @@ width = 4.0
 default_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="Path2D" type="Path2D" parent="LotteryManager/LineRenderer"]
-curve = SubResource("Curve2D_s3c4d")
+curve = SubResource("Curve2D_hdiog")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LineRenderer/Path2D"]
-position = Vector2(179, 273)
+position = Vector2(180, 271)
 rotation = -1.5708
