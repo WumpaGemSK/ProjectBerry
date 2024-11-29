@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://o4exvv41n83p"]
+[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://o4exvv41n83p"]
 
 [ext_resource type="Texture2D" uid="uid://dhs6vhi3lwhgw" path="res://Assets/Textures/Enemies/soldierv2_sheet.png" id="1_h74el"]
 
@@ -73,6 +73,54 @@ region = Rect2(120, 96, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1mv2"]
 atlas = ExtResource("1_h74el")
 region = Rect2(144, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvtwy"]
+atlas = ExtResource("1_h74el")
+region = Rect2(72, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eypmy"]
+atlas = ExtResource("1_h74el")
+region = Rect2(96, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3onfy"]
+atlas = ExtResource("1_h74el")
+region = Rect2(120, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3m55"]
+atlas = ExtResource("1_h74el")
+region = Rect2(144, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utfkn"]
+atlas = ExtResource("1_h74el")
+region = Rect2(168, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecsda"]
+atlas = ExtResource("1_h74el")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuc1n"]
+atlas = ExtResource("1_h74el")
+region = Rect2(24, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqnsu"]
+atlas = ExtResource("1_h74el")
+region = Rect2(48, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us5xs"]
+atlas = ExtResource("1_h74el")
+region = Rect2(72, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqh4f"]
+atlas = ExtResource("1_h74el")
+region = Rect2(96, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40td1"]
+atlas = ExtResource("1_h74el")
+region = Rect2(120, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34gx5"]
+atlas = ExtResource("1_h74el")
+region = Rect2(144, 144, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_grnoe"]
 atlas = ExtResource("1_h74el")
@@ -258,6 +306,57 @@ animations = [{
 }],
 "loop": true,
 "name": &"damaged_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvtwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eypmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3onfy")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_g3m55")
+}],
+"loop": true,
+"name": &"draw_weapon_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utfkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecsda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuc1n")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_sqnsu")
+}],
+"loop": true,
+"name": &"draw_weapon_side",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us5xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqh4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40td1")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_34gx5")
+}],
+"loop": true,
+"name": &"draw_weapon_up",
 "speed": 10.0
 }, {
 "frames": [{
