@@ -26,4 +26,5 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("5_w3ybx")]
+visible = false
 layout_mode = 1

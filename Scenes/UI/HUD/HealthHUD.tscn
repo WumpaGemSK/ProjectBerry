@@ -23,10 +23,8 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 17
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
