@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bbg0x48lynegm"]
+[gd_scene load_steps=19 format=4 uid="uid://bbg0x48lynegm"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_research_lab.gd" id="1_81482"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_e45ia"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Scripts/Puzzles/research_lab_line.gd" id="10_qu6qp"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="12_w2n4o"]
 [ext_resource type="Resource" uid="uid://bo3tndsnwn8hf" path="res://Resources/Items/pistol_damage_upgrade.tres" id="13_5l23v"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="13_hmkp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpk3b"]
 size = Vector2(216, 103)
@@ -216,6 +215,3 @@ rotation = -1.3734
 [node name="DamageUpgrade" parent="." instance=ExtResource("12_w2n4o")]
 position = Vector2(156, 84)
 item = ExtResource("13_5l23v")
-
-[node name="Player" parent="." instance=ExtResource("13_hmkp0")]
-position = Vector2(144, 157)
