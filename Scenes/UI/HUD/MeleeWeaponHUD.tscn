@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dy0ywoisr1r7c" path="res://Scenes/UI/HUD/WeaponSlot.tscn" id="1_agc11"]
 
 [node name="MeleeWeaponHud" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_04rrf")
@@ -13,10 +12,8 @@ script = ExtResource("1_04rrf")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 17
 
 [node name="WeaponSlot" parent="MarginContainer" instance=ExtResource("1_agc11")]
 layout_mode = 2

@@ -18,12 +18,15 @@ grow_vertical = 2
 layout_mode = 1
 
 [node name="MeleeWeaponHud" parent="." instance=ExtResource("2_jsctl")]
+visible = false
 
 [node name="RangedWeaponHud" parent="." instance=ExtResource("3_ty7e4")]
+visible = false
 layout_mode = 1
 
 [node name="HealthHUD" parent="." instance=ExtResource("4_0leg8")]
 layout_mode = 1
 
 [node name="CharacterPortrait" parent="." instance=ExtResource("5_w3ybx")]
+visible = false
 layout_mode = 1
