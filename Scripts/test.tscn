@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=17 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -7,13 +7,9 @@
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="5_uur5g"]
 [ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="6_rvr8k"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="7_l5ku5"]
+[ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="9_krt8e"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
-[ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="12_rv2q1"]
-[ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="13_0xhrp"]
-[ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="14_ast6e"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="14_n3067"]
-[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="15_c5eex"]
-[ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="16_mw07t"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="18_wcrhm"]
@@ -25,12 +21,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -59, 190, 0, 0, 0, 0, 276, 190, 0, 0, 0, 0, 292, 414, 0, 0, 0, 0, -51, 405, 0, 0, 0, 0, -59, 190)
 }
 point_count = 5
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
-radius = 8.0
-height = 18.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8t7p7"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -70,34 +60,11 @@ curve = SubResource("Curve2D_o8ast")
 [node name="DozySoldier" parent="." instance=ExtResource("10_wtqid")]
 position = Vector2(-35, 154)
 
-[node name="PatrollingSoldier" type="Node2D" parent="."]
-position = Vector2(495, 159)
+[node name="PatrollingSoldier" parent="." instance=ExtResource("9_krt8e")]
+position = Vector2(0, 51.85)
 
-[node name="Enemy" parent="PatrollingSoldier" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("12_rv2q1")]
-health = 15
-rotation_speed = 3.0
-idle_state = NodePath("../Patrol")
-investigating_state = NodePath("../Investig")
-chasing_state = NodePath("../Chase")
-weapon_scn = ExtResource("13_0xhrp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PatrollingSoldier/Enemy"]
-shape = SubResource("CapsuleShape2D_l6yt1")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PatrollingSoldier/Enemy"]
-sprite_frames = SubResource("SpriteFrames_8t7p7")
-
-[node name="Patrol" type="Node2D" parent="PatrollingSoldier" node_paths=PackedStringArray("patrol_path")]
-script = ExtResource("14_ast6e")
+[node name="Patrol" parent="PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
 patrol_path = NodePath("../../Path2D")
-
-[node name="Investig" type="Node2D" parent="PatrollingSoldier"]
-script = ExtResource("15_c5eex")
-investigating_speed = 10.0
-
-[node name="Chase" type="Node2D" parent="PatrollingSoldier"]
-script = ExtResource("16_mw07t")
-chasing_speed = 10.0
 
 [node name="MovableCrate" parent="." instance=ExtResource("17_bpocm")]
 position = Vector2(282, 171)
@@ -119,3 +86,5 @@ position = Vector2(244, 336)
 [node name="Pickable_Item7" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(193, 371)
 item = ExtResource("19_nv1jg")
+
+[editable path="PatrollingSoldier"]
