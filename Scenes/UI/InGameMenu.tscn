@@ -25,6 +25,7 @@ layout_mode = 2
 text = "Restart"
 
 [node name="Map" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Map"
 
@@ -33,6 +34,7 @@ layout_mode = 2
 text = "Inventory"
 
 [node name="Audio" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Audio options"
 
