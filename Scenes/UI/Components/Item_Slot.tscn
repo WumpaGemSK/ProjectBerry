@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbmwpmebgbi3k"]
+[gd_scene load_steps=6 format=3 uid="uid://bbmwpmebgbi3k"]
 
 [ext_resource type="Script" path="res://Scripts/Item/item_slot.gd" id="1_ppup3"]
+[ext_resource type="FontFile" uid="uid://bov0dt7wlwpp5" path="res://Assets/Fonts/DatCub-Bold.otf" id="2_fmc51"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cwwa"]
 bg_color = Color(5.29438e-07, 0.714239, 0.425254, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7g6l4"]
+line_spacing = 0.0
+font = ExtResource("2_fmc51")
+font_size = 7
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydu5v"]
 
@@ -40,6 +47,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
@@ -48,13 +56,12 @@ layout_mode = 2
 
 [node name="Count" type="Label" parent="PanelContainer/Count_Block"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(9, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-text = "0
-"
-horizontal_alignment = 2
-vertical_alignment = 2
+text = "0"
+label_settings = SubResource("LabelSettings_7g6l4")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

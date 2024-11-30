@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvx16y3wfjqmn"]
+[gd_scene load_steps=6 format=3 uid="uid://dvx16y3wfjqmn"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD/countdown.gd" id="1_enqjw"]
+[ext_resource type="FontFile" uid="uid://d2k61ghxrtrwo" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_gi37g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jpri"]
 bg_color = Color(0.856865, 0.490489, 0.302263, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_816rx"]
 bg_color = Color(0.172525, 0.684122, 0.651669, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yfvfm"]
+font = ExtResource("2_gi37g")
+font_size = 21
+font_color = Color(0.94902, 1, 0.94902, 1)
 
 [node name="Countdown" type="Control"]
 layout_mode = 3
@@ -48,3 +54,4 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "30:00.00"
+label_settings = SubResource("LabelSettings_yfvfm")
