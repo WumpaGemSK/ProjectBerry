@@ -1,12 +1,13 @@
 extends Control
 
 @export var item_slot : PackedScene
+@export var inventory: Node
 @onready var grid_container : GridContainer = %InventoryGrid
 @onready var item_detail = %ItemDetail
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Inventory.on_inventory_update.connect(inventory_updated)
+	inventory.on_inventory_update.connect(inventory_updated)
 	EventBus.show_inventory.connect(func(): visible = true)
 	hide()
 	inventory_updated({})
