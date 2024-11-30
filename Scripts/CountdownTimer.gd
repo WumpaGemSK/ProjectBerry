@@ -16,8 +16,8 @@ func _ready():
 	timer.autostart = false
 	timer.one_shot = true
 	timer.timeout.connect(on_timer_timeout)
-	EventBus.pause.connect(on_pause)
-	EventBus.resume.connect(on_resume)
+	#EventBus.pause.connect(on_pause)
+	#EventBus.resume.connect(on_resume)
 	EventBus.countdown_start.connect(on_countdown_start)
 	add_child(timer)
 

@@ -38,11 +38,11 @@ func _on_return_pressed():
 	EventBus.reset.emit()
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/UI/TitleScreen.tscn")
 
-
-func _on_inventory_pressed():
-	EventBus.show_inventory.emit()
-	hide()
-
-
 func _on_restart_pressed():
 	get_tree().call_deferred("reload_current_scene")
+
+func _on_in_game_menu_visibility_changed():
+	if visible:
+		EventBus.pause.emit()
+	else:
+		EventBus.resume.emit()

@@ -17,21 +17,24 @@ func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
 		if visible:
+			EventBus.pause.emit()
 			grid_container.get_child(0).set_focus()
+		else:
+			EventBus.resume.emit()
 
 ## Populates the inventory UI based on the contents of the inventory
-func inventory_updated(inventory : Dictionary):
+func inventory_updated(inv : Dictionary):
 	for child in grid_container.get_children():
 		grid_container.remove_child(child)
 		child.focused.disconnect(on_focused)
 		child.pressed.disconnect(on_pressed)
 		child.queue_free()
 	
-	for key in inventory:
-		if inventory[key].quantity > 0:
+	for key in inv:
+		if inv[key].quantity > 0:
 			var new_slot : ItemSlot = item_slot.instantiate()
 			grid_container.add_child(new_slot)
-			new_slot.set_item(inventory[key])
+			new_slot.set_item(inv[key])
 			new_slot.focused.connect(on_focused)
 			new_slot.pressed.connect(on_pressed)
 	
