@@ -115,7 +115,7 @@ func _physics_process(_delta: float) -> void:
 			var force = speed
 			state = PlayerStates.PUSHING
 			collider.apply_central_impulse(-coll.get_normal()*force)
-	if coll_count == 0:
+	if coll_count == 0 and not state == PlayerStates.SNEAKING:
 		state = PlayerStates.NORMAL
 	#endregion
 
