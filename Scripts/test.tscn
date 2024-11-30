@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="3_ivusq"]
 [ext_resource type="Resource" uid="uid://b5u6bn75ob8bt" path="res://Resources/Codes/b.tres" id="5_h3q1f"]
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="5_uur5g"]
-[ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="6_mspco"]
+[ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="6_rvr8k"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="7_l5ku5"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="12_rv2q1"]
@@ -57,7 +57,7 @@ item = ExtResource("5_h3q1f")
 
 [node name="Pickable_Item6" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(259, 386)
-item = ExtResource("6_mspco")
+item = ExtResource("6_rvr8k")
 
 [node name="Pickable_Item4" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(269, 126)
@@ -113,4 +113,4 @@ position = Vector2(314, 337)
 item = ExtResource("16_wnpv7")
 
 [node name="Player" parent="." instance=ExtResource("18_wcrhm")]
-position = Vector2(192, 155)
+position = Vector2(244, 336)
