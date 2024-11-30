@@ -1,6 +1,6 @@
 extends Control
 
-@onready var weapon_slot = $MarginContainer/VBoxContainer/WeaponSlot
+@onready var weapon_slot = $WeaponSlot
 @onready var ammo_label = %AmmoLabel
 const PISTOL_SLOT_ICON = preload("res://Assets/Textures/UI Screens/MainGameplayUI/ItemSlots/pistol_slot_icon.png")
 

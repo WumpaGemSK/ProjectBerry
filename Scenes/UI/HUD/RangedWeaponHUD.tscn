@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://p830op7ipunt"]
+[gd_scene load_steps=6 format=3 uid="uid://p830op7ipunt"]
 
 [ext_resource type="PackedScene" uid="uid://dy0ywoisr1r7c" path="res://Scenes/UI/HUD/WeaponSlot.tscn" id="1_q43qk"]
 [ext_resource type="Script" path="res://Scripts/UI/HUD/ranged_weapon_hud.gd" id="1_xs03t"]
 [ext_resource type="Texture2D" uid="uid://cixxgby8ls31j" path="res://Assets/Textures/UI Screens/MainGameplayUI/ItemSlots/main_gameplay_ui_ammo_indicator_overlay.png" id="3_4fknq"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="4_ow2es"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oroge"]
+font = ExtResource("4_ow2es")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="RangedWeaponHud" type="Control"]
 layout_mode = 3
@@ -12,38 +17,32 @@ anchor_right = 1.0
 grow_horizontal = 0
 script = ExtResource("1_xs03t")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-theme_override_constants/margin_top = 17
-theme_override_constants/margin_right = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="WeaponSlot" parent="." instance=ExtResource("1_q43qk")]
 layout_mode = 2
+offset_left = -64.0
+offset_top = 17.0
+offset_right = -16.0
+offset_bottom = 59.0
 
-[node name="WeaponSlot" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_q43qk")]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(48, 24)
 layout_mode = 2
+offset_left = -64.0
+offset_top = 51.0
+offset_right = -16.0
+offset_bottom = 75.0
 texture = ExtResource("3_4fknq")
+stretch_mode = 2
 
-[node name="AmmoLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/TextureRect"]
+[node name="AmmoLabel" type="Label" parent="TextureRect"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 9.0
-offset_top = 9.0
-offset_right = 52.0
+offset_left = 2.0
+offset_top = 8.0
+offset_right = 48.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "20/50"
+label_settings = SubResource("LabelSettings_oroge")
+horizontal_alignment = 1
