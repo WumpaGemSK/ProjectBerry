@@ -30,7 +30,20 @@ func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
 	# TODO: The enemy may shoot even if the player is not in range and will lose all it's ammo
 	enemy.attack()
-
+	var dir = enemy.facing_direction
+	var animation = ""
+	match dir:
+		Enemy.facing.UP:
+			animation = "chase_up"
+		Enemy.facing.DOWN:
+			animation = "chase_down"
+		Enemy.facing.LEFT:
+			animation = "chase_side"
+			enemy.animated_sprite.flip_h = true
+		Enemy.facing.RIGHT:
+			enemy.animated_sprite.flip_h = false
+			animation = "chase_side"
+	enemy.animated_sprite.play(animation)
 func exit():
 	chasing_timer.stop()
 	recheck_timer.stop()

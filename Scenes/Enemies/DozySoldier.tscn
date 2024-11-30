@@ -19,6 +19,7 @@ rotation_speed = 2.0
 idle_state = NodePath("../Sleeping")
 investigating_state = NodePath("../Investigating")
 chasing_state = NodePath("../Chasing")
+original_facing_dir = 1
 weapon_scn = ExtResource("2_p5bq5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
@@ -26,7 +27,7 @@ shape = SubResource("CapsuleShape2D_1xcwa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = ExtResource("3_fkjk1")
-animation = &"draw_weapon_up"
+animation = &"walk_down"
 autoplay = "idle_down"
 
 [node name="Sleeping" type="Node2D" parent="."]

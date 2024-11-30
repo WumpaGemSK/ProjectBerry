@@ -19,6 +19,20 @@ func update(enemy: Enemy, delta: float):
 	path_follow.progress = progress
 	var new_pos = path_follow.global_position
 	enemy.set_target_position(new_pos)
+	var dir = enemy.facing_direction
+	var animation = ""
+	match dir:
+		Enemy.facing.UP:
+			animation = "walk_up"
+		Enemy.facing.DOWN:
+			animation = "walk_down"
+		Enemy.facing.LEFT:
+			animation = "walk_side"
+			enemy.animated_sprite.flip_h = true
+		Enemy.facing.RIGHT:
+			enemy.animated_sprite.flip_h = false
+			animation = "walk_side"
+	enemy.animated_sprite.play(animation)
 
 func on_hearing(body: Node2D, _enemy: Enemy):
 	if body is Player:
