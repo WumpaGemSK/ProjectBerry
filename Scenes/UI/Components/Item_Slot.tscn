@@ -1,76 +1,115 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbmwpmebgbi3k"]
+[gd_scene load_steps=9 format=3 uid="uid://bbmwpmebgbi3k"]
 
 [ext_resource type="Script" path="res://Scripts/Item/item_slot.gd" id="1_ppup3"]
 [ext_resource type="FontFile" uid="uid://bov0dt7wlwpp5" path="res://Assets/Fonts/DatCub-Bold.otf" id="2_fmc51"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cwwa"]
-bg_color = Color(5.29438e-07, 0.714239, 0.425254, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyey5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.678431, 0.85098, 0.737255, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkuuu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7b8f"]
+bg_color = Color(0.356863, 0.54902, 0.486275, 1)
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv0bq"]
+bg_color = Color(0.94902, 1, 0.94902, 1)
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ld03c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7g6l4"]
-line_spacing = 0.0
 font = ExtResource("2_fmc51")
 font_size = 7
-font_color = Color(0.0509804, 0.101961, 0.101961, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydu5v"]
+font_color = Color(0.94902, 1, 0.94902, 1)
+shadow_size = 0
 
 [node name="ItemSlot" type="Control"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 30.0
+offset_bottom = 30.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ppup3")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3cwwa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vyey5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nkuuu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h7b8f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nv0bq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ld03c")
 
 [node name="Icon" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 expand_mode = 1
+stretch_mode = 3
 
 [node name="Count_Block" type="MarginContainer" parent="PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer/Count_Block"]
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
+color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="Count" type="Label" parent="PanelContainer/Count_Block"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(9, 0)
 layout_mode = 2
+size_flags_vertical = 1
 text = "0"
 label_settings = SubResource("LabelSettings_7g6l4")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ydu5v")
+text_overrun_behavior = 4
 
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
