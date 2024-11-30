@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dviof3mjcqf3t"]
+[gd_scene load_steps=4 format=3 uid="uid://dviof3mjcqf3t"]
 
 [ext_resource type="PackedScene" uid="uid://d1d6n6gjcq7lu" path="res://Scenes/UI/DisplayOptions.tscn" id="1_1v1ov"]
 [ext_resource type="Script" path="res://Scripts/UI/Popups/options_popup.gd" id="1_442vl"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="2_r4bus"]
 
 [node name="DisplayOptionsPopup" type="Control"]
 layout_mode = 3
@@ -26,6 +27,7 @@ offset_bottom = 96.0
 
 [node name="Label" type="Label" parent="PopupPanel/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_r4bus")
 text = "Display options"
 
 [node name="DisplayOptions" parent="PopupPanel/VBoxContainer" instance=ExtResource("1_1v1ov")]

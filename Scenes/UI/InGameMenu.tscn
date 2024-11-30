@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca0tqqg420vog"]
+[gd_scene load_steps=5 format=3 uid="uid://ca0tqqg420vog"]
 
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="1_qynub"]
 [ext_resource type="Script" path="res://Scripts/UI/Popups/in_game_menu.gd" id="1_vcfuv"]
 [ext_resource type="PackedScene" uid="uid://bdnq17l0bvtig" path="res://Scenes/UI/Popups/AudioSettingsPopup.tscn" id="2_swej2"]
 [ext_resource type="PackedScene" uid="uid://dviof3mjcqf3t" path="res://Scenes/UI/Popups/DisplayOptionsPopup.tscn" id="3_snbay"]
 
 [node name="InGameMenu" type="PanelContainer"]
 visible = false
-offset_right = 143.0
-offset_bottom = 284.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -142.0
+offset_right = 71.5
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qynub")
 script = ExtResource("1_vcfuv")
 audio_settings_popup = ExtResource("2_swej2")
 display_options_popup = ExtResource("3_snbay")
