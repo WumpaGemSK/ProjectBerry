@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://mhpeev6v0e1o"]
+[gd_scene load_steps=3 format=3 uid="uid://mhpeev6v0e1o"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5gn1u"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f1f6h"]
-size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd7fy"]
 radius = 80.0
@@ -11,9 +8,6 @@ radius = 80.0
 [node name="Enemy" type="CharacterBody2D" groups=["Damageable"]]
 motion_mode = 1
 script = ExtResource("1_5gn1u")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_f1f6h")
 
 [node name="Hearing" type="Area2D" parent="."]
 unique_name_in_owner = true

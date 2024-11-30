@@ -23,6 +23,22 @@ func enter(enemy: Enemy):
 	unit = enemy
 	timer.start(recheck_time)
 
+func update(enemy: Enemy, delta: float):
+	var dir = enemy.facing_direction
+	var animation = ""
+	match dir:
+		Enemy.facing.UP:
+			animation = "walk_up"
+		Enemy.facing.DOWN:
+			animation = "walk_down"
+		Enemy.facing.LEFT:
+			animation = "walk_side"
+			enemy.animated_sprite.flip_h = true
+		Enemy.facing.RIGHT:
+			enemy.animated_sprite.flip_h = false
+			animation = "walk_side"
+	enemy.animated_sprite.play(animation)
+
 func exit():
 	timer.stop()
 
