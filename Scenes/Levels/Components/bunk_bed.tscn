@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlph22pybft6s"]
+
+[ext_resource type="Texture2D" uid="uid://jngte26bl8c7" path="res://Assets/Textures/Environment/Props/bunk_bed.png" id="1_nmkbx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdrm8"]
+size = Vector2(44, 15)
+
+[node name="BunkBed" type="StaticBody2D"]
+position = Vector2(48, 30)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nmkbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_hdrm8")
