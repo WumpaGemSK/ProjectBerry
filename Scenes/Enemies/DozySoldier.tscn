@@ -39,4 +39,4 @@ investigating_speed = 30.0
 
 [node name="Chasing" type="Node2D" parent="."]
 script = ExtResource("4_3jdau")
-chasing_speed = 30.0
+chasing_speed = 40.0

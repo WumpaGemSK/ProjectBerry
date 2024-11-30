@@ -36,3 +36,4 @@ script = ExtResource("4_7marf")
 
 [node name="chase" type="Node2D" parent="."]
 script = ExtResource("5_tuxl7")
+chasing_speed = 40.0

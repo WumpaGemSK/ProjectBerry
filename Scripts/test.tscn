@@ -66,6 +66,9 @@ position = Vector2(0, 51.85)
 [node name="Patrol" parent="PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
 patrol_path = NodePath("../../Path2D")
 
+[node name="chase" parent="PatrollingSoldier" index="3"]
+chasing_speed = 40.0
+
 [node name="MovableCrate" parent="." instance=ExtResource("17_bpocm")]
 position = Vector2(282, 171)
 
