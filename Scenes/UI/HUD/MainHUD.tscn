@@ -21,6 +21,7 @@ layout_mode = 1
 visible = false
 
 [node name="RangedWeaponHud" parent="." instance=ExtResource("3_ty7e4")]
+visible = false
 layout_mode = 1
 
 [node name="HealthHUD" parent="." instance=ExtResource("4_0leg8")]
