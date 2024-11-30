@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=22 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -17,11 +17,7 @@
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="18_wcrhm"]
-[ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="19_fwl81"]
-[ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="20_ao55k"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
-[ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="21_gx6so"]
-[ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="22_txcaq"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -117,16 +113,4 @@ position = Vector2(314, 337)
 item = ExtResource("16_wnpv7")
 
 [node name="Player" parent="." instance=ExtResource("18_wcrhm")]
-position = Vector2(121, 390)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MainHud" parent="CanvasLayer" instance=ExtResource("19_fwl81")]
-
-[node name="Inventory_UI" parent="CanvasLayer" instance=ExtResource("20_ao55k")]
-visible = false
-
-[node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("21_gx6so")]
-
-[node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("22_txcaq")]
-visible = false
+position = Vector2(192, 155)

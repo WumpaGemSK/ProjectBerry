@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c7hky85ri23ie"
+path="res://.godot/imported/terminal_screen.aseprite-d0d8627cf451a6f8b8c11c16a9fc958e.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/TerminalUI/terminal_screen.aseprite"
+dest_files=["res://.godot/imported/terminal_screen.aseprite-d0d8627cf451a6f8b8c11c16a9fc958e.res"]
+
+[params]
+

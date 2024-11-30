@@ -11,6 +11,7 @@ signal equipped_weapon(weapon: Item)
 signal health_changed(new_health: int)
 
 @onready var my_animated_sprite := $AnimatedSprite2D
+@onready var canvas_layer = $CanvasLayer
 
 #movement variables
 var direction : Vector2
@@ -50,6 +51,8 @@ var paused: bool = true
 
 func _ready():
 	speed = normal_speed
+	EventBus.open_terminal.connect(func(): canvas_layer.visible = false)
+	EventBus.close_terminal.connect(func(): canvas_layer.visible = true)
 	EventBus.use_item.connect(on_use_item)
 	EventBus.pause.connect(func(): paused= true)
 	EventBus.resume.connect(func(): paused= false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bfpb1xlfmeq4"]
+[gd_scene load_steps=17 format=4 uid="uid://bfpb1xlfmeq4"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_training_room.gd" id="1_iv6j5"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/mine_manager.gd" id="1_k613r"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dvwols70wqu5y" path="res://Assets/Textures/Environment/Props/TrainingRoom_Barrier_Sheet.png" id="4_cf3pp"]
 [ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="6_f5xvp"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/barrier.gd" id="6_wrn78"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="9_ealpb"]
+[ext_resource type="Resource" uid="uid://de1egv7b8m83v" path="res://Resources/Items/pistol_rate_upgrade.tres" id="10_mh7b0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryfg7"]
 atlas = ExtResource("4_cf3pp")
@@ -328,3 +330,7 @@ script = ExtResource("6_wrn78")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrier/StaticBody2D"]
 polygon = PackedVector2Array(-111, -27, -111, 15, 111, 15, 111, -27, 105, -27, 105, 9, -105, 9, -105, -27)
+
+[node name="FireRateUpgrade" parent="." instance=ExtResource("9_ealpb")]
+position = Vector2(120, 12)
+item = ExtResource("10_mh7b0")

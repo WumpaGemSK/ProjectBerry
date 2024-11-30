@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dns4c2wmto54c"
+path="res://.godot/imported/how_to_play_screen.aseprite-a78bd62c2f06eae18ea9f7f302f73aca.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/how_to_play_screen.aseprite"
+dest_files=["res://.godot/imported/how_to_play_screen.aseprite-a78bd62c2f06eae18ea9f7f302f73aca.res"]
+
+[params]
+

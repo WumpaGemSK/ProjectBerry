@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://6tgl5sm2kh4q"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_xn6ec"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o7cju"]
+load_path = "res://.godot/imported/SecretItems_Sheet.png-4f1f69d6a01e48c7bfbf4ba32ddb42b3.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmaki"]
+atlas = SubResource("CompressedTexture2D_o7cju")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_xn6ec")
+item_name = "Envelope"
+texture_icon = SubResource("AtlasTexture_hmaki")
+description = "I got an itch that you'ditch you’d find the answer from an outsider of great commentary."
+type = 6
+effect = 1

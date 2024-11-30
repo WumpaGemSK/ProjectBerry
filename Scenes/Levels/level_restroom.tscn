@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=4 uid="uid://21wnnmifx0jc"]
+[gd_scene load_steps=9 format=4 uid="uid://21wnnmifx0jc"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_nrqx3"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_av5o7"]
+[ext_resource type="Texture2D" uid="uid://c2w3i54x3031q" path="res://Assets/Textures/Environment/Props/counter_with_sink_sprite.png" id="3_dswpo"]
+[ext_resource type="Texture2D" uid="uid://b0x0ssd1klkd7" path="res://Assets/Textures/Environment/Props/toilet.png" id="4_pvjhn"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="5_soda7"]
+[ext_resource type="Resource" uid="uid://cffypxfbe1pgc" path="res://Resources/Secrets/general_griffin_log.tres" id="6_5ismf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wab2p"]
+size = Vector2(144, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wq22"]
+size = Vector2(24, 5)
 
 [node name="Level_Restroom" type="Node2D"]
 
@@ -16,3 +26,27 @@ direction = 1
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(84, 36)
+
+[node name="Counter" type="StaticBody2D" parent="."]
+position = Vector2(72, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Counter"]
+texture = ExtResource("3_dswpo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_wab2p")
+
+[node name="Toilet" type="StaticBody2D" parent="."]
+position = Vector2(12, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="Toilet"]
+texture = ExtResource("4_pvjhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toilet"]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_8wq22")
+
+[node name="Pickable_Item" parent="." instance=ExtResource("5_soda7")]
+position = Vector2(60, 0)
+item = ExtResource("6_5ismf")

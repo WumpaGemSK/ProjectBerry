@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://3dljmg1auonq"]
+
+[ext_resource type="Texture2D" uid="uid://clmiwg2cicn4y" path="res://Assets/Textures/Environment/Props/bedside_stand.png" id="1_hn3sv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5va0k"]
+size = Vector2(24, 6)
+
+[node name="BedsideStand" type="StaticBody2D"]
+position = Vector2(36, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hn3sv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_5va0k")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b2xxwufwi5gq6"]
+
+[ext_resource type="Script" path="res://Scripts/Item/Item.gd" id="1_3kkva"]
+[ext_resource type="Texture2D" uid="uid://cfo72esfltq3g" path="res://Assets/Textures/Items/envelope_texture.tres" id="2_yme3v"]
+
+[resource]
+script = ExtResource("1_3kkva")
+item_name = "Envelope"
+texture_icon = ExtResource("2_yme3v")
+description = "Where is my delivery of velcro shoes at? I can’t let people notice I never learned to tie a knot ever since I was a kid."
+type = 6
+effect = 1

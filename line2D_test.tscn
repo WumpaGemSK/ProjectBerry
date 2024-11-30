@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://67f6p55c0ckk"]
+
+[ext_resource type="Texture2D" uid="uid://b20iqs8nyalvw" path="res://Project Berry - Level Design - Research Lab - Mockup (Alt).png" id="1_7qd8e"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/research_lab_line.gd" id="1_51heg"]
+
+[sub_resource type="Curve2D" id="Curve2D_o1o7j"]
+bake_interval = 0.86
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 75, 72, 0, 0, 0, 0, 75, 63, 0, 0, 0, 0, 93, 63, 0, 0, 0, 0, 93, 102, 0, 0, 0, 0, 111, 102, 0, 0, 0, 0, 111, 141, 0, 0, 0, 0, 153, 141, 0, 0, 0, 0, 153, 183, 0, 0, 0, 0, 171, 183, 0, 0, 0, 0, 171, 141, 0, 0, 0, 0, 213, 141, 0, 0, 0, 0, 213, 102, 0, 0, 0, 0, 255, 102, 0, 0, 0, 0, 255, 60, 0, 0, 0, 0, 273, 60, 0, 0, 0, 0, 273, 102, 0, 0, 0, 0, 315, 102, 0, 0, 0, 0, 315, 141, 0, 0, 0, 0, 354, 141, 0, 0, 0, 0, 354, 183, 0, 0, 0, 0, 414, 183, 0, 0, 0, 0, 414, 144, 0, 0, 0, 0, 438, 144, 0, 0, 0, 0, 438, 162)
+}
+point_count = 24
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_51heg")
+tween_speed = 5.0
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(256, 144)
+scale = Vector2(0.235, 0.235)
+texture = ExtResource("1_7qd8e")
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+default_color = Color(0, 0, 0, 1)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o1o7j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(75, 72)
+rotation = -1.5708

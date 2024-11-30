@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1d6n6gjcq7lu"]
+[gd_scene load_steps=6 format=3 uid="uid://d1d6n6gjcq7lu"]
 
 [ext_resource type="Script" path="res://Scripts/UI/display_options.gd" id="1_748g2"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="2_67lvf"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="3_t0cck"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_26nwl"]
+font = ExtResource("2_67lvf")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_econ3"]
+font = ExtResource("2_67lvf")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="DisplayOptions" type="Control"]
 layout_mode = 3
@@ -23,19 +33,23 @@ offset_bottom = 23.0
 [node name="Label" type="Label" parent="HSplitContainer"]
 layout_mode = 2
 text = "Factor"
+label_settings = SubResource("LabelSettings_26nwl")
 
 [node name="Left" type="Button" parent="HSplitContainer"]
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("3_t0cck")
 text = "Left"
 
 [node name="Value" type="Label" parent="HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_econ3")
 
 [node name="Right" type="Button" parent="HSplitContainer"]
 layout_mode = 2
 focus_mode = 1
+theme = ExtResource("3_t0cck")
 text = "Right"
 
 [connection signal="pressed" from="HSplitContainer/Left" to="." method="_on_left_pressed"]

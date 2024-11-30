@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_r1qu4"]
 [ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="2_mqyb5"]
+[ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="3_fpsx0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="3_l78p3"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="4_7marf"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="5_tuxl7"]
@@ -9,8 +10,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
 radius = 8.0
 height = 20.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8t7p7"]
 
 [node name="PatrollingSoldier" type="Node2D"]
 
@@ -26,7 +25,8 @@ weapon_scn = ExtResource("2_mqyb5")
 shape = SubResource("CapsuleShape2D_l6yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
-sprite_frames = SubResource("SpriteFrames_8t7p7")
+sprite_frames = ExtResource("3_fpsx0")
+animation = &"waking_down"
 
 [node name="Patrol" type="Node2D" parent="."]
 script = ExtResource("3_l78p3")

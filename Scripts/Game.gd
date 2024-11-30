@@ -5,7 +5,7 @@ var selected_code: String
 var shuffled_code: String
 #region Secrets
 ## The maximum amount of secrets
-var max_secret_amount: int = 0
+var max_secret_amount: int = 10
 ## The amount of secrets picked up
 var secret_count: int = 0
 #endregion
@@ -29,6 +29,7 @@ enum Room {
 	COMMUNICATIONS,
 	STORAGE,
 	TRAINING_ROOM,
+	RESEARCH_LAB
 }
 
 func _ready():
@@ -36,6 +37,7 @@ func _ready():
 	shuffled_code = shuffle_string(selected_code)
 	EventBus.try_code.connect(on_code_try)
 	EventBus.player_death.connect(on_player_death)
+	EventBus.secret_pickup.connect(on_secret_pickup)
 
 func on_code_try(code: String):
 	if code == selected_code:
@@ -44,7 +46,11 @@ func on_code_try(code: String):
 		EventBus.code_correct.emit(score)
 		get_tree().change_scene_to_packed(status_scn)
 	else:
-		EventBus.code_incorrect.emit()
+		retries -= 1
+		if retries > 0:
+			EventBus.code_incorrect.emit()
+		else:
+			EventBus.continue_screen.emit()
 
 func compute_score() -> GameScore:
 	var time_left = CountdownTimer.time_left()

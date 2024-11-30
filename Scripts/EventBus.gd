@@ -73,6 +73,8 @@ signal player_death
 ## Signal emmited when the user has pressed a key in the continue screen
 signal retry_continue
 
+signal continue_screen
+
 @warning_ignore("unused_signal")
 ## Signal to emit when a scene should reload. The nodes that need to reset should connect to this and restore original data when the event is emitted
 signal reload_scene

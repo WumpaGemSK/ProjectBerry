@@ -9,7 +9,7 @@ region = Rect2(16, 47.329, 16, 16.671)
 
 [resource]
 script = ExtResource("1_42iyf")
-item_name = "Barbed wire upgrade"
+item_name = "Barbed Wire"
 texture_icon = SubResource("AtlasTexture_jcar8")
 description = "Doubles the damage of the cricket bat"
 type = 8

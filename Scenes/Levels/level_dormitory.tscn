@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=4 uid="uid://bbh2fonbqlnrn"]
+[gd_scene load_steps=10 format=4 uid="uid://bbh2fonbqlnrn"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_1ltkl"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_57dhs"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_w786r"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="3_qka7t"]
 [ext_resource type="Resource" uid="uid://cq8ie1ermp4br" path="res://Resources/Items/key_3.tres" id="4_70jnm"]
+[ext_resource type="PackedScene" uid="uid://dlph22pybft6s" path="res://Scenes/Levels/Components/bunk_bed.tscn" id="4_ipwd2"]
+[ext_resource type="PackedScene" uid="uid://3dljmg1auonq" path="res://Scenes/Levels/Components/bedside_stand.tscn" id="5_5bdj2"]
+[ext_resource type="Resource" uid="uid://b2xxwufwi5gq6" path="res://Resources/Envelopes/hint_knots.tres" id="6_h008i"]
+[ext_resource type="Resource" uid="uid://1rjfvetd3lme" path="res://Resources/Secrets/teddy_bear.tres" id="7_iefpp"]
 
-[node name="Level_Dormitory" type="Node2D"]
+[node name="Level_Dormitory" type="Node2D" node_paths=PackedStringArray("pickable_item")]
+script = ExtResource("1_57dhs")
+pickable_item = NodePath("Hint")
+code = "KNOTS"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAANAAwAAAABAAAAAAANAAsAAAABAAAAAAANAAoAAAABAAAAAAANAAkAAAABAAAAAAANAAgAAAABAAAAAAANAAcAAAABAAAAAAANAAYAAAABAAAAAAANAAUAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAABAAAAAAANAAIAAAABAAAAAAANAAEAAAABAAAAAAANAAAAAAABAAAAAAAMAAwAAAABAAAAAAAMAAsAAAABAAAAAAAMAAoAAAABAAAAAAAMAAkAAAABAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAAMAAMAAAABAAAAAAAMAAIAAAABAAAAAAAMAAEAAAABAAAAAAAMAAAAAAABAAAAAAALAAwAAAABAAAAAAALAAsAAAABAAAAAAALAAoAAAABAAAAAAALAAkAAAABAAAAAAALAAgAAAABAAAAAAALAAcAAAABAAAAAAALAAYAAAABAAAAAAALAAUAAAABAAAAAAALAAQAAAABAAAAAAALAAMAAAABAAAAAAALAAIAAAABAAAAAAALAAEAAAABAAAAAAALAAAAAAABAAAAAAAKAAwAAAABAAAAAAAKAAsAAAABAAAAAAAKAAoAAAABAAAAAAAKAAkAAAABAAAAAAAKAAgAAAABAAAAAAAKAAcAAAABAAAAAAAKAAYAAAABAAAAAAAKAAUAAAABAAAAAAAKAAQAAAABAAAAAAAKAAMAAAABAAAAAAAKAAIAAAABAAAAAAAKAAEAAAABAAAAAAAKAAAAAAABAAAAAAAJAAwAAAABAAAAAAAJAAsAAAABAAAAAAAJAAoAAAABAAAAAAAJAAkAAAABAAAAAAAJAAgAAAABAAAAAAAJAAcAAAABAAAAAAAJAAYAAAABAAAAAAAJAAUAAAABAAAAAAAJAAQAAAABAAAAAAAJAAMAAAABAAAAAAAJAAIAAAABAAAAAAAJAAEAAAABAAAAAAAJAAAAAAABAAAAAAAIAAwAAAABAAAAAAAIAAsAAAABAAAAAAAIAAoAAAABAAAAAAAIAAkAAAABAAAAAAAIAAgAAAABAAAAAAAIAAcAAAABAAAAAAAIAAYAAAABAAAAAAAIAAUAAAABAAAAAAAIAAQAAAABAAAAAAAIAAMAAAABAAAAAAAIAAIAAAABAAAAAAAIAAEAAAABAAAAAAAIAAAAAAABAAAAAAAHAAwAAAABAAAAAAAHAAsAAAABAAAAAAAHAAoAAAABAAAAAAAHAAkAAAABAAAAAAAHAAgAAAABAAAAAAAHAAcAAAABAAAAAAAHAAYAAAABAAAAAAAHAAUAAAABAAAAAAAHAAQAAAABAAAAAAAHAAMAAAABAAAAAAAHAAIAAAABAAAAAAAHAAEAAAABAAAAAAAHAAAAAAABAAAAAAAGAAwAAAABAAAAAAAGAAsAAAABAAAAAAAGAAoAAAABAAAAAAAGAAkAAAABAAAAAAAGAAgAAAABAAAAAAAGAAcAAAABAAAAAAAGAAYAAAABAAAAAAAGAAUAAAABAAAAAAAGAAQAAAABAAAAAAAGAAMAAAABAAAAAAAGAAIAAAABAAAAAAAGAAEAAAABAAAAAAAGAAAAAAABAAAAAAAFAAwAAAABAAAAAAAFAAsAAAABAAAAAAAFAAoAAAABAAAAAAAFAAkAAAABAAAAAAAFAAgAAAABAAAAAAAFAAcAAAABAAAAAAAFAAYAAAABAAAAAAAFAAUAAAABAAAAAAAFAAQAAAABAAAAAAAFAAMAAAABAAAAAAAFAAIAAAABAAAAAAAFAAEAAAABAAAAAAAFAAAAAAABAAAAAAAEAAwAAAABAAAAAAAEAAsAAAABAAAAAAAEAAoAAAABAAAAAAAEAAkAAAABAAAAAAAEAAgAAAABAAAAAAAEAAcAAAABAAAAAAAEAAYAAAABAAAAAAAEAAUAAAABAAAAAAAEAAQAAAABAAAAAAAEAAMAAAABAAAAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAADAAwAAAABAAAAAAADAAsAAAABAAAAAAADAAoAAAABAAAAAAADAAkAAAABAAAAAAADAAgAAAABAAAAAAADAAcAAAABAAAAAAADAAYAAAABAAAAAAADAAUAAAABAAAAAAADAAQAAAABAAAAAAADAAMAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAACAAwAAAABAAAAAAACAAsAAAABAAAAAAACAAoAAAABAAAAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAABAAAAAAACAAYAAAABAAAAAAACAAUAAAABAAAAAAACAAQAAAABAAAAAAACAAMAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAwAAAABAAAAAAABAAsAAAABAAAAAAABAAoAAAABAAAAAAABAAkAAAABAAAAAAABAAgAAAABAAAAAAABAAcAAAABAAAAAAABAAYAAAABAAAAAAABAAUAAAABAAAAAAABAAQAAAABAAAAAAABAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAABAAAAAAAAAAwAAAABAAAAAAAAAAsAAAABAAAAAAAAAAoAAAABAAAAAAAAAAkAAAABAAAAAAAAAAgAAAABAAAAAAAAAAcAAAABAAAAAAAAAAYAAAABAAAAAAAAAAUAAAABAAAAAAAAAAQAAAABAAAAAAAAAAMAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAD//wIAAAAEAAAAAAD//wMAAAAEAAAAAAD//wQAAAAEAAAAAAD//wUAAAAEAAAAAAD//wYAAAAEAAAAAAD//wcAAAAEAAAAAAD//wgAAAAEAAAAAAD//wkAAAAEAAAAAAD//woAAAAEAAAAAAD//wsAAAAEAAAAAAD//wwAAAAEAAAAAAABAA0AAAAAAAEAAAAAAA0AAAAAAAEAAAD//w0AAAADAAEAAAACAP//AAACAAAAAAACAA0AAAAAAAEAAAADAP//AAACAAAAAAADAA0AAAAAAAEAAAAEAP//AAACAAAAAAAEAA0AAAAAAAEAAAAFAP//AAACAAAAAAAFAA0AAAAAAAEAAAAGAP//AAACAAAAAAAGAA0AAAAAAAEAAAAHAP//AAACAAAAAAAHAA0AAAAAAAEAAAAIAP//AAACAAAAAAAIAA0AAAAAAAEAAAAJAP//AAACAAAAAAAJAA0AAAAAAAEAAAAKAP//AAACAAAAAAAKAA0AAAAAAAEAAAALAP//AAACAAAAAAALAA0AAAAAAAEAAAAMAP//AAACAAAAAAAMAA0AAAAAAAEAAAANAP//AAACAAAAAAANAA0AAAAAAAEAAAAOAAAAAAAAAAIAAAAOAAEAAAAAAAIAAAAOAP//AAAAAAIAAAAOAAIAAAAAAAIAAAAOAAMAAAAAAAIAAAAOAAQAAAAAAAIAAAAOAAUAAAAAAAIAAAAOAAYAAAAAAAIAAAAOAAcAAAAAAAIAAAAOAAgAAAAAAAIAAAAOAAkAAAAAAAIAAAAOAAoAAAAAAAIAAAAOAAsAAAAAAAIAAAAOAAwAAAAAAAIAAAAOAA0AAAAEAAEAAAAOAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAAGAP7/AAABAAIAAAAHAP7/AAABAAIAAAAIAP7/AAABAAIAAAAJAP7/AAABAAIAAAAKAP7/AAABAAIAAAALAP7/AAABAAIAAAAMAP7/AAABAAIAAAANAP7/AAABAAIAAAA=")
@@ -20,6 +28,105 @@ door_tier = 2
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(156, 276)
 
-[node name="Pickable_Item" parent="." instance=ExtResource("3_qka7t")]
-position = Vector2(36, 252)
+[node name="BunkBeds" type="Node2D" parent="."]
+
+[node name="BunkBed" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+
+[node name="BunkBed2" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(48, 90)
+
+[node name="BunkBed3" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(48, 150)
+
+[node name="BunkBed4" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(48, 210)
+
+[node name="BunkBed5" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 30)
+
+[node name="BunkBed6" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 90)
+
+[node name="BunkBed7" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 150)
+
+[node name="BunkBed8" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 210)
+
+[node name="BunkBed9" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 30)
+
+[node name="Sprite2D" parent="BunkBeds/BunkBed9" index="0"]
+flip_h = true
+
+[node name="BunkBed10" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 90)
+
+[node name="Sprite2D" parent="BunkBeds/BunkBed10" index="0"]
+flip_h = true
+
+[node name="BunkBed11" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 150)
+
+[node name="Sprite2D" parent="BunkBeds/BunkBed11" index="0"]
+flip_h = true
+
+[node name="BunkBed12" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 210)
+
+[node name="Sprite2D" parent="BunkBeds/BunkBed12" index="0"]
+flip_h = true
+
+[node name="BedsideStands" type="Node2D" parent="."]
+
+[node name="BedsideStand" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+
+[node name="BedsideStand2" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(36, 180)
+
+[node name="BedsideStand3" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(36, 120)
+
+[node name="BedsideStand4" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(36, 60)
+
+[node name="BedsideStand5" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 240)
+
+[node name="BedsideStand6" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 180)
+
+[node name="BedsideStand7" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 120)
+
+[node name="BedsideStand8" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 60)
+
+[node name="BedsideStand9" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 240)
+
+[node name="BedsideStand10" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 180)
+
+[node name="BedsideStand11" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 120)
+
+[node name="BedsideStand12" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 60)
+
+[node name="Tier3Key" parent="." instance=ExtResource("3_qka7t")]
+position = Vector2(36, 237)
 item = ExtResource("4_70jnm")
+
+[node name="Hint" parent="." instance=ExtResource("3_qka7t")]
+position = Vector2(36, 57)
+item = ExtResource("6_h008i")
+
+[node name="TeddyBear" parent="." instance=ExtResource("3_qka7t")]
+position = Vector2(300, 57)
+item = ExtResource("7_iefpp")
+
+[editable path="BunkBeds/BunkBed9"]
+[editable path="BunkBeds/BunkBed10"]
+[editable path="BunkBeds/BunkBed11"]
+[editable path="BunkBeds/BunkBed12"]

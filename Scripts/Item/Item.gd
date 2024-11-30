@@ -31,6 +31,8 @@ enum Item_type {
 	CRICKET_BAT,
 	## Pistol item, occupies ranged weapon slot and is NOT added into the inventory
 	PISTOL,
+	## Secret collectible, is counted on the secrets tally in the status screen, influencing which ranking the player earns
+	SECRET,
 	## Type that has tells how many different types there're
 	ITEM_COUNT,
 }
@@ -76,6 +78,9 @@ func is_upgrade() -> bool:
 		_:
 			return false
 
+func is_secret() -> bool:
+	return type == Item_type.SECRET
+
 ## Helper function to see if the item is a key
 func is_key() -> bool:
 	return type == Item_type.KEY
@@ -91,9 +96,12 @@ func is_code() -> bool:
 func is_equal(item: Item) -> bool:
 	return item.type == type and item.effect == effect and item.item_name == item_name
 
-## Helper function to compute a unique key based on the type and the effect.
-func unique_key() -> int:
-	return type+Item_type.ITEM_COUNT+effect
+## Returns the name of the item to use as a key. It should be unique for each item
+func key() -> String:
+	return item_name
+
+func should_be_used() -> bool:
+	return is_consumable()
 
 #endregion
 

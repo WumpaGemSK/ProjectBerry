@@ -1,45 +1,33 @@
-[gd_scene load_steps=13 format=3 uid="uid://2k5ire51woed"]
+[gd_scene load_steps=11 format=3 uid="uid://2k5ire51woed"]
 
 [ext_resource type="PackedScene" uid="uid://b5qg3kguoxqbw" path="res://Scenes/UI/Components/Bulb.tscn" id="1_33trr"]
 [ext_resource type="Script" path="res://Scripts/UI/code_bulbs.gd" id="1_qanxn"]
+[ext_resource type="Texture2D" uid="uid://cobu17jlasrtf" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_bulb_sheet.png" id="3_xh5o2"]
+[ext_resource type="Texture2D" uid="uid://cnxpf2ilfn0g" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_bulb_checkmarks_sheet.png" id="4_3rrku"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wgtdd"]
-size = Vector2(24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl38k"]
+atlas = ExtResource("3_xh5o2")
+region = Rect2(0, 0, 34, 34)
 
-[sub_resource type="Gradient" id="Gradient_r5ufb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6cwy"]
+atlas = ExtResource("3_xh5o2")
+region = Rect2(34, 0, 34, 34)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_whl17"]
-gradient = SubResource("Gradient_r5ufb")
-width = 24
-height = 24
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei74f"]
+atlas = ExtResource("4_3rrku")
+region = Rect2(0, 0, 36, 24)
 
-[sub_resource type="Gradient" id="Gradient_o0ubh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wmyy"]
+atlas = ExtResource("3_xh5o2")
+region = Rect2(0, 0, 34, 34)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oh452"]
-gradient = SubResource("Gradient_o0ubh")
-width = 24
-height = 24
-fill_from = Vector2(0.316514, 0.37156)
-fill_to = Vector2(0.509174, 0.266055)
+[sub_resource type="AtlasTexture" id="AtlasTexture_egciw"]
+atlas = ExtResource("3_xh5o2")
+region = Rect2(34, 0, 34, 34)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rjt2p"]
-size = Vector2(24, 24)
-
-[sub_resource type="Gradient" id="Gradient_1xn1j"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bkeda"]
-gradient = SubResource("Gradient_1xn1j")
-width = 24
-height = 24
-fill_from = Vector2(0.811927, 0.775229)
-
-[sub_resource type="Gradient" id="Gradient_nk3xw"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhtxw"]
-gradient = SubResource("Gradient_nk3xw")
-width = 24
-height = 24
-fill_to = Vector2(0.133028, 0.394495)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dhpx"]
+atlas = ExtResource("4_3rrku")
+region = Rect2(36, 0, 36, 24)
 
 [node name="CodeBulbs" type="Control"]
 layout_mode = 3
@@ -74,9 +62,9 @@ theme_override_constants/margin_right = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-normal_state_texture = SubResource("PlaceholderTexture2D_wgtdd")
-active_state_texture = SubResource("GradientTexture2D_whl17")
-icon_texture = SubResource("GradientTexture2D_oh452")
+normal_state_texture = SubResource("AtlasTexture_cl38k")
+active_state_texture = SubResource("AtlasTexture_a6cwy")
+icon_texture = SubResource("AtlasTexture_ei74f")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -87,6 +75,6 @@ theme_override_constants/margin_right = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-normal_state_texture = SubResource("PlaceholderTexture2D_rjt2p")
-active_state_texture = SubResource("GradientTexture2D_bkeda")
-icon_texture = SubResource("GradientTexture2D_qhtxw")
+normal_state_texture = SubResource("AtlasTexture_1wmyy")
+active_state_texture = SubResource("AtlasTexture_egciw")
+icon_texture = SubResource("AtlasTexture_8dhpx")
