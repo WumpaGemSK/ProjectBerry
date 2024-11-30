@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cpn1l8hlkui7j"
+path="res://.godot/imported/main_gameplay_gui.aseprite-6f328e191414eac6773bee9b6e8fe7a2.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/MainGameplayUI/main_gameplay_gui.aseprite"
+dest_files=["res://.godot/imported/main_gameplay_gui.aseprite-6f328e191414eac6773bee9b6e8fe7a2.res"]
+
+[params]
+
