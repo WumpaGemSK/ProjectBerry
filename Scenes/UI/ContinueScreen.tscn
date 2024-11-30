@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ts27uiko6jgi"]
+[gd_scene load_steps=6 format=3 uid="uid://ts27uiko6jgi"]
 
 [ext_resource type="Script" path="res://Scripts/UI/continue_screen.gd" id="1_wm58f"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="2_ewh0a"]
 [ext_resource type="PackedScene" uid="uid://dvx16y3wfjqmn" path="res://Scenes/UI/HUD/Countdown.tscn" id="2_qwxaf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d36x3"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_460fw"]
+font = ExtResource("2_ewh0a")
+font_color = Color(0.94902, 1, 0.94902, 1)
 
 [node name="ContinueScreen" type="Control"]
 layout_mode = 3
@@ -37,6 +42,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press any key to continue"
+label_settings = SubResource("LabelSettings_460fw")
 
 [node name="Countdown" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("2_qwxaf")]
 layout_mode = 1

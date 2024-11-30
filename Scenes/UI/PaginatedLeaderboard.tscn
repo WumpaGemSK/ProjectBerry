@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwtts77uj8iko"]
+[gd_scene load_steps=3 format=3 uid="uid://cwtts77uj8iko"]
 
 [ext_resource type="Script" path="res://Scripts/UI/paginated_leaderboard.gd" id="1_dypxr"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="2_tqc73"]
 
 [node name="PaginatedLeaderboard" type="Control"]
 layout_mode = 3
@@ -26,8 +27,10 @@ theme_override_constants/margin_left = 40
 
 [node name="Prev" type="Button" parent="HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("2_tqc73")
 text = "Prev
 "
 
@@ -35,6 +38,7 @@ text = "Prev
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme = ExtResource("2_tqc73")
 alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
@@ -46,6 +50,7 @@ theme_override_constants/margin_right = 40
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("2_tqc73")
 text = "Next"
 
 [connection signal="pressed" from="HBoxContainer/MarginContainer/Prev" to="." method="_on_prev_pressed"]

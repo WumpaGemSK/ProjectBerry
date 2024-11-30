@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://buebfnq6h73uq"]
+[gd_scene load_steps=6 format=3 uid="uid://buebfnq6h73uq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/item_detail.gd" id="1_5fqi3"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="2_rc8eb"]
+[ext_resource type="FontFile" uid="uid://dne07x6s8od4t" path="res://Assets/Fonts/ImpactfulBits.ttf" id="3_uehay"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2x2n8"]
+font = ExtResource("2_rc8eb")
+font_color = Color(0.94902, 1, 0.94902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_klenw"]
+font = ExtResource("3_uehay")
+font_size = 13
+font_color = Color(0.94902, 1, 0.94902, 1)
 
 [node name="ItemDetail" type="Control"]
 layout_mode = 3
@@ -18,9 +29,11 @@ layout_mode = 2
 [node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_2x2n8")
 
 [node name="ItemDecription" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(225, 0)
 layout_mode = 2
+label_settings = SubResource("LabelSettings_klenw")
 autowrap_mode = 3

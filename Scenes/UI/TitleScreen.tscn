@@ -55,25 +55,21 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="StartGame" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("2_72ub3")
 text = "START GAME"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("2_72ub3")
 text = "OPTIONS"
 
 [node name="Leaderboard" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("2_72ub3")
 text = "LEADERBOARD"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("2_72ub3")
 text = "CREDITS"

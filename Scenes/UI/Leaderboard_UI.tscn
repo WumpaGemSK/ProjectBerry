@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6clpjw1d7r4c"]
+[gd_scene load_steps=8 format=3 uid="uid://c6clpjw1d7r4c"]
 
 [ext_resource type="Script" path="res://Scripts/UI/leaderboard_ui.gd" id="1_ho52q"]
 [ext_resource type="PackedScene" uid="uid://bomjep5sgdeku" path="res://Scenes/UI/Components/StatusLine.tscn" id="2_r4kvf"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="3_amrkn"]
 [ext_resource type="PackedScene" uid="uid://cwtts77uj8iko" path="res://Scenes/UI/PaginatedLeaderboard.tscn" id="4_ie36t"]
 [ext_resource type="PackedScene" uid="uid://cy1swvux1v2b0" path="res://Scenes/UI/Components/LeaderboardLine.tscn" id="4_kelvc"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="6_l4lr5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_asn60"]
+font = ExtResource("3_amrkn")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="LeaderboardUi" type="Control"]
 layout_mode = 3
@@ -14,6 +20,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ho52q")
 line_scn = ExtResource("2_r4kvf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94902, 1, 0.94902, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,7 +48,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Leaderboards"
+text = "LEADERBOARDS"
+label_settings = SubResource("LabelSettings_asn60")
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -54,6 +70,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("6_l4lr5")
 text = "Title Screen"
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

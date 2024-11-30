@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdsvcila2e5bt"]
+[gd_scene load_steps=8 format=3 uid="uid://cdsvcila2e5bt"]
 
 [ext_resource type="Script" path="res://Scripts/UI/options.gd" id="1_3ragc"]
 [ext_resource type="PackedScene" uid="uid://drjv0owirpjnj" path="res://Scenes/UI/AudioSettings.tscn" id="1_oa40a"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="2_mrkfa"]
 [ext_resource type="PackedScene" uid="uid://d1d6n6gjcq7lu" path="res://Scenes/UI/DisplayOptions.tscn" id="2_ru4mw"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="5_pva0o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4oxvr"]
+font = ExtResource("2_mrkfa")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vs28y"]
+font = ExtResource("2_mrkfa")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -13,11 +23,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ragc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94902, 1, 0.94902, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -81.0
+offset_right = 55.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -31,8 +57,9 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Audio settings
+text = "AUDIO SETTINGS
 "
+label_settings = SubResource("LabelSettings_4oxvr")
 
 [node name="AudioSettings" parent="VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_oa40a")]
 layout_mode = 2
@@ -50,13 +77,16 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Display settings"
+text = "DISPLAY SETTINGS"
+label_settings = SubResource("LabelSettings_vs28y")
 
 [node name="DisplayOptions" parent="VBoxContainer/MarginContainer2/VBoxContainer" instance=ExtResource("2_ru4mw")]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_pva0o")
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

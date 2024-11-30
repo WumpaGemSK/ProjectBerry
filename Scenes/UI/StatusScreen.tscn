@@ -1,26 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://btabe7lri4kc3"]
+[gd_scene load_steps=6 format=3 uid="uid://btabe7lri4kc3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/status_screen.gd" id="1_46mue"]
 [ext_resource type="PackedScene" uid="uid://bomjep5sgdeku" path="res://Scenes/UI/Components/StatusLine.tscn" id="1_p4lup"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="2_ehngo"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="4_ae1aj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gvmat"]
+font = ExtResource("2_ehngo")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="StatusScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = 52.0
-offset_right = -78.0
-offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_46mue")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94902, 1, 0.94902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -123.0
+offset_right = 192.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -31,6 +48,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Status"
+label_settings = SubResource("LabelSettings_gvmat")
 
 [node name="Ranking" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_p4lup")]
 unique_name_in_owner = true
@@ -47,12 +65,14 @@ layout_mode = 2
 [node name="Initials" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-placeholder_text = "Enter initials"
+theme = ExtResource("4_ae1aj")
+placeholder_text = "Enter Your Initials Here"
 max_length = 3
 
-[node name="LeaderboadButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="LeaderboardButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme = ExtResource("4_ae1aj")
 text = "Leaderboard"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/LeaderboadButton" to="." method="_on_leaderboad_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LeaderboardButton" to="." method="_on_leaderboad_button_pressed"]
