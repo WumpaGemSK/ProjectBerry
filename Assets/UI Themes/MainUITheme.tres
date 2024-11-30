@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://c2uonwa1vk1wu"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c2uonwa1vk1wu"]
 
 [ext_resource type="StyleBox" uid="uid://wusxix43jc03" path="res://Assets/UI Themes/StyleBoxes/StyleBoxFlat_Button_Normal.tres" id="1_73uet"]
 [ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="1_n23ud"]
@@ -90,12 +90,14 @@ corner_radius_top_left = 4
 shadow_color = Color(0, 0, 0, 0)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggfsc"]
+bg_color = Color(0.05, 0.1, 0.1, 0.666667)
+
 [resource]
 default_font = ExtResource("1_n23ud")
 default_font_size = 16
 Button/colors/font_color = Color(0.94902, 1, 0.94902, 1)
 Button/colors/font_disabled_color = Color(0.356863, 0.54902, 0.486275, 1)
-Button/colors/font_focus_color = Color(0.356863, 0.54902, 0.486275, 1)
 Button/colors/font_hover_color = Color(0.356863, 0.54902, 0.486275, 1)
 Button/colors/font_pressed_color = Color(0.94902, 1, 0.94902, 1)
 Button/styles/disabled = SubResource("StyleBoxFlat_sibvl")
@@ -109,3 +111,4 @@ LineEdit/colors/font_color = Color(0.94902, 1, 0.94902, 1)
 LineEdit/colors/font_placeholder_color = Color(0.356863, 0.54902, 0.486275, 1)
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_lun8b")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_00rh6")
+Panel/styles/panel = SubResource("StyleBoxFlat_ggfsc")
