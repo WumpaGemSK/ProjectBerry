@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://7k5gddodduxq"
+path="res://.godot/imported/pistol_slot_icon.aseprite-9238a414c8bb5c4148c3f074af80a208.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/MainGameplayUI/ItemSlots/pistol_slot_icon.aseprite"
+dest_files=["res://.godot/imported/pistol_slot_icon.aseprite-9238a414c8bb5c4148c3f074af80a208.res"]
+
+[params]
+
