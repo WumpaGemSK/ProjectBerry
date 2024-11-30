@@ -18,7 +18,6 @@ func on_item_pickup(item: Item):
 		return
 	if item.is_secret():
 		EventBus.secret_pickup.emit()
-		return
 	if item.is_key():
 		if inventory.has(item.type):
 			if item.effect > inventory[item.type].effect:

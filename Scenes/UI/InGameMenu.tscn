@@ -40,10 +40,6 @@ visible = false
 layout_mode = 2
 text = "Map"
 
-[node name="Inventory" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Inventory"
-
 [node name="Audio" type="Button" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -59,7 +55,6 @@ text = "Return to title"
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="VBoxContainer/Inventory" to="." method="_on_inventory_pressed"]
 [connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="VBoxContainer/Display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]

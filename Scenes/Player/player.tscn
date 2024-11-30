@@ -1,4 +1,4 @@
-[gd_scene load_steps=272 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=273 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="9_5wdyj"]
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="10_431hd"]
 [ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="11_yhs7u"]
+[ext_resource type="Script" path="res://Scripts/Inventory.gd" id="12_voviu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 height = 24.0
@@ -2241,6 +2242,9 @@ script = ExtResource("1_mr2b3")
 ranged_weapon_scn = ExtResource("2_vyd0l")
 melee_weapon_scn = ExtResource("3_ipmcy")
 
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("12_voviu")
+
 [node name="MainCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cnwvd")
 
@@ -2297,10 +2301,13 @@ shape = SubResource("CircleShape2D_cou53")
 
 [node name="MainHud" parent="CanvasLayer" instance=ExtResource("8_tg8g7")]
 
-[node name="Inventory_UI" parent="CanvasLayer" instance=ExtResource("9_5wdyj")]
+[node name="Inventory_UI" parent="CanvasLayer" node_paths=PackedStringArray("inventory") instance=ExtResource("9_5wdyj")]
 visible = false
+inventory = NodePath("../../Inventory")
 
 [node name="InGameMenu" parent="CanvasLayer" instance=ExtResource("10_431hd")]
 
 [node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("11_yhs7u")]
 visible = false
+
+[connection signal="visibility_changed" from="CanvasLayer/InGameMenu" to="CanvasLayer/InGameMenu" method="_on_in_game_menu_visibility_changed"]

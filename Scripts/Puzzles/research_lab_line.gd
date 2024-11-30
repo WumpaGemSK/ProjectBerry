@@ -4,7 +4,7 @@ signal animation_finished
 
 @onready var path_2d: Path2D = $Path2D
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
-@onready var line_2d: Line2D = %Line2D
+@onready var line_2d: Line2D = $Line2D
 
 @export var tween_speed : float = 10
 
@@ -27,3 +27,6 @@ func render_line():
 func on_tween_finished():
 	anim = false
 	animation_finished.emit()
+
+func clear():
+	line_2d.clear_points()

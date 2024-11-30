@@ -8,6 +8,9 @@ var offset_distance: float = 30
 
 var scenes: Dictionary = {}
 
+func _ready():
+	EventBus.reset.connect(on_reset)
+
 func change_scene(scene: PackedScene, trigger: ScenePortal):
 	if not player:
 		player = get_tree().get_nodes_in_group("Player")[0]
@@ -65,3 +68,10 @@ func direction_to_push(dir: ScenePortal.Direction) -> Vector2:
 		ScenePortal.Direction.RIGHT:
 			return Vector2.LEFT
 	return Vector2.ZERO
+
+func on_reset():
+	prev_scene = []
+	prev_position = []
+	player = null
+	offset_distance = 30
+	scenes = {}

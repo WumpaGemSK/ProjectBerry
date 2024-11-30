@@ -39,7 +39,7 @@ func _switch_scene(body: Node2D):
 
 func _check_keys(body: Node2D):
 	if body is Player:
-		var highest_key_tier = Inventory.get_key_tier()
+		var highest_key_tier = body.find_child("Inventory").get_key_tier()
 		open_door(highest_key_tier)
 
 func update_sprite():

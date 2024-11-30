@@ -23,5 +23,6 @@ func print_code():
 	animated_sprite_2d.animation_finished.connect(generate_code_item)
 
 func generate_code_item():
+	animated_sprite_2d.frame = 0
 	if pickable_item:
 		pickable_item.visible = true
