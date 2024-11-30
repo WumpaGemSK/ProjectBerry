@@ -72,7 +72,7 @@ func _process(_delta):
 		ranged_weapon.attack(global_position, facing_vector[facing_direction])
 	if Input.is_action_just_pressed("sneak") and not is_panicking():
 		state = PlayerStates.SNEAKING
-	if Input.is_action_just_released("sneak") and not is_panicking():
+	if Input.is_action_just_released("sneak") and state != PlayerStates.ATTACKING:
 		state = PlayerStates.NORMAL
 
 func _physics_process(_delta: float) -> void:
@@ -115,7 +115,7 @@ func _physics_process(_delta: float) -> void:
 			var force = speed
 			state = PlayerStates.PUSHING
 			collider.apply_central_impulse(-coll.get_normal()*force)
-	if coll_count == 0 and not state == PlayerStates.SNEAKING:
+	if coll_count == 0 and not is_sneaking() and not is_attacking():
 		state = PlayerStates.NORMAL
 	#endregion
 
@@ -286,6 +286,9 @@ func on_panic():
 #region Helper functions
 func is_sneaking() -> bool:
 	return state == PlayerStates.SNEAKING
+
+func is_attacking() -> bool:
+	return state == PlayerStates.ATTACKING
 
 # NOTE: Return always false since panicking is on hold for now
 func is_panicking() -> bool:

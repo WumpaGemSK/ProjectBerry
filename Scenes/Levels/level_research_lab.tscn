@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bbg0x48lynegm"]
+[gd_scene load_steps=19 format=4 uid="uid://bbg0x48lynegm"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_research_lab.gd" id="1_81482"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_e45ia"]
@@ -26,6 +26,27 @@ _data = {
 }
 point_count = 23
 
+[sub_resource type="Curve2D" id="Curve2D_qg324"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 180, 250, 0, 0, 0, 0, 180, 244, 0, 0, 0, 0, 206, 244, 0, 0, 0, 0, 206, 269, 0, 0, 0, 0, 243, 269, 0, 0, 0, 0, 242, 245, 0, 0, 0, 0, 255, 245, 0, 0, 0, 0, 255, 268, 0, 0, 0, 0, 291, 268, 0, 0, 0, 0, 291, 245, 0, 0, 0, 0, 303, 245, 0, 0, 0, 0, 303, 269, 0, 0, 0, 0, 338, 268, 0, 0, 0, 0, 337, 245, 0, 0, 0, 0, 358, 244, 0, 0, 0, 0, 356, 220, 0, 0, 0, 0, 371, 220, 0, 0, 0, 0, 371, 244, 0, 0, 0, 0, 387, 245, 0, 0, 0, 0, 387, 268, 0, 0, 0, 0, 420, 268, 0, 0, 0, 0, 421, 273)
+}
+point_count = 22
+
+[sub_resource type="Curve2D" id="Curve2D_tptc5"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 180, 224, 0, 0, 0, 0, 180, 220, 0, 0, 0, 0, 206, 221, 0, 0, 0, 0, 206, 196, 0, 0, 0, 0, 243, 197, 0, 0, 0, 0, 242, 220, 0, 0, 0, 0, 254, 221, 0, 0, 0, 0, 255, 196, 0, 0, 0, 0, 290, 196, 0, 0, 0, 0, 290, 220, 0, 0, 0, 0, 302, 220, 0, 0, 0, 0, 303, 196, 0, 0, 0, 0, 338, 196, 0, 0, 0, 0, 337, 220, 0, 0, 0, 0, 357, 221, 0, 0, 0, 0, 357, 244, 0, 0, 0, 0, 370, 244, 0, 0, 0, 0, 369, 220, 0, 0, 0, 0, 387, 220, 0, 0, 0, 0, 386, 197, 0, 0, 0, 0, 420, 196, 0, 0, 0, 0, 420, 201)
+}
+point_count = 22
+
+[sub_resource type="Curve2D" id="Curve2D_srbto"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 179, 200, 0, 0, 0, 0, 180, 195, 0, 0, 0, 0, 206, 196, 0, 0, 0, 0, 206, 220, 0, 0, 0, 0, 226, 220, 0, 0, 0, 0, 225, 244, 0, 0, 0, 0, 242, 245, 0, 0, 0, 0, 242, 269, 0, 0, 0, 0, 255, 269, 0, 0, 0, 0, 254, 245, 0, 0, 0, 0, 273, 244, 0, 0, 0, 0, 273, 220, 0, 0, 0, 0, 291, 220, 0, 0, 0, 0, 290, 196, 0, 0, 0, 0, 303, 195, 0, 0, 0, 0, 302, 221, 0, 0, 0, 0, 322, 220, 0, 0, 0, 0, 321, 244, 0, 0, 0, 0, 338, 244, 0, 0, 0, 0, 338, 269, 0, 0, 0, 0, 386, 268, 0, 0, 0, 0, 386, 244, 0, 0, 0, 0, 420, 245, 0, 0, 0, 0, 421, 249)
+}
+point_count = 24
+
 [node name="LevelResearchLab" type="Node2D"]
 script = ExtResource("1_81482")
 
@@ -47,9 +68,16 @@ position = Vector2(240, 84)
 position = Vector2(192, 30)
 room = 4
 
-[node name="LotteryManager" type="Node" parent="." node_paths=PackedStringArray("correct_flask")]
+[node name="LotteryManager" type="Node" parent="." node_paths=PackedStringArray("correct_flask", "correct_line_renderer", "other_flask", "other_line_renderer", "other_flask2", "other_line_renderer2", "other_flask3", "other_line_renderer3")]
 script = ExtResource("5_f0iy8")
 correct_flask = NodePath("Flask4")
+correct_line_renderer = NodePath("LinesRenderer/CorrectFlask")
+other_flask = NodePath("Flask")
+other_line_renderer = NodePath("LinesRenderer/OtherFlask3")
+other_flask2 = NodePath("Flask2")
+other_line_renderer2 = NodePath("LinesRenderer/OtherFlask2")
+other_flask3 = NodePath("Flask3")
+other_line_renderer3 = NodePath("LinesRenderer/OtherFlask")
 
 [node name="Flask" parent="LotteryManager" instance=ExtResource("6_4n8dr")]
 position = Vector2(180, 204)
@@ -121,21 +149,68 @@ position = Vector2(420, 278)
 texture = ExtResource("7_ikxb1")
 flip_h = true
 
-[node name="LineRenderer" type="Node2D" parent="LotteryManager"]
+[node name="LinesRenderer" type="Node" parent="LotteryManager"]
+unique_name_in_owner = true
+
+[node name="CorrectFlask" type="Node2D" parent="LotteryManager/LinesRenderer"]
 unique_name_in_owner = true
 script = ExtResource("10_qu6qp")
 
-[node name="Line2D" type="Line2D" parent="LotteryManager/LineRenderer"]
-unique_name_in_owner = true
+[node name="Line2D" type="Line2D" parent="LotteryManager/LinesRenderer/CorrectFlask"]
 width = 4.0
 default_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
-[node name="Path2D" type="Path2D" parent="LotteryManager/LineRenderer"]
+[node name="Path2D" type="Path2D" parent="LotteryManager/LinesRenderer/CorrectFlask"]
 curve = SubResource("Curve2D_hdiog")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LineRenderer/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LinesRenderer/CorrectFlask/Path2D"]
 position = Vector2(180, 271)
 rotation = -1.5708
+
+[node name="OtherFlask" type="Node2D" parent="LotteryManager/LinesRenderer"]
+unique_name_in_owner = true
+script = ExtResource("10_qu6qp")
+
+[node name="Line2D" type="Line2D" parent="LotteryManager/LinesRenderer/OtherFlask"]
+width = 4.0
+default_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[node name="Path2D" type="Path2D" parent="LotteryManager/LinesRenderer/OtherFlask"]
+curve = SubResource("Curve2D_qg324")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LinesRenderer/OtherFlask/Path2D"]
+position = Vector2(180, 250)
+rotation = -1.5708
+
+[node name="OtherFlask2" type="Node2D" parent="LotteryManager/LinesRenderer"]
+unique_name_in_owner = true
+script = ExtResource("10_qu6qp")
+
+[node name="Path2D" type="Path2D" parent="LotteryManager/LinesRenderer/OtherFlask2"]
+curve = SubResource("Curve2D_tptc5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LinesRenderer/OtherFlask2/Path2D"]
+position = Vector2(180, 224)
+rotation = -1.5708
+
+[node name="Line2D" type="Line2D" parent="LotteryManager/LinesRenderer/OtherFlask2"]
+width = 4.0
+default_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[node name="OtherFlask3" type="Node2D" parent="LotteryManager/LinesRenderer"]
+unique_name_in_owner = true
+script = ExtResource("10_qu6qp")
+
+[node name="Line2D" type="Line2D" parent="LotteryManager/LinesRenderer/OtherFlask3"]
+width = 4.0
+default_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[node name="Path2D" type="Path2D" parent="LotteryManager/LinesRenderer/OtherFlask3"]
+curve = SubResource("Curve2D_srbto")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LotteryManager/LinesRenderer/OtherFlask3/Path2D"]
+position = Vector2(179, 200)
+rotation = -1.3734
 
 [node name="DamageUpgrade" parent="." instance=ExtResource("12_w2n4o")]
 position = Vector2(156, 84)
