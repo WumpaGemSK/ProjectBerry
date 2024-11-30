@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dfsbbjlwlix32"
+path="res://.godot/imported/NeutralEnding_Panel1.aseprite-4df62f20016ef5d19f750b59157eff63.res"
+
+[deps]
+
+source_file="res://Assets/Textures/UI Screens/Cutscenes/Neutral Ending/NeutralEnding_Panel1.aseprite"
+dest_files=["res://.godot/imported/NeutralEnding_Panel1.aseprite-4df62f20016ef5d19f750b59157eff63.res"]
+
+[params]
+
