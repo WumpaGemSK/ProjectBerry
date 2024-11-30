@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bgiym5fpgnvrk" path="res://Assets/Textures/Environment/Props/research_lab_flask_2.png" id="2_pawfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgnb8"]
-size = Vector2(20, 9)
+size = Vector2(15, 10)
 
 [node name="Flask" type="Node2D"]
 script = ExtResource("1_vum7i")
@@ -18,7 +18,7 @@ texture = ExtResource("2_pawfx")
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
-position = Vector2(0, -1.5)
+position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_hgnb8")
 
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
