@@ -38,6 +38,7 @@ func _ready():
 	EventBus.try_code.connect(on_code_try)
 	EventBus.player_death.connect(on_player_death)
 	EventBus.secret_pickup.connect(on_secret_pickup)
+	EventBus.reset.connect(reset)
 
 func on_code_try(code: String):
 	if code == selected_code:
@@ -98,3 +99,10 @@ func shuffle_string(s: String):
 	randomize()
 	a.shuffle()
 	return "".join(a)
+
+func reset():
+	selected_code = Constants.CODES.pick_random()
+	shuffled_code = shuffle_string(selected_code)
+	secret_count = 0
+	retries = 3
+	score = null

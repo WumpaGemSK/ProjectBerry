@@ -10,4 +10,5 @@ func _on_restart_pressed():
 
 
 func _on_title_screen_pressed():
+	EventBus.reset.emit()
 	get_tree().change_scene_to_packed(title_scn)
