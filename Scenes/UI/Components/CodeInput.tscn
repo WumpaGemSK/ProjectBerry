@@ -1,36 +1,42 @@
-[gd_scene load_steps=12 format=3 uid="uid://d04w0asci7apg"]
+[gd_scene load_steps=13 format=3 uid="uid://d04w0asci7apg"]
 
 [ext_resource type="Script" path="res://Scripts/UI/code_input.gd" id="1_sr8sm"]
 [ext_resource type="Texture2D" uid="uid://yppdiq5h15eg" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_up_button_sheet.png" id="2_15tti"]
-[ext_resource type="Texture2D" uid="uid://duo7pbnst6fg5" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_select_cursor_up_down_button_sheet.png" id="3_6sukj"]
 [ext_resource type="Texture2D" uid="uid://bree616vo2o2t" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_down_button_sheet.png" id="3_ksg0d"]
+[ext_resource type="Texture2D" uid="uid://diw472uyals33" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_up_button_focused_sheet.png" id="3_ycsk3"]
+[ext_resource type="Texture2D" uid="uid://bmrfks84xuyfl" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_down_button_focused_sheet.png" id="5_3d7qu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y56i"]
 atlas = ExtResource("2_15tti")
 region = Rect2(0, 0, 64, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cq2pf"]
-atlas = ExtResource("2_15tti")
+atlas = ExtResource("3_ycsk3")
 region = Rect2(0, 40, 64, 40)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xoxhr"]
-load_path = "res://.godot/imported/terminal_select_cursor_up_down_button_sheet.png-77f36ccd474318806b59b75be165f01a.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_8stwj"]
+atlas = ExtResource("3_ycsk3")
+region = Rect2(0, 0, 64, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jxreu"]
-atlas = SubResource("CompressedTexture2D_xoxhr")
-region = Rect2(80, 0, 80, 55)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkec6"]
+bg_color = Color(0.94902, 1, 0.94902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_okhm5"]
 atlas = ExtResource("3_ksg0d")
 region = Rect2(0, 0, 64, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05qdf"]
-atlas = ExtResource("3_ksg0d")
+atlas = ExtResource("5_3d7qu")
 region = Rect2(0, 40, 64, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jamwq"]
-atlas = ExtResource("3_6sukj")
-region = Rect2(80, 0, 80, 55)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4qtw"]
+atlas = ExtResource("5_3d7qu")
+region = Rect2(0, 0, 64, 40)
 
 [node name="CodeInput" type="Control"]
 custom_minimum_size = Vector2(70, 79)
@@ -54,18 +60,24 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_5y56i")
 texture_pressed = SubResource("AtlasTexture_cq2pf")
-texture_focused = SubResource("AtlasTexture_jxreu")
-stretch_mode = 0
+texture_hover = SubResource("AtlasTexture_8stwj")
+stretch_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mkec6")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+stretch_mode = 3
 
 [node name="DOWN" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_okhm5")
 texture_pressed = SubResource("AtlasTexture_05qdf")
-texture_focused = SubResource("AtlasTexture_jamwq")
-stretch_mode = 0
+texture_hover = SubResource("AtlasTexture_d4qtw")
+stretch_mode = 3
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/UP" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/DOWN" to="." method="_on_down_pressed"]

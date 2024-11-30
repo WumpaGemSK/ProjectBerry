@@ -1,7 +1,7 @@
 extends Control
 class_name CodeInput
 
-@onready var texture_rect = $MarginContainer/VBoxContainer/TextureRect
+@onready var texture_rect = $MarginContainer/VBoxContainer/PanelContainer/TextureRect
 const TERMINAL_LETTERS = preload("res://Assets/Textures/UI Screens/TerminalUI/terminal_letters.tres")
 var letter : String:
 	get():
