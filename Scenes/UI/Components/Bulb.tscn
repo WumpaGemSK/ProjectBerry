@@ -25,7 +25,9 @@ layout_mode = 2
 [node name="Light" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+stretch_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+stretch_mode = 2

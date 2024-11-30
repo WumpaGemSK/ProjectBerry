@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccske06ximr3e"]
+[gd_scene load_steps=4 format=3 uid="uid://ccske06ximr3e"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD/health_unit.gd" id="1_a7kc5"]
+[ext_resource type="Texture2D" uid="uid://8xk4di8j3qp2" path="res://Assets/Textures/UI Screens/MainGameplayUI/main_gameplay_gui_health_bar_full_unit.png" id="2_wkdvu"]
+[ext_resource type="Texture2D" uid="uid://c34fqnsyb4aoc" path="res://Assets/Textures/UI Screens/MainGameplayUI/main_gameplay_gui_health_bar_empty_unit.png" id="3_i6thw"]
 
 [node name="HealthUnit" type="Control"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 16.0
@@ -11,7 +13,7 @@ offset_bottom = 16.0
 script = ExtResource("1_a7kc5")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -28,8 +30,10 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="BoxContainer"]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="BoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="FullUnitTexture" type="TextureRect" parent="BoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+texture = ExtResource("2_wkdvu")
+
+[node name="EmptyUnitTexture" type="TextureRect" parent="BoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_i6thw")

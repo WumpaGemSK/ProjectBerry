@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://f7kk4ik4y6nf"]
+[gd_scene load_steps=8 format=3 uid="uid://f7kk4ik4y6nf"]
 
 [ext_resource type="Script" path="res://Scripts/UI/title_screen.gd" id="1_sjedc"]
 [ext_resource type="PackedScene" uid="uid://dalw1j1ywe5ld" path="res://Scenes/UI/how_to_play.tscn" id="2_3ucy5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsvcila2e5bt" path="res://Scenes/UI/Options.tscn" id="2_tkngc"]
 [ext_resource type="Texture2D" uid="uid://cwf3sbmpeiggf" path="res://Assets/Textures/game_logo.png" id="3_12y00"]
 [ext_resource type="PackedScene" uid="uid://c6clpjw1d7r4c" path="res://Scenes/UI/Leaderboard_UI.tscn" id="3_x4kl0"]
+[ext_resource type="PackedScene" uid="uid://kla82x8vaxaa" path="res://Scenes/UI/credits.tscn" id="5_kx7lw"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -18,6 +19,7 @@ script = ExtResource("1_sjedc")
 game_scene = ExtResource("2_3ucy5")
 options_scene = ExtResource("2_tkngc")
 leaderboard_scene = ExtResource("3_x4kl0")
+credits_scene = ExtResource("5_kx7lw")
 
 [node name="TempBG" type="ColorRect" parent="."]
 layout_mode = 1

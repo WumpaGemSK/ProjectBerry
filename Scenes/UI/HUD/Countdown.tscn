@@ -1,18 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvx16y3wfjqmn"]
+[gd_scene load_steps=5 format=3 uid="uid://dvx16y3wfjqmn"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD/countdown.gd" id="1_enqjw"]
 [ext_resource type="FontFile" uid="uid://d2k61ghxrtrwo" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="2_gi37g"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jpri"]
-bg_color = Color(0.856865, 0.490489, 0.302263, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_816rx"]
-bg_color = Color(0.172525, 0.684122, 0.651669, 1)
+[ext_resource type="Texture2D" uid="uid://k83e7fjdxant" path="res://Assets/Textures/UI Screens/MainGameplayUI/main_gameplay_gui_countdown_frame.png" id="2_joek3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yfvfm"]
 font = ExtResource("2_gi37g")
 font_size = 21
-font_color = Color(0.94902, 1, 0.94902, 1)
+font_color = Color(0.678431, 0.85098, 0.737255, 1)
 
 [node name="Countdown" type="Control"]
 layout_mode = 3
@@ -23,35 +18,25 @@ grow_horizontal = 2
 size_flags_vertical = 0
 script = ExtResource("1_enqjw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -35.0
-offset_right = 35.0
-offset_bottom = 40.0
+offset_left = -60.0
+offset_top = 16.0
+offset_right = 60.0
+offset_bottom = 54.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 5
+texture = ExtResource("2_joek3")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1jpri")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/MarginContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_816rx")
-
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/PanelContainer"]
+[node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = -48.0
+offset_top = 24.0
+offset_right = 51.0
+offset_bottom = 43.0
 theme_override_font_sizes/font_size = 25
 text = "30:00.00"
 label_settings = SubResource("LabelSettings_yfvfm")

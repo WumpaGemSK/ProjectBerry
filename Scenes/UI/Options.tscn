@@ -87,6 +87,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("5_pva0o")
-text = "Back"
+text = "BACK"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

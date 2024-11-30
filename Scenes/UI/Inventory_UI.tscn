@@ -6,9 +6,9 @@
 [ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="3_s30ip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s8gh"]
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.051, 0.102, 0.102, 0.33)
+content_margin_bottom = 18.0
+bg_color = Color(0.05, 0.1, 0.1, 0.666667)
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_umw1f"]
 font = ExtResource("3_s30ip")
@@ -35,6 +35,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3s8gh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -42,9 +43,12 @@ size_flags_horizontal = 4
 text = "INVENTORY"
 label_settings = SubResource("LabelSettings_umw1f")
 
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-split_offset = 60
+split_offset = 190
 dragger_visibility = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HSplitContainer"]
@@ -53,7 +57,6 @@ theme_override_constants/margin_left = 50
 
 [node name="InventoryGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/HSplitContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 columns = 4
 

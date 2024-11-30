@@ -2,13 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/HUD/health_hud.gd" id="1_hpiru"]
 [ext_resource type="PackedScene" uid="uid://ccske06ximr3e" path="res://Scenes/UI/HUD/HealthUnit.tscn" id="2_fpa21"]
+[ext_resource type="Texture2D" uid="uid://dhbyqja3vdmo6" path="res://Assets/Textures/UI Screens/MainGameplayUI/main_gameplay_gui_health_bar_heart.png" id="3_50dha"]
 
-[sub_resource type="Gradient" id="Gradient_avj26"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_stv51"]
-gradient = SubResource("Gradient_avj26")
-width = 32
-height = 32
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a64xu"]
 
 [node name="HealthHUD" type="Control"]
 layout_mode = 3
@@ -27,20 +23,21 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 17
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a64xu")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
 
 [node name="Heart" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_stv51")
+texture = ExtResource("3_50dha")
+expand_mode = 2
+stretch_mode = 3
 
 [node name="HealthUnits" type="HBoxContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true

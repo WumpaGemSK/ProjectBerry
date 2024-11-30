@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b20iqs8nyalvw"
-path="res://.godot/imported/Project Berry - Level Design - Research Lab - Mockup (Alt).png-86ab6fe83650fb18ca966f7db05cbe4a.ctex"
+uid="uid://cw6olboougiyx"
+path="res://.godot/imported/terminal_send_button_focused_sheet.png-4bbc3622e3b9949acf80a14da2409e69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Project Berry - Level Design - Research Lab - Mockup (Alt).png"
-dest_files=["res://.godot/imported/Project Berry - Level Design - Research Lab - Mockup (Alt).png-86ab6fe83650fb18ca966f7db05cbe4a.ctex"]
+source_file="res://Assets/Textures/UI Screens/TerminalUI/terminal_send_button_focused_sheet.png"
+dest_files=["res://.godot/imported/terminal_send_button_focused_sheet.png-4bbc3622e3b9949acf80a14da2409e69.ctex"]
 
 [params]
 
