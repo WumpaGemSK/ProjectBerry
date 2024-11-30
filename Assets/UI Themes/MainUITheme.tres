@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c2uonwa1vk1wu"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://c2uonwa1vk1wu"]
 
 [ext_resource type="StyleBox" uid="uid://wusxix43jc03" path="res://Assets/UI Themes/StyleBoxes/StyleBoxFlat_Button_Normal.tres" id="1_73uet"]
 [ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="1_n23ud"]
@@ -22,12 +22,20 @@ content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
-bg_color = Color(0.678431, 0.85098, 0.737255, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 3
+bg_color = Color(0.68, 0.85, 0.736667, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0509804, 0.101961, 0.101961, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 shadow_color = Color(0, 0, 0, 0)
 anti_aliasing = false
 
@@ -37,6 +45,20 @@ content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.678431, 0.85098, 0.737255, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 3
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh5i7"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0509804, 0.101961, 0.101961, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -73,11 +95,13 @@ default_font = ExtResource("1_n23ud")
 default_font_size = 16
 Button/colors/font_color = Color(0.94902, 1, 0.94902, 1)
 Button/colors/font_disabled_color = Color(0.356863, 0.54902, 0.486275, 1)
+Button/colors/font_focus_color = Color(0.356863, 0.54902, 0.486275, 1)
 Button/colors/font_hover_color = Color(0.356863, 0.54902, 0.486275, 1)
 Button/colors/font_pressed_color = Color(0.94902, 1, 0.94902, 1)
 Button/styles/disabled = SubResource("StyleBoxFlat_sibvl")
 Button/styles/focus = SubResource("StyleBoxFlat_spiyh")
 Button/styles/hover = SubResource("StyleBoxFlat_f1v4n")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_wh5i7")
 Button/styles/normal = ExtResource("1_73uet")
 Button/styles/pressed = SubResource("StyleBoxFlat_lmhsn")
 Label/colors/font_color = Color(0.0509804, 0.101961, 0.101961, 1)
