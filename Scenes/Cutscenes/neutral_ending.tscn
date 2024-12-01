@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://w6xfrrdwnnx5"]
+
+[ext_resource type="Texture2D" uid="uid://blbmtkvyola3k" path="res://Assets/Textures/UI Screens/Cutscenes/Neutral Ending/NeutralEnding_Panel1.png" id="1_2eroj"]
+[ext_resource type="Script" path="res://Scripts/Cutscenes/neutral_good_ending.gd" id="1_nr5vu"]
+[ext_resource type="FontFile" uid="uid://dne07x6s8od4t" path="res://Assets/Fonts/ImpactfulBits.ttf" id="2_p4va1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w2e2v"]
+font = ExtResource("2_p4va1")
+font_size = 13
+font_color = Color(0.94902, 1, 0.94902, 1)
+
+[node name="NeutralEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nr5vu")
+
+[node name="Page1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2eroj")
+
+[node name="Page2" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welp, look on the bright side.
+
+It could’ve ended up a lot worse.
+"
+label_settings = SubResource("LabelSettings_w2e2v")
+horizontal_alignment = 1
+vertical_alignment = 1

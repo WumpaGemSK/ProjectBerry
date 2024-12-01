@@ -81,3 +81,5 @@ signal reload_scene
 
 ## Signal sent to reset the state
 signal reset
+
+signal fire_bullet(from: Vector2, direction: Vector2, damage: int)

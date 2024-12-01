@@ -9,8 +9,8 @@ region = Rect2(32, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_mpdjw")
-item_name = "U"
+item_name = "Code Fax (U)"
 texture_icon = SubResource("AtlasTexture_1pl13")
-description = ""
+description = "U as in Uniform"
 type = 7
 effect = 1

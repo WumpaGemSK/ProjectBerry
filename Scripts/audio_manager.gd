@@ -2,7 +2,7 @@ extends Node
 
 @export var sound_effects_settings: Array[SoundEffect]
 var sound_effects_dict: Dictionary = {}
-@onready var music = %Music
+@onready var music: AudioStreamPlayer = %Music
 
 #region UI navigation sounds
 func _enter_tree():

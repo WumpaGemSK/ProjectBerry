@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.0509804, 0.101961, 0.101961, 1)
 boot_splash/image="res://Assets/Textures/UI Screens/shifty_kitty_logo_new_frame1.png"
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -29,13 +29,12 @@ Leaderboard="*res://Scripts/Leaderboard.gd"
 SceneSwitcher="*res://Scripts/SceneSwitcher.gd"
 TransitionScreen="*res://Scenes/UI/TransitionScreen.tscn"
 AudioManager="*res://Scenes/AudioManager.tscn"
+BulletManager="*res://Scripts/bullet_manager.gd"
 
 [display]
 
 window/size/viewport_width=512
 window/size/viewport_height=288
-window/size/window_width_override=1024
-window/size/window_height_override=576
 window/stretch/mode="viewport"
 
 [editor_plugins]
@@ -46,6 +45,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 Player="The player group"
 Damageable="Unit can take damage"
+SodaMachine=""
 
 [input]
 

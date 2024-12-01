@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcrmigtcrjbo0"]
+
+[ext_resource type="Script" path="res://Scripts/Cutscenes/neutral_good_ending.gd" id="1_6khlm"]
+[ext_resource type="Texture2D" uid="uid://c480mankavxqy" path="res://Assets/Textures/UI Screens/Cutscenes/Good Ending/GoodBestEnding_Panel1.png" id="1_jx1yn"]
+[ext_resource type="FontFile" uid="uid://dne07x6s8od4t" path="res://Assets/Fonts/ImpactfulBits.ttf" id="1_u7nmg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5b0rd"]
+font = ExtResource("1_u7nmg")
+font_size = 13
+font_color = Color(0.94902, 1, 0.94902, 1)
+
+[node name="GoodEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6khlm")
+
+[node name="Page1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jx1yn")
+
+[node name="Page2" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Phew…
+
+It as if nothing ever happened…"
+label_settings = SubResource("LabelSettings_5b0rd")
+horizontal_alignment = 1
+vertical_alignment = 1

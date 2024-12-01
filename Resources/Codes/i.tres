@@ -9,8 +9,8 @@ region = Rect2(64, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_etc3p")
-item_name = "I"
+item_name = "Code Fax (I)"
 texture_icon = SubResource("AtlasTexture_1pl13")
-description = ""
+description = "I as in Infantry"
 type = 7
 effect = 1

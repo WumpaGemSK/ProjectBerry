@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cl8j6qti8ybd2"]
+[gd_scene load_steps=16 format=4 uid="uid://cl8j6qti8ybd2"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_3v52g"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_p2c5d"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cu005wqmhcmdc" path="res://Assets/Textures/Environment/Props/paper_waste_basket_full.png" id="8_25kg6"]
 [ext_resource type="Texture2D" uid="uid://b65a58j3jvw05" path="res://Assets/Textures/Environment/Props/paper_waste_basket_overlay.png" id="9_gfitf"]
 [ext_resource type="Resource" uid="uid://p3j3obuyohxw" path="res://Resources/Secrets/davenport_daily_newspaper.tres" id="9_hbwa8"]
+[ext_resource type="Texture2D" uid="uid://ju6o8rhc54ew" path="res://Assets/Textures/Environment/Props/crumpitt_office_drawer.png" id="11_0mu6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tny7"]
 size = Vector2(48, 62)
@@ -19,6 +20,9 @@ size = Vector2(35, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6g0o"]
 size = Vector2(24, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ytov"]
+size = Vector2(24, 13)
 
 [node name="Level_CrumpittOffice" type="Node2D"]
 
@@ -78,3 +82,13 @@ texture = ExtResource("9_gfitf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PaperWasteBasket"]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_a6g0o")
+
+[node name="Drawer" type="StaticBody2D" parent="."]
+position = Vector2(132, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Drawer"]
+texture = ExtResource("11_0mu6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawer"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_5ytov")

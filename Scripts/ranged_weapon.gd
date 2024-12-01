@@ -5,8 +5,6 @@ extends Weapon
 ## Max amount of ammo
 @export var max_ammo: int
 
-@export var bullet_scn: PackedScene
-
 var facing_rotation = [0, 180, 90, 270]
 
 func _ready():
@@ -16,19 +14,11 @@ func _ready():
 
 func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
-		AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_SHOOT, global_position)
-		var bullet: Bullet = bullet_scn.instantiate()
-		add_child(bullet)
-		bullet.dir = dest
-		bullet.rotate(deg_to_rad(get_bullet_rotation(dest)))
+		EventBus.fire_bullet.emit(from, dest, damage)
 		ammo -= 1
 		cooldown_timer.start(cooldown)
 		if is_player:
 			EventBus.pistol_ammo_update.emit(ammo)
-		var r = raycast_to_damageable(from, dest)
-		if r != null and r.is_in_group("Damageable"):
-			hit.emit()
-			r.take_damage(damage)
 
 func reload(item: Item):
 	if ammo < max_ammo:
@@ -50,15 +40,3 @@ func upgrade(item: Item):
 			max_ammo += item.effect
 			EventBus.pistol_ammo_upgrade.emit(max_ammo)
 			EventBus.item_used.emit(item)
-
-func get_bullet_rotation(dir: Vector2):
-	match dir:
-		Vector2.LEFT:
-			return 90
-		Vector2.RIGHT:
-			return -90
-		Vector2.UP:
-			return 180
-		_:
-			return 0
-	pass

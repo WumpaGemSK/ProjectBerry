@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=20 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
@@ -14,12 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://d2jm3hkkc6pu1" path="res://Scenes/Levels/level_janitor_closet.tscn" id="11_6ujim"]
 [ext_resource type="PackedScene" uid="uid://0qp2y6fsdulr" path="res://Scenes/Levels/level_cafeteria.tscn" id="12_5p1a4"]
 [ext_resource type="Texture2D" uid="uid://dql0vxrj8evef" path="res://Assets/Textures/Environment/Props/soda_vending_machine_sheet.png" id="14_6av63"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo034"]
-size = Vector2(34, 48)
+[ext_resource type="Script" path="res://Scenes/Levels/soda_machine.gd" id="14_csrpx"]
+[ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="14_vjsod"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="16_2hupm"]
+[ext_resource type="Resource" uid="uid://d4fpj2nw3axj" path="res://Resources/Secrets/bag_of_coins.tres" id="17_02h44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vill8"]
-size = Vector2(34, 24)
+size = Vector2(34, 27)
 
 [node name="Level_Corridors" type="Node2D"]
 
@@ -96,18 +97,26 @@ position = Vector2(396, 660)
 scn = ExtResource("11_6ujim")
 door_tier = 3
 
-[node name="SodaMachine" type="Area2D" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="DozySoldier" parent="Enemies" instance=ExtResource("14_vjsod")]
+position = Vector2(204, 684)
+
+[node name="DozySoldier2" parent="Enemies" instance=ExtResource("14_vjsod")]
+position = Vector2(348, 684)
+
+[node name="SodaMachine" type="StaticBody2D" parent="." groups=["SodaMachine"]]
 position = Vector2(60, 0)
+script = ExtResource("14_csrpx")
 
 [node name="Sprite2D" type="Sprite2D" parent="SodaMachine"]
 texture = ExtResource("14_6av63")
 hframes = 2
 
-[node name="AreaShape" type="CollisionShape2D" parent="SodaMachine"]
-shape = SubResource("RectangleShape2D_bo034")
-
-[node name="Collision" type="StaticBody2D" parent="SodaMachine"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SodaMachine/Collision"]
-position = Vector2(0, -12)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SodaMachine"]
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_vill8")
+
+[node name="BagofCoins" parent="SodaMachine" instance=ExtResource("16_2hupm")]
+position = Vector2(0, -300)
+item = ExtResource("17_02h44")

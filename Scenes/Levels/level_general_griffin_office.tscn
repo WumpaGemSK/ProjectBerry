@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://p312dhpbtjn1"]
+[gd_scene load_steps=14 format=4 uid="uid://p312dhpbtjn1"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_general_griffin_office.gd" id="1_8mrr8"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_wp05d"]
@@ -9,12 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://dodyr8eirans4" path="res://Assets/Textures/Environment/Props/chair_sprite_alt.png" id="6_c4p3w"]
 [ext_resource type="PackedScene" uid="uid://bmu6uq8i1ooaw" path="res://Scenes/Interactable.tscn" id="6_wfucg"]
 [ext_resource type="PackedScene" uid="uid://b2ylc066dbc24" path="res://Scenes/UI/Terminal.tscn" id="7_wuu61"]
+[ext_resource type="Texture2D" uid="uid://woxwlv560u11" path="res://Assets/Textures/Environment/Props/dead_griffin.png" id="9_ljpcy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hcuj"]
 size = Vector2(60, 74.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6tt8"]
 size = Vector2(35, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghpsd"]
+size = Vector2(22, 29)
 
 [node name="Level_GeneralGriffinOffice" type="Node2D"]
 script = ExtResource("1_8mrr8")
@@ -58,6 +62,16 @@ texture = ExtResource("6_c4p3w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_b6tt8")
+
+[node name="DeadGriffin" type="StaticBody2D" parent="."]
+position = Vector2(162, 108)
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadGriffin"]
+texture = ExtResource("9_ljpcy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadGriffin"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ghpsd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
