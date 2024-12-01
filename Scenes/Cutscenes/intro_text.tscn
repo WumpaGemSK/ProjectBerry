@@ -1,12 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjpvq1iyxdh5p"]
 
 [ext_resource type="FontFile" uid="uid://dne07x6s8od4t" path="res://Assets/Fonts/ImpactfulBits.ttf" id="1_pgski"]
-[ext_resource type="Script" path="res://Scripts/intro_text.gd" id="1_ssfbl"]
+[ext_resource type="Script" path="res://Scripts/Cutscenes/intro_text.gd" id="1_ssfbl"]
 [ext_resource type="PackedScene" uid="uid://dalw1j1ywe5ld" path="res://Scenes/UI/how_to_play.tscn" id="2_nrkba"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mxg5p"]
 font = ExtResource("1_pgski")
 font_size = 13
+font_color = Color(0.94902, 1, 0.94902, 1)
 
 [node name="IntroText" type="Control"]
 layout_mode = 3
