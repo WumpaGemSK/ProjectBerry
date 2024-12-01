@@ -59,8 +59,6 @@ func _ready():
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 	EventBus.retry_continue.connect(on_retry_continue)
 	EventBus.countdown_start.connect(func(): paused = false)
-	my_animated_sprite.animation_finished.connect(func(): state = PlayerStates.NORMAL)
-	#panic.connect(on_panic)
 
 func _process(_delta):
 	if paused:
@@ -78,16 +76,14 @@ func _process(_delta):
 func _physics_process(_delta: float) -> void:
 	if paused:
 		return
-	if Input.is_action_pressed("move_left"):
-		direction = Vector2.LEFT
-	elif Input.is_action_pressed("move_right"):
-		direction = Vector2.RIGHT
-	elif Input.is_action_pressed("move_down"):
-		direction = Vector2.DOWN
-	elif Input.is_action_pressed("move_up"):
-		direction = Vector2.UP
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		direction.y = 0.0
+	elif Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up"):
+		direction.x = 0.0
 	else:
 		direction = Vector2.ZERO
+	direction = direction.normalized()
 	match state:
 		PlayerStates.SNEAKING:
 			speed = sneaking_speed
@@ -234,8 +230,14 @@ func match_movement_animation()->String:
 	return animation_name
 
 func smashing_animation() -> String:
+	if not my_animated_sprite.animation_finished.is_connected(attack_anim_end):
+		my_animated_sprite.animation_finished.connect(attack_anim_end)
 	var anim_name = "smack_w_cricket_bat_" + check_facing_direction()
 	return anim_name
+
+func attack_anim_end():
+	state = PlayerStates.NORMAL
+	my_animated_sprite.animation_finished.disconnect(attack_anim_end)
 
 func sneak_animation() -> String:
 	var anim_name = "sneak_" + check_facing_direction() + "_" + weapon_name()
