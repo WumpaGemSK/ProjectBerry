@@ -5,6 +5,8 @@ extends Weapon
 ## Max amount of ammo
 @export var max_ammo: int
 
+@export var bullet_scn: PackedScene
+
 func _ready():
 	super()
 	EventBus.pistol_ammo_update.emit(ammo)
@@ -12,6 +14,9 @@ func _ready():
 
 func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
+		var bullet: Bullet = bullet_scn.instantiate()
+		add_child(bullet)
+		bullet.dir = dest
 		ammo -= 1
 		cooldown_timer.start(cooldown)
 		if is_player:

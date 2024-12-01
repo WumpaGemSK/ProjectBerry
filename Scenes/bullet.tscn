@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://518dw1kmnk40"]
+
+[ext_resource type="Script" path="res://Scripts/Item/bullet.gd" id="1_4o5fu"]
+[ext_resource type="Texture2D" uid="uid://deygapvfj76ed" path="res://Assets/Textures/Items/bullet.png" id="1_ffr3d"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_4o5fu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ffr3d")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

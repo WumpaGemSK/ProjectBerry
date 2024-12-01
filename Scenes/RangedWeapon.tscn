@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c62yjrqh0e3bk"]
+[gd_scene load_steps=3 format=3 uid="uid://c62yjrqh0e3bk"]
 
 [ext_resource type="Script" path="res://Scripts/ranged_weapon.gd" id="1_7lc3l"]
+[ext_resource type="PackedScene" uid="uid://518dw1kmnk40" path="res://Scenes/bullet.tscn" id="2_bmois"]
 
 [node name="RangedWeapon" type="Node2D"]
 script = ExtResource("1_7lc3l")
 ammo = 2
 max_ammo = 5
+bullet_scn = ExtResource("2_bmois")
 cooldown = 0.3
-weapon_range = 80.0
+weapon_range = 100.0
 damage = 2
