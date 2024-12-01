@@ -110,16 +110,17 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	play_animation()
 	move_and_slide()
-	match state:
-		PlayerStates.NORMAL:
-			if not walk_sound.playing:
-				walk_sound.play()
-		PlayerStates.SNEAKING:
-			if not sneak_sound.playing:
-				sneak_sound.play()
-		PlayerStates.PUSHING:
-			if not pushing_sound.playing:
-				pushing_sound.play()
+	if direction != Vector2.ZERO:
+		match state:
+			PlayerStates.NORMAL:
+				if not walk_sound.playing:
+					walk_sound.play()
+			PlayerStates.SNEAKING:
+				if not sneak_sound.playing:
+					sneak_sound.play()
+			PlayerStates.PUSHING:
+				if not pushing_sound.playing:
+					pushing_sound.play()
 	#region Push moveable boxes
 	var coll_count = get_slide_collision_count()
 	for i in coll_count:
