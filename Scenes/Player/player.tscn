@@ -1,4 +1,4 @@
-[gd_scene load_steps=277 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=278 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ld5jhi1a6xw" path="res://Assets/Textures/Player/Final/Crumpitt_Pistol-Sheet.png" id="3_tammy"]
 [ext_resource type="Texture2D" uid="uid://d16x5yp33gos6" path="res://Assets/Textures/Player/Final/Crumpitt_Bat-Sheet-40x40.png" id="3_tn0c2"]
 [ext_resource type="Texture2D" uid="uid://cnt8c6hbgy8gv" path="res://Assets/Textures/Player/Final/Crumpitt_Bat_40x40-Sheet.png" id="5_bqjlx"]
+[ext_resource type="AudioStream" uid="uid://bcw3a4diywq55" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_PICKUPITEM.wav" id="5_tktsc"]
 [ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="8_tg8g7"]
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="9_5wdyj"]
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="10_431hd"]
@@ -2247,6 +2248,9 @@ melee_weapon_scn = ExtResource("3_ipmcy")
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("12_voviu")
+
+[node name="Item_pickup" type="AudioStreamPlayer2D" parent="Inventory"]
+stream = ExtResource("5_tktsc")
 
 [node name="MainCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cnwvd")
