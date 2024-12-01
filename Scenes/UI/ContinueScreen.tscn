@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ts27uiko6jgi"]
+[gd_scene load_steps=8 format=3 uid="uid://ts27uiko6jgi"]
 
 [ext_resource type="Script" path="res://Scripts/UI/continue_screen.gd" id="1_wm58f"]
 [ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="2_ewh0a"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d36x3"]
 bg_color = Color(0.0509804, 0.101961, 0.101961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjdmc"]
+font = ExtResource("2_ewh0a")
+font_color = Color(0.94902, 1, 0.94902, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8qyo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_460fw"]
 font = ExtResource("2_ewh0a")
@@ -38,11 +44,21 @@ layout_mode = 2
 [node name="Tries" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+label_settings = SubResource("LabelSettings_kjdmc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_m8qyo")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Press any key to continue"
 label_settings = SubResource("LabelSettings_460fw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Countdown" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("2_qwxaf")]
 layout_mode = 1

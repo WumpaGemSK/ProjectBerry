@@ -1,4 +1,4 @@
-[gd_scene load_steps=271 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=273 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -741,29 +741,37 @@ region = Rect2(48, 120, 24, 24)
 atlas = ExtResource("3_tammy")
 region = Rect2(72, 120, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ry0od"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_63pta"]
 atlas = ExtResource("5_bqjlx")
-region = Rect2(120, 120, 40, 40)
+region = Rect2(40, 200, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jv667"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt5hs"]
 atlas = ExtResource("5_bqjlx")
-region = Rect2(160, 120, 40, 40)
+region = Rect2(80, 200, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8d37k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2e10"]
 atlas = ExtResource("5_bqjlx")
-region = Rect2(200, 120, 40, 40)
+region = Rect2(120, 200, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xj0ed"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o24e"]
 atlas = ExtResource("5_bqjlx")
-region = Rect2(240, 120, 40, 40)
+region = Rect2(160, 200, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mjj5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_elrup"]
 atlas = ExtResource("5_bqjlx")
-region = Rect2(280, 120, 40, 40)
+region = Rect2(200, 200, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lw77j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu6ax"]
 atlas = ExtResource("5_bqjlx")
-region = Rect2(320, 120, 40, 40)
+region = Rect2(240, 200, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igpnk"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(280, 200, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lawe"]
+atlas = ExtResource("5_bqjlx")
+region = Rect2(320, 200, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7wvk"]
 atlas = ExtResource("2_6mfvp")
@@ -1939,22 +1947,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ry0od")
+"texture": SubResource("AtlasTexture_63pta")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jv667")
+"texture": SubResource("AtlasTexture_jt5hs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8d37k")
+"texture": SubResource("AtlasTexture_t2e10")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xj0ed")
+"texture": SubResource("AtlasTexture_8o24e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mjj5")
+"texture": SubResource("AtlasTexture_elrup")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lw77j")
+"texture": SubResource("AtlasTexture_xu6ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igpnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lawe")
 }],
 "loop": true,
 "name": &"sneak_up_cricket_bat",
@@ -2239,8 +2253,10 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"walk_up_semicalm_cricket_bat"
+animation = &"sneak_up_cricket_bat"
 autoplay = "idle_down_semicalm_no_weapon"
+frame = 7
+frame_progress = 0.138841
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,
