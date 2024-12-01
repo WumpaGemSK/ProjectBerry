@@ -9,8 +9,8 @@ region = Rect2(0, 16, 16, 16)
 
 [resource]
 script = ExtResource("1_e4iml")
-item_name = "K"
+item_name = "Code Fax (K)"
 texture_icon = SubResource("AtlasTexture_1pl13")
-description = ""
+description = "K as in Knapsack"
 type = 7
 effect = 1
