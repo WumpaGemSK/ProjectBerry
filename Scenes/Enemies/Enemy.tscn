@@ -22,10 +22,9 @@ unique_name_in_owner = true
 polygon = PackedVector2Array(0, 0, 80, -40, 80, 40)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["Damageable"]]
-path_desired_distance = 30.0
 path_metadata_flags = 0
 simplify_path = true
-simplify_epsilon = 1.143
+simplify_epsilon = 10.0
 debug_enabled = true
 
 [node name="Prompt" type="Sprite2D" parent="."]
