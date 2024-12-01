@@ -12,5 +12,3 @@ func gets_destroyed():
 	print("Destroyed")
 	sprite.frame = 1
 	bag_of_coins.position = Vector2(0, 20)
-	
-	
