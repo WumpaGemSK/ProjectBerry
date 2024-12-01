@@ -67,6 +67,7 @@ func _ready():
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
+	facing_direction = original_facing_dir
 
 func _process(delta):
 	if paused:

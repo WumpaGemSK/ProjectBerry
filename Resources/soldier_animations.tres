@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=60 format=3 uid="uid://o4exvv41n83p"]
+[gd_resource type="SpriteFrames" load_steps=62 format=3 uid="uid://o4exvv41n83p"]
 
 [ext_resource type="Texture2D" uid="uid://dhs6vhi3lwhgw" path="res://Assets/Textures/Enemies/soldierv2_sheet.png" id="1_h74el"]
 [ext_resource type="Texture2D" uid="uid://1yqmd6uq5dop" path="res://Assets/Textures/Enemies/soldierv2_1_sheet.png" id="2_c0cx8"]
@@ -150,6 +150,14 @@ region = Rect2(168, 96, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_g44po"]
 atlas = ExtResource("1_h74el")
 region = Rect2(0, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl14h"]
+atlas = ExtResource("2_c0cx8")
+region = Rect2(24, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jleh4"]
+atlas = ExtResource("2_c0cx8")
+region = Rect2(48, 120, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_atdft"]
 atlas = ExtResource("2_c0cx8")
@@ -413,6 +421,17 @@ animations = [{
 "loop": true,
 "name": &"sleeping_side",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl14h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jleh4")
+}],
+"loop": true,
+"name": &"sleeping_up",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

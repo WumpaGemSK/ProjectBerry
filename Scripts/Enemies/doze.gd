@@ -9,6 +9,7 @@ func on_view(_body: Node2D, _enemy: Enemy):
 func update(enemy: Enemy, delta: float):
 	if enemy.navigation_agent_2d.is_navigation_finished():
 		AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_SLEEPING, enemy.global_position)
+		enemy.facing_direction = enemy.original_facing_dir
 	else:
 		AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	var dir = enemy.facing_direction
@@ -20,8 +21,10 @@ func update(enemy: Enemy, delta: float):
 		Enemy.facing.RIGHT:
 			enemy.animated_sprite.flip_h = false
 			animation += "side"
-		_:
+		Enemy.facing.DOWN:
 			animation += "down"
+		Enemy.facing.UP:
+			animation += "up"
 	enemy.animated_sprite.play(animation)
 
 func velocity_almost_zero(vec: Vector2):
