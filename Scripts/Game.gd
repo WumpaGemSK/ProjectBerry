@@ -9,7 +9,6 @@ var max_secret_amount: int = 5
 ## The amount of secrets picked up
 var secret_count: int = 0
 #endregion
-var status_scn: PackedScene = preload("res://Scenes/UI/StatusScreen.tscn")
 
 ## Time left in seconds to get ranked
 var max_time_left: float = 60
@@ -45,7 +44,18 @@ func on_code_try(code: String):
 		score = GameScore.new()
 		score = compute_score()
 		EventBus.code_correct.emit(score)
-		get_tree().change_scene_to_packed(status_scn)
+		var next_scene: String = ""
+		match score.ranking:
+			Ranking.D:
+				next_scene = "res://Scenes/Cutscenes/bad_ending.tscn"
+			Ranking.C:
+				next_scene = "res://Scenes/Cutscenes/neutral_ending.tscn"
+			Ranking.B:
+				next_scene = "res://Scenes/Cutscenes/good_ending.tscn"
+			Ranking.A:
+				next_scene = "res://Scenes/Cutscenes/best_ending.tscn"
+				
+		get_tree().change_scene_to_packed(load(next_scene))
 	else:
 		retries -= 1
 		if retries > 0:
