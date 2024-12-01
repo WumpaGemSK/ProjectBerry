@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=21 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -10,10 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="9_krt8e"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="14_n3067"]
+[ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="16_3h3li"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
 [ext_resource type="PackedScene" uid="uid://dgi1brdlomfxi" path="res://Scenes/Levels/Components/movable_crate.tscn" id="17_bpocm"]
+[ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="17_judcy"]
+[ext_resource type="Resource" uid="uid://bo3tndsnwn8hf" path="res://Resources/Items/pistol_damage_upgrade.tres" id="18_opul8"]
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="18_wcrhm"]
 [ext_resource type="Resource" uid="uid://b11xwof4wy2b0" path="res://Resources/Items/barbed_wire.tres" id="19_nv1jg"]
+[ext_resource type="Resource" uid="uid://de1egv7b8m83v" path="res://Resources/Items/pistol_rate_upgrade.tres" id="19_pedj6"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
@@ -66,9 +70,6 @@ position = Vector2(0, 51.85)
 [node name="Patrol" parent="PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
 patrol_path = NodePath("../../Path2D")
 
-[node name="chase" parent="PatrollingSoldier" index="3"]
-chasing_speed = 40.0
-
 [node name="MovableCrate" parent="." instance=ExtResource("17_bpocm")]
 position = Vector2(282, 171)
 
@@ -89,5 +90,21 @@ position = Vector2(244, 336)
 [node name="Pickable_Item7" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(193, 371)
 item = ExtResource("19_nv1jg")
+
+[node name="Pickable_Item8" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(-128, 368)
+item = ExtResource("16_3h3li")
+
+[node name="Pickable_Item9" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(-184, 416)
+item = ExtResource("17_judcy")
+
+[node name="Pickable_Item10" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(-104, 312)
+item = ExtResource("18_opul8")
+
+[node name="Pickable_Item11" parent="." instance=ExtResource("2_0nvdr")]
+position = Vector2(-16, 416)
+item = ExtResource("19_pedj6")
 
 [editable path="PatrollingSoldier"]
