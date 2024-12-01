@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://b8diky241p2tt"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_7s6qx"]
+[ext_resource type="AudioStream" uid="uid://cd5251gk0bskk" path="res://Assets/Audio/SFX/SFX_PLAYER_PUSHBLOCK.wav" id="2_qnulx"]
+
+[resource]
+script = ExtResource("1_7s6qx")
+limit = 1
+type = 14
+sound_effect = ExtResource("2_qnulx")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

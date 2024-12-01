@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdwa7dwg5tguk"]
+[gd_scene load_steps=15 format=3 uid="uid://cdwa7dwg5tguk"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_ru7mw"]
 [ext_resource type="Resource" uid="uid://cdn8sw3gnm7l2" path="res://Resources/Audio/open_menu.tres" id="2_bu3g6"]
@@ -7,10 +7,17 @@
 [ext_resource type="Resource" uid="uid://dyys6ii870f38" path="res://Resources/Audio/incorrect_code.tres" id="5_lgbqk"]
 [ext_resource type="Resource" uid="uid://0uwma8n8x04b" path="res://Resources/Audio/terminal_input.tres" id="6_dfb6h"]
 [ext_resource type="Resource" uid="uid://bob7ix5l4bonj" path="res://Resources/Audio/open_door.tres" id="7_670i4"]
+[ext_resource type="Resource" uid="uid://b2w38s4mq3uf7" path="res://Resources/Audio/mine_explosion.tres" id="8_ywdh3"]
+[ext_resource type="Resource" uid="uid://bpvyuvtwmu5ex" path="res://Resources/Audio/Player/player_death.tres" id="9_wjl0c"]
+[ext_resource type="Resource" uid="uid://c4m6h77j0khpn" path="res://Resources/Audio/Player/player_hurt.tres" id="10_lu7ki"]
+[ext_resource type="Resource" uid="uid://byvacvu6j1dsy" path="res://Resources/Audio/Player/player_walk.tres" id="11_07mcq"]
+[ext_resource type="Resource" uid="uid://cv1mp7mhllu35" path="res://Resources/Audio/pickup_item.tres" id="12_cpai6"]
+[ext_resource type="Resource" uid="uid://dotadi813lv0p" path="res://Resources/Audio/Player/player_sneak.tres" id="13_ndui2"]
+[ext_resource type="Resource" uid="uid://b8diky241p2tt" path="res://Resources/Audio/Player/player_push.tres" id="14_eh8qa"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_ru7mw")
-sound_effects_settings = [ExtResource("2_bu3g6"), ExtResource("3_bgxyi"), ExtResource("4_wyftv"), ExtResource("5_lgbqk"), ExtResource("6_dfb6h"), ExtResource("7_670i4")]
+sound_effects_settings = [ExtResource("2_bu3g6"), ExtResource("3_bgxyi"), ExtResource("4_wyftv"), ExtResource("5_lgbqk"), ExtResource("6_dfb6h"), ExtResource("7_670i4"), ExtResource("8_ywdh3"), ExtResource("9_wjl0c"), ExtResource("10_lu7ki"), ExtResource("11_07mcq"), ExtResource("12_cpai6"), ExtResource("13_ndui2"), ExtResource("14_eh8qa")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

@@ -13,14 +13,6 @@ signal health_changed(new_health: int)
 @onready var my_animated_sprite := $AnimatedSprite2D
 @onready var canvas_layer = $CanvasLayer
 
-#region AudioPlayers
-@onready var hurt = $Sounds/Hurt
-@onready var death_sound = $Sounds/Death
-@onready var walk_sound = $Sounds/Walk_sound
-@onready var sneak_sound = $Sounds/Sneak_sound
-@onready var pushing_sound = $Sounds/Pushing_sound
-
-#endregion
 #movement variables
 var direction : Vector2
 @export var normal_speed : float = 100
@@ -113,14 +105,11 @@ func _physics_process(_delta: float) -> void:
 	if direction != Vector2.ZERO:
 		match state:
 			PlayerStates.NORMAL:
-				if not walk_sound.playing:
-					walk_sound.play()
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_WALKING, global_position)
 			PlayerStates.SNEAKING:
-				if not sneak_sound.playing:
-					sneak_sound.play()
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_SNEAKING, global_position)
 			PlayerStates.PUSHING:
-				if not pushing_sound.playing:
-					pushing_sound.play()
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_PUSH, global_position)
 	#region Push moveable boxes
 	var coll_count = get_slide_collision_count()
 	for i in coll_count:
@@ -137,7 +126,7 @@ func _physics_process(_delta: float) -> void:
 func take_damage(amount: int):
 	if health <= 0:
 		return
-	hurt.play()
+	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
 	health -= amount
 	clamp(health, 0, max_health)
 	health_changed.emit(health)
@@ -145,7 +134,7 @@ func take_damage(amount: int):
 		death()
 
 func death():
-	death_sound.play()
+	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_DEATH, global_position)
 	my_animated_sprite.play("death")
 	EventBus.pause.emit()
 	my_animated_sprite.animation_finished.connect(on_death_animation_finish)

@@ -17,8 +17,11 @@ func play_music(song: AudioStream, volume):
 
 func play_effect(effect: SoundEffect.SoundType):
 	if not sound_effects_dict.has(effect):
+		push_error("Sound type unknown")
 		return
 	var stream = sound_effects_dict.get(effect) as SoundEffect
+	if not stream.has_open_limit():
+		return
 	stream.change_audio_count(1)
 	var player: AudioStreamPlayer = AudioStreamPlayer.new()
 	add_child(player)
@@ -31,8 +34,11 @@ func play_effect(effect: SoundEffect.SoundType):
 
 func play_effect_at(effect: SoundEffect.SoundType, location: Vector2):
 	if not sound_effects_dict.has(effect):
+		push_error("Sound type unknown")
 		return
 	var stream = sound_effects_dict.get(effect) as SoundEffect
+	if not stream.has_open_limit():
+		return
 	stream.change_audio_count(1)
 	var player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 	add_child(player)

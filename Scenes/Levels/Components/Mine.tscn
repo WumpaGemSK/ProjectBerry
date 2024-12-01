@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca7dlt5ty4k4i"]
+[gd_scene load_steps=5 format=3 uid="uid://ca7dlt5ty4k4i"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/mine.gd" id="1_ol5lf"]
 [ext_resource type="Texture2D" uid="uid://co1bcg0xrafkn" path="res://Assets/Textures/Environment/Props/TrainingRoom_Mine_Sheet.png" id="2_43kqj"]
-[ext_resource type="AudioStream" uid="uid://b0m2axikoxvts" path="res://Assets/Audio/SFX/SFX_ENVIRONMENT_EXPLOSION.wav" id="3_18l3h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxype"]
 atlas = ExtResource("2_43kqj")
@@ -22,8 +21,5 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_44l5j")
-
-[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_18l3h")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_entered"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://byvacvu6j1dsy"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_nd1bc"]
+[ext_resource type="AudioStream" uid="uid://wxvvd37v5o2f" path="res://Assets/Audio/SFX/SFX_PLAYER_WALKING.wav" id="2_ufrfy"]
+
+[resource]
+script = ExtResource("1_nd1bc")
+limit = 1
+type = 16
+sound_effect = ExtResource("2_ufrfy")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
