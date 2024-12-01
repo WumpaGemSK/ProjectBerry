@@ -29,7 +29,7 @@ func _on_area_2d_entered(area: Area2D):
 		else:
 			body.take_damage(1)
 			AudioManager.play_effect(SoundEffect.SoundType.EXPLOSION)
-			#explosion.finished.connect(func(): SceneSwitcher.reload_scene())
+			SceneSwitcher.reload_scene()
 
 func on_reload():
 	steps_left = steps
