@@ -1,4 +1,4 @@
-[gd_scene load_steps=273 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=274 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="11_yhs7u"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="12_voviu"]
 [ext_resource type="AudioStream" uid="uid://bf5q6kmwyfkca" path="res://Assets/Audio/SFX/SFX_PLAYER_GETSHURT.wav" id="13_wxfq7"]
+[ext_resource type="AudioStream" uid="uid://10a6mmaaapxc" path="res://Assets/Audio/SFX/SFX_PLAYER_DEATH.wav" id="14_si7tf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 height = 24.0
@@ -2310,5 +2311,8 @@ visible = false
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("13_wxfq7")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("14_si7tf")
 
 [connection signal="visibility_changed" from="CanvasLayer/InGameMenu" to="CanvasLayer/InGameMenu" method="_on_in_game_menu_visibility_changed"]
