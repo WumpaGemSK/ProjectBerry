@@ -11,7 +11,7 @@ var secret_count: int = 0
 #endregion
 
 ## Time left in seconds to get ranked
-var max_time_left: float = 60
+var max_time_left: float = 600 # 10 minutes
 
 var retries: int = 3
 
@@ -64,9 +64,9 @@ func on_code_try(code: String):
 			EventBus.continue_screen.emit()
 
 func compute_score() -> GameScore:
-	var time_left = CountdownTimer.time_left()
-	score.ranking = compute_ranking(time_left, secret_count, max_secret_amount)
-	score.total_time = Constants.COUNTDOWN_TIME_SECONDS - CountdownTimer.time_left()
+	var time_taken = Constants.COUNTDOWN_TIME_SECONDS - CountdownTimer.time_left()
+	score.ranking = compute_ranking(time_taken, secret_count, max_secret_amount)
+	score.total_time = time_taken
 	score.secrets.append_array([secret_count, max_secret_amount])
 	return score
 
@@ -74,7 +74,7 @@ func compute_ranking(time_left: float, count: int, max_count: int) -> Ranking:
 	var ranking: Ranking = Ranking.D
 	if time_left >= max_time_left:
 		ranking = Ranking.C
-	if count == max_count and max_count != 0:
+	if count == max_count and max_count != 0 or time_left < max_time_left:
 		ranking = Ranking.B
 	if time_left >= max_time_left and (count == max_count and max_count != 0):
 		ranking = Ranking.A
