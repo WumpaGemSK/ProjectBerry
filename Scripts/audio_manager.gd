@@ -4,6 +4,15 @@ extends Node
 var sound_effects_dict: Dictionary = {}
 @onready var music = %Music
 
+#region UI navigation sounds
+func _enter_tree():
+	get_tree().node_added.connect(on_node_added)
+
+func on_node_added(node: Node):
+	if node is Button:
+		node.focus_entered.connect(func(): play_effect(SoundEffect.SoundType.UI_NAVIGATE))
+		node.pressed.connect(func(): play_effect(SoundEffect.SoundType.UI_CONFIRM))
+#endregion
 func _ready():
 	for sound in sound_effects_settings:
 		var timer = Timer.new()
