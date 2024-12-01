@@ -11,3 +11,4 @@ sound_effect = ExtResource("2_qyrdi")
 volume = 0
 pitch_scale = 1.0
 pitch_randomness = 0.0
+interval = 0.2

@@ -11,3 +11,4 @@ sound_effect = ExtResource("2_cw6f4")
 volume = 0
 pitch_scale = 1.0
 pitch_randomness = 0.0
+interval = 1.0

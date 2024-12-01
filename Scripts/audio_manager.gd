@@ -6,6 +6,9 @@ var sound_effects_dict: Dictionary = {}
 
 func _ready():
 	for sound in sound_effects_settings:
+		var timer = Timer.new()
+		sound.set_timer(timer)
+		add_child(timer)
 		sound_effects_dict[sound.type] = sound
 
 func play_music(song: AudioStream, volume):

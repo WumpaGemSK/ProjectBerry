@@ -11,3 +11,4 @@ sound_effect = ExtResource("2_yuxqy")
 volume = 0
 pitch_scale = 1.0
 pitch_randomness = 0.0
+interval = 1.0
