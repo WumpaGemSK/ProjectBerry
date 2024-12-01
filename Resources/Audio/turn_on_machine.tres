@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://pos6vf3k0nm5"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_ew4pf"]
+[ext_resource type="AudioStream" uid="uid://dsomq2888jd2a" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_TURNSONMACHINE.wav" id="2_iom3m"]
+
+[resource]
+script = ExtResource("1_ew4pf")
+limit = 5
+type = 11
+sound_effect = ExtResource("2_iom3m")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

@@ -6,7 +6,6 @@ extends State
 @export var patrol_path : Path2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
-@onready var run = $Run
 
 func enter(enemy: Enemy):
 	enemy.movement_speed = patrolling_speed
@@ -16,8 +15,7 @@ func enter(enemy: Enemy):
 		patrol_path.add_child(path_follow)
 	
 func update(enemy: Enemy, delta: float):
-	#if not run.playing:
-		#run.play()
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, global_position)
 	progress += delta*patrolling_speed
 	path_follow.progress = progress
 	var new_pos = path_follow.global_position
@@ -49,6 +47,3 @@ func on_view(body: Node2D, enemy: Enemy):
 func should_switch_to_investigating(player: Player):
 	if player != null and not player.is_sneaking():
 		state_change.emit(Enemy.States.INVESTIGATING)
-
-func pause():
-	run.stop()
