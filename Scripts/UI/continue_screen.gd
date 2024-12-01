@@ -30,6 +30,7 @@ func switch_to_game_over():
 	get_tree().change_scene_to_file.call_deferred("res://Scenes/GameOverScene.tscn")
 
 func on_continue_screen():
+	EventBus.pause.emit()
 	var tries_left = Game.retries
 	visible = true
 	phase_in.start(1)

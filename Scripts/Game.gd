@@ -81,7 +81,7 @@ func get_score() -> GameScore:
 
 func on_player_death():
 	retries -= 1
-	EventBus.pause.emit()
+	EventBus.continue_screen.emit()
 
 func get_fax_item(room: Room) -> Resource:
 	var item_scn: Resource = null
