@@ -23,4 +23,5 @@ func _on_sound__volume_changed(value):
 
 ## Sets the new window size multiplying the base resolution with the factor passed
 func viewport_change_size(factor : float):
+	return # Do not change since changing the size causes problems on the web player
 	get_window().size = Constants.BASE_RESOLUTION * factor

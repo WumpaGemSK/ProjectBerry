@@ -24,6 +24,7 @@ func _on_resume_pressed():
 ## Instantiate the DisplayOptionsPopup scene, add it as child and call popup to
 ## make the popup visible, the popup behaviour is controlled by instantiated node
 func _on_display_pressed():
+	return
 	var display_scn = display_options_popup.instantiate()
 	add_child(display_scn)
 	display_scn.popup()
@@ -31,6 +32,7 @@ func _on_display_pressed():
 ## Instantiate the AudioSettingsPopup scene, add it as child and call popup to
 ## make the popup visible, the popup behaviour is controlled by instantiated node
 func _on_audio_pressed():
+	return
 	var audio_scn = audio_settings_popup.instantiate()
 	add_child(audio_scn)
 	audio_scn.popup()
