@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://be365saeegh7u"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/soda_machine.gd" id="1_fx5rf"]
+[ext_resource type="Script" path="res://Scripts/soda_machine.gd" id="1_fx5rf"]
 [ext_resource type="Texture2D" uid="uid://dql0vxrj8evef" path="res://Assets/Textures/Environment/Props/soda_vending_machine_sheet.png" id="2_j5ldq"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="3_k7ue0"]
 [ext_resource type="Resource" uid="uid://d4fpj2nw3axj" path="res://Resources/Secrets/bag_of_coins.tres" id="4_85ea3"]

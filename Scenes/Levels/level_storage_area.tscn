@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dbsg4c21utypq"]
+[gd_scene load_steps=12 format=4 uid="uid://dbsg4c21utypq"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_storage_area.gd" id="1_6p5kb"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_hg4ky"]
@@ -10,212 +10,224 @@
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="8_gnvsa"]
 [ext_resource type="Resource" uid="uid://bwjdodifjd0xh" path="res://Resources/Items/key_2.tres" id="9_di2w2"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ssjd3"]
+vertices = PackedVector2Array(201, 183, 105, 183, 153, 177, 159, 177, 111, 177, 105, 159, 111, 111, 302, 302, 159, 302, 273, 225, 279, 225, 207, 225, 159, 282, 189, -10, 189, -14, 302, -14, 302, 39, 255, 39, 255, 177, 302, 177, 302, 183, 279, 183, 302, 225, 273, 183, 249, 183, 249, 39, 39, 39, 123, -10, 39, 81, 63, 81, 63, 87, 39, 87, 105, 81, 135, 81, 135, 105, 183, 105, 183, 135, 159, 135, 153, 111, 201, 177, 201, 153, 207, 153, 134, 278, 134, 302, 10, 302, 10, 225, 201, 225, 158.68, 278, 63, 159, 63, 183, 33, 183, 39, 153, 33, 111, 10, 111, 10, 81, 33, 81, 33, -14, 123, -14, 105, 153, 158.711, 282)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(4, 1, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 9, 8, 12), PackedInt32Array(13, 14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(10, 22, 7), PackedInt32Array(21, 10, 9, 23), PackedInt32Array(18, 21, 23), PackedInt32Array(18, 23, 24), PackedInt32Array(18, 24, 25, 17), PackedInt32Array(13, 17, 25), PackedInt32Array(13, 25, 26, 27), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(32, 33, 34, 6), PackedInt32Array(35, 36, 37, 38), PackedInt32Array(39, 40, 41, 11), PackedInt32Array(42, 43, 44, 45), PackedInt32Array(42, 45, 46, 47), PackedInt32Array(48, 49, 50, 51), PackedInt32Array(52, 53, 54, 55, 31), PackedInt32Array(56, 57, 27, 26), PackedInt32Array(55, 56, 26, 28), PackedInt32Array(55, 28, 31), PackedInt32Array(52, 31, 51, 50), PackedInt32Array(48, 51, 58, 5), PackedInt32Array(6, 5, 58), PackedInt32Array(6, 58, 32), PackedInt32Array(38, 6, 34, 35), PackedInt32Array(2, 38, 37, 3), PackedInt32Array(0, 3, 39), PackedInt32Array(0, 39, 11), PackedInt32Array(46, 0, 11), PackedInt32Array(47, 46, 11, 12, 59)])
+source_geometry_group_name = &"Navigation"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_idlql"]
 radius = 28.1603
 
 [node name="Level_StorageArea" type="Node2D"]
 script = ExtResource("1_6p5kb")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ssjd3")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAAIAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAD//wIAAAAEAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAABAAMAAAABAAAAAAAAAAMAAAABAAAAAAD//wMAAAAEAAAAAAACAAMAAAABAAAAAAADAAMAAAABAAAAAAABAAQAAAABAAAAAAAAAAQAAAABAAAAAAD//wQAAAAEAAAAAAABAAUAAAABAAAAAAAAAAUAAAABAAAAAAD//wUAAAAEAAAAAAABAAYAAAABAAAAAAAAAAYAAAABAAAAAAD//wYAAAAEAAAAAAABAAcAAAABAAAAAAAAAAcAAAABAAAAAAD//wcAAAAEAAAAAAABAAgAAAABAAAAAAAAAAgAAAABAAAAAAD//wgAAAAEAAAAAAABAAkAAAABAAAAAAAAAAkAAAABAAAAAAD//wkAAAAEAAAAAAABAAoAAAABAAAAAAAAAAoAAAABAAAAAAD//woAAAAEAAAAAAABAAsAAAABAAAAAAAAAAsAAAABAAAAAAD//wsAAAAEAAAAAAABAAwAAAABAAAAAAAAAAwAAAABAAAAAAD//wwAAAAEAAAAAAABAA0AAAAAAAEAAAAAAA0AAAAAAAEAAAD//w0AAAADAAEAAAAEAAAAAAABAAAAAAAEAAEAAAABAAAAAAAFAAAAAAABAAAAAAAFAAEAAAABAAAAAAAGAAAAAAABAAAAAAAGAAEAAAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAIAAAAAAABAAAAAAAIAAEAAAABAAAAAAAJAAAAAAABAAAAAAAJAAEAAAABAAAAAAAKAAAAAAABAAAAAAAKAAEAAAABAAAAAAALAAAAAAABAAAAAAALAAEAAAABAAAAAAAMAAAAAAABAAAAAAAMAAEAAAABAAAAAAANAAAAAAAAAAIAAAANAAEAAAAAAAIAAAACAAwAAAABAAAAAAACAA0AAAAAAAEAAAACAAsAAAABAAAAAAADAAwAAAABAAAAAAADAA0AAAAAAAEAAAADAAsAAAABAAAAAAAEAAwAAAABAAAAAAAEAA0AAAAAAAEAAAAEAAsAAAABAAAAAAAFAAwAAAABAAAAAAAFAA0AAAAAAAEAAAAFAAsAAAABAAAAAAAGAAwAAAAAAAMAAAAGAA0AAAAAAAEAAAAGAAsAAAABAAAAAAAHAAwAAAABAAAAAAAHAA0AAAAAAAEAAAAHAAsAAAABAAAAAAAIAAwAAAABAAAAAAAIAA0AAAAAAAEAAAAIAAsAAAABAAAAAAAJAAwAAAABAAAAAAAJAA0AAAAAAAEAAAAJAAsAAAABAAAAAAAKAAwAAAABAAAAAAAKAA0AAAAAAAEAAAAKAAsAAAABAAAAAAALAAwAAAABAAAAAAALAA0AAAAAAAEAAAALAAsAAAABAAAAAAAMAAwAAAABAAAAAAAMAA0AAAAAAAEAAAAMAAsAAAABAAAAAAANAAwAAAAAAAIAAAANAA0AAAAEAAEAAAANAAsAAAAAAAIAAAALAAoAAAABAAAAAAAMAAoAAAABAAAAAAANAAoAAAAAAAIAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAAAAAIAAAALAAgAAAABAAAAAAAMAAgAAAABAAAAAAANAAgAAAAAAAIAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAAAAAIAAAALAAYAAAABAAAAAAAMAAYAAAABAAAAAAANAAYAAAAAAAIAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAANAAUAAAAAAAIAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAAAAAIAAAALAAMAAAABAAAAAAAMAAMAAAABAAAAAAANAAMAAAAAAAIAAAALAAIAAAABAAAAAAAMAAIAAAABAAAAAAANAAIAAAAAAAIAAAAKAAIAAAABAAAAAAAJAAIAAAABAAAAAAAIAAIAAAABAAAAAAAHAAIAAAABAAAAAAAGAAIAAAABAAAAAAAFAAIAAAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAHAAMAAAABAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAKAAMAAAABAAAAAAAKAAQAAAABAAAAAAAKAAUAAAABAAAAAAAKAAYAAAABAAAAAAAKAAcAAAABAAAAAAAKAAgAAAABAAAAAAAKAAkAAAABAAAAAAAKAAoAAAABAAAAAAAJAAoAAAABAAAAAAAIAAoAAAABAAAAAAAHAAoAAAABAAAAAAAGAAoAAAABAAAAAAAFAAoAAAABAAAAAAAEAAoAAAABAAAAAAADAAoAAAABAAAAAAACAAoAAAABAAAAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAABAAAAAAACAAYAAAABAAAAAAACAAUAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAADAAUAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAJAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAYAAAABAAAAAAAJAAcAAAABAAAAAAAJAAgAAAABAAAAAAAJAAkAAAABAAAAAAAIAAkAAAABAAAAAAAIAAgAAAABAAAAAAAHAAkAAAABAAAAAAAHAAgAAAABAAAAAAAGAAkAAAABAAAAAAAGAAgAAAABAAAAAAAFAAkAAAABAAAAAAAFAAgAAAABAAAAAAAEAAkAAAABAAAAAAAEAAgAAAABAAAAAAADAAkAAAABAAAAAAADAAgAAAABAAAAAAAIAAcAAAABAAAAAAAIAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAYAAAABAAAAAAAGAAcAAAABAAAAAAAGAAYAAAABAAAAAAAFAAcAAAABAAAAAAAFAAYAAAABAAAAAAAEAAcAAAABAAAAAAAEAAYAAAABAAAAAAADAAcAAAABAAAAAAADAAYAAAABAAAAAAAHAAUAAAABAAAAAAAGAAUAAAABAAAAAAAFAAUAAAABAAAAAAAEAAUAAAABAAAAAAD///7/AAAEAAAAAAAAAP7/AAACAAAAAAABAP7/AAACAAAAAAACAP7/AAACAAAAAAADAP7/AAACAAAAAAAEAP7/AAACAAAAAAAFAP7/AAACAAAAAAAGAP7/AAACAAAAAAAHAP7/AAACAAAAAAAIAP7/AAACAAAAAAAJAP7/AAACAAAAAAAKAP7/AAACAAAAAAALAP7/AAACAAAAAAAMAP7/AAACAAAAAAANAP7/AAAAAAIAAAD///3/AAACAAEAAAAAAP3/AAABAAIAAAABAP3/AAABAAIAAAACAP3/AAABAAIAAAADAP3/AAABAAIAAAAEAP3/AAABAAIAAAAFAP3/AAABAAIAAAAGAP3/AAABAAIAAAAHAP3/AAABAAIAAAAIAP3/AAABAAIAAAAJAP3/AAABAAIAAAAKAP3/AAABAAIAAAALAP3/AAABAAIAAAAMAP3/AAABAAIAAAANAP3/AAABAAEAAAD/////AAAEAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAADAP//AAABAAAAAAAEAP//AAABAAAAAAAFAP//AAABAAAAAAAGAP//AAABAAAAAAAHAP//AAABAAAAAAAIAP//AAABAAAAAAAJAP//AAABAAAAAAAKAP//AAABAAAAAAALAP//AAABAAAAAAAMAP//AAABAAAAAAANAP//AAAAAAIAAAA=")
 tile_set = ExtResource("1_hg4ky")
 
-[node name="Crates" type="Node2D" parent="."]
+[node name="Crates" type="Node2D" parent="NavigationRegion2D"]
 position = Vector2(0, -24)
 
-[node name="StillCrate" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 24)
 
-[node name="StillCrate2" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate2" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 48)
 
-[node name="StillCrate3" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate3" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 72)
 
-[node name="StillCrate4" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate4" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 96)
 
-[node name="MovableCrate" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(36, 96)
 
-[node name="StillCrate5" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate5" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(60, 96)
 
-[node name="StillCrate6" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate6" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(84, 96)
 
-[node name="StillCrate7" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate7" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(108, 96)
 
-[node name="StillCrate8" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate8" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(132, 96)
 
-[node name="StillCrate9" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate9" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(156, 96)
 
-[node name="StillCrate10" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate10" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(180, 96)
 
-[node name="StillCrate11" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate11" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(204, 96)
 
-[node name="StillCrate12" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate12" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 96)
 
-[node name="StillCrate13" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate13" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(276, 96)
 
-[node name="StillCrate14" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate14" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 96)
 
-[node name="StillCrate15" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate15" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(84, 120)
 
-[node name="StillCrate16" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate16" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(156, 120)
 
-[node name="StillCrate17" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate17" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(180, 120)
 
-[node name="StillCrate18" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate18" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(204, 120)
 
-[node name="StillCrate19" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate19" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 120)
 
-[node name="StillCrate20" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate20" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(276, 120)
 
-[node name="StillCrate21" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate21" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 120)
 
-[node name="StillCrate22" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate22" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(60, 144)
 
-[node name="StillCrate23" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate23" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(84, 144)
 
-[node name="StillCrate24" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate24" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(204, 144)
 
-[node name="StillCrate25" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate25" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 144)
 
-[node name="StillCrate26" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate26" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(276, 144)
 
-[node name="StillCrate27" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate27" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 144)
 
-[node name="StillCrate28" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate28" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 168)
 
-[node name="StillCrate29" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate29" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(60, 168)
 
-[node name="StillCrate30" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate30" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(84, 168)
 
-[node name="StillCrate31" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate31" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(132, 168)
 
-[node name="StillCrate32" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate32" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(204, 168)
 
-[node name="StillCrate33" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate33" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 168)
 
-[node name="StillCrate34" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate34" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(276, 168)
 
-[node name="StillCrate35" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate35" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 168)
 
-[node name="StillCrate36" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate36" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 192)
 
-[node name="MovableCrate2" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate2" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(84, 192)
 
-[node name="StillCrate37" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate37" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(132, 192)
 
-[node name="MovableCrate3" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate3" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(156, 192)
 
-[node name="StillCrate38" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate38" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(180, 192)
 
-[node name="StillCrate39" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate39" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 192)
 
-[node name="StillCrate40" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate40" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(276, 192)
 
-[node name="StillCrate41" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate41" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 192)
 
-[node name="StillCrate42" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate42" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 216)
 
-[node name="StillCrate43" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate43" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(84, 216)
 
-[node name="MovableCrate4" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate4" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(180, 216)
 
-[node name="StillCrate44" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate44" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 216)
 
-[node name="MovableCrate5" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate5" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(276, 216)
 
-[node name="StillCrate45" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate45" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(12, 240)
 
-[node name="StillCrate46" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate46" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(36, 240)
 
-[node name="StillCrate47" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate47" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(60, 240)
 
-[node name="StillCrate48" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate48" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(84, 240)
 
-[node name="StillCrate49" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate49" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(108, 240)
 
-[node name="StillCrate50" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate50" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(132, 240)
 
-[node name="StillCrate51" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate51" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(156, 240)
 
-[node name="StillCrate52" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate52" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(180, 240)
 
-[node name="MovableCrate6" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate6" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(204, 240)
 
-[node name="StillCrate53" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate53" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(228, 240)
 
-[node name="StillCrate54" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate54" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(252, 240)
 
-[node name="MovableCrate7" parent="Crates" instance=ExtResource("3_nopmr")]
+[node name="MovableCrate7" parent="NavigationRegion2D/Crates" instance=ExtResource("3_nopmr")]
 position = Vector2(276, 240)
 
-[node name="StillCrate55" parent="Crates" instance=ExtResource("3_6ets0")]
+[node name="StillCrate55" parent="NavigationRegion2D/Crates" instance=ExtResource("3_6ets0")]
 position = Vector2(300, 240)
 
-[node name="StillCrateAlt" type="Sprite2D" parent="Crates"]
+[node name="StillCrateAlt" type="Sprite2D" parent="NavigationRegion2D/Crates"]
 position = Vector2(132, 156)
 texture = ExtResource("5_o3jsx")
 
-[node name="StillCrateAlt2" type="Sprite2D" parent="Crates"]
+[node name="StillCrateAlt2" type="Sprite2D" parent="NavigationRegion2D/Crates"]
 position = Vector2(60, 132)
 texture = ExtResource("5_o3jsx")
+
+[node name="FaxMachine" parent="NavigationRegion2D" instance=ExtResource("6_5o141")]
+position = Vector2(156, -18)
+room = 2
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(156, 275)
@@ -226,10 +238,6 @@ to_previous = true
 direction = 1
 door_tier = 1
 opened = true
-
-[node name="FaxMachine" parent="." instance=ExtResource("6_5o141")]
-position = Vector2(156, -18)
-room = 2
 
 [node name="PuzzleCompleteCollider" type="Area2D" parent="."]
 position = Vector2(56, 25)

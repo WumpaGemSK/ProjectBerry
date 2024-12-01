@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d2jm3hkkc6pu1"]
+[gd_scene load_steps=11 format=4 uid="uid://d2jm3hkkc6pu1"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_aioyk"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_hxx32"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://b7vupjqsgulld" path="res://Assets/Textures/Environment/Props/janitor_water_bucket.png" id="7_tkg75"]
 [ext_resource type="Resource" uid="uid://1e55es1vkmld" path="res://Resources/Items/pistol_max_ammo_upgrade.tres" id="8_l3med"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o4w6v"]
+vertices = PackedVector2Array(104, 16, 104, 10, 134, 10, 134, 62, 10, 62, 64, 16, 10, 10, 64, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7)])
+source_geometry_group_name = &"Navigation"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1cft"]
 size = Vector2(20, 4)
 
@@ -17,9 +22,22 @@ script = ExtResource("1_hxx32")
 pickable_item = NodePath("Hint")
 code = "BIVOU"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_o4w6v")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAFAAIAAAABAAAAAAAFAAEAAAABAAAAAAAFAAAAAAABAAAAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAD//wIAAAAEAAAAAAABAAMAAAAAAAEAAAAAAAMAAAAAAAEAAAD//wMAAAADAAEAAAACAP//AAACAAAAAAACAAMAAAAAAAEAAAADAP//AAACAAAAAAADAAMAAAAAAAEAAAAEAP//AAACAAAAAAAEAAMAAAAAAAEAAAAFAP//AAACAAAAAAAFAAMAAAAAAAEAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAP//AAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAEAAEAAAAGAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAA=")
 tile_set = ExtResource("1_aioyk")
+
+[node name="WaterBucket" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(84, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/WaterBucket"]
+texture = ExtResource("7_tkg75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/WaterBucket"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_d1cft")
 
 [node name="Portal" parent="." instance=ExtResource("2_rwm87")]
 position = Vector2(60, 60)
@@ -37,16 +55,6 @@ item = ExtResource("5_5qj4g")
 [node name="JanitorBroom" type="Sprite2D" parent="."]
 position = Vector2(120, 12)
 texture = ExtResource("6_wtlqa")
-
-[node name="WaterBucket" type="StaticBody2D" parent="."]
-position = Vector2(84, 10)
-
-[node name="Sprite2D" type="Sprite2D" parent="WaterBucket"]
-texture = ExtResource("7_tkg75")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterBucket"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_d1cft")
 
 [node name="MaxAmmoUpgrade" parent="." instance=ExtResource("4_42vn2")]
 position = Vector2(12, 12)

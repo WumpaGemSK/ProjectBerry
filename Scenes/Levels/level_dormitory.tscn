@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bbh2fonbqlnrn"]
+[gd_scene load_steps=11 format=4 uid="uid://bbh2fonbqlnrn"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_1ltkl"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_57dhs"]
@@ -10,14 +10,108 @@
 [ext_resource type="Resource" uid="uid://b2xxwufwi5gq6" path="res://Resources/Envelopes/hint_knots.tres" id="6_h008i"]
 [ext_resource type="Resource" uid="uid://1rjfvetd3lme" path="res://Resources/Secrets/teddy_bear.tres" id="7_iefpp"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bd27k"]
+vertices = PackedVector2Array(16, 10, 16, 38, 14, 38, 10, 10, 10, 302, 14, 64, 16, 64, 16, 98, 14, 98, 14, 124, 16, 124, 16, 158, 14, 158, 14, 184, 16, 184, 16, 218, 14, 218, 14, 244, 326, 302, 58, 244, 58, 219, 80, 219, 134, 244, 80, 184, 58, 184, 58, 159, 80, 159, 80, 124, 58, 124, 58, 99, 80, 99, 80, 64, 58, 64, 58, 39, 80, 39, 80, 10, 136, 10, 134, 38, 136, 38, 134, 64, 134, 98, 136, 64, 136, 98, 134, 124, 134, 158, 136, 124, 136, 158, 134, 184, 134, 218, 136, 184, 136, 218, 178, 244, 178, 219, 200, 219, 278, 244, 200, 184, 178, 184, 178, 159, 200, 159, 200, 124, 178, 124, 178, 99, 200, 99, 200, 64, 178, 64, 178, 39, 200, 39, 200, 10, 256, 10, 256, 39, 256, 64, 278, 39, 278, 64, 256, 99, 256, 124, 278, 99, 278, 124, 256, 159, 256, 184, 278, 159, 278, 184, 256, 219, 278, 219, 322, 218, 320, 218, 320, 184, 322, 184, 322, 158, 320, 158, 320, 124, 322, 124, 322, 98, 320, 98, 320, 64, 322, 64, 322, 38, 320, 38, 320, 10, 326, 10, 322, 244)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(4, 5, 8), PackedInt32Array(4, 8, 9), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(4, 9, 12), PackedInt32Array(4, 12, 13), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(4, 13, 16), PackedInt32Array(4, 16, 17), PackedInt32Array(18, 4, 17, 19), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(36, 38, 37), PackedInt32Array(34, 37, 39, 31), PackedInt32Array(30, 31, 39, 40), PackedInt32Array(39, 41, 42, 40), PackedInt32Array(30, 40, 43, 27), PackedInt32Array(26, 27, 43, 44), PackedInt32Array(43, 45, 46, 44), PackedInt32Array(26, 44, 47, 23), PackedInt32Array(21, 23, 47, 48), PackedInt32Array(47, 49, 50, 48), PackedInt32Array(21, 48, 22), PackedInt32Array(51, 52, 53, 54, 18), PackedInt32Array(55, 56, 57, 58), PackedInt32Array(59, 60, 61, 62), PackedInt32Array(63, 64, 65, 66), PackedInt32Array(66, 67, 68, 69), PackedInt32Array(63, 66, 69, 70), PackedInt32Array(69, 71, 72, 70), PackedInt32Array(62, 63, 70, 73), PackedInt32Array(59, 62, 73, 74), PackedInt32Array(73, 75, 76, 74), PackedInt32Array(58, 59, 74, 77), PackedInt32Array(55, 58, 77, 78), PackedInt32Array(77, 79, 80, 78), PackedInt32Array(53, 55, 78, 81), PackedInt32Array(81, 82, 54), PackedInt32Array(83, 84, 85, 86), PackedInt32Array(87, 88, 89, 90), PackedInt32Array(91, 92, 93, 94), PackedInt32Array(95, 96, 97, 98), PackedInt32Array(95, 98, 18, 94), PackedInt32Array(91, 94, 18), PackedInt32Array(90, 91, 18), PackedInt32Array(87, 90, 18), PackedInt32Array(86, 87, 18), PackedInt32Array(83, 86, 18), PackedInt32Array(99, 83, 18), PackedInt32Array(54, 99, 18), PackedInt32Array(18, 19, 22), PackedInt32Array(18, 22, 51), PackedInt32Array(54, 53, 81)])
+source_geometry_group_name = &"Navigation"
+
 [node name="Level_Dormitory" type="Node2D" node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("1_57dhs")
 pickable_item = NodePath("Hint")
 code = "KNOTS"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_bd27k")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAANAAwAAAABAAAAAAANAAsAAAABAAAAAAANAAoAAAABAAAAAAANAAkAAAABAAAAAAANAAgAAAABAAAAAAANAAcAAAABAAAAAAANAAYAAAABAAAAAAANAAUAAAABAAAAAAANAAQAAAABAAAAAAANAAMAAAABAAAAAAANAAIAAAABAAAAAAANAAEAAAABAAAAAAANAAAAAAABAAAAAAAMAAwAAAABAAAAAAAMAAsAAAABAAAAAAAMAAoAAAABAAAAAAAMAAkAAAABAAAAAAAMAAgAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAAMAAMAAAABAAAAAAAMAAIAAAABAAAAAAAMAAEAAAABAAAAAAAMAAAAAAABAAAAAAALAAwAAAABAAAAAAALAAsAAAABAAAAAAALAAoAAAABAAAAAAALAAkAAAABAAAAAAALAAgAAAABAAAAAAALAAcAAAABAAAAAAALAAYAAAABAAAAAAALAAUAAAABAAAAAAALAAQAAAABAAAAAAALAAMAAAABAAAAAAALAAIAAAABAAAAAAALAAEAAAABAAAAAAALAAAAAAABAAAAAAAKAAwAAAABAAAAAAAKAAsAAAABAAAAAAAKAAoAAAABAAAAAAAKAAkAAAABAAAAAAAKAAgAAAABAAAAAAAKAAcAAAABAAAAAAAKAAYAAAABAAAAAAAKAAUAAAABAAAAAAAKAAQAAAABAAAAAAAKAAMAAAABAAAAAAAKAAIAAAABAAAAAAAKAAEAAAABAAAAAAAKAAAAAAABAAAAAAAJAAwAAAABAAAAAAAJAAsAAAABAAAAAAAJAAoAAAABAAAAAAAJAAkAAAABAAAAAAAJAAgAAAABAAAAAAAJAAcAAAABAAAAAAAJAAYAAAABAAAAAAAJAAUAAAABAAAAAAAJAAQAAAABAAAAAAAJAAMAAAABAAAAAAAJAAIAAAABAAAAAAAJAAEAAAABAAAAAAAJAAAAAAABAAAAAAAIAAwAAAABAAAAAAAIAAsAAAABAAAAAAAIAAoAAAABAAAAAAAIAAkAAAABAAAAAAAIAAgAAAABAAAAAAAIAAcAAAABAAAAAAAIAAYAAAABAAAAAAAIAAUAAAABAAAAAAAIAAQAAAABAAAAAAAIAAMAAAABAAAAAAAIAAIAAAABAAAAAAAIAAEAAAABAAAAAAAIAAAAAAABAAAAAAAHAAwAAAABAAAAAAAHAAsAAAABAAAAAAAHAAoAAAABAAAAAAAHAAkAAAABAAAAAAAHAAgAAAABAAAAAAAHAAcAAAABAAAAAAAHAAYAAAABAAAAAAAHAAUAAAABAAAAAAAHAAQAAAABAAAAAAAHAAMAAAABAAAAAAAHAAIAAAABAAAAAAAHAAEAAAABAAAAAAAHAAAAAAABAAAAAAAGAAwAAAABAAAAAAAGAAsAAAABAAAAAAAGAAoAAAABAAAAAAAGAAkAAAABAAAAAAAGAAgAAAABAAAAAAAGAAcAAAABAAAAAAAGAAYAAAABAAAAAAAGAAUAAAABAAAAAAAGAAQAAAABAAAAAAAGAAMAAAABAAAAAAAGAAIAAAABAAAAAAAGAAEAAAABAAAAAAAGAAAAAAABAAAAAAAFAAwAAAABAAAAAAAFAAsAAAABAAAAAAAFAAoAAAABAAAAAAAFAAkAAAABAAAAAAAFAAgAAAABAAAAAAAFAAcAAAABAAAAAAAFAAYAAAABAAAAAAAFAAUAAAABAAAAAAAFAAQAAAABAAAAAAAFAAMAAAABAAAAAAAFAAIAAAABAAAAAAAFAAEAAAABAAAAAAAFAAAAAAABAAAAAAAEAAwAAAABAAAAAAAEAAsAAAABAAAAAAAEAAoAAAABAAAAAAAEAAkAAAABAAAAAAAEAAgAAAABAAAAAAAEAAcAAAABAAAAAAAEAAYAAAABAAAAAAAEAAUAAAABAAAAAAAEAAQAAAABAAAAAAAEAAMAAAABAAAAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAADAAwAAAABAAAAAAADAAsAAAABAAAAAAADAAoAAAABAAAAAAADAAkAAAABAAAAAAADAAgAAAABAAAAAAADAAcAAAABAAAAAAADAAYAAAABAAAAAAADAAUAAAABAAAAAAADAAQAAAABAAAAAAADAAMAAAABAAAAAAADAAIAAAABAAAAAAADAAEAAAABAAAAAAADAAAAAAABAAAAAAACAAwAAAABAAAAAAACAAsAAAABAAAAAAACAAoAAAABAAAAAAACAAkAAAABAAAAAAACAAgAAAABAAAAAAACAAcAAAABAAAAAAACAAYAAAABAAAAAAACAAUAAAABAAAAAAACAAQAAAABAAAAAAACAAMAAAABAAAAAAACAAIAAAABAAAAAAACAAEAAAABAAAAAAACAAAAAAABAAAAAAABAAwAAAABAAAAAAABAAsAAAABAAAAAAABAAoAAAABAAAAAAABAAkAAAABAAAAAAABAAgAAAABAAAAAAABAAcAAAABAAAAAAABAAYAAAABAAAAAAABAAUAAAABAAAAAAABAAQAAAABAAAAAAABAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAABAAAAAAAAAAwAAAABAAAAAAAAAAsAAAABAAAAAAAAAAoAAAABAAAAAAAAAAkAAAABAAAAAAAAAAgAAAABAAAAAAAAAAcAAAABAAAAAAAAAAYAAAABAAAAAAAAAAUAAAABAAAAAAAAAAQAAAABAAAAAAAAAAMAAAABAAAAAAAAAAIAAAABAAAAAAAAAAEAAAABAAAAAAAAAAAAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAD//wIAAAAEAAAAAAD//wMAAAAEAAAAAAD//wQAAAAEAAAAAAD//wUAAAAEAAAAAAD//wYAAAAEAAAAAAD//wcAAAAEAAAAAAD//wgAAAAEAAAAAAD//wkAAAAEAAAAAAD//woAAAAEAAAAAAD//wsAAAAEAAAAAAD//wwAAAAEAAAAAAABAA0AAAAAAAEAAAAAAA0AAAAAAAEAAAD//w0AAAADAAEAAAACAP//AAACAAAAAAACAA0AAAAAAAEAAAADAP//AAACAAAAAAADAA0AAAAAAAEAAAAEAP//AAACAAAAAAAEAA0AAAAAAAEAAAAFAP//AAACAAAAAAAFAA0AAAAAAAEAAAAGAP//AAACAAAAAAAGAA0AAAAAAAEAAAAHAP//AAACAAAAAAAHAA0AAAAAAAEAAAAIAP//AAACAAAAAAAIAA0AAAAAAAEAAAAJAP//AAACAAAAAAAJAA0AAAAAAAEAAAAKAP//AAACAAAAAAAKAA0AAAAAAAEAAAALAP//AAACAAAAAAALAA0AAAAAAAEAAAAMAP//AAACAAAAAAAMAA0AAAAAAAEAAAANAP//AAACAAAAAAANAA0AAAAAAAEAAAAOAAAAAAAAAAIAAAAOAAEAAAAAAAIAAAAOAP//AAAAAAIAAAAOAAIAAAAAAAIAAAAOAAMAAAAAAAIAAAAOAAQAAAAAAAIAAAAOAAUAAAAAAAIAAAAOAAYAAAAAAAIAAAAOAAcAAAAAAAIAAAAOAAgAAAAAAAIAAAAOAAkAAAAAAAIAAAAOAAoAAAAAAAIAAAAOAAsAAAAAAAIAAAAOAAwAAAAAAAIAAAAOAA0AAAAEAAEAAAAOAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAAGAP7/AAABAAIAAAAHAP7/AAABAAIAAAAIAP7/AAABAAIAAAAJAP7/AAABAAIAAAAKAP7/AAABAAIAAAALAP7/AAABAAIAAAAMAP7/AAABAAIAAAANAP7/AAABAAIAAAA=")
 tile_set = ExtResource("1_1ltkl")
+
+[node name="BunkBeds" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="BunkBed" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+
+[node name="BunkBed2" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(48, 90)
+
+[node name="BunkBed3" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(48, 150)
+
+[node name="BunkBed4" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(48, 210)
+
+[node name="BunkBed5" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 30)
+
+[node name="BunkBed6" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 90)
+
+[node name="BunkBed7" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 150)
+
+[node name="BunkBed8" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(168, 210)
+
+[node name="BunkBed9" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 30)
+
+[node name="Sprite2D" parent="NavigationRegion2D/BunkBeds/BunkBed9" index="0"]
+flip_h = true
+
+[node name="BunkBed10" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 90)
+
+[node name="Sprite2D" parent="NavigationRegion2D/BunkBeds/BunkBed10" index="0"]
+flip_h = true
+
+[node name="BunkBed11" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 150)
+
+[node name="Sprite2D" parent="NavigationRegion2D/BunkBeds/BunkBed11" index="0"]
+flip_h = true
+
+[node name="BunkBed12" parent="NavigationRegion2D/BunkBeds" instance=ExtResource("4_ipwd2")]
+position = Vector2(288, 210)
+
+[node name="Sprite2D" parent="NavigationRegion2D/BunkBeds/BunkBed12" index="0"]
+flip_h = true
+
+[node name="BedsideStands" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="BedsideStand" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+
+[node name="BedsideStand2" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(36, 180)
+
+[node name="BedsideStand3" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(36, 120)
+
+[node name="BedsideStand4" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(36, 60)
+
+[node name="BedsideStand5" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 240)
+
+[node name="BedsideStand6" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 180)
+
+[node name="BedsideStand7" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 120)
+
+[node name="BedsideStand8" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(156, 60)
+
+[node name="BedsideStand9" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 240)
+
+[node name="BedsideStand10" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 180)
+
+[node name="BedsideStand11" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 120)
+
+[node name="BedsideStand12" parent="NavigationRegion2D/BedsideStands" instance=ExtResource("5_5bdj2")]
+position = Vector2(300, 60)
 
 [node name="Portal" parent="." instance=ExtResource("2_w786r")]
 position = Vector2(156, 300)
@@ -27,92 +121,6 @@ door_tier = 2
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(156, 276)
-
-[node name="BunkBeds" type="Node2D" parent="."]
-
-[node name="BunkBed" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-
-[node name="BunkBed2" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(48, 90)
-
-[node name="BunkBed3" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(48, 150)
-
-[node name="BunkBed4" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(48, 210)
-
-[node name="BunkBed5" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(168, 30)
-
-[node name="BunkBed6" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(168, 90)
-
-[node name="BunkBed7" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(168, 150)
-
-[node name="BunkBed8" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(168, 210)
-
-[node name="BunkBed9" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(288, 30)
-
-[node name="Sprite2D" parent="BunkBeds/BunkBed9" index="0"]
-flip_h = true
-
-[node name="BunkBed10" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(288, 90)
-
-[node name="Sprite2D" parent="BunkBeds/BunkBed10" index="0"]
-flip_h = true
-
-[node name="BunkBed11" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(288, 150)
-
-[node name="Sprite2D" parent="BunkBeds/BunkBed11" index="0"]
-flip_h = true
-
-[node name="BunkBed12" parent="BunkBeds" instance=ExtResource("4_ipwd2")]
-position = Vector2(288, 210)
-
-[node name="Sprite2D" parent="BunkBeds/BunkBed12" index="0"]
-flip_h = true
-
-[node name="BedsideStands" type="Node2D" parent="."]
-
-[node name="BedsideStand" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-
-[node name="BedsideStand2" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(36, 180)
-
-[node name="BedsideStand3" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(36, 120)
-
-[node name="BedsideStand4" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(36, 60)
-
-[node name="BedsideStand5" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(156, 240)
-
-[node name="BedsideStand6" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(156, 180)
-
-[node name="BedsideStand7" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(156, 120)
-
-[node name="BedsideStand8" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(156, 60)
-
-[node name="BedsideStand9" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(300, 240)
-
-[node name="BedsideStand10" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(300, 180)
-
-[node name="BedsideStand11" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(300, 120)
-
-[node name="BedsideStand12" parent="BedsideStands" instance=ExtResource("5_5bdj2")]
-position = Vector2(300, 60)
 
 [node name="Tier3Key" parent="." instance=ExtResource("3_qka7t")]
 position = Vector2(36, 237)
@@ -126,7 +134,7 @@ item = ExtResource("6_h008i")
 position = Vector2(300, 57)
 item = ExtResource("7_iefpp")
 
-[editable path="BunkBeds/BunkBed9"]
-[editable path="BunkBeds/BunkBed10"]
-[editable path="BunkBeds/BunkBed11"]
-[editable path="BunkBeds/BunkBed12"]
+[editable path="NavigationRegion2D/BunkBeds/BunkBed9"]
+[editable path="NavigationRegion2D/BunkBeds/BunkBed10"]
+[editable path="NavigationRegion2D/BunkBeds/BunkBed11"]
+[editable path="NavigationRegion2D/BunkBeds/BunkBed12"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dyjh511xabodo"]
+[gd_scene load_steps=14 format=4 uid="uid://dyjh511xabodo"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_bqk3b"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_c051a"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="6_fvuvt"]
 [ext_resource type="Resource" uid="uid://do3jk14fo27gw" path="res://Resources/Envelopes/hint_quack.tres" id="7_22xmn"]
 [ext_resource type="Texture2D" uid="uid://blaf6e2w15oi8" path="res://Assets/Textures/Environment/Props/Exam_Table.png" id="7_fbtwc"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ar5qa"]
+vertices = PackedVector2Array(38, 158, 10, 158, 10, 148, 38, 148, 134, 158, 106, 158, 106, 148, 134, 148, 106, 74, 134, 16, 134, 110, 106, 98, 106, 42, 10, 16, 38, 25.4219, 106, 110, 38, 74, 38, 98, 38, 110, 10, 110, 74.1797, 42)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(9, 8, 12), PackedInt32Array(13, 9, 12, 14), PackedInt32Array(10, 15, 11), PackedInt32Array(16, 8, 11, 17), PackedInt32Array(17, 18, 19, 13), PackedInt32Array(16, 17, 13), PackedInt32Array(14, 16, 13), PackedInt32Array(14, 12, 20)])
+source_geometry_group_name = &"Navigation"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slori"]
 size = Vector2(144, 18)
@@ -24,9 +29,61 @@ script = ExtResource("1_bqk3b")
 pickable_item = NodePath("Hint")
 code = "QUACK"
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ar5qa")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAP//AAACAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAP//AAACAAAAAAAEAAAAAAABAAAAAAAEAAEAAAABAAAAAAAEAP//AAACAAAAAAAFAAAAAAABAAAAAAAFAAEAAAABAAAAAAAFAP//AAACAAAAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAP//AAAAAAIAAAAGAAIAAAAAAAIAAAAFAAIAAAABAAAAAAAEAAIAAAABAAAAAAAGAAMAAAAAAAIAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAAGAAQAAAAAAAIAAAAFAAQAAAABAAAAAAAEAAQAAAABAAAAAAAGAAUAAAAAAAIAAAAFAAUAAAABAAAAAAAEAAUAAAABAAAAAAAGAAYAAAAAAAIAAAAFAAYAAAABAAAAAAAEAAYAAAABAAAAAAAGAAcAAAAEAAEAAAAFAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAcAAAAAAAEAAAADAAYAAAABAAAAAAADAAUAAAABAAAAAAACAAcAAAAAAAEAAAACAAYAAAABAAAAAAACAAUAAAABAAAAAAABAAcAAAAAAAEAAAABAAYAAAABAAAAAAABAAUAAAABAAAAAAAAAAcAAAAAAAEAAAAAAAYAAAABAAAAAAAAAAUAAAABAAAAAAD//wcAAAADAAEAAAD//wYAAAAEAAAAAAD//wUAAAAEAAAAAAD//wQAAAAEAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAD//wMAAAAEAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAD//wIAAAAEAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAGAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAA=")
 tile_set = ExtResource("1_c051a")
+
+[node name="StorageCabinets" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(72, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/StorageCabinets"]
+texture = ExtResource("3_lb5rl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StorageCabinets"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_slori")
+
+[node name="Desk" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(72, 138)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Desk"]
+texture = ExtResource("4_m0py1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Desk"]
+shape = SubResource("RectangleShape2D_gc7wd")
+
+[node name="Chair" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(24, 138)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Chair"]
+texture = ExtResource("5_frsh8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Chair"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_foyu3")
+
+[node name="Chair2" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(120, 138)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Chair2"]
+texture = ExtResource("5_frsh8")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Chair2"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_foyu3")
+
+[node name="ExamTable" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(72, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/ExamTable"]
+texture = ExtResource("7_fbtwc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/ExamTable"]
+polygon = PackedVector2Array(24, 4, -24, 4, -24, -19, 0, -8, 24, -8)
 
 [node name="Portal" parent="." instance=ExtResource("2_tfy1d")]
 position = Vector2(12, 84)
@@ -36,55 +93,6 @@ door_tier = 3
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(36, 84)
-
-[node name="StorageCabinets" type="StaticBody2D" parent="."]
-position = Vector2(72, 6)
-
-[node name="Sprite2D" type="Sprite2D" parent="StorageCabinets"]
-texture = ExtResource("3_lb5rl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StorageCabinets"]
-position = Vector2(0, -9)
-shape = SubResource("RectangleShape2D_slori")
-
-[node name="Desk" type="StaticBody2D" parent="."]
-position = Vector2(72, 138)
-
-[node name="Sprite2D" type="Sprite2D" parent="Desk"]
-texture = ExtResource("4_m0py1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
-shape = SubResource("RectangleShape2D_gc7wd")
-
-[node name="Chair" type="StaticBody2D" parent="."]
-position = Vector2(24, 138)
-
-[node name="Sprite2D" type="Sprite2D" parent="Chair"]
-texture = ExtResource("5_frsh8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
-position = Vector2(-0.5, -9)
-shape = SubResource("RectangleShape2D_foyu3")
-
-[node name="Chair2" type="StaticBody2D" parent="."]
-position = Vector2(120, 138)
-
-[node name="Sprite2D" type="Sprite2D" parent="Chair2"]
-texture = ExtResource("5_frsh8")
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair2"]
-position = Vector2(-0.5, -9)
-shape = SubResource("RectangleShape2D_foyu3")
-
-[node name="ExamTable" type="StaticBody2D" parent="."]
-position = Vector2(72, 60)
-
-[node name="Sprite2D" type="Sprite2D" parent="ExamTable"]
-texture = ExtResource("7_fbtwc")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ExamTable"]
-polygon = PackedVector2Array(24, 4, -24, 4, -24, -19, 0, -8, 24, -8)
 
 [node name="Hint" parent="." instance=ExtResource("6_fvuvt")]
 position = Vector2(37, -1)

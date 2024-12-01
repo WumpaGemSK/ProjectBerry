@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cl8j6qti8ybd2"]
+[gd_scene load_steps=17 format=4 uid="uid://cl8j6qti8ybd2"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_3v52g"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_p2c5d"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://b65a58j3jvw05" path="res://Assets/Textures/Environment/Props/paper_waste_basket_overlay.png" id="9_gfitf"]
 [ext_resource type="Resource" uid="uid://p3j3obuyohxw" path="res://Resources/Secrets/davenport_daily_newspaper.tres" id="9_hbwa8"]
 [ext_resource type="Texture2D" uid="uid://ju6o8rhc54ew" path="res://Assets/Textures/Environment/Props/crumpitt_office_drawer.png" id="11_0mu6g"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u6vrr"]
+vertices = PackedVector2Array(10, 158, 10, 94, 38, 94, 38, 120, 134, 158, 106, 120, 134, 10, 106, 38, 46, 10, 46, 29, 38, 38, 10, 29, 10, 56, 38, 56)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(9, 7, 10, 11), PackedInt32Array(12, 11, 10, 13)])
+source_geometry_group_name = &"Navigation"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tny7"]
 size = Vector2(48, 62)
@@ -26,9 +31,59 @@ size = Vector2(24, 13)
 
 [node name="Level_CrumpittOffice" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_u6vrr")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAD//wEAAAAEAAAAAAD//wAAAAAEAAAAAAD/////AAAEAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAP//AAACAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAP//AAACAAAAAAAEAAAAAAABAAAAAAAEAAEAAAABAAAAAAAEAP//AAACAAAAAAAFAAAAAAABAAAAAAAFAAEAAAABAAAAAAAFAP//AAACAAAAAAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAP//AAAAAAIAAAAGAAIAAAAAAAIAAAAFAAIAAAABAAAAAAAEAAIAAAABAAAAAAAGAAMAAAAAAAIAAAAFAAMAAAABAAAAAAAEAAMAAAABAAAAAAAGAAQAAAAAAAIAAAAFAAQAAAABAAAAAAAEAAQAAAABAAAAAAAGAAUAAAAAAAIAAAAFAAUAAAABAAAAAAAEAAUAAAABAAAAAAAGAAYAAAAAAAIAAAAFAAYAAAABAAAAAAAEAAYAAAABAAAAAAAGAAcAAAAEAAEAAAAFAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAcAAAAAAAEAAAADAAYAAAABAAAAAAADAAUAAAABAAAAAAACAAcAAAAAAAEAAAACAAYAAAABAAAAAAACAAUAAAABAAAAAAABAAcAAAAAAAEAAAABAAYAAAABAAAAAAABAAUAAAABAAAAAAAAAAcAAAAAAAEAAAAAAAYAAAABAAAAAAAAAAUAAAABAAAAAAD//wcAAAADAAEAAAD//wYAAAAEAAAAAAD//wUAAAAEAAAAAAD//wQAAAAEAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAD//wMAAAAEAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAD//wIAAAAEAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAADAAMAAAABAAAAAAACAAMAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAGAP7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAABAAIAAAABAP7/AAABAAIAAAACAP7/AAABAAIAAAADAP7/AAABAAIAAAAEAP7/AAABAAIAAAAFAP7/AAABAAIAAAA=")
 tile_set = ExtResource("1_3v52g")
+
+[node name="Desk" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(72, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Desk"]
+texture = ExtResource("3_0243m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Desk"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_5tny7")
+
+[node name="Chair" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(24, 84)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Chair"]
+texture = ExtResource("4_efnrk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Chair"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_owlfm")
+
+[node name="PaperWasteBasket" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(24, 18)
+
+[node name="FullSprite" type="Sprite2D" parent="NavigationRegion2D/PaperWasteBasket"]
+texture = ExtResource("8_25kg6")
+
+[node name="Pickable_Item" parent="NavigationRegion2D/PaperWasteBasket" instance=ExtResource("6_mqxqr")]
+position = Vector2(2, 1)
+item = ExtResource("9_hbwa8")
+
+[node name="Overlay" type="Sprite2D" parent="NavigationRegion2D/PaperWasteBasket"]
+texture = ExtResource("9_gfitf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/PaperWasteBasket"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_a6g0o")
+
+[node name="Drawer" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(132, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Drawer"]
+texture = ExtResource("11_0mu6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Drawer"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_5ytov")
 
 [node name="Portal" parent="." instance=ExtResource("2_p2c5d")]
 position = Vector2(132, 84)
@@ -38,16 +93,6 @@ direction = 2
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(108, 84)
 
-[node name="Desk" type="StaticBody2D" parent="."]
-position = Vector2(72, 90)
-
-[node name="Sprite2D" type="Sprite2D" parent="Desk"]
-texture = ExtResource("3_0243m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Desk"]
-position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_5tny7")
-
 [node name="CricketBat" parent="." instance=ExtResource("6_mqxqr")]
 position = Vector2(86, 58)
 item = ExtResource("7_ynarm")
@@ -55,40 +100,3 @@ item = ExtResource("7_ynarm")
 [node name="Key1" parent="." instance=ExtResource("6_mqxqr")]
 position = Vector2(86, 108)
 item = ExtResource("8_7i7gx")
-
-[node name="Chair" type="StaticBody2D" parent="."]
-position = Vector2(24, 84)
-
-[node name="Sprite2D" type="Sprite2D" parent="Chair"]
-texture = ExtResource("4_efnrk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair"]
-position = Vector2(-0.5, -9)
-shape = SubResource("RectangleShape2D_owlfm")
-
-[node name="PaperWasteBasket" type="StaticBody2D" parent="."]
-position = Vector2(24, 18)
-
-[node name="FullSprite" type="Sprite2D" parent="PaperWasteBasket"]
-texture = ExtResource("8_25kg6")
-
-[node name="Pickable_Item" parent="PaperWasteBasket" instance=ExtResource("6_mqxqr")]
-position = Vector2(2, 1)
-item = ExtResource("9_hbwa8")
-
-[node name="Overlay" type="Sprite2D" parent="PaperWasteBasket"]
-texture = ExtResource("9_gfitf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PaperWasteBasket"]
-position = Vector2(0, -2.5)
-shape = SubResource("RectangleShape2D_a6g0o")
-
-[node name="Drawer" type="StaticBody2D" parent="."]
-position = Vector2(132, -2)
-
-[node name="Sprite2D" type="Sprite2D" parent="Drawer"]
-texture = ExtResource("11_0mu6g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Drawer"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_5ytov")
