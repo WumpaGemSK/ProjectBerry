@@ -10,12 +10,12 @@ func on_view(_body: Node2D, _enemy: Enemy):
 	return
 
 func update(enemy: Enemy, delta: float):
-	if enemy.navigation_agent_2d.is_navigation_finished():
-		if not sleeping.playing:
-			sleeping.play()
-	else:
-		if not run.playing:
-			run.play()
+	#if enemy.navigation_agent_2d.is_navigation_finished():
+		#if not sleeping.playing:
+			#sleeping.play()
+	#else:
+		#if not run.playing:
+			#run.play()
 	var dir = enemy.facing_direction
 	var animation = "sleeping_" if enemy.navigation_agent_2d.is_navigation_finished() else "walk_"
 	match dir:
@@ -31,3 +31,7 @@ func update(enemy: Enemy, delta: float):
 
 func velocity_almost_zero(vec: Vector2):
 	return is_zero_approx(vec.x) and is_zero_approx(vec.y)
+
+func pause():
+	run.stop()
+	sleeping.stop()

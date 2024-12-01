@@ -16,8 +16,8 @@ func enter(enemy: Enemy):
 		patrol_path.add_child(path_follow)
 	
 func update(enemy: Enemy, delta: float):
-	if not run.playing:
-		run.play()
+	#if not run.playing:
+		#run.play()
 	progress += delta*patrolling_speed
 	path_follow.progress = progress
 	var new_pos = path_follow.global_position
@@ -49,3 +49,6 @@ func on_view(body: Node2D, enemy: Enemy):
 func should_switch_to_investigating(player: Player):
 	if player != null and not player.is_sneaking():
 		state_change.emit(Enemy.States.INVESTIGATING)
+
+func pause():
+	run.stop()

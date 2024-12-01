@@ -26,8 +26,8 @@ func enter(enemy: Enemy):
 	timer.start(recheck_time)
 
 func update(enemy: Enemy, delta: float):
-	if not run.playing:
-		run.play()
+	#if not run.playing:
+		#run.play()
 	var dir = enemy.facing_direction
 	var animation = ""
 	match dir:
@@ -62,3 +62,6 @@ func should_switch_to_investigating(player_: Player):
 
 func on_recheck():
 	should_switch_to_investigating(unit.player)
+
+func pause():
+	run.stop()

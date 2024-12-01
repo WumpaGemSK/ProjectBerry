@@ -65,8 +65,8 @@ func _ready():
 	fov.body_exited.connect(on_view_exit)
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 	add_child(phase_in)
-	EventBus.pause.connect(func(): paused = true)
-	EventBus.resume.connect(func(): phase_in.start(phase_in_time))
+	EventBus.pause.connect(on_pause)
+	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 
 func _process(delta):
@@ -160,3 +160,12 @@ func change_state(new_state: States):
 ## Called by attacking weapon signal
 func on_attack():
 	pass
+
+func on_pause():
+	paused = true
+	phase_in.stop()
+	state.pause()
+
+func on_resume():
+	phase_in.start(phase_in_time)
+	state.resume()
