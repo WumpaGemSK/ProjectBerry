@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2ylc066dbc24"]
+[gd_scene load_steps=13 format=3 uid="uid://b2ylc066dbc24"]
 
 [ext_resource type="Script" path="res://Scripts/UI/terminal.gd" id="1_ftfjq"]
 [ext_resource type="PackedScene" uid="uid://d04w0asci7apg" path="res://Scenes/UI/Components/CodeInput.tscn" id="1_gmysd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://crdma4ms31wts" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_send_button_sheet.png" id="4_mfn2n"]
 [ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="5_vgc5f"]
 [ext_resource type="Texture2D" uid="uid://cw6olboougiyx" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_send_button_focused_sheet.png" id="5_x85as"]
+[ext_resource type="AudioStream" uid="uid://gc7wpddpdv3w" path="res://Assets/Audio/SFX/SFX_UI_TERMINALINPUT.wav" id="7_yr2fq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt424"]
 bg_color = Color(0.678431, 0.85098, 0.737255, 1)
@@ -129,5 +130,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Press Backspace / B Button to Close"
 label_settings = SubResource("LabelSettings_5ti1r")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_yr2fq")
 
 [connection signal="pressed" from="MarginContainer3/SendCode" to="." method="_on_send_code_pressed"]

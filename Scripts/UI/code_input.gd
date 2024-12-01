@@ -1,6 +1,7 @@
 extends Control
 class_name CodeInput
 
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var texture_rect = $MarginContainer/VBoxContainer/PanelContainer/TextureRect
 const TERMINAL_LETTERS = preload("res://Assets/Textures/UI Screens/TerminalUI/terminal_letters.tres")
 var letter : String:
@@ -15,12 +16,14 @@ func _ready():
 	update_label()
 
 func _on_up_pressed():
+	audio_stream_player_2d.play()
 	code_point += 1
 	if code_point > "Z".to_ascii_buffer()[0]:
 		code_point = "A".to_ascii_buffer()[0]
 	update_label()
 
 func _on_down_pressed():
+	audio_stream_player_2d.play()
 	code_point -= 1
 	if code_point < "A".to_ascii_buffer()[0]:
 		code_point = "Z".to_ascii_buffer()[0]

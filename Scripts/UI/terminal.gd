@@ -1,6 +1,7 @@
 extends Control
 
 @onready var code_list = %CodeList
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 func _ready():
 	visible = false
@@ -12,6 +13,7 @@ func _input(event):
 		EventBus.close_terminal.emit()
 
 func _on_send_code_pressed():
+	audio_stream_player_2d.play()
 	var code: String = ""
 	for i in code_list.get_child_count():
 		var input: CodeInput = code_list.get_child(i)
