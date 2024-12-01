@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdwa7dwg5tguk"]
+[gd_scene load_steps=22 format=3 uid="uid://cdwa7dwg5tguk"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_ru7mw"]
 [ext_resource type="Resource" uid="uid://cdn8sw3gnm7l2" path="res://Resources/Audio/open_menu.tres" id="2_bu3g6"]
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="2_s55dc"]
 [ext_resource type="Resource" uid="uid://brax1gx4l8dy3" path="res://Resources/Audio/fax_machine.tres" id="3_bgxyi"]
 [ext_resource type="Resource" uid="uid://c4qd6iwrewx1u" path="res://Resources/Audio/correct_code.tres" id="4_wyftv"]
 [ext_resource type="Resource" uid="uid://dyys6ii870f38" path="res://Resources/Audio/incorrect_code.tres" id="5_lgbqk"]
@@ -23,7 +24,7 @@
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_ru7mw")
-sound_effects_settings = [ExtResource("2_bu3g6"), ExtResource("3_bgxyi"), ExtResource("4_wyftv"), ExtResource("5_lgbqk"), ExtResource("6_dfb6h"), ExtResource("7_670i4"), ExtResource("8_ywdh3"), ExtResource("9_wjl0c"), ExtResource("10_lu7ki"), ExtResource("11_07mcq"), ExtResource("12_cpai6"), ExtResource("13_ndui2"), ExtResource("14_eh8qa"), ExtResource("15_omul6"), ExtResource("16_3tav3"), ExtResource("17_3v8wm"), ExtResource("18_4j37d"), ExtResource("19_gde28"), ExtResource("20_5qvkd")]
+sound_effects_settings = Array[ExtResource("2_s55dc")]([ExtResource("2_bu3g6"), ExtResource("3_bgxyi"), ExtResource("4_wyftv"), ExtResource("5_lgbqk"), ExtResource("6_dfb6h"), ExtResource("7_670i4"), ExtResource("8_ywdh3"), ExtResource("9_wjl0c"), ExtResource("10_lu7ki"), ExtResource("11_07mcq"), ExtResource("12_cpai6"), ExtResource("13_ndui2"), ExtResource("14_eh8qa"), ExtResource("15_omul6"), ExtResource("16_3tav3"), ExtResource("17_3v8wm"), ExtResource("18_4j37d"), ExtResource("19_gde28"), ExtResource("20_5qvkd")])
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
