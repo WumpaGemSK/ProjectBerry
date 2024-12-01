@@ -16,6 +16,9 @@ signal health_changed(new_health: int)
 #region AudioPlayers
 @onready var hurt = $Sounds/Hurt
 @onready var death_sound = $Sounds/Death
+@onready var walk_sound = $Sounds/Walk_sound
+@onready var sneak_sound = $Sounds/Sneak_sound
+@onready var pushing_sound = $Sounds/Pushing_sound
 
 #endregion
 #movement variables
@@ -107,6 +110,16 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	play_animation()
 	move_and_slide()
+	match state:
+		PlayerStates.NORMAL:
+			if not walk_sound.playing:
+				walk_sound.play()
+		PlayerStates.SNEAKING:
+			if not sneak_sound.playing:
+				sneak_sound.play()
+		PlayerStates.PUSHING:
+			if not pushing_sound.playing:
+				pushing_sound.play()
 	#region Push moveable boxes
 	var coll_count = get_slide_collision_count()
 	for i in coll_count:
