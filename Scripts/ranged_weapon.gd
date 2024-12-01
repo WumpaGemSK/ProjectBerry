@@ -15,6 +15,7 @@ func _ready():
 func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
 		EventBus.fire_bullet.emit(from, dest, damage)
+		AudioManager.play_effect(SoundEffect.SoundType.ENEMY_SHOOT)
 		ammo -= 1
 		cooldown_timer.start(cooldown)
 		if is_player:
