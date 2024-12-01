@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjpvq1iyxdh5p"]
+[gd_scene load_steps=4 format=3 uid="uid://cjpvq1iyxdh5p"]
 
 [ext_resource type="FontFile" uid="uid://dne07x6s8od4t" path="res://Assets/Fonts/ImpactfulBits.ttf" id="1_pgski"]
+[ext_resource type="Script" path="res://Scenes/Cutscenes/intro_text.gd" id="1_ssfbl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mxg5p"]
 font = ExtResource("1_pgski")
@@ -13,8 +14,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ssfbl")
 
-[node name="Label" type="Label" parent="."]
+[node name="Page1" type="Label" parent="."]
 custom_minimum_size = Vector2(480, 256)
 layout_mode = 1
 anchors_preset = 8
@@ -34,20 +36,55 @@ Exchange officer Captain Crumpitt is setting at his desk reading a rather unsett
 
 Just as he throws away the paper in the waste basket, Crumpitt notices a bunch of his fellow troops evacuating the base, carrying radio equipment. When asking around, he learns that the base is put on red alert and that all radios must be confiscated. Orders from General Griffin.
 
-As he grabs his radio from his office’s drawer, he turns it out of curiosity and he hears… music. Jazzy music. Just regular civilian broadcasting.
+As he grabs his radio from his office’s drawer, he turns it out of curiosity and he hears… music. Jazzy music. Just regular civilian broadcasting."
+label_settings = SubResource("LabelSettings_mxg5p")
+vertical_alignment = 1
+autowrap_mode = 3
 
-Crumpitt sprints to General Griffin’s office for clarification on the situation, to know if it isn’t a simple exercise, only to find him incapacited on the floor.
+[node name="Page2" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(480, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -128.0
+offset_right = 240.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Crumpitt sprints to General Griffin’s office for clarification on the situation, to know if it isn’t a simple exercise, only to find him incapacited on the floor.
 
 “OH MY GIDDY AUNT!!! WHAT HAPPENED???”
 
 Looking into the documents laying on the office’s desk, Crumpitt finds out that Griffin launched Wing Attack Plan Z, sending the bomb squad to move towards their targets in the Soviet Union. And the planes can’t be recalled without the five-letter secret code that can go through their discriminators.
 
-Thankfully, the characters that compose that secret code can be retrieved in modified fax machines scattered around the base.
+Thankfully, the characters that compose that secret code can be retrieved in modified fax machines scattered around the base."
+label_settings = SubResource("LabelSettings_mxg5p")
+vertical_alignment = 1
+autowrap_mode = 3
 
-You, as Captain Crumpitt, would need to reach those fax machines, print out bits of the code, figure out the order and then send it through the terminal in Griffin’s office before the planes reaches their targets and bombs them. All of this, in 30 minutes!
+[node name="Page3" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(480, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -128.0
+offset_right = 240.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You, as Captain Crumpitt, would need to reach those fax machines, print out bits of the code, figure out the order and then send it through the terminal in Griffin’s office before the planes reaches their targets and bombs them. All of this, in 30 minutes!
 
-That leaves no time to be faffing around! And no safe spots either, as a external troop of soldiers has invaded the base as well. So watch out! And good luck!
-"
+That leaves no time to be faffing around! And no safe spots either, as a external troop of soldiers has invaded the base as well. So watch out! And good luck!"
 label_settings = SubResource("LabelSettings_mxg5p")
 vertical_alignment = 1
 autowrap_mode = 3
