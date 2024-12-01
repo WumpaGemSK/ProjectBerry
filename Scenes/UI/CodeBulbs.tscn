@@ -1,11 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://2k5ire51woed"]
+[gd_scene load_steps=11 format=3 uid="uid://2k5ire51woed"]
 
 [ext_resource type="PackedScene" uid="uid://b5qg3kguoxqbw" path="res://Scenes/UI/Components/Bulb.tscn" id="1_33trr"]
 [ext_resource type="Script" path="res://Scripts/UI/code_bulbs.gd" id="1_qanxn"]
 [ext_resource type="Texture2D" uid="uid://cobu17jlasrtf" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_bulb_sheet.png" id="3_xh5o2"]
 [ext_resource type="Texture2D" uid="uid://cnxpf2ilfn0g" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_bulb_checkmarks_sheet.png" id="4_3rrku"]
-[ext_resource type="AudioStream" uid="uid://t5x6w0avpf34" path="res://Assets/Audio/SFX/SFX_UI_CORRECTCODE.wav" id="5_at677"]
-[ext_resource type="AudioStream" uid="uid://d1ifudhvlp6iq" path="res://Assets/Audio/SFX/SFX_UI_INCORRECTCODE.wav" id="6_4iorx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cl38k"]
 atlas = ExtResource("3_xh5o2")
@@ -80,9 +78,3 @@ layout_mode = 2
 normal_state_texture = SubResource("AtlasTexture_1wmyy")
 active_state_texture = SubResource("AtlasTexture_egciw")
 icon_texture = SubResource("AtlasTexture_8dhpx")
-
-[node name="CorrectSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_at677")
-
-[node name="IncorrectSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_4iorx")

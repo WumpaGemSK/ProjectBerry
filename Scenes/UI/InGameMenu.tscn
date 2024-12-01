@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca0tqqg420vog"]
+[gd_scene load_steps=5 format=3 uid="uid://ca0tqqg420vog"]
 
 [ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="1_qynub"]
 [ext_resource type="Script" path="res://Scripts/UI/Popups/in_game_menu.gd" id="1_vcfuv"]
 [ext_resource type="PackedScene" uid="uid://bdnq17l0bvtig" path="res://Scenes/UI/Popups/AudioSettingsPopup.tscn" id="2_swej2"]
 [ext_resource type="PackedScene" uid="uid://dviof3mjcqf3t" path="res://Scenes/UI/Popups/DisplayOptionsPopup.tscn" id="3_snbay"]
-[ext_resource type="AudioStream" uid="uid://c4kw14j4b8lk8" path="res://Assets/Audio/SFX/SFX_UI_OPENMENU.wav" id="5_td8sn"]
 
 [node name="InGameMenu" type="PanelContainer"]
 visible = false
@@ -49,9 +48,6 @@ text = "Display options"
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Return to title"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_td8sn")
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]

@@ -49,6 +49,6 @@ func update_sprite():
 
 func open_door(tier: int):
 	if tier >= door_tier:
-		audio_stream_player_2d.play()
+		AudioManager.play_effect_at(SoundEffect.SoundType.OPEN_DOOR, global_position)
 		opened = true
 		update_sprite()

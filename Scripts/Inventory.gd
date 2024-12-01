@@ -1,7 +1,6 @@
 extends Node
 
 signal on_inventory_update(inventory : Dictionary)
-@onready var item_pickup = $Item_pickup
 
 var inventory : Dictionary = {}
 
@@ -14,8 +13,7 @@ func _ready():
 ## and the upgrade is applied automatically
 ## If it's an item it's added into the inventory or the quantity is increased if already present
 func on_item_pickup(item: Item):
-	if not item_pickup.playing:
-		item_pickup.play()
+	AudioManager.play_effect(SoundEffect.SoundType.PICKUP_ITEM)
 	if item.is_weapon() or item.is_upgrade():
 		EventBus.use_item.emit(item)
 		return

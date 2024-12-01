@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d04w0asci7apg"]
+[gd_scene load_steps=13 format=3 uid="uid://d04w0asci7apg"]
 
 [ext_resource type="Script" path="res://Scripts/UI/code_input.gd" id="1_sr8sm"]
 [ext_resource type="Texture2D" uid="uid://yppdiq5h15eg" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_up_button_sheet.png" id="2_15tti"]
 [ext_resource type="Texture2D" uid="uid://bree616vo2o2t" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_down_button_sheet.png" id="3_ksg0d"]
 [ext_resource type="Texture2D" uid="uid://diw472uyals33" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_up_button_focused_sheet.png" id="3_ycsk3"]
 [ext_resource type="Texture2D" uid="uid://bmrfks84xuyfl" path="res://Assets/Textures/UI Screens/TerminalUI/terminal_down_button_focused_sheet.png" id="5_3d7qu"]
-[ext_resource type="AudioStream" uid="uid://gc7wpddpdv3w" path="res://Assets/Audio/SFX/SFX_UI_TERMINALINPUT.wav" id="6_ru1yt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y56i"]
 atlas = ExtResource("2_15tti")
@@ -79,9 +78,6 @@ texture_normal = SubResource("AtlasTexture_okhm5")
 texture_pressed = SubResource("AtlasTexture_05qdf")
 texture_hover = SubResource("AtlasTexture_d4qtw")
 stretch_mode = 3
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ru1yt")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/UP" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/DOWN" to="." method="_on_down_pressed"]

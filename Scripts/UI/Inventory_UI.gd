@@ -4,7 +4,6 @@ extends Control
 @export var inventory: Node
 @onready var grid_container : GridContainer = %InventoryGrid
 @onready var item_detail = %ItemDetail
-@onready var open_sound = $Open_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +17,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
 		if visible:
-			open_sound.play()
+			AudioManager.play_effect(SoundEffect.SoundType.UI_OPEN_MENU)
 			EventBus.pause.emit()
 			grid_container.get_child(0).set_focus()
 		else:

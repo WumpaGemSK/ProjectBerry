@@ -4,7 +4,6 @@ var code: String
 
 var code_item: PackedScene
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var print = $Print
 
 @export var room: Game.Room
 var pickable_item: PickableItem = preload("res://Scenes/Pickable_Item.tscn").instantiate()
@@ -21,7 +20,7 @@ func _ready():
 
 func print_code():
 	animated_sprite_2d.play("default")
-	print.play()
+	AudioManager.play_effect_at(SoundEffect.SoundType.FAX_MACHINE, global_position)
 	animated_sprite_2d.animation_finished.connect(generate_code_item)
 
 func generate_code_item():

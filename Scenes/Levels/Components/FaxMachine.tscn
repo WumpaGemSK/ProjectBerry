@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6gygp2gyhnlm"]
+[gd_scene load_steps=20 format=3 uid="uid://b6gygp2gyhnlm"]
 
 [ext_resource type="Texture2D" uid="uid://jj1d7eb06hqw" path="res://Assets/Textures/Environment/Props/FaxMachine_Sheet.png" id="1_a8ok0"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/fax_machine.gd" id="1_akx1y"]
-[ext_resource type="AudioStream" uid="uid://cwgbwyn4regrm" path="res://Assets/Audio/SFX/SFX_ENVIRONMENT_FAXMACHINE.wav" id="3_v5wox"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83k73"]
 atlas = ExtResource("1_a8ok0")
@@ -133,6 +132,3 @@ position = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 shape = SubResource("RectangleShape2D_a8ads")
-
-[node name="Print" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_v5wox")

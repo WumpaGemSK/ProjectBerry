@@ -4,7 +4,6 @@ extends PanelContainer
 
 @export var audio_settings_popup : PackedScene
 @export var display_options_popup : PackedScene
-@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 ## Listen for the "options" action and show the menu. Make the resume button
 ## grab the focus to be able to use keyboard/controller to navigate
@@ -13,7 +12,7 @@ func _process(_delta):
 	# and check for inputs somewhere else
 	if Input.is_action_pressed("options"):
 		if !self.visible:
-			audio_stream_player_2d.play()
+			AudioManager.play_effect(SoundEffect.SoundType.UI_OPEN_MENU)
 			show()
 			resume.grab_focus()
 
