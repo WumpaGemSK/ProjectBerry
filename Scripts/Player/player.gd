@@ -83,6 +83,7 @@ func _physics_process(_delta: float) -> void:
 		direction.x = 0.0
 	else:
 		direction = Vector2.ZERO
+	direction = direction.normalized()
 	match state:
 		PlayerStates.SNEAKING:
 			speed = sneaking_speed
