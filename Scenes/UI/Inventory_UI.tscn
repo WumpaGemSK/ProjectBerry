@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfuoye8ph1bm3"]
+[gd_scene load_steps=8 format=3 uid="uid://dfuoye8ph1bm3"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Inventory_UI.gd" id="1_8vfo1"]
 [ext_resource type="PackedScene" uid="uid://bbmwpmebgbi3k" path="res://Scenes/UI/Components/Item_Slot.tscn" id="2_8058d"]
 [ext_resource type="PackedScene" uid="uid://buebfnq6h73uq" path="res://Scenes/UI/ItemDetail.tscn" id="3_iabcs"]
 [ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="3_s30ip"]
+[ext_resource type="AudioStream" uid="uid://c4kw14j4b8lk8" path="res://Assets/Audio/SFX/SFX_UI_OPENMENU.wav" id="5_rsqp5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s8gh"]
 content_margin_bottom = 18.0
@@ -66,3 +67,6 @@ layout_mode = 2
 [node name="ItemDetail" parent="PanelContainer/VBoxContainer/HSplitContainer/MarginContainer2" instance=ExtResource("3_iabcs")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Open_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rsqp5")
