@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://pmnrd8y6xych"]
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_r1qu4"]
-[ext_resource type="PackedScene" uid="uid://c62yjrqh0e3bk" path="res://Scenes/RangedWeapon.tscn" id="2_mqyb5"]
+[ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_myrgh"]
 [ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="3_fpsx0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="3_l78p3"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="4_7marf"]
@@ -19,14 +19,14 @@ rotation_speed = 3.0
 idle_state = NodePath("../Patrol")
 investigating_state = NodePath("../Inv")
 chasing_state = NodePath("../chase")
-weapon_scn = ExtResource("2_mqyb5")
+weapon_scn = ExtResource("2_myrgh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("CapsuleShape2D_l6yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = ExtResource("3_fpsx0")
-animation = &"walk_down"
+animation = &"damaged_down"
 
 [node name="Patrol" type="Node2D" parent="."]
 script = ExtResource("3_l78p3")
