@@ -7,6 +7,7 @@ func attack(from: Vector2, dest: Vector2):
 			attacking.emit()
 			r.take_damage(damage)
 		cooldown_timer.start(cooldown)
+		AudioManager.play_effect(SoundEffect.SoundType.CRICKET_BAT_HIT)
 		
 func upgrade(item: Item):
 	match item.type:
