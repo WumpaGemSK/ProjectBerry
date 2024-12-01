@@ -11,7 +11,7 @@ var secret_count: int = 0
 #endregion
 
 ## Time left in seconds to get ranked
-var max_time_left: float = 600 # 10 minutes
+var max_time_left: float = 900 # 15 minutes
 
 var retries: int = 3
 
