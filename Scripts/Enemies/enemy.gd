@@ -17,7 +17,6 @@ enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
 @export var original_facing_dir : facing = facing.RIGHT
 @onready var prompt = %Prompt
-@onready var hurt: AudioStreamPlayer2D = $Hurt
 
 var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
@@ -103,7 +102,7 @@ func on_view_exit(body: Node2D):
 	state.on_view_exit(body, self)
 
 func take_damage(amount: int):
-	hurt.play()
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
 	health -= amount
 	if health <= 0:
 		death()

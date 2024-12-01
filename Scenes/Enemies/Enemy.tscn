@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://mhpeev6v0e1o"]
+[gd_scene load_steps=3 format=3 uid="uid://mhpeev6v0e1o"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5gn1u"]
-[ext_resource type="AudioStream" uid="uid://bhgigbmv5cekj" path="res://Assets/Audio/SFX/SFX_ENEMY_GETSHURT.wav" id="2_6mva4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd7fy"]
 radius = 80.0
@@ -31,7 +30,3 @@ debug_enabled = true
 [node name="Prompt" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -24)
-
-[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_6mva4")
-bus = &"Sounds"

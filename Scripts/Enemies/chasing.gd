@@ -25,6 +25,7 @@ func enter(enemy: Enemy):
 	enemy.movement_speed = chasing_speed
 	enemy.prompt.texture = exclamation_mark
 	enemy.player.panic.emit()
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_DRAW_WEAPON, enemy.global_position)
 
 func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
