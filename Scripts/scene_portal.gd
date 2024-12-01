@@ -48,7 +48,7 @@ func update_sprite():
 	sprite_2d.region_rect = Rect2((element%sprites_per_row)*tile_width, (element/sprites_per_row)*tile_height, tile_width,tile_height)
 
 func open_door(tier: int):
-	if tier >= door_tier:
+	if tier >= door_tier and not opened:
 		AudioManager.play_effect_at(SoundEffect.SoundType.OPEN_DOOR, global_position)
 		opened = true
 		update_sprite()
