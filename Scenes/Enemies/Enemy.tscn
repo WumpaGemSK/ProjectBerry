@@ -21,7 +21,7 @@ unique_name_in_owner = true
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="FOV"]
 polygon = PackedVector2Array(0, 0, 80, -40, 80, 40)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["Damageable"]]
 path_desired_distance = 30.0
 path_metadata_flags = 0
 simplify_path = true
