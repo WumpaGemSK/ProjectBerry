@@ -1,7 +1,7 @@
 extends "res://Scripts/Enemies/stationary.gd"
 
-@onready var sleeping = $Sleeping
-@onready var run = $Run
+@onready var sleeping: AudioStreamPlayer2D = $Sleeping
+@onready var run: AudioStreamPlayer2D = $Run
 
 func on_hearing(body: Node2D, enemy: Enemy):
 	super(body, enemy)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d06b4tntvpwmv"]
+[gd_scene load_steps=10 format=3 uid="uid://d06b4tntvpwmv"]
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_j0h6h"]
 [ext_resource type="Script" path="res://Scripts/Enemies/doze.gd" id="2_esmka"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="3_fkjk1"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="3_w171h"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="4_3jdau"]
+[ext_resource type="AudioStream" uid="uid://dddig5go2ukjm" path="res://Assets/Audio/SFX/SFX_ENEMY_SLEEPING.wav" id="5_g0t72"]
 [ext_resource type="AudioStream" uid="uid://bjvxsrr80bfv2" path="res://Assets/Audio/SFX/SFX_ENEMY_RUN.wav" id="6_jr273"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xcwa"]
@@ -34,10 +35,13 @@ autoplay = "idle_down"
 script = ExtResource("2_esmka")
 
 [node name="Sleeping" type="AudioStreamPlayer2D" parent="Sleeping"]
+stream = ExtResource("5_g0t72")
+attenuation = 1.8025
 bus = &"Sounds"
 
 [node name="Run" type="AudioStreamPlayer2D" parent="Sleeping"]
 stream = ExtResource("6_jr273")
+attenuation = 1.8025
 bus = &"Sounds"
 
 [node name="Investigating" type="Node2D" parent="."]
@@ -46,6 +50,7 @@ investigating_speed = 30.0
 
 [node name="Run" type="AudioStreamPlayer2D" parent="Investigating"]
 stream = ExtResource("6_jr273")
+attenuation = 1.8025
 bus = &"Sounds"
 
 [node name="Chasing" type="Node2D" parent="."]
