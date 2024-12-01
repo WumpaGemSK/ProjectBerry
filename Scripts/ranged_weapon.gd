@@ -6,6 +6,7 @@ extends Weapon
 @export var max_ammo: int
 
 @export var bullet_scn: PackedScene
+@onready var shoot: AudioStreamPlayer2D = $Shoot
 
 var facing_rotation = [0, 180, 90, 270]
 
@@ -16,6 +17,7 @@ func _ready():
 
 func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
+		shoot.play()
 		var bullet: Bullet = bullet_scn.instantiate()
 		add_child(bullet)
 		bullet.dir = dest

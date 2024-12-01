@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c62yjrqh0e3bk"]
+[gd_scene load_steps=4 format=3 uid="uid://c62yjrqh0e3bk"]
 
 [ext_resource type="Script" path="res://Scripts/ranged_weapon.gd" id="1_7lc3l"]
 [ext_resource type="PackedScene" uid="uid://hu17tlkwgbnf" path="res://Scenes/bullet.tscn" id="2_bmois"]
+[ext_resource type="AudioStream" uid="uid://yovqpp62rcj8" path="res://Assets/Audio/SFX/SFX_ENEMY_SHOOT.wav" id="3_5mb5t"]
 
 [node name="RangedWeapon" type="Node2D"]
 script = ExtResource("1_7lc3l")
@@ -11,3 +12,7 @@ bullet_scn = ExtResource("2_bmois")
 cooldown = 0.3
 weapon_range = 100.0
 damage = 2
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5mb5t")
+bus = &"Sounds"
