@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://c52teq3a8plld"]
+
+[ext_resource type="Script" path="res://Scripts/UI/game_over_scene.gd" id="1_vqbno"]
+[ext_resource type="PackedScene" uid="uid://f7kk4ik4y6nf" path="res://Scenes/UI/TitleScreen.tscn" id="2_er6va"]
+[ext_resource type="PackedScene" uid="uid://dfp5nw57jtl8c" path="res://Scenes/Main.tscn" id="3_3764t"]
+[ext_resource type="Texture2D" uid="uid://cm60l0pkuha05" path="res://Assets/Textures/UI Screens/Cutscenes/Bad Ending/bad_ending_background.png" id="4_1trcc"]
+[ext_resource type="Texture2D" uid="uid://b5fr71fdwpaft" path="res://Assets/Textures/UI Screens/game_over_label_texture.png" id="4_gd8ob"]
+[ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="5_mpllm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmmf2"]
+bg_color = Color(0.05, 0.1, 0.1, 0.666667)
+
+[node name="GameOver_BadEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vqbno")
+title_scn = ExtResource("2_er6va")
+restart_scn = ExtResource("3_3764t")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1trcc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmmf2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -60.0
+offset_right = 129.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_gd8ob")
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Restart" type="Button" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("5_mpllm")
+text = "RESTART"
+
+[node name="TitleScreen" type="Button" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_mpllm")
+text = "RETURN TO TITLE"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/TitleScreen" to="." method="_on_title_screen_pressed"]
