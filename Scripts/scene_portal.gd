@@ -13,6 +13,7 @@ class_name ScenePortal
 @export var opened: bool = false
 #endregion
 @onready var sprite_2d = $Sprite2D
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 ## The position of the first door
 var base: int = 0
@@ -48,5 +49,6 @@ func update_sprite():
 
 func open_door(tier: int):
 	if tier >= door_tier:
+		audio_stream_player_2d.play()
 		opened = true
 		update_sprite()
