@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=17 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
@@ -13,6 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://21wnnmifx0jc" path="res://Scenes/Levels/level_restroom.tscn" id="10_8axoh"]
 [ext_resource type="PackedScene" uid="uid://d2jm3hkkc6pu1" path="res://Scenes/Levels/level_janitor_closet.tscn" id="11_6ujim"]
 [ext_resource type="PackedScene" uid="uid://0qp2y6fsdulr" path="res://Scenes/Levels/level_cafeteria.tscn" id="12_5p1a4"]
+[ext_resource type="Texture2D" uid="uid://dql0vxrj8evef" path="res://Assets/Textures/Environment/Props/soda_vending_machine_sheet.png" id="14_6av63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo034"]
+size = Vector2(34, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vill8"]
+size = Vector2(34, 24)
 
 [node name="Level_Corridors" type="Node2D"]
 
@@ -88,3 +95,19 @@ scn = ExtResource("10_8axoh")
 position = Vector2(396, 660)
 scn = ExtResource("11_6ujim")
 door_tier = 3
+
+[node name="SodaMachine" type="Area2D" parent="."]
+position = Vector2(60, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SodaMachine"]
+texture = ExtResource("14_6av63")
+hframes = 2
+
+[node name="AreaShape" type="CollisionShape2D" parent="SodaMachine"]
+shape = SubResource("RectangleShape2D_bo034")
+
+[node name="Collision" type="StaticBody2D" parent="SodaMachine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SodaMachine/Collision"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_vill8")
