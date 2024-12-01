@@ -44,6 +44,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 Player="The player group"
 Damageable="Unit can take damage"
+SodaMachine=""
 
 [input]
 
