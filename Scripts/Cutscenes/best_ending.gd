@@ -1,6 +1,6 @@
 extends Control
 
-@export var how_to_play : PackedScene
+@export var status : PackedScene
 
 func _process(delta: float) -> void:
 	
@@ -12,13 +12,25 @@ func _process(delta: float) -> void:
 			get_node("Page1").hide()
 			get_node("Page2").show()
 			
-		elif get_node("Page2").visible:
+		if get_node("Page2").visible:
 			TransitionScreen.transition()
 			await TransitionScreen.on_transition_finished
 			get_node("Page2").hide()
 			get_node("Page3").show()
 			
-		elif get_node("Page3").visible:
+		if get_node("Page3").visible:
 			TransitionScreen.transition()
 			await TransitionScreen.on_transition_finished
-			get_tree().change_scene_to_packed(how_to_play)
+			get_node("Page3").hide()
+			get_node("Page4").show()
+			
+		if get_node("Page4").visible:
+			TransitionScreen.transition()
+			await TransitionScreen.on_transition_finished
+			get_node("Page4").hide()
+			get_node("Page5").show()
+			
+		elif get_node("Page5").visible:
+			TransitionScreen.transition()
+			await TransitionScreen.on_transition_finished
+			get_tree().change_scene_to_packed(status)
