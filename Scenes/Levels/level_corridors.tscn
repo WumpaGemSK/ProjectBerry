@@ -19,7 +19,7 @@
 size = Vector2(34, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vill8"]
-size = Vector2(34, 24)
+size = Vector2(34, 27)
 
 [node name="Level_Corridors" type="Node2D"]
 
@@ -106,8 +106,8 @@ hframes = 2
 [node name="AreaShape" type="CollisionShape2D" parent="SodaMachine"]
 shape = SubResource("RectangleShape2D_bo034")
 
-[node name="Collision" type="StaticBody2D" parent="SodaMachine"]
+[node name="PhysicalCollision" type="StaticBody2D" parent="SodaMachine"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SodaMachine/Collision"]
-position = Vector2(0, -12)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SodaMachine/PhysicalCollision"]
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_vill8")
