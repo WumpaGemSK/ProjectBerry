@@ -3,6 +3,8 @@ extends State
 ## Speed in which the enemy will investigate a sound
 @export var investigating_speed: float = 20
 @export var recheck_time: float = 0.5
+@onready var run: AudioStreamPlayer2D = $Run
+
 var timer: Timer = null
 ## The resource to set as the enemy prompt texture
 var question_mark = preload("res://Assets/Textures/question_mark.tres")
@@ -24,6 +26,8 @@ func enter(enemy: Enemy):
 	timer.start(recheck_time)
 
 func update(enemy: Enemy, delta: float):
+	if not run.playing:
+		run.play()
 	var dir = enemy.facing_direction
 	var animation = ""
 	match dir:
