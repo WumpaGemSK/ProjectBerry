@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://cv1mp7mhllu35"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_nuscb"]
+[ext_resource type="AudioStream" uid="uid://bcw3a4diywq55" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_PICKUPITEM.wav" id="2_sy2s4"]
+
+[resource]
+script = ExtResource("1_nuscb")
+limit = 5
+type = 10
+sound_effect = ExtResource("2_sy2s4")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

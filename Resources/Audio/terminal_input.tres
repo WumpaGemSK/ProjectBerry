@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://0uwma8n8x04b"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_mpt2h"]
+[ext_resource type="AudioStream" uid="uid://gc7wpddpdv3w" path="res://Assets/Audio/SFX/SFX_UI_TERMINALINPUT.wav" id="2_0ntv5"]
+
+[resource]
+script = ExtResource("1_mpt2h")
+limit = 5
+type = 25
+sound_effect = ExtResource("2_0ntv5")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

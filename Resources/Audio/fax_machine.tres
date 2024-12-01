@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://brax1gx4l8dy3"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_i1hlb"]
+[ext_resource type="AudioStream" uid="uid://cwgbwyn4regrm" path="res://Assets/Audio/SFX/SFX_ENVIRONMENT_FAXMACHINE.wav" id="2_5lcv2"]
+
+[resource]
+script = ExtResource("1_i1hlb")
+limit = 1
+type = 6
+sound_effect = ExtResource("2_5lcv2")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

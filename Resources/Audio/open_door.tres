@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://bob7ix5l4bonj"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_d6auc"]
+[ext_resource type="AudioStream" uid="uid://bbj3qkidnvpxm" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_DOOROPEN.wav" id="2_hsv0x"]
+
+[resource]
+script = ExtResource("1_d6auc")
+limit = 5
+type = 9
+sound_effect = ExtResource("2_hsv0x")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

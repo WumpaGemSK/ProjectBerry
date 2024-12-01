@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://dyys6ii870f38"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_06vqj"]
+[ext_resource type="AudioStream" uid="uid://d1ifudhvlp6iq" path="res://Assets/Audio/SFX/SFX_UI_INCORRECTCODE.wav" id="2_40tbj"]
+
+[resource]
+script = ExtResource("1_06vqj")
+limit = 5
+type = 0
+sound_effect = ExtResource("2_40tbj")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
