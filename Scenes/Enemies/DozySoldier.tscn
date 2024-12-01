@@ -2,14 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_j0h6h"]
 [ext_resource type="Script" path="res://Scripts/Enemies/doze.gd" id="2_esmka"]
-[ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_l6upy"]
+[ext_resource type="PackedScene" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_l6upy"]
 [ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="3_fkjk1"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="3_w171h"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="4_3jdau"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xcwa"]
-radius = 8.0
-height = 20.0
+height = 24.0
 
 [node name="DozySoldier" type="Node2D"]
 
@@ -27,7 +26,7 @@ shape = SubResource("CapsuleShape2D_1xcwa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = ExtResource("3_fkjk1")
-animation = &"walk_down"
+animation = &"sleeping_down"
 autoplay = "idle_down"
 
 [node name="Sleeping" type="Node2D" parent="."]

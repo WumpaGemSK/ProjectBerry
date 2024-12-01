@@ -1,15 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://pmnrd8y6xych"]
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_r1qu4"]
-[ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_myrgh"]
+[ext_resource type="PackedScene" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_myrgh"]
 [ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="3_fpsx0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="3_l78p3"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="4_7marf"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="5_tuxl7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
-radius = 8.0
-height = 20.0
+height = 24.0
 
 [node name="PatrollingSoldier" type="Node2D"]
 

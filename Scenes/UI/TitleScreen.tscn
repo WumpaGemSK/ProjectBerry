@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dalw1j1ywe5ld" path="res://Scenes/UI/how_to_play.tscn" id="2_3ucy5"]
 [ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="2_72ub3"]
 [ext_resource type="PackedScene" uid="uid://cdsvcila2e5bt" path="res://Scenes/UI/Options.tscn" id="2_tkngc"]
-[ext_resource type="Texture2D" uid="uid://cwf3sbmpeiggf" path="res://Assets/Textures/game_logo.png" id="3_12y00"]
 [ext_resource type="PackedScene" uid="uid://c6clpjw1d7r4c" path="res://Scenes/UI/Leaderboard_UI.tscn" id="3_x4kl0"]
 [ext_resource type="PackedScene" uid="uid://kla82x8vaxaa" path="res://Scenes/UI/credits.tscn" id="5_kx7lw"]
+[ext_resource type="Texture2D" uid="uid://di3vnn00x1ytk" path="res://Assets/Textures/game_logo_v2.png" id="6_y6alw"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -40,7 +40,7 @@ offset_top = 30.0
 offset_right = 232.5
 offset_bottom = 140.0
 grow_horizontal = 2
-texture = ExtResource("3_12y00")
+texture = ExtResource("6_y6alw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

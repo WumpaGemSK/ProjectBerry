@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://0qp2y6fsdulr"]
+[gd_scene load_steps=9 format=4 uid="uid://0qp2y6fsdulr"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_dt803"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_n07fs"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://bb1o5y6knvbb3" path="res://Resources/Envelopes/hint_chips.tres" id="5_cw65u"]
 [ext_resource type="PackedScene" uid="uid://cecumay55j86w" path="res://Scenes/Levels/Components/cafeteria_table.tscn" id="6_8pmgw"]
 [ext_resource type="Texture2D" uid="uid://cpmqfi1it3keb" path="res://Assets/Textures/Environment/Props/serving_station.png" id="7_fpg4h"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="8_3ebyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od63c"]
 size = Vector2(41, 242)
@@ -54,6 +53,3 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ServingStation"]
 position = Vector2(-0.5, -9)
 shape = SubResource("RectangleShape2D_od63c")
-
-[node name="Player" parent="." instance=ExtResource("8_3ebyl")]
-position = Vector2(60, 12)

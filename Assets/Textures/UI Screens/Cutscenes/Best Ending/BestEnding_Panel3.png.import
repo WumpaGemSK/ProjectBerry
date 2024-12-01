@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp4kwfd2jdtve"
-path="res://.godot/imported/Project Berry - Level Design - Research Lab - Mockup (Alt).png-efa4e8a22b22b0fbbd1620c919f04d5d.ctex"
+uid="uid://clwb6mvfdb5sk"
+path="res://.godot/imported/BestEnding_Panel3.png-fa9b422bd1a4fe1d327602d37709c1eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Levels/Project Berry - Level Design - Research Lab - Mockup (Alt).png"
-dest_files=["res://.godot/imported/Project Berry - Level Design - Research Lab - Mockup (Alt).png-efa4e8a22b22b0fbbd1620c919f04d5d.ctex"]
+source_file="res://Assets/Textures/UI Screens/Cutscenes/Best Ending/BestEnding_Panel3.png"
+dest_files=["res://.godot/imported/BestEnding_Panel3.png-fa9b422bd1a4fe1d327602d37709c1eb.ctex"]
 
 [params]
 
