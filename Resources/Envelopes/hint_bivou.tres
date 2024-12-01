@@ -13,6 +13,6 @@ region = Rect2(0, 0, 16, 16)
 script = ExtResource("1_xn6ec")
 item_name = "Envelope"
 texture_icon = SubResource("AtlasTexture_hmaki")
-description = "I got an itch that you'ditch you’d find the answer from an outsider of great commentary."
+description = "“I got an itch that you'd find the answer from an outsider of great commentary.”"
 type = 6
 effect = 1
