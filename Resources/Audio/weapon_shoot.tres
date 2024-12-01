@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://cw8su8j6wne0e"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_i20vr"]
+[ext_resource type="AudioStream" uid="uid://yovqpp62rcj8" path="res://Assets/Audio/SFX/SFX_ENEMY_SHOOT.wav" id="2_70r2l"]
+
+[resource]
+script = ExtResource("1_i20vr")
+limit = 5
+type = 3
+sound_effect = ExtResource("2_70r2l")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

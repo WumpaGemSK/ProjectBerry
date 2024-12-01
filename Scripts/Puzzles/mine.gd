@@ -23,6 +23,7 @@ func _on_area_2d_entered(area: Area2D):
 		if steps_left > 0:
 			steps_left -= 1
 			if steps_left == 0:
+				AudioManager.play_effect_at(SoundEffect.SoundType.STEP_ON_MINE, global_position)
 				update_sprite()
 				deactivated.emit()
 		else:

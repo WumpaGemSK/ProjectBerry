@@ -93,6 +93,10 @@ item = ExtResource("16_wnpv7")
 
 [node name="Player" parent="." instance=ExtResource("18_wcrhm")]
 position = Vector2(244, 336)
+normal_speed = 100.0
+sneaking_speed = 50.0
+max_health = 5
+max_pistol_ammo = 50
 
 [node name="Pickable_Item7" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(193, 371)

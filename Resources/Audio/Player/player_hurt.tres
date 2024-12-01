@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_p4dos")
-limit = 5
+limit = 1
 type = 13
 sound_effect = ExtResource("2_bmj7d")
 volume = 0

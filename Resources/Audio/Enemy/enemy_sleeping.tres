@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://brm3hle3al2ix"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_02ts8"]
+[ext_resource type="AudioStream" uid="uid://dddig5go2ukjm" path="res://Assets/Audio/SFX/SFX_ENEMY_SLEEPING.wav" id="2_5mauv"]
+
+[resource]
+script = ExtResource("1_02ts8")
+limit = 1
+type = 4
+sound_effect = ExtResource("2_5mauv")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
