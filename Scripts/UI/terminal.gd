@@ -12,6 +12,7 @@ func _input(event):
 		EventBus.close_terminal.emit()
 
 func _on_send_code_pressed():
+	AudioManager.play_effect(SoundEffect.SoundType.UI_TERMINAL_INPUT)
 	var code: String = ""
 	for i in code_list.get_child_count():
 		var input: CodeInput = code_list.get_child(i)

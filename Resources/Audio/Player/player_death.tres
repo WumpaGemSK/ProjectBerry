@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://bpvyuvtwmu5ex"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_g4m1c"]
+[ext_resource type="AudioStream" uid="uid://10a6mmaaapxc" path="res://Assets/Audio/SFX/SFX_PLAYER_DEATH.wav" id="2_s3g16"]
+
+[resource]
+script = ExtResource("1_g4m1c")
+limit = 5
+type = 12
+sound_effect = ExtResource("2_s3g16")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0

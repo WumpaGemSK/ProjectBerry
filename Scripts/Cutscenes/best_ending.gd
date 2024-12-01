@@ -1,7 +1,10 @@
 extends Control
 
 @export var status : PackedScene
+const BEST_ENDING_V_1_1 = preload("res://Assets/Audio/Music/Best Ending V1.1.wav")
 
+func _ready():
+	AudioManager.play_music(BEST_ENDING_V_1_1, 0)
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_accept"):

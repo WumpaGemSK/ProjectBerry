@@ -30,3 +30,9 @@ func raycast_to_player(origin: Vector2, dest: Vector2, collision_mask, max_dista
 	var query = PhysicsRayQueryParameters2D.create(origin, dest, collision_mask, exclude)
 	var result = space_state.intersect_ray(query)
 	return result.collider is Player and result.position.distance_to(origin) < max_distance
+
+func pause():
+	return
+
+func resume():
+	return

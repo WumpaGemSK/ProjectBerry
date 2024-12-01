@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://cw7joee56itnb"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_h0qyk"]
+[ext_resource type="AudioStream" uid="uid://bjvxsrr80bfv2" path="res://Assets/Audio/SFX/SFX_ENEMY_RUN.wav" id="2_qyrdi"]
+
+[resource]
+script = ExtResource("1_h0qyk")
+limit = 1
+type = 2
+sound_effect = ExtResource("2_qyrdi")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.2

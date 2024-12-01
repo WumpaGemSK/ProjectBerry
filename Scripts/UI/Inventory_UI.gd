@@ -17,6 +17,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
 		if visible:
+			AudioManager.play_effect(SoundEffect.SoundType.UI_OPEN_MENU)
 			EventBus.pause.emit()
 			grid_container.get_child(0).set_focus()
 		else:

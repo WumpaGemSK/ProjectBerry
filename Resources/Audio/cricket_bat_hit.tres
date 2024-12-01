@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://dtj3djn8a2d21"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_qlfx7"]
+[ext_resource type="AudioStream" uid="uid://bhpfn0qfbyrqv" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_CRICKETBATHIT.wav" id="2_l8caw"]
+
+[resource]
+script = ExtResource("1_qlfx7")
+limit = 5
+type = 8
+sound_effect = ExtResource("2_l8caw")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.0

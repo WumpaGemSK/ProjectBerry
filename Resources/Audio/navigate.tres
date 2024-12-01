@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://cgrrqagj3xkpa"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_u5et8"]
+[ext_resource type="AudioStream" uid="uid://0saldk8oy8bl" path="res://Assets/Audio/SFX/SFX_UI_NAVIGATE.wav" id="2_pajb4"]
+
+[resource]
+script = ExtResource("1_u5et8")
+limit = 5
+type = 22
+sound_effect = ExtResource("2_pajb4")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.0

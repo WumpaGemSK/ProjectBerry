@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://dqkfblm68blp7"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_671gu"]
+[ext_resource type="AudioStream" uid="uid://bhgigbmv5cekj" path="res://Assets/Audio/SFX/SFX_ENEMY_GETSHURT.wav" id="2_yuxqy"]
+
+[resource]
+script = ExtResource("1_671gu")
+limit = 1
+type = 1
+sound_effect = ExtResource("2_yuxqy")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 1.0

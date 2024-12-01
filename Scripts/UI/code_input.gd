@@ -15,12 +15,14 @@ func _ready():
 	update_label()
 
 func _on_up_pressed():
+	AudioManager.play_effect(SoundEffect.SoundType.UI_TERMINAL_INPUT)
 	code_point += 1
 	if code_point > "Z".to_ascii_buffer()[0]:
 		code_point = "A".to_ascii_buffer()[0]
 	update_label()
 
 func _on_down_pressed():
+	AudioManager.play_effect(SoundEffect.SoundType.UI_TERMINAL_INPUT)
 	code_point -= 1
 	if code_point < "A".to_ascii_buffer()[0]:
 		code_point = "Z".to_ascii_buffer()[0]

@@ -74,7 +74,7 @@ func _process(_delta):
 		state = PlayerStates.NORMAL
 
 func _physics_process(_delta: float) -> void:
-	if paused:
+	if paused or health <= 0:
 		return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
@@ -102,6 +102,14 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	play_animation()
 	move_and_slide()
+	if direction != Vector2.ZERO:
+		match state:
+			PlayerStates.NORMAL:
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_WALKING, global_position)
+			PlayerStates.SNEAKING:
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_SNEAKING, global_position)
+			PlayerStates.PUSHING:
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_PUSH, global_position)
 	#region Push moveable boxes
 	var coll_count = get_slide_collision_count()
 	for i in coll_count:
@@ -116,6 +124,9 @@ func _physics_process(_delta: float) -> void:
 	#endregion
 
 func take_damage(amount: int):
+	if health <= 0:
+		return
+	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
 	health -= amount
 	clamp(health, 0, max_health)
 	health_changed.emit(health)
@@ -123,6 +134,14 @@ func take_damage(amount: int):
 		death()
 
 func death():
+	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_DEATH, global_position)
+	my_animated_sprite.play("death")
+	EventBus.pause.emit()
+	my_animated_sprite.animation_finished.connect(on_death_animation_finish)
+
+func on_death_animation_finish():
+	my_animated_sprite.animation_finished.disconnect(on_death_animation_finish)
+	#EventBus.resume.emit()
 	EventBus.player_death.emit()
 
 # Called when the player attacks, either melee or ranged

@@ -4,7 +4,7 @@ var start : Button = null
 var options : Button = null
 var leaderboard : Button = null
 var credits : Button = null
-
+const TITLE_SCREEN_V_1_1 = preload("res://Assets/Audio/Music/Title Screen V1.1.wav")
 ## [PackedScene] to switch to when Start Game is pressed
 @export var game_scene : PackedScene
 ## [PackedScene] Scene to switch to when Options is pressed
@@ -28,7 +28,7 @@ func _ready():
 	
 	credits = find_child("Credits")
 	credits.pressed.connect(_on_credits)
-	
+	AudioManager.play_music(TITLE_SCREEN_V_1_1, 0)
 	start.grab_focus()
 
 func _on_start_game():

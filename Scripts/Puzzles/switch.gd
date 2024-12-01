@@ -13,6 +13,7 @@ func _ready():
 
 ## Toggle the state of the switch and return the current state
 func toggle() -> bool:
+	AudioManager.play_effect_at(SoundEffect.SoundType.TURN_ON_MACHINE, global_position)
 	active = !active
 	update_sprite()
 	toggled.emit(active)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://cvs5iit1hj62w"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_5sdwr"]
+[ext_resource type="AudioStream" uid="uid://dre6taqjkyjqj" path="res://Assets/Audio/SFX/SFX_UI_CANCEL.wav" id="2_ut1co"]
+
+[resource]
+script = ExtResource("1_5sdwr")
+limit = 1
+type = 17
+sound_effect = ExtResource("2_ut1co")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.0

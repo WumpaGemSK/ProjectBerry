@@ -12,6 +12,7 @@ func _process(_delta):
 	# and check for inputs somewhere else
 	if Input.is_action_pressed("options"):
 		if !self.visible:
+			AudioManager.play_effect(SoundEffect.SoundType.UI_OPEN_MENU)
 			show()
 			resume.grab_focus()
 

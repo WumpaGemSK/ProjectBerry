@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://ct41ar45glp3s"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_uxdwq"]
+[ext_resource type="AudioStream" uid="uid://b3gk2pf7qvdva" path="res://Assets/Audio/SFX/SFX_UI_LOGOLAUGH.wav" id="2_l74uh"]
+
+[resource]
+script = ExtResource("1_uxdwq")
+limit = 1
+type = 21
+sound_effect = ExtResource("2_l74uh")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.0

@@ -28,6 +28,7 @@ Game="*res://Scripts/Game.gd"
 Leaderboard="*res://Scripts/Leaderboard.gd"
 SceneSwitcher="*res://Scripts/SceneSwitcher.gd"
 TransitionScreen="*res://Scenes/UI/TransitionScreen.tscn"
+AudioManager="*res://Scenes/AudioManager.tscn"
 BulletManager="*res://Scripts/bullet_manager.gd"
 
 [display]

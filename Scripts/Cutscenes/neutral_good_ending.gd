@@ -1,6 +1,13 @@
 extends Control
 
 @export var status : PackedScene
+const GOOD_ENDING_V_1_1 = preload("res://Assets/Audio/Music/Good Ending V1.1.wav")
+const NEUTRAL_ENDING_V_1_1 = preload("res://Assets/Audio/Music/Neutral Ending V1.1.wav")
+
+func _ready():
+	var song = NEUTRAL_ENDING_V_1_1 if name.contains("Neutral") else GOOD_ENDING_V_1_1
+
+	AudioManager.play_music(song, 0)
 
 func _process(delta: float) -> void:
 	

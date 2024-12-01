@@ -15,6 +15,7 @@ func enter(enemy: Enemy):
 		patrol_path.add_child(path_follow)
 	
 func update(enemy: Enemy, delta: float):
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, global_position)
 	progress += delta*patrolling_speed
 	path_follow.progress = progress
 	var new_pos = path_follow.global_position

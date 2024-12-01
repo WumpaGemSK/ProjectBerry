@@ -28,6 +28,7 @@ func enter(enemy: Enemy):
 
 func update(enemy: Enemy, _delta: float):
 	enemy.set_target_position(enemy.player.global_position)
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	# TODO: The enemy may shoot even if the player is not in range and will lose all it's ammo
 	enemy.attack()
 	var dir = enemy.facing_direction

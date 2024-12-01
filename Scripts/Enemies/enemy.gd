@@ -17,6 +17,7 @@ enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
 @export var original_facing_dir : facing = facing.RIGHT
 @onready var prompt = %Prompt
+@onready var hurt: AudioStreamPlayer2D = $Hurt
 
 var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
@@ -64,8 +65,8 @@ func _ready():
 	fov.body_exited.connect(on_view_exit)
 	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 	add_child(phase_in)
-	EventBus.pause.connect(func(): paused = true)
-	EventBus.resume.connect(func(): phase_in.start(phase_in_time))
+	EventBus.pause.connect(on_pause)
+	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 
 func _process(delta):
@@ -102,6 +103,7 @@ func on_view_exit(body: Node2D):
 	state.on_view_exit(body, self)
 
 func take_damage(amount: int):
+	hurt.play()
 	health -= amount
 	if health <= 0:
 		death()
@@ -158,3 +160,12 @@ func change_state(new_state: States):
 ## Called by attacking weapon signal
 func on_attack():
 	pass
+
+func on_pause():
+	paused = true
+	phase_in.stop()
+	state.pause()
+
+func on_resume():
+	phase_in.start(phase_in_time)
+	state.resume()

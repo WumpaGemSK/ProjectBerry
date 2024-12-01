@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://qd52tygcd2ia"]
+[gd_scene load_steps=6 format=3 uid="uid://qd52tygcd2ia"]
 
 [ext_resource type="Script" path="res://Scripts/scene_portal.gd" id="1_gwnmn"]
 [ext_resource type="Texture2D" uid="uid://fxtxm7fhx8iw" path="res://Assets/Textures/Environment/Props/Doors_Sheet_Alt2.png" id="2_vlcfq"]
+[ext_resource type="AudioStream" uid="uid://bbj3qkidnvpxm" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_DOOROPEN.wav" id="3_6usd6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nqss1"]
 
@@ -25,6 +26,9 @@ shape = SubResource("CircleShape2D_nqss1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckKeys"]
 shape = SubResource("CircleShape2D_n43pp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6usd6")
 
 [connection signal="body_entered" from="Portal" to="." method="_switch_scene"]
 [connection signal="body_entered" from="CheckKeys" to="." method="_check_keys"]

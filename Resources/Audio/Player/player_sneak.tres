@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://dotadi813lv0p"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_40w2g"]
+[ext_resource type="AudioStream" uid="uid://bx7y1x0cbn001" path="res://Assets/Audio/SFX/SFX_PLAYER_SNEAKING.wav" id="2_cw6f4"]
+
+[resource]
+script = ExtResource("1_40w2g")
+limit = 1
+type = 15
+sound_effect = ExtResource("2_cw6f4")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 1.0
