@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=21 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
@@ -15,11 +15,30 @@
 [ext_resource type="PackedScene" uid="uid://0qp2y6fsdulr" path="res://Scenes/Levels/level_cafeteria.tscn" id="12_5p1a4"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="14_vjsod"]
 [ext_resource type="PackedScene" uid="uid://be365saeegh7u" path="res://Scenes/Levels/Components/soda_machine.tscn" id="15_j03sw"]
+[ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="16_cic5d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wbx7e"]
 vertices = PackedVector2Array(87, 13, 87, 10, 110, 10, 110, 322, 442, 322, 442, 10, 542, 10, 542, 322, 878, 782, 730, 782, 730, 682, 778, 682, 878, 322, 778, 422, 326, 422, 226, 422, 542, 682, 542, 974, 442, 974, 442, 782, 326, 682, 110, 782, 110, 974, 10, 974, 10, 682, 226, 682, -226, 422, 10, 322, -226, 662, -326, 662, -326, 322, 33, 13, 10, 10, 33, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 8, 11, 13), PackedInt32Array(7, 12, 13, 14), PackedInt32Array(4, 7, 14), PackedInt32Array(3, 4, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 16, 19, 21), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(21, 24, 25), PackedInt32Array(20, 21, 25), PackedInt32Array(14, 20, 25, 15), PackedInt32Array(3, 15, 26, 27), PackedInt32Array(26, 28, 29, 30), PackedInt32Array(26, 30, 27), PackedInt32Array(0, 3, 27, 31), PackedInt32Array(31, 27, 32, 33)])
 source_geometry_group_name = &"Navigation"
+
+[sub_resource type="Curve2D" id="Curve2D_vqbsg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -288, 348, 0, 0, 0, 0, 36, 348, 0, 0, 0, 0, 36, 36, 0, 0, 0, 0, 84, 36, 0, 0, 0, 0, 84, 348, 0, 0, 0, 0, 468, 348, 0, 0, 0, 0, 468, 36, 0, 0, 0, 0, 516, 36, 0, 0, 0, 0, 516, 348, 0, 0, 0, 0, 840, 348, 0, 0, 0, 0, 840, 408, 0, 0, 0, 0, -288, 408, 0, 0, 0, 0, -288, 348)
+}
+point_count = 13
+
+[sub_resource type="Curve2D" id="Curve2D_mihhb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -312, 540, 0, 0, 0, 0, -312, 648, 0, 0, 0, 0, -240, 648, 0, 0, 0, 0, -240, 540, 0, 0, 0, 0, -312, 540)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_1w5xl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 792, 516, 0, 0, 0, 0, 864, 516, 0, 0, 0, 0, 864, 768, 0, 0, 0, 0, 792, 768, 0, 0, 0, 0, 792, 516)
+}
+point_count = 5
 
 [node name="Level_Corridors" type="Node2D"]
 
@@ -127,7 +146,40 @@ position = Vector2(180, 324)
 [node name="Enemy" parent="Enemies/DozySoldier4" index="0"]
 original_facing_dir = 2
 
+[node name="PatrollingSoldier" parent="Enemies" instance=ExtResource("16_cic5d")]
+position = Vector2(-288, 384)
+
+[node name="Patrol" parent="Enemies/PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
+patrol_path = NodePath("../../Paths/Path2D")
+
+[node name="PatrollingSoldier2" parent="Enemies" instance=ExtResource("16_cic5d")]
+position = Vector2(-312, 516)
+
+[node name="Patrol" parent="Enemies/PatrollingSoldier2" index="1" node_paths=PackedStringArray("patrol_path")]
+patrol_path = NodePath("../../Paths/Path2D2")
+
+[node name="PatrollingSoldier3" parent="Enemies" instance=ExtResource("16_cic5d")]
+position = Vector2(864, 516)
+
+[node name="Patrol" parent="Enemies/PatrollingSoldier3" index="1" node_paths=PackedStringArray("patrol_path")]
+patrol_path = NodePath("../../Paths/Path2D3")
+
+[node name="Paths" type="Node2D" parent="Enemies"]
+
+[node name="Path2D" type="Path2D" parent="Enemies/Paths"]
+curve = SubResource("Curve2D_vqbsg")
+
+[node name="Path2D2" type="Path2D" parent="Enemies/Paths"]
+position = Vector2(0, -24)
+curve = SubResource("Curve2D_mihhb")
+
+[node name="Path2D3" type="Path2D" parent="Enemies/Paths"]
+curve = SubResource("Curve2D_1w5xl")
+
 [editable path="Enemies/DozySoldier"]
 [editable path="Enemies/DozySoldier2"]
 [editable path="Enemies/DozySoldier3"]
 [editable path="Enemies/DozySoldier4"]
+[editable path="Enemies/PatrollingSoldier"]
+[editable path="Enemies/PatrollingSoldier2"]
+[editable path="Enemies/PatrollingSoldier3"]
