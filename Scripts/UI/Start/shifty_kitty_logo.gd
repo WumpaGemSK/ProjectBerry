@@ -2,6 +2,10 @@ extends Control
 
 @export var next_scene : PackedScene
 
+func play_laugh():
+	
+	AudioManager.play_effect(SoundEffect.SoundType.UI_LOGO_LAUGH)
+
 func move_to_next_scene():
 	
 	TransitionScreen.transition()

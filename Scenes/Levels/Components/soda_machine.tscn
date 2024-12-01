@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://be365saeegh7u"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/soda_machine.gd" id="1_fx5rf"]
+[ext_resource type="Texture2D" uid="uid://dql0vxrj8evef" path="res://Assets/Textures/Environment/Props/soda_vending_machine_sheet.png" id="2_j5ldq"]
+[ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="3_k7ue0"]
+[ext_resource type="Resource" uid="uid://d4fpj2nw3axj" path="res://Resources/Secrets/bag_of_coins.tres" id="4_85ea3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vill8"]
+size = Vector2(34, 27)
+
+[node name="SodaMachine" type="StaticBody2D" groups=["SodaMachine"]]
+position = Vector2(60, 0)
+script = ExtResource("1_fx5rf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j5ldq")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_vill8")
+
+[node name="BagofCoins" parent="." instance=ExtResource("3_k7ue0")]
+position = Vector2(0, -300)
+item = ExtResource("4_85ea3")
