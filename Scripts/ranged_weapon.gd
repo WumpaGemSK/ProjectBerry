@@ -6,6 +6,7 @@ extends Weapon
 @export var max_ammo: int
 
 @export var bullet_scn: PackedScene
+@onready var bullet_container: Node = $BulletContainer
 
 var facing_rotation = [0, 180, 90, 270]
 
@@ -18,6 +19,8 @@ func attack(from: Vector2, dest: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0:
 		var bullet: Bullet = bullet_scn.instantiate()
 		add_child(bullet)
+		#bullet_container.add_child(bullet)
+		#bullet.global_position = self.global_position
 		bullet.dir = dest
 		bullet.rotate(deg_to_rad(get_bullet_rotation(dest)))
 		ammo -= 1

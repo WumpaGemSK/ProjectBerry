@@ -11,3 +11,5 @@ bullet_scn = ExtResource("2_bmois")
 cooldown = 0.3
 weapon_range = 100.0
 damage = 2
+
+[node name="BulletContainer" type="Node" parent="."]
