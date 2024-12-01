@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var fax_machine = $FaxMachine
+@onready var fax_machine = $NavigationRegion2D/FaxMachine
 @onready var puzzle_complete_collider = $PuzzleCompleteCollider
 
 func _ready():
