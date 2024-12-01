@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjpvq1iyxdh5p"]
+[gd_scene load_steps=5 format=3 uid="uid://cjpvq1iyxdh5p"]
 
 [ext_resource type="FontFile" uid="uid://dne07x6s8od4t" path="res://Assets/Fonts/ImpactfulBits.ttf" id="1_pgski"]
-[ext_resource type="Script" path="res://Scenes/Cutscenes/intro_text.gd" id="1_ssfbl"]
+[ext_resource type="Script" path="res://Scripts/intro_text.gd" id="1_ssfbl"]
+[ext_resource type="PackedScene" uid="uid://dalw1j1ywe5ld" path="res://Scenes/UI/how_to_play.tscn" id="2_nrkba"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mxg5p"]
 font = ExtResource("1_pgski")
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ssfbl")
+how_to_play = ExtResource("2_nrkba")
 
 [node name="Page1" type="Label" parent="."]
 custom_minimum_size = Vector2(480, 256)
