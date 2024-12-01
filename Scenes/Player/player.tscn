@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="10_431hd"]
 [ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="11_yhs7u"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="12_voviu"]
+[ext_resource type="AudioStream" uid="uid://bf5q6kmwyfkca" path="res://Assets/Audio/SFX/SFX_PLAYER_GETSHURT.wav" id="13_wxfq7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 height = 24.0
@@ -2230,8 +2231,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AudioStream" id="AudioStream_q5qjc"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_cou53"]
 radius = 3.0
 
@@ -2286,9 +2285,6 @@ drag_bottom_margin = 0.08
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStream_q5qjc")
-
 [node name="FeetCollision" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -2309,5 +2305,10 @@ inventory = NodePath("../../Inventory")
 
 [node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("11_yhs7u")]
 visible = false
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("13_wxfq7")
 
 [connection signal="visibility_changed" from="CanvasLayer/InGameMenu" to="CanvasLayer/InGameMenu" method="_on_in_game_menu_visibility_changed"]

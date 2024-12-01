@@ -13,6 +13,10 @@ signal health_changed(new_health: int)
 @onready var my_animated_sprite := $AnimatedSprite2D
 @onready var canvas_layer = $CanvasLayer
 
+#region AudioPlayers
+@onready var hurt = $Sounds/Hurt
+
+#endregion
 #movement variables
 var direction : Vector2
 @export var normal_speed : float = 100
@@ -116,6 +120,7 @@ func _physics_process(_delta: float) -> void:
 	#endregion
 
 func take_damage(amount: int):
+	hurt.play()
 	health -= amount
 	clamp(health, 0, max_health)
 	health_changed.emit(health)
