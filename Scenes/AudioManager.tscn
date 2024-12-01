@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdwa7dwg5tguk"]
+[gd_scene load_steps=29 format=3 uid="uid://cdwa7dwg5tguk"]
 
 [ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_ru7mw"]
 [ext_resource type="Resource" uid="uid://cdn8sw3gnm7l2" path="res://Resources/Audio/open_menu.tres" id="2_bu3g6"]
@@ -21,10 +21,17 @@
 [ext_resource type="Resource" uid="uid://cw8su8j6wne0e" path="res://Resources/Audio/weapon_shoot.tres" id="18_4j37d"]
 [ext_resource type="Resource" uid="uid://ccb1pp5bo3mrh" path="res://Resources/Audio/step_on_mine.tres" id="19_gde28"]
 [ext_resource type="Resource" uid="uid://pos6vf3k0nm5" path="res://Resources/Audio/turn_on_machine.tres" id="20_5qvkd"]
+[ext_resource type="Resource" uid="uid://bxqnr48dykxer" path="res://Resources/Audio/nuclear_explosion.tres" id="22_nlppe"]
+[ext_resource type="Resource" uid="uid://cgrrqagj3xkpa" path="res://Resources/Audio/navigate.tres" id="23_qdo2r"]
+[ext_resource type="Resource" uid="uid://cvs5iit1hj62w" path="res://Resources/Audio/ui_cancel.tres" id="24_pcc8s"]
+[ext_resource type="Resource" uid="uid://cf8nxd0wsiwlw" path="res://Resources/Audio/ui_confirm.tres" id="25_v76f1"]
+[ext_resource type="Resource" uid="uid://ct41ar45glp3s" path="res://Resources/Audio/logo_laugh.tres" id="26_oqvnw"]
+[ext_resource type="Resource" uid="uid://dtj3djn8a2d21" path="res://Resources/Audio/cricket_bat_hit.tres" id="27_bdmpd"]
+[ext_resource type="Resource" uid="uid://cvvirhylrricg" path="res://Resources/Audio/Enemy/enemy_draw_weapon.tres" id="28_03bhq"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_ru7mw")
-sound_effects_settings = Array[ExtResource("2_s55dc")]([ExtResource("2_bu3g6"), ExtResource("3_bgxyi"), ExtResource("4_wyftv"), ExtResource("5_lgbqk"), ExtResource("6_dfb6h"), ExtResource("7_670i4"), ExtResource("8_ywdh3"), ExtResource("9_wjl0c"), ExtResource("10_lu7ki"), ExtResource("11_07mcq"), ExtResource("12_cpai6"), ExtResource("13_ndui2"), ExtResource("14_eh8qa"), ExtResource("15_omul6"), ExtResource("16_3tav3"), ExtResource("17_3v8wm"), ExtResource("18_4j37d"), ExtResource("19_gde28"), ExtResource("20_5qvkd")])
+sound_effects_settings = Array[ExtResource("2_s55dc")]([ExtResource("2_bu3g6"), ExtResource("3_bgxyi"), ExtResource("4_wyftv"), ExtResource("5_lgbqk"), ExtResource("6_dfb6h"), ExtResource("7_670i4"), ExtResource("8_ywdh3"), ExtResource("9_wjl0c"), ExtResource("10_lu7ki"), ExtResource("11_07mcq"), ExtResource("12_cpai6"), ExtResource("13_ndui2"), ExtResource("14_eh8qa"), ExtResource("15_omul6"), ExtResource("16_3tav3"), ExtResource("17_3v8wm"), ExtResource("18_4j37d"), ExtResource("19_gde28"), ExtResource("20_5qvkd"), ExtResource("22_nlppe"), ExtResource("23_qdo2r"), ExtResource("24_pcc8s"), ExtResource("25_v76f1"), ExtResource("26_oqvnw"), ExtResource("27_bdmpd"), ExtResource("28_03bhq")])
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://bxqnr48dykxer"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_awisf"]
+[ext_resource type="AudioStream" uid="uid://btyliioca8dfp" path="res://Assets/Audio/SFX/SFX_UI_NUCLEAREXPLOSION.wav" id="2_mpyor"]
+
+[resource]
+script = ExtResource("1_awisf")
+limit = 1
+type = 23
+sound_effect = ExtResource("2_mpyor")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.0

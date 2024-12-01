@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SoundEffect" load_steps=3 format=3 uid="uid://cvvirhylrricg"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/sound_effect.gd" id="1_i5rg8"]
+[ext_resource type="AudioStream" uid="uid://cgjmfub26ajll" path="res://Assets/Audio/SFX/SFX_ENEMY_DRAWWEAPON.wav" id="2_s1mul"]
+
+[resource]
+script = ExtResource("1_i5rg8")
+limit = 5
+type = 0
+sound_effect = ExtResource("2_s1mul")
+volume = 0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+interval = 0.0
