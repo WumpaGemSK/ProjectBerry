@@ -11,4 +11,5 @@ func gets_destroyed():
 	
 	print("Destroyed")
 	sprite.frame = 1
+	AudioManager.play_effect(SoundEffect.SoundType.ENEMY_GETS_HURT)
 	bag_of_coins.position = Vector2(0, 20)
