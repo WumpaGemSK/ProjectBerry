@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://pmnrd8y6xych"]
+[gd_scene load_steps=9 format=3 uid="uid://pmnrd8y6xych"]
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_r1qu4"]
-[ext_resource type="PackedScene" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_myrgh"]
+[ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="2_myrgh"]
 [ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="3_fpsx0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="3_l78p3"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="4_7marf"]
+[ext_resource type="AudioStream" uid="uid://bjvxsrr80bfv2" path="res://Assets/Audio/SFX/SFX_ENEMY_RUN.wav" id="5_36csq"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="5_tuxl7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6yt1"]
@@ -30,8 +31,20 @@ animation = &"damaged_down"
 [node name="Patrol" type="Node2D" parent="."]
 script = ExtResource("3_l78p3")
 
+[node name="Run" type="AudioStreamPlayer2D" parent="Patrol"]
+stream = ExtResource("5_36csq")
+volume_db = -4.685
+attenuation = 1.8025
+bus = &"Sounds"
+
 [node name="Inv" type="Node2D" parent="."]
 script = ExtResource("4_7marf")
+
+[node name="Run" type="AudioStreamPlayer2D" parent="Inv"]
+stream = ExtResource("5_36csq")
+volume_db = -8.927
+attenuation = 1.8025
+bus = &"Sounds"
 
 [node name="chase" type="Node2D" parent="."]
 script = ExtResource("5_tuxl7")

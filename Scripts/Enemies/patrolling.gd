@@ -6,6 +6,7 @@ extends State
 @export var patrol_path : Path2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
+@onready var run = $Run
 
 func enter(enemy: Enemy):
 	enemy.movement_speed = patrolling_speed
@@ -15,6 +16,8 @@ func enter(enemy: Enemy):
 		patrol_path.add_child(path_follow)
 	
 func update(enemy: Enemy, delta: float):
+	if not run.playing:
+		run.play()
 	progress += delta*patrolling_speed
 	path_follow.progress = progress
 	var new_pos = path_follow.global_position
