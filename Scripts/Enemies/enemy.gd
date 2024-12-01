@@ -107,8 +107,7 @@ func take_damage(amount: int):
 		death()
 
 func death():
-	print("enemy death")
-	pass
+	queue_free()
 
 func attack():
 	weapon.attack(global_position, facing_vector[facing_direction])

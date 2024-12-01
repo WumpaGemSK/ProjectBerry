@@ -9,16 +9,17 @@ func on_view(_body: Node2D, _enemy: Enemy):
 
 func update(enemy: Enemy, delta: float):
 	var dir = enemy.facing_direction
-	var animation = "sleeping_" if enemy.velocity == Vector2.ZERO else "walk_"
+	var animation = "sleeping_" if enemy.navigation_agent_2d.is_navigation_finished() else "walk_"
 	match dir:
-		Enemy.facing.UP:
-			animation += "up"
-		Enemy.facing.DOWN:
-			animation += "down"
 		Enemy.facing.LEFT:
 			animation += "side"
 			enemy.animated_sprite.flip_h = true
 		Enemy.facing.RIGHT:
 			enemy.animated_sprite.flip_h = false
 			animation += "side"
+		_:
+			animation += "down"
 	enemy.animated_sprite.play(animation)
+
+func velocity_almost_zero(vec: Vector2):
+	return is_zero_approx(vec.x) and is_zero_approx(vec.y)
