@@ -38,10 +38,11 @@ func reload(item: Item):
 func upgrade(item: Item):
 	match item.type:
 		Item.Item_type.PISTOL_DAMAGE_UPGRADE:
-			damage += item.effect
+			damage *= 2
 			EventBus.item_used.emit(item)
 		Item.Item_type.PISTOL_FIRE_RATE_UPGRADE:
 			# TODO: Update to when fire rate is implemented
+			cooldown /= 2
 			EventBus.item_used.emit(item)
 			pass
 		Item.Item_type.MAX_PISTOL_AMMO_UPGRADE:
