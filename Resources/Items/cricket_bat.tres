@@ -11,6 +11,6 @@ region = Rect2(0, 0, 16, 16)
 script = ExtResource("1_frcpt")
 item_name = "Cricket Bat"
 texture_icon = SubResource("AtlasTexture_d0me2")
-description = "Cricket bat"
+description = "The main instrument of a noble sport, and could also serve well in combat"
 type = 12
 effect = 1

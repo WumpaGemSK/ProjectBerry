@@ -9,8 +9,8 @@ region = Rect2(48, 32, 16, 16)
 
 [resource]
 script = ExtResource("1_fq70m")
-item_name = "Tier 2 Key"
+item_name = "Level 2 Key"
 texture_icon = SubResource("AtlasTexture_qs08v")
-description = "Opens doors that are numbered level 1 and 2."
+description = "Opens level 2 tiered doors"
 type = 5
 effect = 2

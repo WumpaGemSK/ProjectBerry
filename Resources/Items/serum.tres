@@ -11,6 +11,6 @@ region = Rect2(0, 32, 16, 16)
 script = ExtResource("1_gsfp8")
 item_name = "Serum"
 texture_icon = SubResource("AtlasTexture_rrfm3")
-description = "Extends the maximum health bar by one point"
+description = "Just one shot and your maximum health bar gets extended by one unit!"
 type = 3
 effect = 1

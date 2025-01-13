@@ -11,6 +11,6 @@ region = Rect2(16, 16, 16, 16)
 script = ExtResource("1_vymjx")
 item_name = "Pistol Ammo"
 texture_icon = SubResource("AtlasTexture_q55qe")
-description = "Adds 10 bullets to current ammo amount."
+description = "10 more bullets!"
 type = 2
 effect = 10

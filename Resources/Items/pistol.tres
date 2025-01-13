@@ -11,6 +11,6 @@ region = Rect2(16, 0, 16, 16)
 script = ExtResource("1_0k8jm")
 item_name = "Pistol"
 texture_icon = SubResource("AtlasTexture_tffrm")
-description = "Pistol"
+description = "People argue your manhood depends on the ownership of such thing. Maybe holding it in your hands may prove it"
 type = 13
 effect = 1

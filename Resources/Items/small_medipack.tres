@@ -11,6 +11,6 @@ region = Rect2(32, 16, 16, 16)
 script = ExtResource("1_fwuut")
 item_name = "Small Medipack"
 texture_icon = SubResource("AtlasTexture_eoc3q")
-description = "Restores one unit of health."
+description = "This got all you need to restore one unit of your health"
 type = 1
 effect = 1

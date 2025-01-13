@@ -11,6 +11,6 @@ region = Rect2(16, 47.329, 16, 16.671)
 script = ExtResource("1_42iyf")
 item_name = "Barbed Wire"
 texture_icon = SubResource("AtlasTexture_jcar8")
-description = "Doubles the damage of the cricket bat"
+description = "When equipped to the cricket bat, it will provide twice the damage"
 type = 8
 effect = 1
