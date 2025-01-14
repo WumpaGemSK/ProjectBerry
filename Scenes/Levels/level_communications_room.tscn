@@ -25,10 +25,12 @@ tile_map_data = PackedByteArray("AAAJAAAAAAACAAAAAAAJAAEAAAABAAAAAAAJAAIAAAABAAA
 tile_set = ExtResource("2_un70i")
 
 [node name="FaxMachine" parent="NavigationRegion2D" instance=ExtResource("3_rf8v2")]
+unique_name_in_owner = true
 position = Vector2(361, 150)
 room = 1
 
 [node name="SwitchManager" type="Node" parent="NavigationRegion2D"]
+unique_name_in_owner = true
 script = ExtResource("3_rjsnr")
 
 [node name="Switch" parent="NavigationRegion2D/SwitchManager" node_paths=PackedStringArray("neighbor1", "neighbor2") instance=ExtResource("2_vuhgk")]
