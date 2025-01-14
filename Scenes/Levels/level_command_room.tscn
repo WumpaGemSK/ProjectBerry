@@ -29,6 +29,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAA
 tile_set = ExtResource("2_rnpyl")
 
 [node name="FaxMachine" parent="NavigationRegion2D" instance=ExtResource("2_0kvwq")]
+unique_name_in_owner = true
 position = Vector2(60, 30)
 
 [node name="CommandRoomScreen" type="StaticBody2D" parent="NavigationRegion2D"]
@@ -42,6 +43,7 @@ position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_1qhdx")
 
 [node name="SwitchManager" type="Node" parent="NavigationRegion2D" node_paths=PackedStringArray("toggle_order")]
+unique_name_in_owner = true
 script = ExtResource("2_opqmx")
 toggle_order = [NodePath("Switch"), NodePath("Switch2"), NodePath("Switch3"), NodePath("Switch4"), NodePath("Switch5"), NodePath("Switch6")]
 

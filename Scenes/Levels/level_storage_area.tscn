@@ -226,6 +226,7 @@ position = Vector2(60, 132)
 texture = ExtResource("5_o3jsx")
 
 [node name="FaxMachine" parent="NavigationRegion2D" instance=ExtResource("6_5o141")]
+unique_name_in_owner = true
 position = Vector2(156, -18)
 room = 2
 
@@ -240,6 +241,7 @@ door_tier = 1
 opened = true
 
 [node name="PuzzleCompleteCollider" type="Area2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(56, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleCompleteCollider"]
