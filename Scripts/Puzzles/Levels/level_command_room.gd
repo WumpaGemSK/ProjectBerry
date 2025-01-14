@@ -1,7 +1,6 @@
 extends Node2D
-
-@onready var switch_manager = $SwitchManager
-@onready var fax_machine = $FaxMachine
+@onready var fax_machine = %FaxMachine
+@onready var switch_manager = %SwitchManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -8,15 +8,12 @@ var code_item: PackedScene
 @export var room: Game.Room
 var pickable_item: PickableItem = preload("res://Scenes/Pickable_Item.tscn").instantiate()
 
-# Called when the node enters the scene tree for the first time.
+# Check if the room has a code item assigned at the start
 func _ready():
-	var item = Game.get_fax_item(room)
-	if item == null:
+	if Game.get_fax_item(room) == null:
 		print("No code item for room %s" % Game.Room.keys()[room])
 		return
-	add_child(pickable_item)
-	pickable_item.visible = false
-	pickable_item.set_item(item)
+
 
 func print_code():
 	animated_sprite_2d.play("default")
@@ -26,4 +23,8 @@ func print_code():
 func generate_code_item():
 	animated_sprite_2d.frame = 0
 	if pickable_item:
+		var item = Game.get_fax_item(room)
+		add_child(pickable_item)
+		pickable_item.visible = false
+		pickable_item.set_item(item)
 		pickable_item.visible = true

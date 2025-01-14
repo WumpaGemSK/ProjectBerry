@@ -65,10 +65,12 @@ opened = true
 position = Vector2(240, 84)
 
 [node name="FaxMachine" parent="." instance=ExtResource("3_javyl")]
+unique_name_in_owner = true
 position = Vector2(192, 30)
 room = 4
 
 [node name="LotteryManager" type="Node" parent="." node_paths=PackedStringArray("correct_flask", "correct_line_renderer", "other_flask", "other_line_renderer", "other_flask2", "other_line_renderer2", "other_flask3", "other_line_renderer3")]
+unique_name_in_owner = true
 script = ExtResource("5_f0iy8")
 correct_flask = NodePath("Flask4")
 correct_line_renderer = NodePath("LinesRenderer/CorrectFlask")
