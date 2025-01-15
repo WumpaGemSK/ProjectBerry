@@ -2,23 +2,26 @@ extends Node
 class_name HealthComponent
 
 signal health_changed(new_health: int)
-signal death
+signal health_depleted
 
-@export var default_health: int = 3
-@export var max_health : int = 5
-var health : int = default_health : 
+@export var default_health: int
+@export var max_health : int
+var health : int : 
 	set(value):
 		health = value
 		health_changed.emit(health)
 
 var invulnerable : bool = false
 
+func _ready():
+	health = default_health
+
 func take_damage(amount: int):
-	if health <= 0:
+	if health <= 0 or invulnerable:
 		return
 	health = clampi(health - amount, 0, max_health)
 	if health <= 0:
-		death.emit()
+		health_depleted.emit()
 
 func heal(item: Item):
 	if item.type != Item.Item_type.MEDIPACK:

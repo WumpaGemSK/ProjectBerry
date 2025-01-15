@@ -69,7 +69,7 @@ func _ready():
 	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
-	health_component.death.connect(death)
+	health_component.health_depleted.connect(death)
 
 func _process(delta):
 	if paused:

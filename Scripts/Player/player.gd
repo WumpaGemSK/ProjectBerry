@@ -55,7 +55,7 @@ func _ready():
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 	EventBus.retry_continue.connect(on_retry_continue)
 	EventBus.countdown_start.connect(func(): paused = false)
-	health_component.death.connect(death)
+	health_component.health_depleted.connect(death)
 
 func _process(_delta):
 	if paused:
@@ -121,9 +121,8 @@ func _physics_process(_delta: float) -> void:
 	#endregion
 
 
-func take_damage(amount: int):
+func on_damage_taken():
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
-	health_component.take_damage(amount)
 
 func death():
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_DEATH, global_position)

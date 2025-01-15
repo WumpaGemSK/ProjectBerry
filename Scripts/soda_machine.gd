@@ -8,7 +8,6 @@ func _ready() -> void:
 	sprite.frame = 0
 
 func gets_destroyed():
-	
 	print("Destroyed")
 	sprite.frame = 1
 	AudioManager.play_effect(SoundEffect.SoundType.ENEMY_GETS_HURT)
