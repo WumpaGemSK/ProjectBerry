@@ -8,7 +8,6 @@ signal panic
 signal calm
 
 signal equipped_weapon(weapon: Item)
-signal health_changed(new_health: int)
 
 @onready var my_animated_sprite := $AnimatedSprite2D
 @onready var canvas_layer = $CanvasLayer
@@ -32,12 +31,9 @@ enum PlayerStates {
 }
 var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
-const default_health: int = 3
-@export var max_health : int = 5
-var health : int = default_health
+@onready var health_component: HealthComponent = %HealthComponent
 var pistol_ammo : int = 20
 @export var max_pistol_ammo : int = 50
-var invulnerable : bool = false
 #endregion
 #region Weapons
 @export var ranged_weapon_scn : PackedScene
@@ -59,6 +55,7 @@ func _ready():
 	my_animated_sprite.play("idle_down_semicalm_no_weapon")
 	EventBus.retry_continue.connect(on_retry_continue)
 	EventBus.countdown_start.connect(func(): paused = false)
+	health_component.death.connect(death)
 
 func _process(_delta):
 	if paused:
@@ -74,7 +71,7 @@ func _process(_delta):
 		state = PlayerStates.NORMAL
 
 func _physics_process(_delta: float) -> void:
-	if paused or health <= 0:
+	if paused:
 		return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
@@ -123,15 +120,10 @@ func _physics_process(_delta: float) -> void:
 		state = PlayerStates.NORMAL
 	#endregion
 
+
 func take_damage(amount: int):
-	if health <= 0:
-		return
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
-	health -= amount
-	clamp(health, 0, max_health)
-	health_changed.emit(health)
-	if health <= 0:
-		death()
+	health_component.take_damage(amount)
 
 func death():
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_DEATH, global_position)
@@ -154,12 +146,12 @@ func on_attack():
 func on_use_item(item: Item):
 	match item.type:
 		Item.Item_type.MEDIPACK:
-			heal(item)
+			health_component.heal(item)
 		Item.Item_type.PISTOL_AMMO:
 			if ranged_weapon!= null:
 				ranged_weapon.reload(item)
 		Item.Item_type.SERUM:
-			take_serum(item)
+			health_component.increase_max_health(item)
 		Item.Item_type.CHILL_PILL:
 			take_chill_pill(item)
 		Item.Item_type.NOTE:
@@ -169,25 +161,6 @@ func on_use_item(item: Item):
 		weapon_pickup(item)
 	elif item.is_upgrade():
 		weapon_upgrade(item)
-	
-
-func is_full_health() -> bool:
-	return health == max_health
-#
-func heal(item: Item):
-	if item.type != Item.Item_type.MEDIPACK:
-		return
-	if health < max_health:
-		health = clampi(health + item.effect, 0, max_health)
-		health_changed.emit(health)
-		EventBus.item_used.emit(item)
-	
-func take_serum(item: Item):
-	if item.type != Item.Item_type.SERUM:
-		return
-	max_health += 1
-	health_changed.emit(health)
-	EventBus.item_used.emit(item)
 
 func take_chill_pill(item: Item):
 	if item.type == Item.Item_type.CHILL_PILL and is_panicking():
@@ -318,5 +291,4 @@ func is_panicking() -> bool:
 #endregion
 
 func on_retry_continue():
-	health = default_health
-	health_changed.emit(health)
+	health_component.reset_health()

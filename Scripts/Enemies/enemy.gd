@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var health : int
+@onready var health_component = $HealthComponent
+
 var player: Player = null
 var collision : CollisionShape2D = null
 
@@ -68,6 +69,7 @@ func _ready():
 	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
+	health_component.death.connect(death)
 
 func _process(delta):
 	if paused:
@@ -104,9 +106,7 @@ func on_view_exit(body: Node2D):
 
 func take_damage(amount: int):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
-	health -= amount
-	if health <= 0:
-		death()
+	health_component.take_damage(amount)
 
 func death():
 	queue_free()

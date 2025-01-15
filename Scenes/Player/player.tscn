@@ -1,4 +1,4 @@
-[gd_scene load_steps=273 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=274 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="10_431hd"]
 [ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="11_yhs7u"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="12_voviu"]
+[ext_resource type="PackedScene" uid="uid://b7f4o17h103ph" path="res://Scenes/Components/HealthComponent.tscn" id="14_fqigs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnwvd"]
 height = 24.0
@@ -2310,5 +2311,8 @@ inventory = NodePath("../../Inventory")
 
 [node name="ContinueScreen" parent="CanvasLayer" instance=ExtResource("11_yhs7u")]
 visible = false
+
+[node name="HealthComponent" parent="." instance=ExtResource("14_fqigs")]
+unique_name_in_owner = true
 
 [connection signal="visibility_changed" from="CanvasLayer/InGameMenu" to="CanvasLayer/InGameMenu" method="_on_in_game_menu_visibility_changed"]
