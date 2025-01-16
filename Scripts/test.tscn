@@ -67,22 +67,49 @@ position = Vector2(269, 126)
 item = ExtResource("7_l5ku5")
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(53.2422, -69.3303)
+scale = Vector2(0.817664, 1.04911)
 curve = SubResource("Curve2D_o8ast")
 
 [node name="DozySoldier" parent="." instance=ExtResource("10_wtqid")]
 position = Vector2(-35, 154)
 
+[node name="Investigating" parent="DozySoldier/Enemy" index="7" node_paths=PackedStringArray("navigation_agent_2d")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Chasing" parent="DozySoldier/Enemy" index="8" node_paths=PackedStringArray("navigation_agent_2d")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="DozySoldier/Enemy" index="9" groups=["Damageable"]]
+path_metadata_flags = 0
+simplify_path = true
+simplify_epsilon = 10.0
+debug_enabled = true
+
 [node name="PatrollingSoldier" parent="." instance=ExtResource("9_krt8e")]
 position = Vector2(0, 51.85)
 
-[node name="Patrol" parent="PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
-patrol_path = NodePath("../../Path2D")
+[node name="Patrol" parent="PatrollingSoldier/Enemy" index="6" node_paths=PackedStringArray("patrol_path", "navigation_agent_2d")]
+patrol_path = NodePath("../../../Path2D")
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="chase" parent="PatrollingSoldier/Enemy" index="7" node_paths=PackedStringArray("navigation_agent_2d")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Inv" parent="PatrollingSoldier/Enemy" index="8" node_paths=PackedStringArray("navigation_agent_2d")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PatrollingSoldier/Enemy" index="9" groups=["Damageable"]]
+path_metadata_flags = 0
+simplify_path = true
+simplify_epsilon = 10.0
+debug_enabled = true
 
 [node name="MovableCrate" parent="." instance=ExtResource("17_bpocm")]
-position = Vector2(282, 171)
+position = Vector2(317, 71)
 
 [node name="MovableCrate2" parent="." instance=ExtResource("17_bpocm")]
-position = Vector2(255, 175)
+position = Vector2(356, 382)
 
 [node name="Portal" parent="." instance=ExtResource("14_n3067")]
 position = Vector2(503, 377)
@@ -91,9 +118,6 @@ scn = ExtResource("20_n8i2e")
 [node name="Pickable_Item5" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(314, 337)
 item = ExtResource("16_wnpv7")
-
-[node name="Player" parent="." instance=ExtResource("18_wcrhm")]
-position = Vector2(156, 199)
 
 [node name="Pickable_Item7" parent="." instance=ExtResource("2_0nvdr")]
 position = Vector2(193, 371)
@@ -121,4 +145,8 @@ navigation_polygon = SubResource("NavigationPolygon_02qv2")
 [node name="SodaMachine" parent="." instance=ExtResource("20_dfrmk")]
 position = Vector2(-110, 255)
 
+[node name="Player" parent="." instance=ExtResource("18_wcrhm")]
+position = Vector2(188, 201)
+
+[editable path="DozySoldier"]
 [editable path="PatrollingSoldier"]

@@ -50,15 +50,12 @@ func _ready():
 	weapon.is_player = false
 	add_child(weapon)
 	weapon.attacking.connect(on_attack)
-	idle_state.state_change.connect(change_state)
-	investigating_state.state_change.connect(change_state)
-	chasing_state.state_change.connect(change_state)
 	resting_position = global_position
 	state = idle_state
-	state.enter(self)
+	connect_state_signals()
+	state.enter()
 	prompt.texture = null
 	player = get_tree().get_nodes_in_group("Player")[0]
-	change_state(States.IDLE)
 	add_child(phase_in)
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
@@ -70,7 +67,7 @@ func _process(delta):
 	if paused:
 		return
 	rotate_fov(delta)
-	state.process(self, delta)
+	state.process(delta)
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(delta):
@@ -80,16 +77,16 @@ func _physics_process(delta):
 
 
 func on_hearing(body : Node2D):
-	state.on_hearing(body, self)
+	state.on_hearing(body)
 	
 func on_hearing_exit(body : Node2D):
-	state.on_hearing_exit(body, self)
+	state.on_hearing_exit(body)
 	
 func on_view(body: Node2D):
-	state.on_view(body, self)
+	state.on_view(body)
 
 func on_view_exit(body: Node2D):
-	state.on_view_exit(body, self)
+	state.on_view_exit(body)
 
 func take_damage(amount: int):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
@@ -103,7 +100,7 @@ func attack():
 
 # Needed for the signal
 func to_idle_state():
-	change_state(States.IDLE)
+	on_change_state(States.IDLE)
 
 func on_velocity_computed(safe_velocity: Vector2):
 	if safe_velocity == Vector2.ZERO:
@@ -130,8 +127,9 @@ func rotate_fov(delta: float):
 	var new_rotation = lerp_angle(fov.rotation, new_angle, delta*rotation_speed)
 	fov.rotation = new_rotation
 
-func change_state(new_state: States):
+func on_change_state(new_state: States):
 	state.exit()
+	disconnect_state_signals()
 	match new_state:
 		States.IDLE:
 			state = idle_state
@@ -139,7 +137,15 @@ func change_state(new_state: States):
 			state = investigating_state
 		States.CHASING:
 			state = chasing_state
-	state.enter(self)
+	connect_state_signals()
+	state.enter()
+
+func connect_state_signals():
+	state.state_change.connect(on_change_state)
+
+func disconnect_state_signals():
+	if state.state_change.is_connected(on_change_state):
+		state.state_change.disconnect(on_change_state)
 
 ## Called by attacking weapon signal
 func on_attack():

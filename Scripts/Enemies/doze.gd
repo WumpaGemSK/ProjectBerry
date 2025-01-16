@@ -1,19 +1,19 @@
 extends "res://Scripts/Enemies/stationary.gd"
 
-var dir
+var dir: Enemy.facing
 
-func enter(enemy):
-	super(enemy)
+func enter():
+	super()
 	dir = enemy.original_facing_dir
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_SLEEPING, enemy.global_position)
 
-func on_hearing(body: Node2D, enemy: Enemy):
-	super(body, enemy)
+func on_hearing(body: Node2D):
+	super(body)
 	
-func on_view(_body: Node2D, _enemy: Enemy):
+func on_view(_body: Node2D):
 	return
 
-func process(enemy: Enemy, delta: float):
+func process(delta: float):
 	var animation = "sleeping_"# if enemy.navigation_agent_2d.is_navigation_finished() else "walk_"
 	match dir:
 		Enemy.facing.LEFT:

@@ -8,8 +8,10 @@ var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
 
 var chasing_timer: Timer
 var recheck_timer: Timer
+var enemy: Enemy
 # TODO: Prevent enemy from stop chasing after the timer runs out
-func enter(enemy: Enemy):
+func enter():
+	enemy = get_parent()
 	navigation_agent_2d.set_target_position(enemy.player.global_position)
 	if chasing_timer == null:
 		chasing_timer = Timer.new()
@@ -28,7 +30,7 @@ func enter(enemy: Enemy):
 	enemy.player.panic.emit()
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_DRAW_WEAPON, enemy.global_position)
 
-func process(enemy: Enemy, _delta: float):
+func process(_delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	# TODO: The enemy may shoot even if the player is not in range and will lose all it's ammo
 	enemy.attack()
@@ -53,7 +55,7 @@ func physics_process(delta):
 		return
 	if navigation_agent_2d.is_navigation_finished():
 		if enemy.state != enemy.idle_state:
-			enemy.change_state(Enemy.States.IDLE)
+			state_change.emit(Enemy.States.IDLE)
 		return
 	navigation_agent_2d.set_target_position(enemy.player.global_position)
 	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
@@ -64,13 +66,13 @@ func exit():
 	chasing_timer.stop()
 	recheck_timer.stop()
 
-func on_hearing(_body: Node2D, _enemy: Enemy):
+func on_hearing(_body: Node2D):
 	return
 
-func on_view(_body: Node2D, _enemy: Enemy):
+func on_view(_body: Node2D):
 	recheck_timer.start(recheck_time)
 
-func on_view_exit(_body: Node2D, _enemy: Enemy):
+func on_view_exit(_body: Node2D):
 	recheck_timer.stop()
 
 func on_chasing_timeout():

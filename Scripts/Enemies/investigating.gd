@@ -8,9 +8,10 @@ extends State
 var timer: Timer = null
 ## The resource to set as the enemy prompt texture
 var question_mark = preload("res://Assets/Textures/question_mark.tres")
-var unit: Enemy
+var enemy: Enemy
 
-func enter(enemy: Enemy):
+func enter():
+	enemy = get_parent()
 	if timer == null:
 		timer = Timer.new()
 		timer.one_shot = true
@@ -22,10 +23,10 @@ func enter(enemy: Enemy):
 	navigation_agent_2d.set_target_position(enemy.player.global_position)
 	enemy.movement_speed = investigating_speed
 	enemy.prompt.texture = question_mark
-	unit = enemy
+	enemy = enemy
 	timer.start(recheck_time)
 
-func process(enemy: Enemy, delta: float):
+func process(delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	var dir = enemy.facing_direction
 	var animation = ""
@@ -48,7 +49,7 @@ func physics_process(delta):
 		return
 	if navigation_agent_2d.is_navigation_finished():
 		if enemy.state != enemy.idle_state:
-			enemy.change_state(Enemy.States.IDLE)
+			state_change.emit(Enemy.States.IDLE)
 		return
 	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
 	var new_vel : Vector2 = global_position.direction_to(next_pos)*investigating_speed*delta
@@ -57,11 +58,11 @@ func physics_process(delta):
 func exit():
 	timer.stop()
 
-func on_hearing_exit(body: Node2D, _enemy: Enemy):
+func on_hearing_exit(body: Node2D):
 	if body is Player:
 		timer.stop()
 
-func on_view(body: Node2D, enemy: Enemy):
+func on_view(body: Node2D):
 	if body is Player:
 		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
 			state_change.emit(Enemy.States.CHASING)
@@ -69,7 +70,7 @@ func on_view(body: Node2D, enemy: Enemy):
 func should_switch_to_investigating(player_: Player):
 	timer.start(recheck_time)
 	if not player_.is_sneaking():
-		navigation_agent_2d.set_target_position(unit.player.global_position)
+		navigation_agent_2d.set_target_position(enemy.player.global_position)
 
 func on_recheck():
-	should_switch_to_investigating(unit.player)
+	should_switch_to_investigating(enemy.player)

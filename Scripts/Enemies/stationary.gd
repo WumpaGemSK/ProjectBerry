@@ -6,8 +6,10 @@ extends State
 
 var timer: Timer = null
 var player: Player
+var enemy: Enemy
 
-func enter(enemy: Enemy):
+func enter():
+	enemy = get_parent()
 	if timer == null:
 		timer = Timer.new()
 		timer.one_shot = true
@@ -19,7 +21,7 @@ func enter(enemy: Enemy):
 	enemy.prompt.texture = null
 	player = enemy.player
 
-func process(enemy: Enemy, _delta: float):
+func process(_delta: float):
 	enemy.facing_direction = enemy.original_facing_dir
 	var dir = enemy.facing_direction
 	var animation = "idle_" if enemy.velocity == Vector2.ZERO else "walk_"
@@ -36,15 +38,15 @@ func process(enemy: Enemy, _delta: float):
 			animation += "side"
 	enemy.animated_sprite.play(animation)
 	
-func on_hearing(body: Node2D, _enemy: Enemy):
+func on_hearing(body: Node2D):
 	if body is Player:
 		should_switch_to_investigating(body)
 
-func on_hearing_exit(body: Node2D, _enemy: Enemy):
+func on_hearing_exit(body: Node2D):
 	if body is Player:
 		timer.stop()
 
-func on_view(body: Node2D, enemy: Enemy):
+func on_view(body: Node2D):
 	if body is Player:
 		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
 			state_change.emit(Enemy.States.CHASING)

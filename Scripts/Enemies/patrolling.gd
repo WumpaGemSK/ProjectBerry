@@ -7,15 +7,17 @@ extends State
 @export var navigation_agent_2d : NavigationAgent2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
+var enemy: Enemy
 
-func enter(enemy: Enemy):
+func enter():
+	enemy = get_parent()
 	enemy.movement_speed = patrolling_speed
 	enemy.prompt.texture = null
 	if path_follow == null:
 		path_follow = PathFollow2D.new()
 		patrol_path.add_child(path_follow)
 	
-func process(enemy: Enemy, delta: float):
+func process(delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, global_position)
 	var dir = enemy.facing_direction
 	var animation = ""
@@ -38,8 +40,8 @@ func physics_process(delta):
 		return
 	if navigation_agent_2d.is_navigation_finished():
 		if enemy.state != enemy.idle_state:
-			enemy.change_state(Enemy.States.IDLE)
-		progress += delta*patrolling_speed
+			state_change.emit(Enemy.States.IDLE)
+		progress += patrolling_speed
 		path_follow.progress = progress
 		var new_pos = path_follow.global_position
 		navigation_agent_2d.set_target_position(new_pos)
@@ -47,11 +49,11 @@ func physics_process(delta):
 	var new_vel : Vector2 = global_position.direction_to(next_pos)*patrolling_speed*delta
 	enemy.on_velocity_computed(new_vel)
 
-func on_hearing(body: Node2D, _enemy: Enemy):
+func on_hearing(body: Node2D):
 	if body is Player:
 		should_switch_to_investigating(body)
 	
-func on_view(body: Node2D, enemy: Enemy):
+func on_view(body: Node2D):
 	if body is Player:
 		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
 			state_change.emit(Enemy.States.CHASING)
