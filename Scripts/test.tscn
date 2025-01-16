@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=32 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -22,10 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
 [ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="20_njlq3"]
 [ext_resource type="PackedScene" uid="uid://b7f4o17h103ph" path="res://Scenes/Components/HealthComponent.tscn" id="21_fjejc"]
-[ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="22_7wttk"]
-[ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="23_rllsw"]
-[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="24_dj1df"]
+[ext_resource type="PackedScene" uid="uid://cqo5oc0myygi" path="res://Scenes/Enemies/States/Patrol.tscn" id="23_80op6"]
+[ext_resource type="PackedScene" uid="uid://dfl2dtlwqximk" path="res://Scenes/Enemies/States/Chase.tscn" id="24_75vh8"]
+[ext_resource type="PackedScene" uid="uid://d2vjmgnj0nfch" path="res://Scenes/Enemies/States/Investigate.tscn" id="25_o0ic5"]
 [ext_resource type="PackedScene" uid="uid://b8eo6b1mv3v5a" path="res://Scenes/Components/HitboxComponent.tscn" id="26_vsq0v"]
+[ext_resource type="PackedScene" uid="uid://tb3peqakitul" path="res://Scenes/Enemies/States/Doze.tscn" id="27_x7u8c"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -146,20 +147,6 @@ animation = &"damaged_down"
 default_health = 15
 max_health = 15
 
-[node name="Patrol" type="Node2D" parent="Enemy" node_paths=PackedStringArray("patrol_path", "navigation_agent_2d")]
-script = ExtResource("22_7wttk")
-patrol_path = NodePath("../../Path2D")
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="chase" type="Node2D" parent="Enemy" node_paths=PackedStringArray("navigation_agent_2d")]
-script = ExtResource("23_rllsw")
-chasing_speed = 40.0
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="Inv" type="Node2D" parent="Enemy" node_paths=PackedStringArray("navigation_agent_2d")]
-script = ExtResource("24_dj1df")
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
 
 [node name="HitboxComponent" parent="Enemy" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
@@ -167,3 +154,48 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_4blwh")
+
+[node name="chase" parent="Enemy" node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("24_75vh8")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Patrol" parent="Enemy" node_paths=PackedStringArray("patrol_path", "navigation_agent_2d") instance=ExtResource("23_80op6")]
+patrol_path = NodePath("../../Path2D")
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Inv" parent="Enemy" node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("25_o0ic5")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
+position = Vector2(178, 68)
+rotation_speed = 2.0
+idle_state = NodePath("Doze")
+investigating_state = NodePath("Inv")
+chasing_state = NodePath("chase")
+weapon_scn = ExtResource("20_njlq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2"]
+shape = SubResource("CapsuleShape2D_3lbe4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy2"]
+sprite_frames = ExtResource("20_la463")
+animation = &"damaged_down"
+
+[node name="HealthComponent" parent="Enemy2" instance=ExtResource("21_fjejc")]
+default_health = 15
+max_health = 15
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy2"]
+
+[node name="HitboxComponent" parent="Enemy2" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
+health_component = NodePath("../../Enemy/HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/HitboxComponent"]
+shape = SubResource("CapsuleShape2D_4blwh")
+
+[node name="Inv" parent="Enemy2" node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("25_o0ic5")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="chase" parent="Enemy2" node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("24_75vh8")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Doze" parent="Enemy2" instance=ExtResource("27_x7u8c")]
