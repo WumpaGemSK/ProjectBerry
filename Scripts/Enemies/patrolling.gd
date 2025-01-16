@@ -4,6 +4,7 @@ extends State
 @export var patrolling_speed: float = 20
 ## The path to follow by the enemy
 @export var patrol_path : Path2D
+@export var navigation_agent_2d : NavigationAgent2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
 
@@ -14,12 +15,8 @@ func enter(enemy: Enemy):
 		path_follow = PathFollow2D.new()
 		patrol_path.add_child(path_follow)
 	
-func update(enemy: Enemy, delta: float):
+func process(enemy: Enemy, delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, global_position)
-	progress += delta*patrolling_speed
-	path_follow.progress = progress
-	var new_pos = path_follow.global_position
-	enemy.set_target_position(new_pos)
 	var dir = enemy.facing_direction
 	var animation = ""
 	match dir:
@@ -34,6 +31,21 @@ func update(enemy: Enemy, delta: float):
 			enemy.animated_sprite.flip_h = false
 			animation = "walk_side"
 	enemy.animated_sprite.play(animation)
+
+func physics_process(delta):
+	var enemy : Enemy = get_parent()
+	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
+		return
+	if navigation_agent_2d.is_navigation_finished():
+		if enemy.state != enemy.idle_state:
+			enemy.change_state(Enemy.States.IDLE)
+		progress += delta*patrolling_speed
+		path_follow.progress = progress
+		var new_pos = path_follow.global_position
+		navigation_agent_2d.set_target_position(new_pos)
+	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
+	var new_vel : Vector2 = global_position.direction_to(next_pos)*patrolling_speed*delta
+	enemy.on_velocity_computed(new_vel)
 
 func on_hearing(body: Node2D, _enemy: Enemy):
 	if body is Player:

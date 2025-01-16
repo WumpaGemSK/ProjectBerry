@@ -15,12 +15,11 @@ func enter(enemy: Enemy):
 		timer.autostart = false
 		add_child(timer)
 		timer.timeout.connect(on_recheck)
-	enemy.set_target_position(enemy.resting_position)
 	enemy.movement_speed = movement_speed
 	enemy.prompt.texture = null
 	player = enemy.player
 
-func update(enemy: Enemy, _delta: float):
+func process(enemy: Enemy, _delta: float):
 	enemy.facing_direction = enemy.original_facing_dir
 	var dir = enemy.facing_direction
 	var animation = "idle_" if enemy.velocity == Vector2.ZERO else "walk_"

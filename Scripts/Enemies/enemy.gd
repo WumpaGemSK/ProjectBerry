@@ -8,7 +8,6 @@ var collision : CollisionShape2D = null
 
 @onready var hearing = %Hearing
 @onready var fov = %FOV
-@onready var navigation_agent_2d = $NavigationAgent2D
 @export var rotation_speed : float
 @export var idle_state : State
 @export var investigating_state: State
@@ -56,14 +55,10 @@ func _ready():
 	chasing_state.state_change.connect(change_state)
 	resting_position = global_position
 	state = idle_state
+	state.enter(self)
 	prompt.texture = null
 	player = get_tree().get_nodes_in_group("Player")[0]
 	change_state(States.IDLE)
-	hearing.body_entered.connect(on_hearing)
-	hearing.body_exited.connect(on_hearing_exit)
-	fov.body_entered.connect(on_view)
-	fov.body_exited.connect(on_view_exit)
-	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 	add_child(phase_in)
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
@@ -75,22 +70,14 @@ func _process(delta):
 	if paused:
 		return
 	rotate_fov(delta)
-	state.update(self, delta)
+	state.process(self, delta)
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(delta):
 	if paused:
 		return
-	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
-		return
-	if navigation_agent_2d.is_navigation_finished():
-		if state != idle_state:
-			change_state(States.IDLE)
-		return
+	state.physics_process(delta)
 
-	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*movement_speed*delta
-	on_velocity_computed(new_vel)
 
 func on_hearing(body : Node2D):
 	state.on_hearing(body, self)
@@ -117,9 +104,6 @@ func attack():
 # Needed for the signal
 func to_idle_state():
 	change_state(States.IDLE)
-
-func set_target_position(target: Vector2):
-	navigation_agent_2d.set_target_position(target)
 
 func on_velocity_computed(safe_velocity: Vector2):
 	if safe_velocity == Vector2.ZERO:

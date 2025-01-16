@@ -7,9 +7,12 @@ signal state_change(new_state: Enemy.States)
 func enter(_enemy: Enemy):
 	return
 
-func update(_enemy: Enemy, _delta: float):
+func process(_enemy: Enemy, _delta: float):
 	return
-	
+
+func physics_process(delta):
+	pass
+
 func exit():
 	return
 

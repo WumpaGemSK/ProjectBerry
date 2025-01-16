@@ -15,9 +15,9 @@ height = 24.0
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("1_j0h6h")]
 rotation_speed = 1.0
-idle_state = NodePath("../Sleeping")
-investigating_state = NodePath("../Investigating")
-chasing_state = NodePath("../Chasing")
+idle_state = NodePath("Sleeping")
+investigating_state = NodePath("Investigating")
+chasing_state = NodePath("Chasing")
 original_facing_dir = 1
 weapon_scn = ExtResource("2_l6upy")
 
@@ -33,13 +33,13 @@ autoplay = "idle_down"
 default_health = 10
 max_health = 10
 
-[node name="Sleeping" type="Node2D" parent="."]
+[node name="Sleeping" type="Node2D" parent="Enemy"]
 script = ExtResource("2_esmka")
 
-[node name="Investigating" type="Node2D" parent="."]
+[node name="Investigating" type="Node2D" parent="Enemy"]
 script = ExtResource("3_w171h")
 investigating_speed = 30.0
 
-[node name="Chasing" type="Node2D" parent="."]
+[node name="Chasing" type="Node2D" parent="Enemy"]
 script = ExtResource("4_3jdau")
 chasing_speed = 40.0

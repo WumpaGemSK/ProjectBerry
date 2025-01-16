@@ -4,12 +4,13 @@ extends State
 @export var chasing_time: float = 3
 @export var recheck_time: float = 0.5
 var exclamation_mark = preload("res://Assets/Textures/exclamation_mark.tres")
+@export var navigation_agent_2d : NavigationAgent2D
 
 var chasing_timer: Timer
 var recheck_timer: Timer
 # TODO: Prevent enemy from stop chasing after the timer runs out
 func enter(enemy: Enemy):
-	enemy.set_target_position(enemy.player.global_position)
+	navigation_agent_2d.set_target_position(enemy.player.global_position)
 	if chasing_timer == null:
 		chasing_timer = Timer.new()
 		add_child(chasing_timer)
@@ -27,8 +28,7 @@ func enter(enemy: Enemy):
 	enemy.player.panic.emit()
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_DRAW_WEAPON, enemy.global_position)
 
-func update(enemy: Enemy, _delta: float):
-	enemy.set_target_position(enemy.player.global_position)
+func process(enemy: Enemy, _delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	# TODO: The enemy may shoot even if the player is not in range and will lose all it's ammo
 	enemy.attack()
@@ -46,6 +46,20 @@ func update(enemy: Enemy, _delta: float):
 			enemy.animated_sprite.flip_h = false
 			animation = "chase_side"
 	enemy.animated_sprite.play(animation)
+
+func physics_process(delta):
+	var enemy : Enemy = get_parent()
+	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
+		return
+	if navigation_agent_2d.is_navigation_finished():
+		if enemy.state != enemy.idle_state:
+			enemy.change_state(Enemy.States.IDLE)
+		return
+	navigation_agent_2d.set_target_position(enemy.player.global_position)
+	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
+	var new_vel : Vector2 = global_position.direction_to(next_pos)*chasing_speed*delta
+	enemy.on_velocity_computed(new_vel)
+
 func exit():
 	chasing_timer.stop()
 	recheck_timer.stop()
