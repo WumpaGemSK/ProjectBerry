@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=31 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="22_7wttk"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="23_rllsw"]
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="24_dj1df"]
+[ext_resource type="PackedScene" uid="uid://b8eo6b1mv3v5a" path="res://Scenes/Components/HitboxComponent.tscn" id="26_vsq0v"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -41,6 +42,10 @@ source_geometry_group_name = &"Navigation"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3lbe4"]
 height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4blwh"]
+radius = 9.0
+height = 26.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -156,3 +161,9 @@ script = ExtResource("24_dj1df")
 navigation_agent_2d = NodePath("../NavigationAgent2D")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+
+[node name="HitboxComponent" parent="Enemy" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
+shape = SubResource("CapsuleShape2D_4blwh")
