@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=29 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -7,8 +7,6 @@
 [ext_resource type="Resource" uid="uid://c2bm7lwmpqqyk" path="res://Resources/Items/chill_pill.tres" id="5_uur5g"]
 [ext_resource type="Resource" uid="uid://q5lbeif2mkr4" path="res://Resources/Items/cricket_bat.tres" id="6_rvr8k"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="7_l5ku5"]
-[ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="9_krt8e"]
-[ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="10_wtqid"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="14_n3067"]
 [ext_resource type="Resource" uid="uid://cx05wfq7xkn67" path="res://Resources/Items/pistol.tres" id="16_3h3li"]
 [ext_resource type="Resource" uid="uid://cmwbvie5bu4jc" path="res://Resources/Items/key_1.tres" id="16_wnpv7"]
@@ -18,8 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="18_wcrhm"]
 [ext_resource type="Resource" uid="uid://b11xwof4wy2b0" path="res://Resources/Items/barbed_wire.tres" id="19_nv1jg"]
 [ext_resource type="Resource" uid="uid://de1egv7b8m83v" path="res://Resources/Items/pistol_rate_upgrade.tres" id="19_pedj6"]
+[ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="19_ws17x"]
 [ext_resource type="PackedScene" uid="uid://be365saeegh7u" path="res://Scenes/Levels/Components/soda_machine.tscn" id="20_dfrmk"]
+[ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="20_la463"]
 [ext_resource type="PackedScene" uid="uid://dbsg4c21utypq" path="res://Scenes/Levels/level_storage_area.tscn" id="20_n8i2e"]
+[ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="20_njlq3"]
+[ext_resource type="PackedScene" uid="uid://b7f4o17h103ph" path="res://Scenes/Components/HealthComponent.tscn" id="21_fjejc"]
+[ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="22_7wttk"]
+[ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="23_rllsw"]
+[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="24_dj1df"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -33,6 +38,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-237, 200, -226, 271, -184, 202)])
 source_geometry_mode = 1
 source_geometry_group_name = &"Navigation"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3lbe4"]
+height = 24.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -70,40 +78,6 @@ item = ExtResource("7_l5ku5")
 position = Vector2(53.2422, -69.3303)
 scale = Vector2(0.817664, 1.04911)
 curve = SubResource("Curve2D_o8ast")
-
-[node name="DozySoldier" parent="." instance=ExtResource("10_wtqid")]
-position = Vector2(-35, 154)
-
-[node name="Investigating" parent="DozySoldier/Enemy" index="7" node_paths=PackedStringArray("navigation_agent_2d")]
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="Chasing" parent="DozySoldier/Enemy" index="8" node_paths=PackedStringArray("navigation_agent_2d")]
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="DozySoldier/Enemy" index="9" groups=["Damageable"]]
-path_metadata_flags = 0
-simplify_path = true
-simplify_epsilon = 10.0
-debug_enabled = true
-
-[node name="PatrollingSoldier" parent="." instance=ExtResource("9_krt8e")]
-position = Vector2(0, 51.85)
-
-[node name="Patrol" parent="PatrollingSoldier/Enemy" index="6" node_paths=PackedStringArray("patrol_path", "navigation_agent_2d")]
-patrol_path = NodePath("../../../Path2D")
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="chase" parent="PatrollingSoldier/Enemy" index="7" node_paths=PackedStringArray("navigation_agent_2d")]
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="Inv" parent="PatrollingSoldier/Enemy" index="8" node_paths=PackedStringArray("navigation_agent_2d")]
-navigation_agent_2d = NodePath("../NavigationAgent2D")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PatrollingSoldier/Enemy" index="9" groups=["Damageable"]]
-path_metadata_flags = 0
-simplify_path = true
-simplify_epsilon = 10.0
-debug_enabled = true
 
 [node name="MovableCrate" parent="." instance=ExtResource("17_bpocm")]
 position = Vector2(317, 71)
@@ -148,5 +122,37 @@ position = Vector2(-110, 255)
 [node name="Player" parent="." instance=ExtResource("18_wcrhm")]
 position = Vector2(188, 201)
 
-[editable path="DozySoldier"]
-[editable path="PatrollingSoldier"]
+[node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
+position = Vector2(-38, 114)
+rotation_speed = 1.0
+idle_state = NodePath("Patrol")
+investigating_state = NodePath("Inv")
+chasing_state = NodePath("chase")
+weapon_scn = ExtResource("20_njlq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CapsuleShape2D_3lbe4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+sprite_frames = ExtResource("20_la463")
+animation = &"damaged_down"
+
+[node name="HealthComponent" parent="Enemy" instance=ExtResource("21_fjejc")]
+default_health = 15
+max_health = 15
+
+[node name="Patrol" type="Node2D" parent="Enemy" node_paths=PackedStringArray("patrol_path", "navigation_agent_2d")]
+script = ExtResource("22_7wttk")
+patrol_path = NodePath("../../Path2D")
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="chase" type="Node2D" parent="Enemy" node_paths=PackedStringArray("navigation_agent_2d")]
+script = ExtResource("23_rllsw")
+chasing_speed = 40.0
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="Inv" type="Node2D" parent="Enemy" node_paths=PackedStringArray("navigation_agent_2d")]
+script = ExtResource("24_dj1df")
+navigation_agent_2d = NodePath("../NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
