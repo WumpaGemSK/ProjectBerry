@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2vjmgnj0nfch"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="1_6iqtl"]
+
+[node name="Inv" type="Node2D" node_paths=PackedStringArray("navigation_agent_2d")]
+script = ExtResource("1_6iqtl")
+navigation_agent_2d = NodePath("")

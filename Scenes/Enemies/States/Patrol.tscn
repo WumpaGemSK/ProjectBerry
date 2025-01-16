@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqo5oc0myygi"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/patrolling.gd" id="1_u0a86"]
+
+[node name="Patrol" type="Node2D" node_paths=PackedStringArray("patrol_path", "navigation_agent_2d")]
+script = ExtResource("1_u0a86")
+patrol_path = NodePath("")
+navigation_agent_2d = NodePath("")
