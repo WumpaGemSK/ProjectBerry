@@ -1,10 +1,9 @@
 extends "res://Scripts/Enemies/stationary.gd"
 
-var dir: Enemy.facing
+var original_position: Vector2
 
 func enter():
 	super()
-	dir = enemy.original_facing_dir
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_SLEEPING, enemy.global_position)
 
 func on_hearing(body: Node2D):
@@ -14,8 +13,8 @@ func on_view(_body: Node2D):
 	return
 
 func process(delta: float):
-	var animation = "sleeping_"# if enemy.navigation_agent_2d.is_navigation_finished() else "walk_"
-	match dir:
+	var animation = "sleeping_" if navigation_agent_2d.is_navigation_finished() else "walk_"
+	match enemy.facing_direction:
 		Enemy.facing.LEFT:
 			animation += "side"
 			enemy.animated_sprite.flip_h = true

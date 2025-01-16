@@ -198,4 +198,5 @@ navigation_agent_2d = NodePath("../NavigationAgent2D")
 [node name="chase" parent="Enemy2" node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("24_75vh8")]
 navigation_agent_2d = NodePath("../NavigationAgent2D")
 
-[node name="Doze" parent="Enemy2" instance=ExtResource("27_x7u8c")]
+[node name="Doze" parent="Enemy2" node_paths=PackedStringArray("navigation_agent_2d") instance=ExtResource("27_x7u8c")]
+navigation_agent_2d = NodePath("../NavigationAgent2D")
