@@ -12,7 +12,7 @@ var enemy: Enemy
 # TODO: Prevent enemy from stop chasing after the timer runs out
 func enter():
 	enemy = get_parent()
-	navigation_agent_2d.set_target_position(enemy.player.global_position)
+	move_to.emit()
 	if chasing_timer == null:
 		chasing_timer = Timer.new()
 		add_child(chasing_timer)
@@ -28,6 +28,7 @@ func enter():
 	enemy.movement_speed = chasing_speed
 	enemy.prompt.texture = exclamation_mark
 	enemy.player.panic.emit()
+	enemy.change_speed.emit(chasing_speed)
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_DRAW_WEAPON, enemy.global_position)
 
 func process(_delta: float):
@@ -48,10 +49,10 @@ func process(_delta: float):
 			enemy.animated_sprite.flip_h = false
 			animation = "chase_side"
 	enemy.animated_sprite.play(animation)
+	move_to.emit()
 
 func get_move_path(curr: Vector2) -> PackedVector2Array:
 	return PathfindingManager.get_valid_path(curr, enemy.player.global_position)
-
 
 func exit():
 	chasing_timer.stop()

@@ -2,7 +2,7 @@ extends Node2D
 class_name State
 
 signal state_change(new_state: Enemy.States)
-signal move_to(new_pos: Vector2)
+signal move_to()
 
 # Rethink the state machine. It may not need to have a physics process and only have a func to return the new path/target.
 func enter():

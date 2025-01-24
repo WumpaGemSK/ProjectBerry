@@ -4,6 +4,7 @@ class_name Enemy
 @onready var health_component = $HealthComponent
 @onready var movement_component = %MovementComponent
 
+signal change_speed(new_speed: float)
 
 var player: Player = null
 var collision : CollisionShape2D = null
@@ -54,6 +55,7 @@ func _ready():
 	weapon.attacking.connect(on_attack)
 	resting_position = global_position
 	state = idle_state
+	change_speed.connect(func(val): movement_component.speed = val)
 	connect_state_signals()
 	state.enter()
 	prompt.texture = null
@@ -64,14 +66,20 @@ func _ready():
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
 	health_component.health_depleted.connect(death)
-	movement_component.speed = 20 # TODO: Make this configurable
-	movement_component.new_path_req.connect(func(): movement_component.path = state.get_move_path(global_position))
+	movement_component.new_path_req.connect(new_path)
+
+func new_path():
+	movement_component.path = state.get_move_path(global_position)
+	if movement_component.path.is_empty():
+		to_idle_state()
 
 func _process(delta):
 	if paused:
 		return
 	rotate_fov(delta)
 	state.process(delta)
+	if velocity == Vector2.ZERO:
+		facing_direction = original_facing_dir
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(delta):
@@ -106,11 +114,11 @@ func to_idle_state():
 	on_change_state(States.IDLE)
 
 func on_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
 	if safe_velocity == Vector2.ZERO:
 		return
 	facing_direction = direction_from_velocity(safe_velocity)
 	var new_dir = facing_vector[facing_direction]
-	velocity = safe_velocity
 	move_and_slide()
 
 func direction_from_velocity(vel: Vector2):
@@ -146,10 +154,16 @@ func on_change_state(new_state: States):
 
 func connect_state_signals():
 	state.state_change.connect(on_change_state)
+	state.move_to.connect(on_move_to)
 
 func disconnect_state_signals():
 	if state.state_change.is_connected(on_change_state):
 		state.state_change.disconnect(on_change_state)
+	if state.move_to.is_connected(on_move_to):
+		state.move_to.disconnect(on_move_to)
+
+func on_move_to():
+	movement_component.path = state.get_move_path(global_position)
 
 ## Called by attacking weapon signal
 func on_attack():

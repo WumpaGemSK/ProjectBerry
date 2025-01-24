@@ -8,6 +8,7 @@ extends State
 var timer: Timer = null
 var player: Player
 var enemy: Enemy
+var resting_pos : Vector2
 
 func enter():
 	enemy = get_parent()
@@ -20,14 +21,15 @@ func enter():
 		timer.timeout.connect(on_recheck)
 	enemy.movement_speed = movement_speed
 	enemy.prompt.texture = null
+	resting_pos = enemy.resting_position
 	player = enemy.player
-	if enemy.resting_position != global_position:
-		navigation_agent_2d.set_target_position(enemy.resting_position)
+	enemy.change_speed.emit(movement_speed)
 
-func process(_delta: float):
-	enemy.facing_direction = enemy.original_facing_dir
+func process(_delta: float):	
+	if enemy.global_position.distance_to(enemy.resting_position)< .2:
+		enemy.facing_direction = enemy.original_facing_dir
 	var dir = enemy.facing_direction
-	var animation = "idle_" if navigation_agent_2d.is_navigation_finished() else "walk_"
+	var animation = "idle_" if enemy.global_position.distance_to(enemy.resting_position)< 0.2 else "walk_"
 	match dir:
 		Enemy.facing.UP:
 			animation += "up"
@@ -40,16 +42,9 @@ func process(_delta: float):
 			enemy.animated_sprite.flip_h = false
 			animation += "side"
 	enemy.animated_sprite.play(animation)
-	
-func physics_process(delta):
-	var enemy : Enemy = get_parent()
-	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
-		return
-	if navigation_agent_2d.is_navigation_finished():
-		enemy.facing_direction = enemy.original_facing_dir
-	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*movement_speed*delta
-	enemy.on_velocity_computed(new_vel)
+
+func get_move_path(curr: Vector2) -> PackedVector2Array:
+	return PathfindingManager.get_valid_path(curr, resting_pos)
 
 func on_hearing(body: Node2D):
 	if body is Player:

@@ -9,6 +9,7 @@ var timer: Timer = null
 ## The resource to set as the enemy prompt texture
 var question_mark = preload("res://Assets/Textures/question_mark.tres")
 var enemy: Enemy
+var target: Vector2
 
 func enter():
 	enemy = get_parent()
@@ -20,11 +21,11 @@ func enter():
 		add_child(timer)
 		timer.timeout.connect(on_recheck)
 	enemy.prompt.texture = question_mark
-	navigation_agent_2d.set_target_position(enemy.player.global_position)
 	enemy.movement_speed = investigating_speed
 	enemy.prompt.texture = question_mark
-	enemy = enemy
+	target = enemy.player.global_position
 	timer.start(recheck_time)
+	enemy.change_speed.emit(investigating_speed)
 
 func process(delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
@@ -42,18 +43,9 @@ func process(delta: float):
 			enemy.animated_sprite.flip_h = false
 			animation = "walk_side"
 	enemy.animated_sprite.play(animation)
-	
-func physics_process(delta):
-	var enemy : Enemy = get_parent()
-	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
-		return
-	if navigation_agent_2d.is_navigation_finished():
-		if enemy.state != enemy.idle_state:
-			state_change.emit(Enemy.States.IDLE)
-		return
-	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*investigating_speed*delta
-	enemy.on_velocity_computed(new_vel)
+
+func get_move_path(curr: Vector2) -> PackedVector2Array:
+	return PathfindingManager.get_valid_path(curr, target)
 
 func exit():
 	timer.stop()
@@ -70,7 +62,8 @@ func on_view(body: Node2D):
 func should_switch_to_investigating(player_: Player):
 	timer.start(recheck_time)
 	if not player_.is_sneaking():
-		navigation_agent_2d.set_target_position(enemy.player.global_position)
+		target = player_.global_position
+		move_to.emit()
 
 func on_recheck():
 	should_switch_to_investigating(enemy.player)
