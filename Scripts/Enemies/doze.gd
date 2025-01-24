@@ -13,7 +13,7 @@ func on_view(_body: Node2D):
 		return
 	super(_body)
 
-func process(delta: float):
+func process(_delta: float):
 	var vel = enemy.velocity
 	is_stopped = velocity_almost_zero(vel)
 	var animation = "sleeping_" if is_stopped else "walk_"

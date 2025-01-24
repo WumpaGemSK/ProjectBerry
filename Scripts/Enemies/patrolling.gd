@@ -20,7 +20,7 @@ func enter():
 	path_follow.progress = progress
 	enemy.change_speed.emit(patrolling_speed)
 	
-func process(delta: float):
+func process(_delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	var dir = enemy.facing_direction
 	var animation = ""

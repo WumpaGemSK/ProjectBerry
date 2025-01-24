@@ -2,13 +2,12 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var health_component = $HealthComponent
-@onready var movement_component = %MovementComponent
+@onready var movement_component = $MovementComponent
 
 signal change_speed(new_speed: float)
 
 var player: Player = null
 var collision : CollisionShape2D = null
-
 
 @onready var hearing = %Hearing
 @onready var fov = %FOV
@@ -82,7 +81,7 @@ func _process(delta):
 		facing_direction = original_facing_dir
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if paused:
 		return
 	on_velocity_computed(movement_component.step(global_position))
@@ -118,7 +117,6 @@ func on_velocity_computed(safe_velocity: Vector2):
 	if safe_velocity == Vector2.ZERO:
 		return
 	facing_direction = direction_from_velocity(safe_velocity)
-	var new_dir = facing_vector[facing_direction]
 	move_and_slide()
 
 func direction_from_velocity(vel: Vector2):

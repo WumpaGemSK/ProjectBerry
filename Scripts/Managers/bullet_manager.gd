@@ -23,4 +23,3 @@ func get_bullet_rotation(dir: Vector2):
 			return 180
 		_:
 			return 0
-	pass

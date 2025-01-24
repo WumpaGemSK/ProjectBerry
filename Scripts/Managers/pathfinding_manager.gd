@@ -18,12 +18,10 @@ func _ready():
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.offset = astar_grid.cell_size/2
 	astar_grid.update()
-	var region_position = astar_grid.region.position
-	var region_size = astar_grid.region.size
 	for cell_pos in tile_map_layer.get_used_cells():
-			var tile_data = tile_map_layer.get_cell_tile_data(cell_pos)
-			if tile_data == null or not tile_data.get_custom_data("Walkable"):
-				astar_grid.set_point_solid(cell_pos, true)
+		var tile_data = tile_map_layer.get_cell_tile_data(cell_pos)
+		if tile_data == null or not tile_data.get_custom_data("Walkable"):
+			astar_grid.set_point_solid(cell_pos, true)
 
 func get_valid_path(current_pos: Vector2, target_pos: Vector2) -> PackedVector2Array:
 	var curr = tile_map_layer.local_to_map(to_local(current_pos))
@@ -35,5 +33,5 @@ func get_valid_path(current_pos: Vector2, target_pos: Vector2) -> PackedVector2A
 	
 	var path :PackedVector2Array = []
 	for p in tmp:
-		path.append(to_global(p-astar_grid.cell_size/2))
+		path.append(to_global(p))
 	return path

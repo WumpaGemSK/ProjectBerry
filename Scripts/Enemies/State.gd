@@ -1,7 +1,9 @@
 extends Node2D
 class_name State
 
+@warning_ignore("unused_signal")
 signal state_change(new_state: Enemy.States)
+@warning_ignore("unused_signal")
 signal move_to()
 
 # Rethink the state machine. It may not need to have a physics process and only have a func to return the new path/target.
@@ -11,10 +13,10 @@ func enter():
 func process(_delta: float):
 	return
 
-func physics_process(delta):
+func physics_process(_delta):
 	return
 
-func get_move_path(curr: Vector2) -> PackedVector2Array:
+func get_move_path(_curr: Vector2) -> PackedVector2Array:
 	return []
 
 func exit():

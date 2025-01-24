@@ -22,6 +22,6 @@ func _on_sound__volume_changed(value):
 	AudioServer.set_bus_volume_db(AudioBus.Sounds, 	linear_to_db(value))
 
 ## Sets the new window size multiplying the base resolution with the factor passed
-func viewport_change_size(factor : float):
+func viewport_change_size(_factor : float):
 	return # Do not change since changing the size causes problems on the web player
-	get_window().size = Constants.BASE_RESOLUTION * factor
+	#get_window().size = Constants.BASE_RESOLUTION * factor
