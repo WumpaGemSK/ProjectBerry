@@ -49,18 +49,9 @@ func process(_delta: float):
 			animation = "chase_side"
 	enemy.animated_sprite.play(animation)
 
-func physics_process(delta):
-	var enemy : Enemy = get_parent()
-	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
-		return
-	if navigation_agent_2d.is_navigation_finished():
-		if enemy.state != enemy.idle_state:
-			state_change.emit(Enemy.States.IDLE)
-		return
-	navigation_agent_2d.set_target_position(enemy.player.global_position)
-	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*chasing_speed*delta
-	enemy.on_velocity_computed(new_vel)
+func get_move_path(curr: Vector2) -> PackedVector2Array:
+	return PathfindingManager.get_valid_path(curr, enemy.player.global_position)
+
 
 func exit():
 	chasing_timer.stop()

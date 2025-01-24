@@ -2,9 +2,12 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var health_component = $HealthComponent
+@onready var movement_component = %MovementComponent
+
 
 var player: Player = null
 var collision : CollisionShape2D = null
+
 
 @onready var hearing = %Hearing
 @onready var fov = %FOV
@@ -22,7 +25,6 @@ var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 var resting_position : Vector2
-var target_position : Vector2
 var movement_speed : float
 
 @export var weapon_scn: PackedScene
@@ -62,6 +64,8 @@ func _ready():
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
 	health_component.health_depleted.connect(death)
+	movement_component.speed = 20 # TODO: Make this configurable
+	movement_component.new_path_req.connect(func(): movement_component.path = state.get_move_path(global_position))
 
 func _process(delta):
 	if paused:
@@ -73,8 +77,7 @@ func _process(delta):
 func _physics_process(delta):
 	if paused:
 		return
-	state.physics_process(delta)
-
+	on_velocity_computed(movement_component.step(global_position))
 
 func on_hearing(body : Node2D):
 	state.on_hearing(body)
@@ -107,7 +110,7 @@ func on_velocity_computed(safe_velocity: Vector2):
 		return
 	facing_direction = direction_from_velocity(safe_velocity)
 	var new_dir = facing_vector[facing_direction]
-	velocity = new_dir*movement_speed
+	velocity = safe_velocity
 	move_and_slide()
 
 func direction_from_velocity(vel: Vector2):
@@ -139,6 +142,7 @@ func on_change_state(new_state: States):
 			state = chasing_state
 	connect_state_signals()
 	state.enter()
+	movement_component.path = state.get_move_path(global_position)
 
 func connect_state_signals():
 	state.state_change.connect(on_change_state)

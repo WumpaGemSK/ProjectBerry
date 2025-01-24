@@ -16,9 +16,13 @@ func enter():
 	if path_follow == null:
 		path_follow = PathFollow2D.new()
 		patrol_path.add_child(path_follow)
+	progress += patrolling_speed
+	path_follow.progress = progress
+	var new_pos = path_follow.global_position
+	move_to.emit(new_pos)
 	
 func process(delta: float):
-	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, global_position)
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	var dir = enemy.facing_direction
 	var animation = ""
 	match dir:
@@ -34,20 +38,10 @@ func process(delta: float):
 			animation = "walk_side"
 	enemy.animated_sprite.play(animation)
 
-func physics_process(delta):
-	var enemy : Enemy = get_parent()
-	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
-		return
-	if navigation_agent_2d.is_navigation_finished():
-		if enemy.state != enemy.idle_state:
-			state_change.emit(Enemy.States.IDLE)
-		progress += patrolling_speed
-		path_follow.progress = progress
-		var new_pos = path_follow.global_position
-		navigation_agent_2d.set_target_position(new_pos)
-	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*patrolling_speed*delta
-	enemy.on_velocity_computed(new_vel)
+func get_move_path(curr: Vector2) -> PackedVector2Array:
+	progress += patrolling_speed
+	path_follow.progress = progress
+	return PathfindingManager.get_valid_path(curr, path_follow.global_position)
 
 func on_hearing(body: Node2D):
 	if body is Player:
