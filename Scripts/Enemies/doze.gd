@@ -1,5 +1,7 @@
 extends "res://Scripts/Enemies/stationary.gd"
 
+var is_stopped = true
+
 func enter():
 	super()
 
@@ -7,11 +9,13 @@ func on_hearing(body: Node2D):
 	super(body)
 	
 func on_view(_body: Node2D):
-	return
+	if is_stopped:
+		return
+	super(_body)
 
 func process(delta: float):
 	var vel = enemy.velocity
-	var is_stopped = velocity_almost_zero(vel)
+	is_stopped = velocity_almost_zero(vel)
 	var animation = "sleeping_" if is_stopped else "walk_"
 	match enemy.facing_direction:
 		Enemy.facing.LEFT:
@@ -26,6 +30,8 @@ func process(delta: float):
 			animation += "up"
 	enemy.animated_sprite.play(animation)
 	
+	var dist = enemy.global_position.distance_to(resting_pos)
+	print(enemy.global_position)
 	if is_stopped:
 		AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_SLEEPING, enemy.global_position)
 
