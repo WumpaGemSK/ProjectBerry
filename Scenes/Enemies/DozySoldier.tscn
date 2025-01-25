@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d06b4tntvpwmv"]
+[gd_scene load_steps=11 format=3 uid="uid://d06b4tntvpwmv"]
 
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="1_j0h6h"]
 [ext_resource type="Script" path="res://Scripts/Enemies/doze.gd" id="2_esmka"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/investigating.gd" id="3_w171h"]
 [ext_resource type="Script" path="res://Scripts/Enemies/chasing.gd" id="4_3jdau"]
 [ext_resource type="PackedScene" uid="uid://b7f4o17h103ph" path="res://Scenes/Components/HealthComponent.tscn" id="4_y5h1i"]
+[ext_resource type="PackedScene" uid="uid://dc1jidxceqfer" path="res://Scenes/Components/MovementComponent.tscn" id="8_g8r4o"]
+[ext_resource type="PackedScene" uid="uid://b8eo6b1mv3v5a" path="res://Scenes/Components/HitboxComponent.tscn" id="9_bb15j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1xcwa"]
 height = 24.0
@@ -43,3 +45,11 @@ investigating_speed = 30.0
 [node name="Chasing" type="Node2D" parent="Enemy"]
 script = ExtResource("4_3jdau")
 chasing_speed = 40.0
+
+[node name="MovementComponent" parent="Enemy" instance=ExtResource("8_g8r4o")]
+unique_name_in_owner = true
+
+[node name="HitboxComponent" parent="Enemy" instance=ExtResource("9_bb15j")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
+shape = SubResource("CapsuleShape2D_1xcwa")
