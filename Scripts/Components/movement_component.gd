@@ -2,10 +2,6 @@ extends Node2D
 
 signal new_path_req
 
-func _draw():
-	for i in range(len(path)-1):
-		draw_line(path[i], path[i+1], Color.BROWN)
-		
 var speed : float : 
 	set(value):
 		speed = value
