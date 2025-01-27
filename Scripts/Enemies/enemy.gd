@@ -11,7 +11,7 @@ var collision : CollisionShape2D = null
 
 @onready var hearing = %Hearing
 @onready var fov = %FOV
-@export var rotation_speed : float
+@export var rotation_speed : float = 1
 @export var idle_state : State
 @export var investigating_state: State
 @export var chasing_state: State

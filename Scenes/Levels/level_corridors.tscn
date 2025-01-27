@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://0qp2y6fsdulr" path="res://Scenes/Levels/level_cafeteria.tscn" id="12_5p1a4"]
 [ext_resource type="PackedScene" uid="uid://d06b4tntvpwmv" path="res://Scenes/Enemies/DozySoldier.tscn" id="14_vjsod"]
 [ext_resource type="PackedScene" uid="uid://be365saeegh7u" path="res://Scenes/Levels/Components/soda_machine.tscn" id="15_j03sw"]
-[ext_resource type="PackedScene" uid="uid://pmnrd8y6xych" path="res://Scenes/Enemies/PatrollingSoldier.tscn" id="16_cic5d"]
 [ext_resource type="PackedScene" uid="uid://mhpeev6v0e1o" path="res://Scenes/Enemies/Enemy.tscn" id="16_qiton"]
 [ext_resource type="SpriteFrames" uid="uid://o4exvv41n83p" path="res://Resources/soldier_animations.tres" id="17_7b0hd"]
 [ext_resource type="PackedScene" uid="uid://buaefirbgc1l" path="res://Scenes/RangedWeapon_enemy.tscn" id="17_i3b8t"]
@@ -24,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cqo5oc0myygi" path="res://Scenes/Enemies/States/Patrol.tscn" id="21_dl34l"]
 [ext_resource type="PackedScene" uid="uid://d2vjmgnj0nfch" path="res://Scenes/Enemies/States/Investigate.tscn" id="22_gmjfh"]
 [ext_resource type="PackedScene" uid="uid://dfl2dtlwqximk" path="res://Scenes/Enemies/States/Chase.tscn" id="23_0bhqn"]
+[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="24_wog8r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wbx7e"]
 vertices = PackedVector2Array(87, 13, 87, 10, 110, 10, 110, 322, 442, 322, 442, 10, 542, 10, 542, 322, 878, 782, 730, 782, 730, 682, 778, 682, 878, 322, 778, 422, 326, 422, 226, 422, 542, 682, 542, 974, 442, 974, 442, 782, 326, 682, 110, 782, 110, 974, 10, 974, 10, 682, 226, 682, -226, 422, 10, 322, -226, 662, -326, 662, -326, 322, 33, 13, 10, 10, 33, 10)
@@ -150,7 +150,7 @@ position = Vector2(372, 324)
 position = Vector2(180, 324)
 
 [node name="PatrollingSoldierNew" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("16_qiton")]
-position = Vector2(-290, 373)
+position = Vector2(-290, 374)
 idle_state = NodePath("Patrol")
 investigating_state = NodePath("Inv")
 chasing_state = NodePath("chase")
@@ -177,17 +177,61 @@ patrol_path = NodePath("../../Paths/Path2D")
 
 [node name="chase" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("23_0bhqn")]
 
-[node name="PatrollingSoldier2" parent="Enemies" instance=ExtResource("16_cic5d")]
-position = Vector2(-312, 516)
+[node name="PatrollingSoldierNew2" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("16_qiton")]
+position = Vector2(-313, 516)
+idle_state = NodePath("Patrol")
+investigating_state = NodePath("Inv")
+chasing_state = NodePath("chase")
+weapon_scn = ExtResource("17_i3b8t")
 
-[node name="Patrol" parent="Enemies/PatrollingSoldier2/Enemy" index="7" node_paths=PackedStringArray("patrol_path")]
-patrol_path = NodePath("../../../Paths/Path2D2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew2"]
+shape = SubResource("CapsuleShape2D_jvnyy")
 
-[node name="PatrollingSoldier3" parent="Enemies" instance=ExtResource("16_cic5d")]
-position = Vector2(864, 516)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/PatrollingSoldierNew2"]
+sprite_frames = ExtResource("17_7b0hd")
+animation = &"damaged_down"
 
-[node name="Patrol" parent="Enemies/PatrollingSoldier3/Enemy" index="7" node_paths=PackedStringArray("patrol_path")]
-patrol_path = NodePath("../../../Paths/Path2D3")
+[node name="HealthComponent" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("18_opmjx")]
+
+[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("19_4n7u8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew2/HitboxComponent"]
+shape = SubResource("CapsuleShape2D_wvrhp")
+
+[node name="Patrol" parent="Enemies/PatrollingSoldierNew2" node_paths=PackedStringArray("patrol_path") instance=ExtResource("21_dl34l")]
+patrol_path = NodePath("../../Paths/Path2D2")
+
+[node name="Inv" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("22_gmjfh")]
+
+[node name="chase" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("23_0bhqn")]
+
+[node name="PatrollingSoldierNew3" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("16_qiton")]
+position = Vector2(862, 523)
+idle_state = NodePath("Patrol")
+investigating_state = NodePath("Inv")
+chasing_state = NodePath("chase")
+weapon_scn = ExtResource("17_i3b8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew3"]
+shape = SubResource("CapsuleShape2D_jvnyy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/PatrollingSoldierNew3"]
+sprite_frames = ExtResource("17_7b0hd")
+animation = &"damaged_down"
+
+[node name="HealthComponent" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("18_opmjx")]
+
+[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("19_4n7u8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew3/HitboxComponent"]
+shape = SubResource("CapsuleShape2D_wvrhp")
+
+[node name="Patrol" parent="Enemies/PatrollingSoldierNew3" node_paths=PackedStringArray("patrol_path") instance=ExtResource("21_dl34l")]
+patrol_path = NodePath("../../Paths/Path2D3")
+
+[node name="Inv" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("22_gmjfh")]
+
+[node name="chase" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("23_0bhqn")]
 
 [node name="Paths" type="Node2D" parent="Enemies"]
 
@@ -201,5 +245,5 @@ curve = SubResource("Curve2D_mihhb")
 [node name="Path2D3" type="Path2D" parent="Enemies/Paths"]
 curve = SubResource("Curve2D_1w5xl")
 
-[editable path="Enemies/PatrollingSoldier2"]
-[editable path="Enemies/PatrollingSoldier3"]
+[node name="Player" parent="Enemies" instance=ExtResource("24_wog8r")]
+position = Vector2(22, 387)
