@@ -4,7 +4,6 @@ extends State
 @export var patrolling_speed: float = 20
 ## The path to follow by the enemy
 @export var patrol_path : Path2D
-@export var navigation_agent_2d : NavigationAgent2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
 var enemy: Enemy

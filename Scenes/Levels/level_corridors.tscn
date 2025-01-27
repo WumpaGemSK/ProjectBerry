@@ -123,46 +123,34 @@ door_tier = 3
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="DozySoldier" parent="Enemies" instance=ExtResource("14_vjsod")]
-position = Vector2(204, 684)
-
-[node name="Enemy" parent="Enemies/DozySoldier" index="0"]
-original_facing_dir = 2
+position = Vector2(204, 683)
 
 [node name="DozySoldier2" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(348, 684)
 
-[node name="Enemy" parent="Enemies/DozySoldier2" index="0"]
-original_facing_dir = 2
-
 [node name="DozySoldier3" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(372, 324)
-
-[node name="Enemy" parent="Enemies/DozySoldier3" index="0"]
-original_facing_dir = 2
 
 [node name="DozySoldier4" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(180, 324)
 
-[node name="Enemy" parent="Enemies/DozySoldier4" index="0"]
-original_facing_dir = 2
-
 [node name="PatrollingSoldier" parent="Enemies" instance=ExtResource("16_cic5d")]
 position = Vector2(-288, 384)
 
-[node name="Patrol" parent="Enemies/PatrollingSoldier" index="1" node_paths=PackedStringArray("patrol_path")]
-patrol_path = NodePath("../../Paths/Path2D")
+[node name="Patrol" parent="Enemies/PatrollingSoldier/Enemy" index="7" node_paths=PackedStringArray("patrol_path")]
+patrol_path = NodePath("../../../Paths/Path2D")
 
 [node name="PatrollingSoldier2" parent="Enemies" instance=ExtResource("16_cic5d")]
 position = Vector2(-312, 516)
 
-[node name="Patrol" parent="Enemies/PatrollingSoldier2" index="1" node_paths=PackedStringArray("patrol_path")]
-patrol_path = NodePath("../../Paths/Path2D2")
+[node name="Patrol" parent="Enemies/PatrollingSoldier2/Enemy" index="7" node_paths=PackedStringArray("patrol_path")]
+patrol_path = NodePath("../../../Paths/Path2D2")
 
 [node name="PatrollingSoldier3" parent="Enemies" instance=ExtResource("16_cic5d")]
 position = Vector2(864, 516)
 
-[node name="Patrol" parent="Enemies/PatrollingSoldier3" index="1" node_paths=PackedStringArray("patrol_path")]
-patrol_path = NodePath("../../Paths/Path2D3")
+[node name="Patrol" parent="Enemies/PatrollingSoldier3/Enemy" index="7" node_paths=PackedStringArray("patrol_path")]
+patrol_path = NodePath("../../../Paths/Path2D3")
 
 [node name="Paths" type="Node2D" parent="Enemies"]
 
@@ -176,10 +164,6 @@ curve = SubResource("Curve2D_mihhb")
 [node name="Path2D3" type="Path2D" parent="Enemies/Paths"]
 curve = SubResource("Curve2D_1w5xl")
 
-[editable path="Enemies/DozySoldier"]
-[editable path="Enemies/DozySoldier2"]
-[editable path="Enemies/DozySoldier3"]
-[editable path="Enemies/DozySoldier4"]
 [editable path="Enemies/PatrollingSoldier"]
 [editable path="Enemies/PatrollingSoldier2"]
 [editable path="Enemies/PatrollingSoldier3"]
