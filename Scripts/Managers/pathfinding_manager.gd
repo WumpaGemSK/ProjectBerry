@@ -3,8 +3,7 @@ extends Node2D
 var astar_grid : AStarGrid2D
 var tile_map_layer : TileMapLayer
 
-
-func _ready():
+func init():
 	if astar_grid == null:
 		astar_grid = AStarGrid2D.new()
 	tile_map_layer = get_tree().get_first_node_in_group("Navigation")
@@ -22,6 +21,9 @@ func _ready():
 		var tile_data = tile_map_layer.get_cell_tile_data(cell_pos)
 		if tile_data == null or not tile_data.get_custom_data("Walkable"):
 			astar_grid.set_point_solid(cell_pos, true)
+
+func _ready():
+	init()
 
 func get_valid_path(current_pos: Vector2, target_pos: Vector2) -> PackedVector2Array:
 	var curr = tile_map_layer.local_to_map(to_local(current_pos))
