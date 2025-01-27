@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://d0a7dou47agdx"]
+[gd_scene load_steps=30 format=4 uid="uid://d0a7dou47agdx"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_mvrkh"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_hhp8c"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://cqo5oc0myygi" path="res://Scenes/Enemies/States/Patrol.tscn" id="21_dl34l"]
 [ext_resource type="PackedScene" uid="uid://d2vjmgnj0nfch" path="res://Scenes/Enemies/States/Investigate.tscn" id="22_gmjfh"]
 [ext_resource type="PackedScene" uid="uid://dfl2dtlwqximk" path="res://Scenes/Enemies/States/Chase.tscn" id="23_0bhqn"]
-[ext_resource type="PackedScene" uid="uid://dbglcphu0b73y" path="res://Scenes/Player/player.tscn" id="24_wog8r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wbx7e"]
 vertices = PackedVector2Array(87, 13, 87, 10, 110, 10, 110, 322, 442, 322, 442, 10, 542, 10, 542, 322, 878, 782, 730, 782, 730, 682, 778, 682, 878, 322, 778, 422, 326, 422, 226, 422, 542, 682, 542, 974, 442, 974, 442, 782, 326, 682, 110, 782, 110, 974, 10, 974, 10, 682, 226, 682, -226, 422, 10, 322, -226, 662, -326, 662, -326, 322, 33, 13, 10, 10, 33, 10)
@@ -244,6 +243,3 @@ curve = SubResource("Curve2D_mihhb")
 
 [node name="Path2D3" type="Path2D" parent="Enemies/Paths"]
 curve = SubResource("Curve2D_1w5xl")
-
-[node name="Player" parent="Enemies" instance=ExtResource("24_wog8r")]
-position = Vector2(22, 387)
