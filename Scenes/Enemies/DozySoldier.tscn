@@ -38,11 +38,11 @@ script = ExtResource("2_esmka")
 
 [node name="Investigating" type="Node2D" parent="Enemy"]
 script = ExtResource("3_w171h")
-investigating_speed = 30.0
+investigating_speed = 40.0
 
 [node name="Chasing" type="Node2D" parent="Enemy"]
 script = ExtResource("4_3jdau")
-chasing_speed = 40.0
+chasing_speed = 60.0
 
 [node name="HitboxComponent" parent="Enemy" node_paths=PackedStringArray("health_component") instance=ExtResource("9_bb15j")]
 health_component = NodePath("../HealthComponent")

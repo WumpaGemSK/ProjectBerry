@@ -173,8 +173,10 @@ shape = SubResource("CapsuleShape2D_wvrhp")
 patrol_path = NodePath("../../Paths/Path2D")
 
 [node name="Inv" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("22_gmjfh")]
+investigating_speed = 40.0
 
 [node name="chase" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("23_0bhqn")]
+chasing_speed = 60.0
 
 [node name="PatrollingSoldierNew2" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("16_qiton")]
 position = Vector2(-313, 516)
@@ -201,8 +203,10 @@ shape = SubResource("CapsuleShape2D_wvrhp")
 patrol_path = NodePath("../../Paths/Path2D2")
 
 [node name="Inv" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("22_gmjfh")]
+investigating_speed = 40.0
 
 [node name="chase" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("23_0bhqn")]
+chasing_speed = 60.0
 
 [node name="PatrollingSoldierNew3" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("16_qiton")]
 position = Vector2(862, 523)
@@ -229,8 +233,10 @@ shape = SubResource("CapsuleShape2D_wvrhp")
 patrol_path = NodePath("../../Paths/Path2D3")
 
 [node name="Inv" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("22_gmjfh")]
+investigating_speed = 40.0
 
 [node name="chase" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("23_0bhqn")]
+chasing_speed = 60.0
 
 [node name="Paths" type="Node2D" parent="Enemies"]
 
