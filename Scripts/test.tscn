@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=33 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://tb3peqakitul" path="res://Scenes/Enemies/States/Doze.tscn" id="24_0233l"]
 [ext_resource type="PackedScene" uid="uid://d2vjmgnj0nfch" path="res://Scenes/Enemies/States/Investigate.tscn" id="25_o0ic5"]
 [ext_resource type="PackedScene" uid="uid://b8eo6b1mv3v5a" path="res://Scenes/Components/HitboxComponent.tscn" id="26_vsq0v"]
-[ext_resource type="PackedScene" uid="uid://dc1jidxceqfer" path="res://Scenes/Components/MovementComponent.tscn" id="28_uqdt6"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -159,8 +158,6 @@ animation = &"sleeping_down"
 
 [node name="chase" parent="Dozy" instance=ExtResource("24_75vh8")]
 
-[node name="MovementComponent" parent="Dozy" instance=ExtResource("28_uqdt6")]
-
 [node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
 position = Vector2(-64, 84)
 rotation_speed = 1.0
@@ -193,5 +190,3 @@ chasing_speed = 30.0
 patrol_path = NodePath("../../Path2D")
 
 [node name="Inv" parent="Enemy" instance=ExtResource("25_o0ic5")]
-
-[node name="MovementComponent" parent="Enemy" instance=ExtResource("28_uqdt6")]
