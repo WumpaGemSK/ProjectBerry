@@ -1,7 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://mhpeev6v0e1o"]
+[gd_scene load_steps=9 format=3 uid="uid://mhpeev6v0e1o"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5gn1u"]
+[ext_resource type="Script" path="res://Scripts/Item/item_drop.gd" id="2_cl4c0"]
 [ext_resource type="PackedScene" uid="uid://dc1jidxceqfer" path="res://Scenes/Components/MovementComponent.tscn" id="2_tgmkk"]
+[ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="3_poxgt"]
+[ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="4_4reuk"]
+
+[sub_resource type="Resource" id="Resource_gfqv7"]
+script = ExtResource("2_cl4c0")
+probability = 1.0
+item = ExtResource("4_4reuk")
+
+[sub_resource type="Resource" id="Resource_wv6m3"]
+script = ExtResource("2_cl4c0")
+probability = 0.4
+item = ExtResource("3_poxgt")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd7fy"]
 radius = 80.0
@@ -9,6 +22,7 @@ radius = 80.0
 [node name="Enemy" type="CharacterBody2D" groups=["Damageable"]]
 motion_mode = 1
 script = ExtResource("1_5gn1u")
+drops = Array[ExtResource("2_cl4c0")]([SubResource("Resource_gfqv7"), SubResource("Resource_wv6m3")])
 
 [node name="Hearing" type="Area2D" parent="."]
 unique_name_in_owner = true

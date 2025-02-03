@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name PickableItem
 
 @onready var icon = %Icon
@@ -7,6 +7,8 @@ var player_in_range = false
 @export var item : Resource
 
 func _ready():
+	if icon == null:
+		icon = Sprite2D.new()
 	if item:
 		icon.texture = item.texture_icon
 

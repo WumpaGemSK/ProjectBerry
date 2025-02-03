@@ -16,6 +16,10 @@ var collision : CollisionShape2D = null
 @export var investigating_state: State
 @export var chasing_state: State
 
+@export_category("Drops")
+@export var drops : Array[ItemDrop]
+
+@export_category("Facing direction")
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
 @export var original_facing_dir : facing = facing.RIGHT
@@ -27,6 +31,7 @@ var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 var resting_position : Vector2
 var movement_speed : float
 
+@export_category("Weapon")
 @export var weapon_scn: PackedScene
 var weapon: Weapon
 
@@ -35,6 +40,7 @@ var animated_sprite: AnimatedSprite2D
 var paused: bool = false
 
 #region Faze in
+@export_category("Phase time")
 @onready var phase_in : Timer = Timer.new()
 @export var phase_in_time: float = 1.0
 #endregion
@@ -64,7 +70,7 @@ func _ready():
 	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
-	health_component.health_depleted.connect(death)
+	health_component.health_depleted.connect(func(): call_deferred("death"))
 	movement_component.new_path_req.connect(new_path)
 
 func new_path():
@@ -103,7 +109,23 @@ func take_damage(amount: int):
 	health_component.take_damage(amount)
 
 func death():
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
+	animated_sprite.play("death")
+	spawn_loot()
 	queue_free()
+
+func on_death_animation_finished():
+	queue_free()
+
+# TODO: Move to a "manager"?
+func spawn_loot():
+	var roll = randf()
+	var item = preload("res://Scenes/Pickable_Item.tscn").instantiate()
+	get_parent().add_child(item)
+	for drop in drops:
+		if drop.probability >= roll:
+			item.set_item(drop.item)
+	item.global_position = global_position
 
 func attack():
 	weapon.attack(global_position, facing_vector[facing_direction])
