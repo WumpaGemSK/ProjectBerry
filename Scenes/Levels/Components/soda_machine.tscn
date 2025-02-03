@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://be365saeegh7u"]
+[gd_scene load_steps=9 format=3 uid="uid://be365saeegh7u"]
 
 [ext_resource type="Script" path="res://Scripts/soda_machine.gd" id="1_fx5rf"]
 [ext_resource type="Texture2D" uid="uid://dql0vxrj8evef" path="res://Assets/Textures/Environment/Props/soda_vending_machine_sheet.png" id="2_j5ldq"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="3_k7ue0"]
 [ext_resource type="Resource" uid="uid://d4fpj2nw3axj" path="res://Resources/Secrets/bag_of_coins.tres" id="4_85ea3"]
+[ext_resource type="PackedScene" uid="uid://b8eo6b1mv3v5a" path="res://Scenes/Components/HitboxComponent.tscn" id="5_88g7k"]
+[ext_resource type="PackedScene" uid="uid://b7f4o17h103ph" path="res://Scenes/Components/HealthComponent.tscn" id="6_l506d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vill8"]
 size = Vector2(34, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf6ru"]
+size = Vector2(33, 44)
 
 [node name="SodaMachine" type="StaticBody2D" groups=["SodaMachine"]]
 position = Vector2(60, 0)
@@ -23,3 +28,16 @@ shape = SubResource("RectangleShape2D_vill8")
 [node name="BagofCoins" parent="." instance=ExtResource("3_k7ue0")]
 position = Vector2(0, -300)
 item = ExtResource("4_85ea3")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_88g7k")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_uf6ru")
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_l506d")]
+default_health = 1
+max_health = 1
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="gets_destroyed"]

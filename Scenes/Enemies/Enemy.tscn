@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mhpeev6v0e1o"]
+[gd_scene load_steps=4 format=3 uid="uid://mhpeev6v0e1o"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5gn1u"]
+[ext_resource type="PackedScene" uid="uid://dc1jidxceqfer" path="res://Scenes/Components/MovementComponent.tscn" id="2_tgmkk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd7fy"]
 radius = 80.0
@@ -21,11 +22,13 @@ unique_name_in_owner = true
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="FOV"]
 polygon = PackedVector2Array(0, 0, 80, -40, 80, 40)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." groups=["Damageable"]]
-path_metadata_flags = 0
-simplify_path = true
-simplify_epsilon = 10.0
-
 [node name="Prompt" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -24)
+
+[node name="MovementComponent" parent="." instance=ExtResource("2_tgmkk")]
+
+[connection signal="body_entered" from="Hearing" to="." method="on_hearing"]
+[connection signal="body_exited" from="Hearing" to="." method="on_hearing_exit"]
+[connection signal="body_entered" from="FOV" to="." method="on_view"]
+[connection signal="body_exited" from="FOV" to="." method="on_view_exit"]

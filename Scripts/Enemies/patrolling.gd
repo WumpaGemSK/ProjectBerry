@@ -6,20 +6,21 @@ extends State
 @export var patrol_path : Path2D
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
+var enemy: Enemy
 
-func enter(enemy: Enemy):
+func enter():
+	enemy = get_parent()
 	enemy.movement_speed = patrolling_speed
 	enemy.prompt.texture = null
 	if path_follow == null:
 		path_follow = PathFollow2D.new()
 		patrol_path.add_child(path_follow)
-	
-func update(enemy: Enemy, delta: float):
-	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, global_position)
-	progress += delta*patrolling_speed
+	progress += patrolling_speed
 	path_follow.progress = progress
-	var new_pos = path_follow.global_position
-	enemy.set_target_position(new_pos)
+	enemy.change_speed.emit(patrolling_speed)
+	
+func process(_delta: float):
+	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
 	var dir = enemy.facing_direction
 	var animation = ""
 	match dir:
@@ -35,11 +36,16 @@ func update(enemy: Enemy, delta: float):
 			animation = "walk_side"
 	enemy.animated_sprite.play(animation)
 
-func on_hearing(body: Node2D, _enemy: Enemy):
+func get_move_path(curr: Vector2) -> PackedVector2Array:
+	progress += patrolling_speed
+	path_follow.progress = progress
+	return PathfindingManager.get_valid_path(curr, path_follow.global_position)
+
+func on_hearing(body: Node2D):
 	if body is Player:
 		should_switch_to_investigating(body)
 	
-func on_view(body: Node2D, enemy: Enemy):
+func on_view(body: Node2D):
 	if body is Player:
 		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
 			state_change.emit(Enemy.States.CHASING)

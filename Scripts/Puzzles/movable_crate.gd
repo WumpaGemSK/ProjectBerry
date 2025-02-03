@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-func _process(delta):
+func _process(_delta):
 	for obj in get_colliding_bodies():
 		if obj is Player:
 			continue

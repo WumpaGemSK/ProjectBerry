@@ -26,10 +26,11 @@ EventBus="*res://Scripts/EventBus.gd"
 CountdownTimer="*res://Scripts/CountdownTimer.gd"
 Game="*res://Scripts/Game.gd"
 Leaderboard="*res://Scripts/Leaderboard.gd"
-SceneSwitcher="*res://Scripts/SceneSwitcher.gd"
+SceneSwitcher="*res://Scripts/Managers/SceneSwitcher.gd"
 TransitionScreen="*res://Scenes/UI/TransitionScreen.tscn"
 AudioManager="*res://Scenes/AudioManager.tscn"
-BulletManager="*res://Scripts/bullet_manager.gd"
+BulletManager="*res://Scripts/Managers/bullet_manager.gd"
+PathfindingManager="*res://Scripts/Managers/pathfinding_manager.gd"
 
 [display]
 

@@ -32,6 +32,7 @@ func change_scene(scene: PackedScene, trigger: ScenePortal):
 	get_scene_holder().call_deferred("add_child",new_scene)
 	player.set_deferred("global_position", spawn_point.global_position)
 	prev_position.push_back(spawn_point.global_position)
+	PathfindingManager.call_deferred("init")
 	
 func to_previous():
 	if prev_scene.is_empty():
@@ -43,6 +44,7 @@ func to_previous():
 	get_scene_holder().call_deferred("add_child", prev_scene.pop_back())
 	prev_position.pop_back()
 	player.set_deferred("global_position", prev_position.pop_back())
+	PathfindingManager.call_deferred("init")
 
 func get_current_scene() -> Node:
 	var holder = get_scene_holder()

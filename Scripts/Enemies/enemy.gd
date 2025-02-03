@@ -1,14 +1,17 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var health : int
+@onready var health_component = $HealthComponent
+@onready var movement_component = $MovementComponent
+
+signal change_speed(new_speed: float)
+
 var player: Player = null
 var collision : CollisionShape2D = null
 
 @onready var hearing = %Hearing
 @onready var fov = %FOV
-@onready var navigation_agent_2d = $NavigationAgent2D
-@export var rotation_speed : float
+@export var rotation_speed : float = 1
 @export var idle_state : State
 @export var investigating_state: State
 @export var chasing_state: State
@@ -22,7 +25,6 @@ var facing_rotation = [0, 180, 90, 270]
 var facing_vector = [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 var resting_position : Vector2
-var target_position : Vector2
 var movement_speed : float
 
 @export var weapon_scn: PackedScene
@@ -50,63 +52,55 @@ func _ready():
 	weapon.is_player = false
 	add_child(weapon)
 	weapon.attacking.connect(on_attack)
-	idle_state.state_change.connect(change_state)
-	investigating_state.state_change.connect(change_state)
-	chasing_state.state_change.connect(change_state)
 	resting_position = global_position
 	state = idle_state
+	change_speed.connect(func(val): movement_component.speed = val)
+	connect_state_signals()
+	state.enter()
 	prompt.texture = null
 	player = get_tree().get_nodes_in_group("Player")[0]
-	change_state(States.IDLE)
-	hearing.body_entered.connect(on_hearing)
-	hearing.body_exited.connect(on_hearing_exit)
-	fov.body_entered.connect(on_view)
-	fov.body_exited.connect(on_view_exit)
-	navigation_agent_2d.velocity_computed.connect(on_velocity_computed)
 	add_child(phase_in)
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
+	health_component.health_depleted.connect(death)
+	movement_component.new_path_req.connect(new_path)
+
+func new_path():
+	movement_component.path = state.get_move_path(global_position)
+	if movement_component.path.is_empty():
+		to_idle_state()
 
 func _process(delta):
 	if paused:
 		return
 	rotate_fov(delta)
-	state.update(self, delta)
+	state.process(delta)
+	if velocity == Vector2.ZERO:
+		facing_direction = original_facing_dir
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if paused:
 		return
-	if NavigationServer2D.map_get_iteration_id(navigation_agent_2d.get_navigation_map()) == 0:
-		return
-	if navigation_agent_2d.is_navigation_finished():
-		if state != idle_state:
-			change_state(States.IDLE)
-		return
-
-	var next_pos : Vector2 = navigation_agent_2d.get_next_path_position()
-	var new_vel : Vector2 = global_position.direction_to(next_pos)*movement_speed*delta
-	on_velocity_computed(new_vel)
+	on_velocity_computed(movement_component.step(global_position))
 
 func on_hearing(body : Node2D):
-	state.on_hearing(body, self)
+	state.on_hearing(body)
 	
 func on_hearing_exit(body : Node2D):
-	state.on_hearing_exit(body, self)
+	state.on_hearing_exit(body)
 	
 func on_view(body: Node2D):
-	state.on_view(body, self)
+	state.on_view(body)
 
 func on_view_exit(body: Node2D):
-	state.on_view_exit(body, self)
+	state.on_view_exit(body)
 
 func take_damage(amount: int):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
-	health -= amount
-	if health <= 0:
-		death()
+	health_component.take_damage(amount)
 
 func death():
 	queue_free()
@@ -116,17 +110,13 @@ func attack():
 
 # Needed for the signal
 func to_idle_state():
-	change_state(States.IDLE)
-
-func set_target_position(target: Vector2):
-	navigation_agent_2d.set_target_position(target)
+	on_change_state(States.IDLE)
 
 func on_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
 	if safe_velocity == Vector2.ZERO:
 		return
 	facing_direction = direction_from_velocity(safe_velocity)
-	var new_dir = facing_vector[facing_direction]
-	velocity = new_dir*movement_speed
 	move_and_slide()
 
 func direction_from_velocity(vel: Vector2):
@@ -146,8 +136,9 @@ func rotate_fov(delta: float):
 	var new_rotation = lerp_angle(fov.rotation, new_angle, delta*rotation_speed)
 	fov.rotation = new_rotation
 
-func change_state(new_state: States):
+func on_change_state(new_state: States):
 	state.exit()
+	disconnect_state_signals()
 	match new_state:
 		States.IDLE:
 			state = idle_state
@@ -155,7 +146,22 @@ func change_state(new_state: States):
 			state = investigating_state
 		States.CHASING:
 			state = chasing_state
-	state.enter(self)
+	connect_state_signals()
+	state.enter()
+	movement_component.path = state.get_move_path(global_position)
+
+func connect_state_signals():
+	state.state_change.connect(on_change_state)
+	state.move_to.connect(on_move_to)
+
+func disconnect_state_signals():
+	if state.state_change.is_connected(on_change_state):
+		state.state_change.disconnect(on_change_state)
+	if state.move_to.is_connected(on_move_to):
+		state.move_to.disconnect(on_move_to)
+
+func on_move_to():
+	movement_component.path = state.get_move_path(global_position)
 
 ## Called by attacking weapon signal
 func on_attack():
