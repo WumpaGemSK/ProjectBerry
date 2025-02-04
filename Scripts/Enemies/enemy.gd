@@ -38,6 +38,7 @@ var weapon: Weapon
 var animated_sprite: AnimatedSprite2D
 
 var paused: bool = false
+var dead: bool = false
 
 #region Faze in
 @export_category("Phase time")
@@ -79,7 +80,7 @@ func new_path():
 		to_idle_state()
 
 func _process(delta):
-	if paused:
+	if paused or dead:
 		return
 	rotate_fov(delta)
 	state.process(delta)
@@ -88,7 +89,7 @@ func _process(delta):
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(_delta):
-	if paused:
+	if paused or dead:
 		return
 	on_velocity_computed(movement_component.step(global_position))
 
@@ -109,12 +110,11 @@ func take_damage(amount: int):
 	health_component.take_damage(amount)
 
 func death():
+	dead = true
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
 	animated_sprite.play("death")
 	spawn_loot()
-	queue_free()
-
-func on_death_animation_finished():
+	await animated_sprite.animation_finished
 	queue_free()
 
 # TODO: Move to a "manager"?
