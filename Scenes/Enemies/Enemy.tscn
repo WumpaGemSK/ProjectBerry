@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://mhpeev6v0e1o"]
+[gd_scene load_steps=10 format=3 uid="uid://mhpeev6v0e1o"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_5gn1u"]
 [ext_resource type="Script" path="res://Scripts/Item/item_drop.gd" id="2_cl4c0"]
 [ext_resource type="PackedScene" uid="uid://dc1jidxceqfer" path="res://Scenes/Components/MovementComponent.tscn" id="2_tgmkk"]
 [ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="3_poxgt"]
 [ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="4_4reuk"]
+[ext_resource type="PackedScene" uid="uid://b3f8p7neb255k" path="res://Scenes/Components/LootdropComponent.tscn" id="6_u2fvg"]
 
 [sub_resource type="Resource" id="Resource_gfqv7"]
 script = ExtResource("2_cl4c0")
@@ -41,6 +42,8 @@ unique_name_in_owner = true
 position = Vector2(0, -24)
 
 [node name="MovementComponent" parent="." instance=ExtResource("2_tgmkk")]
+
+[node name="LootdropComponent" parent="." instance=ExtResource("6_u2fvg")]
 
 [connection signal="body_entered" from="Hearing" to="." method="on_hearing"]
 [connection signal="body_exited" from="Hearing" to="." method="on_hearing_exit"]

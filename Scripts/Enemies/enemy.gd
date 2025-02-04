@@ -3,6 +3,7 @@ class_name Enemy
 
 @onready var health_component = $HealthComponent
 @onready var movement_component = $MovementComponent
+@onready var lootdrop_component = $LootdropComponent
 
 signal change_speed(new_speed: float)
 
@@ -120,12 +121,11 @@ func death():
 # TODO: Move to a "manager"?
 func spawn_loot():
 	var roll = randf()
-	var item = preload("res://Scenes/Pickable_Item.tscn").instantiate()
-	get_parent().add_child(item)
+	var item = null
 	for drop in drops:
 		if drop.probability >= roll:
-			item.set_item(drop.item)
-	item.global_position = global_position
+			item = drop.item
+	lootdrop_component.spawn_item(item, global_position)
 
 func attack():
 	weapon.attack(global_position, facing_vector[facing_direction])
