@@ -85,4 +85,4 @@ signal reload_scene
 signal reset
 
 @warning_ignore("unused_signal")
-signal fire_bullet(from: Vector2, direction: Vector2, damage: int)
+signal fire_bullet(from: Vector2, direction: Vector2, damage: int, is_player: bool)

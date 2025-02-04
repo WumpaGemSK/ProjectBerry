@@ -19,3 +19,7 @@ const CODES = [
 	"QUACK",
 ]
 #endregion
+#region Collision layers
+const PLAYER_LAYER: int = 2
+const ENEMY_LAYER: int = 3
+#endregion

@@ -17,3 +17,6 @@ func _on_area_2d_area_entered(area):
 		hitbox.take_damage(damage)
 		queue_free()
 		
+func set_col_mask(col: int):
+	$Area2D.collision_mask |= 1 << (col-1)
+	print($Area2D.collision_mask)
