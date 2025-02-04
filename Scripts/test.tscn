@@ -158,34 +158,34 @@ animation = &"sleeping_down"
 
 [node name="chase" parent="Dozy" instance=ExtResource("24_75vh8")]
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
+[node name="Patrol" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
 position = Vector2(-64, 84)
 idle_state = NodePath("Patrol")
 investigating_state = NodePath("Inv")
 chasing_state = NodePath("chase")
 weapon_scn = ExtResource("20_njlq3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Patrol"]
 shape = SubResource("CapsuleShape2D_3lbe4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Patrol"]
 sprite_frames = ExtResource("20_la463")
 animation = &"damaged_down"
 
-[node name="HealthComponent" parent="Enemy" instance=ExtResource("21_fjejc")]
+[node name="HealthComponent" parent="Patrol" instance=ExtResource("21_fjejc")]
 default_health = 15
 max_health = 15
 
-[node name="HitboxComponent" parent="Enemy" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
+[node name="HitboxComponent" parent="Patrol" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Patrol/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_4blwh")
 
-[node name="chase" parent="Enemy" instance=ExtResource("24_75vh8")]
+[node name="chase" parent="Patrol" instance=ExtResource("24_75vh8")]
 chasing_speed = 30.0
 
-[node name="Patrol" parent="Enemy" node_paths=PackedStringArray("patrol_path") instance=ExtResource("23_80op6")]
+[node name="Patrol" parent="Patrol" node_paths=PackedStringArray("patrol_path") instance=ExtResource("23_80op6")]
 patrol_path = NodePath("../../Path2D")
 
-[node name="Inv" parent="Enemy" instance=ExtResource("25_o0ic5")]
+[node name="Inv" parent="Patrol" instance=ExtResource("25_o0ic5")]
