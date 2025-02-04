@@ -114,8 +114,8 @@ func death():
 	dead = true
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
 	animated_sprite.play("death")
-	spawn_loot()
 	await animated_sprite.animation_finished
+	spawn_loot()
 	queue_free()
 
 # TODO: Move to a "manager"?
