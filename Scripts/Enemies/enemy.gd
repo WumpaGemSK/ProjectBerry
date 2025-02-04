@@ -17,9 +17,6 @@ var collision : CollisionShape2D = null
 @export var investigating_state: State
 @export var chasing_state: State
 
-@export_category("Drops")
-@export var drops : Array[ItemDrop]
-
 @export_category("Facing direction")
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
@@ -121,11 +118,7 @@ func death():
 # TODO: Move to a "manager"?
 func spawn_loot():
 	var roll = randf()
-	var item = null
-	for drop in drops:
-		if drop.probability >= roll:
-			item = drop.item
-	lootdrop_component.spawn_item(item, global_position)
+	lootdrop_component.spawn_item(roll, global_position)
 
 func attack():
 	weapon.attack(global_position, facing_vector[facing_direction])

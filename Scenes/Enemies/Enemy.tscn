@@ -44,6 +44,7 @@ position = Vector2(0, -24)
 [node name="MovementComponent" parent="." instance=ExtResource("2_tgmkk")]
 
 [node name="LootdropComponent" parent="." instance=ExtResource("6_u2fvg")]
+drops = Array[ExtResource("2_cl4c0")]([SubResource("Resource_gfqv7"), SubResource("Resource_wv6m3")])
 
 [connection signal="body_entered" from="Hearing" to="." method="on_hearing"]
 [connection signal="body_exited" from="Hearing" to="." method="on_hearing_exit"]
