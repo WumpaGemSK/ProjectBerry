@@ -14,7 +14,7 @@ func _on_timer_timeout():
 func _on_area_2d_area_entered(area):
 	if area is HitboxComponent:
 		var hitbox : HitboxComponent = area
-		hitbox.take_damage(damage)
+		hitbox.take_damage(damage, dir)
 		queue_free()
 		
 func set_col_mask(col: int):
