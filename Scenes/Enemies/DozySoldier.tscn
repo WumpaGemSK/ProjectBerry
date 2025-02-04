@@ -28,7 +28,7 @@ shape = SubResource("CapsuleShape2D_1xcwa")
 sprite_frames = ExtResource("3_fkjk1")
 animation = &"death"
 autoplay = "idle_down"
-frame_progress = 0.480192
+frame_progress = 0.843003
 
 [node name="HealthComponent" parent="Enemy" instance=ExtResource("4_y5h1i")]
 default_health = 10

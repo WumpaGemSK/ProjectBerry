@@ -24,7 +24,9 @@ shape = SubResource("CapsuleShape2D_l6yt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
 sprite_frames = ExtResource("3_fpsx0")
-animation = &"damaged_down"
+animation = &"death"
+frame = 31
+frame_progress = 1.0
 
 [node name="HealthComponent" parent="Enemy" instance=ExtResource("4_vp6ie")]
 default_health = 15
