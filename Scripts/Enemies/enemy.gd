@@ -110,10 +110,19 @@ func take_damage(amount: int):
 func death():
 	dead = true
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
+	for i in 6:
+		tween.tween_property(self, "modulate:a", 0.2, 0.25)
+		tween.tween_property(self, "modulate:a", 1, 0.25)
+	tween.tween_callback(self.spawn_loot)
+	tween.tween_callback(self.queue_free)
 	animated_sprite.play("death")
-	await animated_sprite.animation_finished
-	spawn_loot()
-	queue_free()
+	var hitbox: HitboxComponent = find_child("HitboxComponent")
+	var coll_shape : CollisionShape2D = find_child("CollisionShape2D")
+	if hitbox:
+		hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	if coll_shape:
+		coll_shape.process_mode = Node.PROCESS_MODE_DISABLED
 
 # TODO: Move to a "manager"?
 func spawn_loot():
