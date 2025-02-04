@@ -19,4 +19,3 @@ func _on_area_2d_area_entered(area):
 		
 func set_col_mask(col: int):
 	$Area2D.collision_mask |= 1 << (col-1)
-	print($Area2D.collision_mask)

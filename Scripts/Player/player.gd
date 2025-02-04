@@ -60,6 +60,15 @@ func _ready():
 func _process(_delta):
 	if paused:
 		return
+	play_animation()
+	if direction != Vector2.ZERO:
+		match state:
+			PlayerStates.NORMAL:
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_WALKING, global_position)
+			PlayerStates.SNEAKING:
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_SNEAKING, global_position)
+			PlayerStates.PUSHING:
+				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_PUSH, global_position)
 	if Input.is_action_just_pressed("melee_attack") and melee_weapon != null:
 		melee_weapon.attack(global_position, facing_vector[facing_direction])
 		state = PlayerStates.ATTACKING
@@ -97,16 +106,7 @@ func _physics_process(_delta: float) -> void:
 	elif direction == Vector2.UP:
 		facing_direction = facing.UP
 	velocity = direction * speed
-	play_animation()
 	move_and_slide()
-	if direction != Vector2.ZERO:
-		match state:
-			PlayerStates.NORMAL:
-				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_WALKING, global_position)
-			PlayerStates.SNEAKING:
-				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_SNEAKING, global_position)
-			PlayerStates.PUSHING:
-				AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_PUSH, global_position)
 	#region Push moveable boxes
 	var coll_count = get_slide_collision_count()
 	for i in coll_count:
