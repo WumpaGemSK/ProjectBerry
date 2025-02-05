@@ -16,7 +16,6 @@ signal equipped_weapon(weapon: Item)
 var direction : Vector2
 @export var normal_speed : float = 100
 @export var sneaking_speed : float= 50
-@export var knowback_force : float = 100
 var speed: float
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.DOWN
@@ -122,7 +121,7 @@ func _physics_process(_delta: float) -> void:
 	#endregion
 
 func on_damage_taken(impact_dir: Vector2):
-	velocity = impact_dir * knowback_force
+	velocity = impact_dir
 	move_and_slide()
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
 

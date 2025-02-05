@@ -4,6 +4,7 @@ class_name Bullet
 var dir: Vector2
 var speed: float = 300
 var damage = 0
+var knock_back
 
 func _process(delta):
 	global_position += dir*delta*speed
@@ -14,7 +15,7 @@ func _on_timer_timeout():
 func _on_area_2d_area_entered(area):
 	if area is HitboxComponent:
 		var hitbox : HitboxComponent = area
-		hitbox.take_damage(damage, dir)
+		hitbox.take_damage(damage, dir*knock_back)
 		queue_free()
 		
 func set_col_mask(col: int):

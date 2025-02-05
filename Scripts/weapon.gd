@@ -14,6 +14,8 @@ signal hit
 @export var weapon_range: float
 ## Damage caused by on attack of the weapon
 @export var damage: int
+
+@export var knockback_force : float = 100
 ## Is the weapon melee?
 @export var is_melee: bool
 var is_player: bool
@@ -27,12 +29,12 @@ func _ready():
 func attack(_from: Vector2, _direction: Vector2):
 	return
 
-func raycast_to_damageable(origin: Vector2, dir: Vector2):
+func raycast_to_damageable(origin: Vector2, dir: Vector2) -> Dictionary:
 	var dest : Vector2 = origin + dir*weapon_range
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(origin, dest)
 	var result = space_state.intersect_ray(query)
-	return result.collider if result.size() > 0 and result.position.distance_to(origin) < weapon_range else null
+	return result
 
 func reload(_item: Item):
 	return
