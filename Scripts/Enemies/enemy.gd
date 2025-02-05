@@ -4,6 +4,7 @@ class_name Enemy
 @onready var health_component = $HealthComponent
 @onready var movement_component = $MovementComponent
 @onready var lootdrop_component = $LootdropComponent
+@onready var hitbox_component : HitboxComponent = $HitboxComponent
 
 signal change_speed(new_speed: float)
 
@@ -71,6 +72,7 @@ func _ready():
 	facing_direction = original_facing_dir
 	health_component.health_depleted.connect(func(): call_deferred("death"))
 	movement_component.new_path_req.connect(new_path)
+	hitbox_component.damage_taken.connect(on_damage_taken)
 
 func new_path():
 	movement_component.path = state.get_move_path(global_position)
@@ -103,9 +105,10 @@ func on_view(body: Node2D):
 func on_view_exit(body: Node2D):
 	state.on_view_exit(body)
 
-func take_damage(amount: int):
+func on_damage_taken(impact_dir: Vector2):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
-	health_component.take_damage(amount)
+	velocity = impact_dir
+	move_and_slide()
 
 func death():
 	dead = true
