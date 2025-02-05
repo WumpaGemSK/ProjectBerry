@@ -18,7 +18,7 @@ var collision : CollisionShape2D = null
 @export var investigating_state: State
 @export var chasing_state: State
 
-@export_category("Facing direction")
+@export_category("Facing Direction")
 enum facing {RIGHT, LEFT, DOWN, UP}
 var facing_direction := facing.RIGHT
 @export var original_facing_dir : facing = facing.RIGHT
@@ -40,7 +40,7 @@ var paused: bool = false
 var dead: bool = false
 
 #region Faze in
-@export_category("Phase time")
+@export_category("Phase Time")
 @onready var phase_in : Timer = Timer.new()
 @export var phase_in_time: float = 1.0
 #endregion

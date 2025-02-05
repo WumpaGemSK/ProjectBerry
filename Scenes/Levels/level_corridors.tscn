@@ -163,8 +163,11 @@ sprite_frames = ExtResource("17_7b0hd")
 animation = &"damaged_down"
 
 [node name="HealthComponent" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("18_opmjx")]
+default_health = 15
+max_health = 15
 
-[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("19_4n7u8")]
+[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew" node_paths=PackedStringArray("health_component") instance=ExtResource("19_4n7u8")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_wvrhp")
@@ -193,8 +196,11 @@ sprite_frames = ExtResource("17_7b0hd")
 animation = &"damaged_down"
 
 [node name="HealthComponent" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("18_opmjx")]
+default_health = 15
+max_health = 15
 
-[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew2" instance=ExtResource("19_4n7u8")]
+[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew2" node_paths=PackedStringArray("health_component") instance=ExtResource("19_4n7u8")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew2/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_wvrhp")
@@ -223,8 +229,11 @@ sprite_frames = ExtResource("17_7b0hd")
 animation = &"damaged_down"
 
 [node name="HealthComponent" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("18_opmjx")]
+default_health = 15
+max_health = 15
 
-[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew3" instance=ExtResource("19_4n7u8")]
+[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew3" node_paths=PackedStringArray("health_component") instance=ExtResource("19_4n7u8")]
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew3/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_wvrhp")
