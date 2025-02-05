@@ -18,4 +18,4 @@ func _on_area_2d_area_entered(area):
 		queue_free()
 		
 func set_col_mask(col: int):
-	$Area2D.collision_mask |= 1 << (col-1)
+	$Area2D.collision_mask |= Utils.layer_to_mask(col)

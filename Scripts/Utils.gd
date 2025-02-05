@@ -9,3 +9,6 @@ static func format_time(time_left: float) -> String:
 
 static func ranking_to_string(ranking: Game.Ranking) -> String:
 	return Game.Ranking.keys()[ranking]
+
+static func layer_to_mask(layer_id: int) -> int:
+	return 1 << (layer_id-1)
