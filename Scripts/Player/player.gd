@@ -28,6 +28,7 @@ enum PlayerStates {
 	PANICKING,
 	ATTACKING,
 	PUSHING,
+	HURT,
 }
 var state: PlayerStates = PlayerStates.NORMAL
 #region Stats
@@ -80,7 +81,7 @@ func _process(_delta):
 		state = PlayerStates.NORMAL
 
 func _physics_process(_delta: float) -> void:
-	if paused:
+	if paused or state == PlayerStates.HURT:
 		return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
@@ -116,12 +117,20 @@ func _physics_process(_delta: float) -> void:
 			var force = speed
 			state = PlayerStates.PUSHING
 			collider.apply_central_impulse(-coll.get_normal()*force)
-	if coll_count == 0 and not is_sneaking() and not is_attacking():
+	if coll_count == 0 and state == PlayerStates.PUSHING:
 		state = PlayerStates.NORMAL
 	#endregion
 
 func on_damage_taken(impact_dir: Vector2):
 	velocity = impact_dir
+	state = PlayerStates.HURT
+	health_component.invulnerable = true
+	var tween = create_tween()
+	tween.tween_interval(1)
+	tween.tween_callback(func(): state = PlayerStates.NORMAL)
+	tween.chain()
+	tween = Utils.blink(tween, self, 2)
+	tween.tween_callback(func(): health_component.invulnerable = false)
 	move_and_slide()
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
 
@@ -209,6 +218,8 @@ func play_animation():
 			anim_name = smashing_animation()
 		PlayerStates.PUSHING:
 			anim_name = pushing_animation()
+		PlayerStates.HURT:
+			anim_name = hurt_animation()
 	my_animated_sprite.play(anim_name)
 
 ##Match the animation based on the movement direction
@@ -242,6 +253,9 @@ func normal_animation() -> String:
 func pushing_animation() -> String:
 	var anim_name = "push_" + check_facing_direction()
 	return anim_name
+
+func hurt_animation() -> String:
+	return "damaged_" + check_facing_direction()
 
 func weapon_name() -> String:
 	if ranged_weapon != null:

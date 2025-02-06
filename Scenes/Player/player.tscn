@@ -2324,7 +2324,6 @@ max_health = 5
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("15_lijdl")]
 unique_name_in_owner = true
 collision_layer = 2
-collision_mask = 1
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

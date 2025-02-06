@@ -114,9 +114,7 @@ func death():
 	dead = true
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
-	for i in 6:
-		tween.tween_property(self, "modulate:a", 0.2, 0.25)
-		tween.tween_property(self, "modulate:a", 1, 0.25)
+	tween = Utils.blink(tween, self, 3)
 	tween.tween_callback(self.spawn_loot)
 	tween.tween_callback(self.queue_free)
 	animated_sprite.play("death")
