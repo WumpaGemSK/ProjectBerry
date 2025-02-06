@@ -144,7 +144,6 @@ max_health = 10
 
 [node name="HitboxComponent" parent="Dozy" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
 collision_layer = 4
-collision_mask = 1
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dozy/HitboxComponent"]
@@ -180,7 +179,6 @@ max_health = 15
 
 [node name="HitboxComponent" parent="Patrol" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
 collision_layer = 4
-collision_mask = 1
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Patrol/HitboxComponent"]
