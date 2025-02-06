@@ -9,3 +9,4 @@ max_ammo = 50
 cooldown = 0.3
 weapon_range = 100.0
 damage = 2
+knockback_force = 500.0

@@ -6,4 +6,5 @@
 script = ExtResource("1_k866l")
 weapon_range = 20.0
 damage = 10
+knockback_force = 1000.0
 is_melee = true
