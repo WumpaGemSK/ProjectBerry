@@ -129,9 +129,7 @@ func on_damage_taken(impact_dir: Vector2):
 	tween.tween_interval(1)
 	tween.tween_callback(func(): state = PlayerStates.NORMAL)
 	tween.chain()
-	for i in 4:
-		tween.tween_property(self, "modulate:a", 0.2, 0.25)
-		tween.tween_property(self, "modulate:a", 1.0, 0.25)
+	tween = Utils.blink(tween, self, 2)
 	tween.tween_callback(func(): health_component.invulnerable = false)
 	move_and_slide()
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
