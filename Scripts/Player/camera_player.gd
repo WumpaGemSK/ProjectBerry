@@ -1,12 +1,14 @@
 extends Camera2D
 
 var rand : RandomNumberGenerator = RandomNumberGenerator.new()
-var noise : FastNoiseLite = FastNoiseLite.new()
+@export var noise : FastNoiseLite
 
 @export var noise_shake_strength : float = 10.0
 @export var duration : float = 1
 
 func _ready():
+	if noise == null:
+		noise = FastNoiseLite.new()
 	rand.randomize()
 	noise.seed = rand.randi()
 	noise.frequency = 2
