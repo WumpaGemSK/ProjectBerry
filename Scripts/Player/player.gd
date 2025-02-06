@@ -11,6 +11,7 @@ signal equipped_weapon(weapon: Item)
 
 @onready var my_animated_sprite := $AnimatedSprite2D
 @onready var canvas_layer = $CanvasLayer
+@onready var camera_2d = $Camera2D
 
 #movement variables
 var direction : Vector2
@@ -125,6 +126,7 @@ func on_damage_taken(impact_dir: Vector2):
 	velocity = impact_dir
 	state = PlayerStates.HURT
 	health_component.invulnerable = true
+	camera_2d.shake()
 	var tween = create_tween()
 	tween.tween_interval(1)
 	tween.tween_callback(func(): state = PlayerStates.NORMAL)
