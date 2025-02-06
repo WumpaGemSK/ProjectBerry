@@ -1,4 +1,4 @@
-[gd_scene load_steps=276 format=3 uid="uid://dbglcphu0b73y"]
+[gd_scene load_steps=277 format=3 uid="uid://dbglcphu0b73y"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_mr2b3"]
 [ext_resource type="Texture2D" uid="uid://cmuvdb2ld2bw0" path="res://Assets/Textures/Player/Final/Player_Anims-Sheet.png" id="2_6mfvp"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bcw3a4diywq55" path="res://Assets/Audio/SFX/SFX_INTERACTABLES_PICKUPITEM.wav" id="5_tktsc"]
 [ext_resource type="PackedScene" uid="uid://c676wkgvtoiow" path="res://Scenes/UI/HUD/MainHUD.tscn" id="8_tg8g7"]
 [ext_resource type="PackedScene" uid="uid://dfuoye8ph1bm3" path="res://Scenes/UI/Inventory_UI.tscn" id="9_5wdyj"]
+[ext_resource type="Script" path="res://Scripts/Player/camera_player.gd" id="10_4t6dd"]
 [ext_resource type="PackedScene" uid="uid://ca0tqqg420vog" path="res://Scenes/UI/InGameMenu.tscn" id="10_431hd"]
 [ext_resource type="PackedScene" uid="uid://ts27uiko6jgi" path="res://Scenes/UI/ContinueScreen.tscn" id="11_yhs7u"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="12_voviu"]
@@ -2295,6 +2296,7 @@ drag_right_margin = 0.05
 drag_bottom_margin = 0.08
 editor_draw_limits = true
 editor_draw_drag_margin = true
+script = ExtResource("10_4t6dd")
 
 [node name="FeetCollision" type="Area2D" parent="."]
 collision_layer = 2
