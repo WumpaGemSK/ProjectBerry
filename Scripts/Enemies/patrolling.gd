@@ -4,9 +4,11 @@ extends State
 @export var patrolling_speed: float = 20
 ## The path to follow by the enemy
 @export var patrol_path : Path2D
+@export var recheck_time: float = 0.5
 var path_follow: PathFollow2D = null
 var progress: float = 0.0
 var enemy: Enemy
+var timer: Timer = null
 
 func enter():
 	enemy = get_parent()
@@ -18,6 +20,13 @@ func enter():
 	progress += patrolling_speed
 	path_follow.progress = progress
 	enemy.change_speed.emit(patrolling_speed)
+	if timer == null:
+		timer = Timer.new()
+		timer.one_shot = true
+		timer.wait_time = recheck_time
+		timer.autostart = false
+		add_child(timer)
+		timer.timeout.connect(should_switch_to_investigating)
 	
 func process(_delta: float):
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_RUN, enemy.global_position)
@@ -36,6 +45,9 @@ func process(_delta: float):
 			animation = "walk_side"
 	enemy.animated_sprite.play(animation)
 
+func exit():
+	timer.stop()
+
 func get_move_path(curr: Vector2) -> PackedVector2Array:
 	progress += patrolling_speed
 	path_follow.progress = progress
@@ -43,13 +55,15 @@ func get_move_path(curr: Vector2) -> PackedVector2Array:
 
 func on_hearing(body: Node2D):
 	if body is Player:
-		should_switch_to_investigating(body)
-	
+		timer.start(recheck_time)
+		should_switch_to_investigating()
+
 func on_view(body: Node2D):
 	if body is Player:
 		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
 			state_change.emit(Enemy.States.CHASING)
 
-func should_switch_to_investigating(player: Player):
-	if player != null and not player.is_sneaking():
+func should_switch_to_investigating():
+	timer.start(recheck_time)
+	if not enemy.player.is_sneaking():
 		state_change.emit(Enemy.States.INVESTIGATING)
