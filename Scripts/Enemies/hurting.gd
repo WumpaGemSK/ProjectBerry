@@ -28,21 +28,3 @@ func process(_delta: float):
 			enemy.animated_sprite.flip_h = false
 			animation += "side"
 	enemy.animated_sprite.play(animation)
-
-func get_move_path(curr: Vector2) -> PackedVector2Array:
-	return []
-
-func exit():
-	return
-
-func on_hearing(_body: Node2D):
-	return
-
-func on_hearing_exit(_body: Node2D):
-	return
-
-func on_view(_body: Node2D):
-	return
-
-func on_view_exit(_body: Node2D):
-	return
