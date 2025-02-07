@@ -163,11 +163,12 @@ animation = &"damaged_side"
 
 [node name="Hurting" parent="Dozy" instance=ExtResource("27_8yvbw")]
 
-[node name="Patrol" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
+[node name="Patrol" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state", "hurting_state") instance=ExtResource("19_ws17x")]
 position = Vector2(-64, 84)
 idle_state = NodePath("Patrol")
 investigating_state = NodePath("Inv")
 chasing_state = NodePath("chase")
+hurting_state = NodePath("Hurting")
 weapon_scn = ExtResource("20_njlq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Patrol"]
@@ -195,3 +196,5 @@ chasing_speed = 30.0
 patrol_path = NodePath("../../Path2D")
 
 [node name="Inv" parent="Patrol" instance=ExtResource("25_o0ic5")]
+
+[node name="Hurting" parent="Patrol" instance=ExtResource("27_8yvbw")]
