@@ -17,6 +17,7 @@ var collision : CollisionShape2D = null
 @export var idle_state : State
 @export var investigating_state: State
 @export var chasing_state: State
+@export var hurting_state: State
 
 @export_category("Facing Direction")
 enum facing {RIGHT, LEFT, DOWN, UP}
@@ -48,7 +49,8 @@ var dead: bool = false
 enum States {
 	IDLE,
 	INVESTIGATING,
-	CHASING
+	CHASING,
+	HURTING
 }
 var state : State
 # Called when the node enters the scene tree for the first time.
@@ -76,8 +78,6 @@ func _ready():
 
 func new_path():
 	movement_component.path = state.get_move_path(global_position)
-	if movement_component.path.is_empty():
-		to_idle_state()
 
 func _process(delta):
 	if paused or dead:
@@ -106,6 +106,7 @@ func on_view_exit(body: Node2D):
 	state.on_view_exit(body)
 
 func on_damage_taken(impact_dir: Vector2):
+	on_change_state(Enemy.States.HURTING)
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
 	velocity = impact_dir
 	move_and_slide()
@@ -171,6 +172,8 @@ func on_change_state(new_state: States):
 			state = investigating_state
 		States.CHASING:
 			state = chasing_state
+		States.HURTING:
+			state = hurting_state
 	connect_state_signals()
 	state.enter()
 	movement_component.path = state.get_move_path(global_position)

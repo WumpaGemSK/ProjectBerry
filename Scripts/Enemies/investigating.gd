@@ -45,7 +45,12 @@ func process(_delta: float):
 	enemy.animated_sprite.play(animation)
 
 func get_move_path(curr: Vector2) -> PackedVector2Array:
-	return PathfindingManager.get_valid_path(curr, target)
+	var path =PathfindingManager.get_valid_path(curr, target)
+	if path.is_empty():
+		state_change.emit(Enemy.States.IDLE)
+		return []
+	else:
+		return path
 
 func exit():
 	timer.stop()

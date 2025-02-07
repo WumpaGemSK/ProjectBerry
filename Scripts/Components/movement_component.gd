@@ -9,7 +9,6 @@ var speed : float :
 var path : PackedVector2Array = [] :
 	set(value):
 		path = value
-		queue_redraw()
 
 func step(current_pos: Vector2) -> Vector2:
 	if path.is_empty():
