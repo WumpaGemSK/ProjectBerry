@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://xahefqpgkdu8"]
+[gd_scene load_steps=34 format=4 uid="uid://xahefqpgkdu8"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_6s21k"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="2_0nvdr"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://tb3peqakitul" path="res://Scenes/Enemies/States/Doze.tscn" id="24_0233l"]
 [ext_resource type="PackedScene" uid="uid://d2vjmgnj0nfch" path="res://Scenes/Enemies/States/Investigate.tscn" id="25_o0ic5"]
 [ext_resource type="PackedScene" uid="uid://b8eo6b1mv3v5a" path="res://Scenes/Components/HitboxComponent.tscn" id="26_vsq0v"]
+[ext_resource type="PackedScene" uid="uid://c4qydoftxjlri" path="res://Scenes/Enemies/States/Hurting.tscn" id="27_8yvbw"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8ast"]
 _data = {
@@ -126,12 +127,13 @@ position = Vector2(-104, 64)
 [node name="Player" parent="." instance=ExtResource("18_wcrhm")]
 position = Vector2(188, 201)
 
-[node name="Dozy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
+[node name="Dozy" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state", "hurting_state") instance=ExtResource("19_ws17x")]
 position = Vector2(89, 244)
 rotation_speed = 2.0
 idle_state = NodePath("Doze")
 investigating_state = NodePath("Inv")
 chasing_state = NodePath("chase")
+hurting_state = NodePath("Hurting")
 original_facing_dir = 2
 weapon_scn = ExtResource("20_njlq3")
 
@@ -151,13 +153,15 @@ shape = SubResource("CapsuleShape2D_iyxv6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dozy"]
 sprite_frames = ExtResource("20_la463")
-animation = &"sleeping_down"
+animation = &"damaged_side"
 
 [node name="Doze" parent="Dozy" instance=ExtResource("24_0233l")]
 
 [node name="Inv" parent="Dozy" instance=ExtResource("25_o0ic5")]
 
 [node name="chase" parent="Dozy" instance=ExtResource("24_75vh8")]
+
+[node name="Hurting" parent="Dozy" instance=ExtResource("27_8yvbw")]
 
 [node name="Patrol" parent="." node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("19_ws17x")]
 position = Vector2(-64, 84)
