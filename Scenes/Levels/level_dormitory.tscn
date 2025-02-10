@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bbh2fonbqlnrn"]
+[gd_scene load_steps=23 format=4 uid="uid://bbh2fonbqlnrn"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_1ltkl"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_57dhs"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cqo5oc0myygi" path="res://Scenes/Enemies/States/Patrol.tscn" id="15_w8lqj"]
 [ext_resource type="PackedScene" uid="uid://d2vjmgnj0nfch" path="res://Scenes/Enemies/States/Investigate.tscn" id="16_mf7g6"]
 [ext_resource type="PackedScene" uid="uid://dfl2dtlwqximk" path="res://Scenes/Enemies/States/Chase.tscn" id="17_86um5"]
+[ext_resource type="PackedScene" uid="uid://c4qydoftxjlri" path="res://Scenes/Enemies/States/Hurting.tscn" id="18_umv8r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bd27k"]
 vertices = PackedVector2Array(16, 10, 16, 38, 14, 38, 10, 10, 10, 302, 14, 64, 16, 64, 16, 98, 14, 98, 14, 124, 16, 124, 16, 158, 14, 158, 14, 184, 16, 184, 16, 218, 14, 218, 14, 244, 326, 302, 58, 244, 58, 219, 80, 219, 134, 244, 80, 184, 58, 184, 58, 159, 80, 159, 80, 124, 58, 124, 58, 99, 80, 99, 80, 64, 58, 64, 58, 39, 80, 39, 80, 10, 136, 10, 134, 38, 136, 38, 134, 64, 134, 98, 136, 64, 136, 98, 134, 124, 134, 158, 136, 124, 136, 158, 134, 184, 134, 218, 136, 184, 136, 218, 178, 244, 178, 219, 200, 219, 278, 244, 200, 184, 178, 184, 178, 159, 200, 159, 200, 124, 178, 124, 178, 99, 200, 99, 200, 64, 178, 64, 178, 39, 200, 39, 200, 10, 256, 10, 256, 39, 256, 64, 278, 39, 278, 64, 256, 99, 256, 124, 278, 99, 278, 124, 256, 159, 256, 184, 278, 159, 278, 184, 256, 219, 278, 219, 322, 218, 320, 218, 320, 184, 322, 184, 322, 158, 320, 158, 320, 124, 322, 124, 322, 98, 320, 98, 320, 64, 322, 64, 322, 38, 320, 38, 320, 10, 326, 10, 322, 244)
@@ -157,11 +158,12 @@ item = ExtResource("7_iefpp")
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="PatrollingSoldierNew" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state") instance=ExtResource("10_pxtrt")]
+[node name="PatrollingSoldierNew" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state", "hurting_state") instance=ExtResource("10_pxtrt")]
 position = Vector2(84, 24)
 idle_state = NodePath("Patrol")
 investigating_state = NodePath("Inv")
 chasing_state = NodePath("chase")
+hurting_state = NodePath("Hurting")
 weapon_scn = ExtResource("11_8kycl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew"]
@@ -187,6 +189,8 @@ investigating_speed = 40.0
 
 [node name="chase" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("17_86um5")]
 chasing_speed = 60.0
+
+[node name="Hurting" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("18_umv8r")]
 
 [node name="Path2D" type="Path2D" parent="Enemies"]
 curve = SubResource("Curve2D_jurtc")
