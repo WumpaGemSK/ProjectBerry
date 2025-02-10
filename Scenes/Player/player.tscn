@@ -2260,10 +2260,8 @@ shape = SubResource("CapsuleShape2D_cnwvd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ahdws")
-animation = &"sneak_up_cricket_bat"
+animation = &"death"
 autoplay = "idle_down_semicalm_no_weapon"
-frame = 7
-frame_progress = 0.138841
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "output_section": true,

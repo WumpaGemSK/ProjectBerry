@@ -141,8 +141,8 @@ weapon_scn = ExtResource("20_njlq3")
 shape = SubResource("CapsuleShape2D_0kjx1")
 
 [node name="HealthComponent" parent="Dozy" instance=ExtResource("21_fjejc")]
-default_health = 30
-max_health = 30
+default_health = 10
+max_health = 10
 
 [node name="HitboxComponent" parent="Dozy" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
 collision_layer = 4
