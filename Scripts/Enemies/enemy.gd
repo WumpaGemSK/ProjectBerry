@@ -84,8 +84,6 @@ func _process(delta):
 		return
 	rotate_fov(delta)
 	state.process(delta)
-	if velocity == Vector2.ZERO:
-		facing_direction = original_facing_dir
 
 # Called every frame. 'delta' is the ealapsed time since the previous frame.
 func _physics_process(_delta):

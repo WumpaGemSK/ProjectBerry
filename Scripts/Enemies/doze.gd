@@ -33,6 +33,7 @@ func process(_delta: float):
 	var dist = enemy.global_position.distance_to(resting_pos)
 	if is_stopped and dist < 20: # TODO: Distance is not accurate since resting_pos might be moved from what the pathing ends when returning
 		AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_SLEEPING, enemy.global_position)
+		enemy.facing_direction = enemy.original_facing_dir
 
 func velocity_almost_zero(vec: Vector2):
 	return is_zero_approx(vec.x) and is_zero_approx(vec.y)
