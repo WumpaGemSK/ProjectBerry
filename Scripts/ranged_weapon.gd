@@ -13,7 +13,7 @@ func _ready():
 	EventBus.pistol_ammo_upgrade.emit(max_ammo)
 
 func attack(from: Vector2, dir: Vector2):
-	if cooldown_timer.is_stopped() and ammo > 0 and enemy_in_line(from, dir):
+	if cooldown_timer.is_stopped() and ammo > 0 and (enemy_in_line(from, dir) or is_player):
 		EventBus.fire_bullet.emit(from, dir, damage, is_player, knockback_force)
 		AudioManager.play_effect(SoundEffect.SoundType.ENEMY_SHOOT)
 		ammo -= 1
