@@ -72,6 +72,7 @@ func _ready():
 	EventBus.resume.connect(on_resume)
 	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
+	fov.rotation = facing_rotation[facing_direction]
 	health_component.health_depleted.connect(func(): call_deferred("death"))
 	movement_component.new_path_req.connect(new_path)
 	hitbox_component.damage_taken.connect(on_damage_taken)
