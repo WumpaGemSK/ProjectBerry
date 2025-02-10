@@ -14,7 +14,7 @@ static func layer_to_mask(layer_id: int) -> int:
 	return 1 << (layer_id-1)
 
 static func blink(tween: Tween, node: Node, iterations: int) -> Tween:
-	for i in iterations*2:
-		tween.tween_property(node, "modulate:a", 0.2, 0.25)
-		tween.tween_property(node, "modulate:a", 1.0, 0.25)
+	for i in iterations*3:
+		tween.tween_property(node, "modulate:a", 0.2, 0.10)
+		tween.tween_property(node, "modulate:a", 1.0, 0.10)
 	return tween
