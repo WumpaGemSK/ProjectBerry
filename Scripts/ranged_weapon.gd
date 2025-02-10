@@ -12,9 +12,9 @@ func _ready():
 	EventBus.pistol_ammo_update.emit(ammo)
 	EventBus.pistol_ammo_upgrade.emit(max_ammo)
 
-func attack(from: Vector2, dest: Vector2):
-	if cooldown_timer.is_stopped() and ammo > 0:
-		EventBus.fire_bullet.emit(from, dest, damage, is_player, knockback_force)
+func attack(from: Vector2, dir: Vector2):
+	if cooldown_timer.is_stopped() and ammo > 0 and (enemy_in_line(from, dir) or is_player):
+		EventBus.fire_bullet.emit(from, dir, damage, is_player, knockback_force)
 		AudioManager.play_effect(SoundEffect.SoundType.ENEMY_SHOOT)
 		ammo -= 1
 		cooldown_timer.start(cooldown)
@@ -41,3 +41,12 @@ func upgrade(item: Item):
 			max_ammo += item.effect
 			EventBus.pistol_ammo_upgrade.emit(max_ammo)
 			EventBus.item_used.emit(item)
+
+func enemy_in_line(origin: Vector2, dir: Vector2) -> bool:
+	var result = false
+	var raycast = raycast_to_damageable(origin, dir)
+	if raycast.size() > 0:
+		var coll = raycast.collider
+		var dist = coll.position.distance_to(origin)
+		result = coll != null and coll.is_in_group("Damageable") and dist < weapon_range
+	return result

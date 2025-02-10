@@ -1,8 +1,8 @@
 extends Weapon
 
-func attack(from: Vector2, dest: Vector2):
+func attack(from: Vector2, dir: Vector2):
 	if cooldown_timer.is_stopped():
-		var r = raycast_to_damageable(from, dest)
+		var r = raycast_to_damageable(from, dir)
 		if r.size() > 0:
 			var result = r.collider
 			if result != null and result.is_in_group("Damageable") and result.position.distance_to(from) < weapon_range:
