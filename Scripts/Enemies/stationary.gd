@@ -26,7 +26,7 @@ func enter():
 	enemy.change_speed.emit(movement_speed)
 
 func process(_delta: float):	
-	if enemy.global_position.distance_to(enemy.resting_position)< .2:
+	if enemy.global_position.distance_to(enemy.resting_position)< 1:
 		enemy.facing_direction = enemy.original_facing_dir
 	var dir = enemy.facing_direction
 	var animation = "idle_" if enemy.global_position.distance_to(enemy.resting_position)< 0.2 else "walk_"
