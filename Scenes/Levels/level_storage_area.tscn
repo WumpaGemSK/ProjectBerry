@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dbsg4c21utypq"]
+[gd_scene load_steps=13 format=4 uid="uid://dbsg4c21utypq"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_storage_area.gd" id="1_6p5kb"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_hg4ky"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6gygp2gyhnlm" path="res://Scenes/Levels/Components/FaxMachine.tscn" id="6_5o141"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="8_gnvsa"]
 [ext_resource type="Resource" uid="uid://bwjdodifjd0xh" path="res://Resources/Items/key_2.tres" id="9_di2w2"]
+[ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="10_ph1ts"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ssjd3"]
 vertices = PackedVector2Array(201, 183, 105, 183, 153, 177, 159, 177, 111, 177, 105, 159, 111, 111, 302, 302, 159, 302, 273, 225, 279, 225, 207, 225, 159, 282, 189, -10, 189, -14, 302, -14, 302, 39, 255, 39, 255, 177, 302, 177, 302, 183, 279, 183, 302, 225, 273, 183, 249, 183, 249, 39, 39, 39, 123, -10, 39, 81, 63, 81, 63, 87, 39, 87, 105, 81, 135, 81, 135, 105, 183, 105, 183, 135, 159, 135, 153, 111, 201, 177, 201, 153, 207, 153, 134, 278, 134, 302, 10, 302, 10, 225, 201, 225, 158.68, 278, 63, 159, 63, 183, 33, 183, 39, 153, 33, 111, 10, 111, 10, 81, 33, 81, 33, -14, 123, -14, 105, 153, 158.711, 282)
@@ -250,3 +251,13 @@ shape = SubResource("CircleShape2D_idlql")
 [node name="Key2" parent="." instance=ExtResource("8_gnvsa")]
 position = Vector2(252, 108)
 item = ExtResource("9_di2w2")
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="SmallMedipack" parent="Items" instance=ExtResource("8_gnvsa")]
+position = Vector2(108, 96)
+item = ExtResource("10_ph1ts")
+
+[node name="SmallMedipack2" parent="Items" instance=ExtResource("8_gnvsa")]
+position = Vector2(12, 96)
+item = ExtResource("10_ph1ts")
