@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bfpb1xlfmeq4"]
+[gd_scene load_steps=18 format=4 uid="uid://bfpb1xlfmeq4"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_training_room.gd" id="1_iv6j5"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/mine_manager.gd" id="1_k613r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Puzzles/barrier.gd" id="6_wrn78"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="9_ealpb"]
 [ext_resource type="Resource" uid="uid://de1egv7b8m83v" path="res://Resources/Items/pistol_rate_upgrade.tres" id="10_mh7b0"]
+[ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="11_kqvbs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryfg7"]
 atlas = ExtResource("4_cf3pp")
@@ -334,3 +335,7 @@ polygon = PackedVector2Array(-111, -27, -111, 15, 111, 15, 111, -27, 105, -27, 1
 [node name="FireRateUpgrade" parent="." instance=ExtResource("9_ealpb")]
 position = Vector2(120, 12)
 item = ExtResource("10_mh7b0")
+
+[node name="AmmoPack" parent="." instance=ExtResource("9_ealpb")]
+position = Vector2(240, 12)
+item = ExtResource("11_kqvbs")
