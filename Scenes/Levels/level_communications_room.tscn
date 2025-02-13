@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dha465jh4krfi"]
+[gd_scene load_steps=11 format=4 uid="uid://dha465jh4krfi"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/Levels/level_communications_room.gd" id="1_s5uxb"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="1_y4c6m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Puzzles/switchboard_manager.gd" id="3_rjsnr"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="7_7pjbt"]
 [ext_resource type="Resource" uid="uid://b11xwof4wy2b0" path="res://Resources/Items/barbed_wire.tres" id="8_hp3u5"]
+[ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="9_nphea"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nfilk"]
 vertices = PackedVector2Array(446, 116, 418, 116, 310, 100, 338, 100, 410, 179, 374, 176, 310, 160, 328, 158, 394, 158, 410, 160, 418, 176, 418, 179, 494, 254, 226, 254, 310, 220, 338, 220, 266, 220, 454, 160, 494, 34, 454, 179, 454, 119, 454, 100, 446, 119, 454, 59, 226, 34, 266, 179, 410, 119, 394, 122, 310, 119, 328, 122, 410, 100, 310, 59, 302, 59, 302, 56, 274, 56, 274, 59, 266, 59, 418, 119, 266, 100, 302, 116, 302, 119, 274, 116, 274, 119, 266, 119, 446, 179, 446, 176, 410, 220, 382, 220, 382, 179, 374, 179, 346, 176, 346, 179, 338, 179, 310, 179, 302, 179, 302, 176, 274, 176, 274, 179, 266, 160, 446, 59, 446, 56, 418, 56, 418, 59, 410, 59, 374, 56, 382, 100, 382, 59, 374, 59, 346, 56, 346, 59, 338, 59, 454, 220)
@@ -84,5 +85,9 @@ door_tier = 2
 opened = true
 
 [node name="BarbedWire" parent="." instance=ExtResource("7_7pjbt")]
-position = Vector2(360, 48)
+position = Vector2(240, 48)
 item = ExtResource("8_hp3u5")
+
+[node name="LargeMedipack" parent="." instance=ExtResource("7_7pjbt")]
+position = Vector2(240, 240)
+item = ExtResource("9_nphea")
