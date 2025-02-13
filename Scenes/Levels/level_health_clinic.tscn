@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dyjh511xabodo"]
+[gd_scene load_steps=16 format=4 uid="uid://dyjh511xabodo"]
 
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_bqk3b"]
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_c051a"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="6_fvuvt"]
 [ext_resource type="Resource" uid="uid://do3jk14fo27gw" path="res://Resources/Envelopes/hint_quack.tres" id="7_22xmn"]
 [ext_resource type="Texture2D" uid="uid://blaf6e2w15oi8" path="res://Assets/Textures/Environment/Props/Exam_Table.png" id="7_fbtwc"]
+[ext_resource type="Resource" uid="uid://bd4iin6hij5e2" path="res://Resources/Items/large_medipack.tres" id="10_qoj0t"]
+[ext_resource type="Resource" uid="uid://b254kche65dbx" path="res://Resources/Items/serum.tres" id="11_f58u1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ar5qa"]
 vertices = PackedVector2Array(38, 158, 10, 158, 10, 148, 38, 148, 134, 158, 106, 158, 106, 148, 134, 148, 106, 74, 134, 16, 134, 110, 106, 98, 106, 42, 10, 16, 38, 25.4219, 106, 110, 38, 74, 38, 98, 38, 110, 10, 110, 74.1797, 42)
@@ -95,5 +97,27 @@ door_tier = 3
 position = Vector2(36, 84)
 
 [node name="Hint" parent="." instance=ExtResource("6_fvuvt")]
-position = Vector2(37, -1)
+position = Vector2(72, 114)
 item = ExtResource("7_22xmn")
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="LargeMedipack" parent="Items" instance=ExtResource("6_fvuvt")]
+position = Vector2(24, 0)
+item = ExtResource("10_qoj0t")
+
+[node name="Serum" parent="Items" instance=ExtResource("6_fvuvt")]
+position = Vector2(48, 0)
+item = ExtResource("11_f58u1")
+
+[node name="LargeMedipack2" parent="Items" instance=ExtResource("6_fvuvt")]
+position = Vector2(72, 0)
+item = ExtResource("10_qoj0t")
+
+[node name="Serum2" parent="Items" instance=ExtResource("6_fvuvt")]
+position = Vector2(96, 0)
+item = ExtResource("11_f58u1")
+
+[node name="LargeMedipack3" parent="Items" instance=ExtResource("6_fvuvt")]
+position = Vector2(120, 0)
+item = ExtResource("10_qoj0t")

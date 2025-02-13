@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d2jm3hkkc6pu1"]
+[gd_scene load_steps=12 format=4 uid="uid://d2jm3hkkc6pu1"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_aioyk"]
 [ext_resource type="Script" path="res://Scripts/Puzzles/hint_selector.gd" id="1_hxx32"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://do4ksn62ioub8" path="res://Assets/Textures/Environment/Props/janitor_broom.png" id="6_wtlqa"]
 [ext_resource type="Texture2D" uid="uid://b7vupjqsgulld" path="res://Assets/Textures/Environment/Props/janitor_water_bucket.png" id="7_tkg75"]
 [ext_resource type="Resource" uid="uid://1e55es1vkmld" path="res://Resources/Items/pistol_max_ammo_upgrade.tres" id="8_l3med"]
+[ext_resource type="Resource" uid="uid://c6ap5w4fvil5l" path="res://Resources/Items/pistol_ammo.tres" id="9_dn772"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4w6v"]
 vertices = PackedVector2Array(104, 16, 104, 10, 134, 10, 134, 62, 10, 62, 64, 16, 10, 10, 64, 10)
@@ -49,7 +50,7 @@ door_tier = 3
 position = Vector2(60, 36)
 
 [node name="Hint" parent="." instance=ExtResource("4_42vn2")]
-position = Vector2(131, 59)
+position = Vector2(132, 60)
 item = ExtResource("5_5qj4g")
 
 [node name="JanitorBroom" type="Sprite2D" parent="."]
@@ -59,3 +60,7 @@ texture = ExtResource("6_wtlqa")
 [node name="MaxAmmoUpgrade" parent="." instance=ExtResource("4_42vn2")]
 position = Vector2(12, 12)
 item = ExtResource("8_l3med")
+
+[node name="AmmoPack" parent="." instance=ExtResource("4_42vn2")]
+position = Vector2(12, 60)
+item = ExtResource("9_dn772")
