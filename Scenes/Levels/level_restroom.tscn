@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://21wnnmifx0jc"]
+[gd_scene load_steps=11 format=4 uid="uid://21wnnmifx0jc"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_nrqx3"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_av5o7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0x0ssd1klkd7" path="res://Assets/Textures/Environment/Props/toilet.png" id="4_pvjhn"]
 [ext_resource type="PackedScene" uid="uid://ds40r7tmgfegq" path="res://Scenes/Pickable_Item.tscn" id="5_soda7"]
 [ext_resource type="Resource" uid="uid://cffypxfbe1pgc" path="res://Resources/Secrets/general_griffin_log.tres" id="6_5ismf"]
+[ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="7_men46"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4ye3u"]
 vertices = PackedVector2Array(134, 14, 134, 62, 10, 62, 34, 51, 10, 51, 34, 26, 10, 14, 10, 26)
@@ -55,6 +56,10 @@ direction = 1
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(84, 36)
 
-[node name="Pickable_Item" parent="." instance=ExtResource("5_soda7")]
-position = Vector2(60, 0)
+[node name="GriffinLog" parent="." instance=ExtResource("5_soda7")]
+position = Vector2(84, 0)
 item = ExtResource("6_5ismf")
+
+[node name="SmallMedipack" parent="." instance=ExtResource("5_soda7")]
+position = Vector2(36, 0)
+item = ExtResource("7_men46")
