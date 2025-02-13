@@ -273,10 +273,10 @@ curve = SubResource("Curve2D_1w5xl")
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Large Medipack" parent="Items" instance=ExtResource("25_7s0ju")]
+[node name="LargeMedipack" parent="Items" instance=ExtResource("25_7s0ju")]
 position = Vector2(492, 24)
 item = ExtResource("26_s1qcd")
 
-[node name="Large Medipack2" parent="Items" instance=ExtResource("25_7s0ju")]
+[node name="LargeMedipack2" parent="Items" instance=ExtResource("25_7s0ju")]
 position = Vector2(60, 960)
 item = ExtResource("26_s1qcd")

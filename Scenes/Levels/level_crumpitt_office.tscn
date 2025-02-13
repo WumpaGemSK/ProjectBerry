@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cl8j6qti8ybd2"]
+[gd_scene load_steps=18 format=4 uid="uid://cl8j6qti8ybd2"]
 
 [ext_resource type="TileSet" uid="uid://d7b6jb8080j1" path="res://Assets/Textures/Environment/Tiles/Basic/basic_wall_floor_tileset.tres" id="1_3v52g"]
 [ext_resource type="PackedScene" uid="uid://qd52tygcd2ia" path="res://Scenes/ScenePortal.tscn" id="2_p2c5d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b65a58j3jvw05" path="res://Assets/Textures/Environment/Props/paper_waste_basket_overlay.png" id="9_gfitf"]
 [ext_resource type="Resource" uid="uid://p3j3obuyohxw" path="res://Resources/Secrets/davenport_daily_newspaper.tres" id="9_hbwa8"]
 [ext_resource type="Texture2D" uid="uid://ju6o8rhc54ew" path="res://Assets/Textures/Environment/Props/crumpitt_office_drawer.png" id="11_0mu6g"]
+[ext_resource type="Resource" uid="uid://cqu0yb83hxqtx" path="res://Resources/Items/small_medipack.tres" id="12_5vdj3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u6vrr"]
 vertices = PackedVector2Array(10, 158, 10, 94, 38, 94, 38, 120, 134, 158, 106, 120, 134, 10, 106, 38, 46, 10, 46, 29, 38, 38, 10, 29, 10, 56, 38, 56)
@@ -100,3 +101,7 @@ item = ExtResource("7_ynarm")
 [node name="Key1" parent="." instance=ExtResource("6_mqxqr")]
 position = Vector2(86, 108)
 item = ExtResource("8_7i7gx")
+
+[node name="SmallMedipack" parent="." instance=ExtResource("6_mqxqr")]
+position = Vector2(132, -10)
+item = ExtResource("12_5vdj3")
