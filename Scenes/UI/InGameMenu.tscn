@@ -49,8 +49,15 @@ text = "Display options"
 layout_mode = 2
 text = "Return to title"
 
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer"]
+layout_mode = 2
+step = 0.5
+value = 1.0
+prefix = "Time scale"
+
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="VBoxContainer/Display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]
+[connection signal="value_changed" from="VBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]

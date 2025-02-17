@@ -4,6 +4,11 @@ extends PanelContainer
 
 @export var audio_settings_popup : PackedScene
 @export var display_options_popup : PackedScene
+@onready var spin_box = $VBoxContainer/SpinBox
+
+func _ready():
+	if not OS.has_feature("editor"):
+		spin_box.visible = false
 
 ## Listen for the "options" action and show the menu. Make the resume button
 ## grab the focus to be able to use keyboard/controller to navigate
@@ -49,3 +54,10 @@ func _on_in_game_menu_visibility_changed():
 		EventBus.pause.emit()
 	else:
 		EventBus.resume.emit()
+
+
+func _on_spin_box_value_changed(value):
+	if value <= 0:
+		return
+	Engine.time_scale = value
+	pass # Replace with function body.
