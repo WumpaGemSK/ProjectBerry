@@ -38,6 +38,7 @@ func _ready():
 	EventBus.player_death.connect(on_player_death)
 	EventBus.secret_pickup.connect(on_secret_pickup)
 	EventBus.reset.connect(reset)
+	CountdownTimer.time_run_out.connect(on_time_run_out)
 
 func on_code_try(code: String):
 	if code == selected_code:
@@ -116,3 +117,6 @@ func reset():
 	secret_count = 0
 	retries = 3
 	score = null
+
+func on_time_run_out():
+	get_tree().change_scene_to_file("res://Scenes/GameOverScene.tscn")
