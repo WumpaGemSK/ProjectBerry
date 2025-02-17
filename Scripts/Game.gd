@@ -119,4 +119,4 @@ func reset():
 	score = null
 
 func on_time_run_out():
-	get_tree().change_scene_to_file("res://Scenes/GameOverScene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Cutscenes/bad_ending.tscn")
