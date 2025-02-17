@@ -119,4 +119,6 @@ func reset():
 	score = null
 
 func on_time_run_out():
+	TransitionScreen.transition_white()
+	await TransitionScreen.on_transition_finished
 	get_tree().change_scene_to_file("res://Scenes/Cutscenes/bad_ending.tscn")

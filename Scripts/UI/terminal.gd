@@ -21,9 +21,13 @@ func _on_send_code_pressed():
 	EventBus.try_code.emit(code)
 
 func on_terminal_open():
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
 	visible = true
 	EventBus.pause.emit()
 
 func on_terminal_close():
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
 	visible = false
 	EventBus.resume.emit()
