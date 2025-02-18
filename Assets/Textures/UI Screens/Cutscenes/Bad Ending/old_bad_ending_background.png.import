@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm60l0pkuha05"
-path="res://.godot/imported/bad_ending_background.png-b65848c277faa09be4e2e7320303756a.ctex"
+path="res://.godot/imported/old_bad_ending_background.png-0771a1523a9ba7aed01bfc2d22d01791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/UI Screens/Cutscenes/Bad Ending/bad_ending_background.png"
-dest_files=["res://.godot/imported/bad_ending_background.png-b65848c277faa09be4e2e7320303756a.ctex"]
+source_file="res://Assets/Textures/UI Screens/Cutscenes/Bad Ending/old_bad_ending_background.png"
+dest_files=["res://.godot/imported/old_bad_ending_background.png-0771a1523a9ba7aed01bfc2d22d01791.ctex"]
 
 [params]
 

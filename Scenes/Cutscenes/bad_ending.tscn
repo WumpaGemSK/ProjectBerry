@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scripts/UI/game_over_scene.gd" id="1_vqbno"]
 [ext_resource type="PackedScene" uid="uid://f7kk4ik4y6nf" path="res://Scenes/UI/TitleScreen.tscn" id="2_er6va"]
 [ext_resource type="PackedScene" uid="uid://dfp5nw57jtl8c" path="res://Scenes/Main.tscn" id="3_3764t"]
-[ext_resource type="Texture2D" uid="uid://cm60l0pkuha05" path="res://Assets/Textures/UI Screens/Cutscenes/Bad Ending/bad_ending_background.png" id="4_1trcc"]
+[ext_resource type="Texture2D" uid="uid://yxfifd6xow8t" path="res://Assets/Textures/UI Screens/Cutscenes/Bad Ending/mushroom_cloud.png" id="4_320xt"]
 [ext_resource type="Texture2D" uid="uid://b5fr71fdwpaft" path="res://Assets/Textures/UI Screens/game_over_label_texture.png" id="4_gd8ob"]
 [ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="5_mpllm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmmf2"]
-bg_color = Color(0.05, 0.1, 0.1, 0.666667)
+bg_color = Color(0.05, 0.1, 0.1, 0.627451)
 
 [node name="GameOver_BadEnding" type="Control"]
 layout_mode = 3
@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_1trcc")
+texture = ExtResource("4_320xt")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
