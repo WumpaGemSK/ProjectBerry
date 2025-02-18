@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://f7kk4ik4y6nf"]
+[gd_scene load_steps=10 format=3 uid="uid://f7kk4ik4y6nf"]
 
 [ext_resource type="Script" path="res://Scripts/UI/title_screen.gd" id="1_sjedc"]
 [ext_resource type="Theme" uid="uid://c2uonwa1vk1wu" path="res://Assets/UI Themes/MainUITheme.tres" id="2_72ub3"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://c6clpjw1d7r4c" path="res://Scenes/UI/Leaderboard_UI.tscn" id="3_x4kl0"]
 [ext_resource type="PackedScene" uid="uid://kla82x8vaxaa" path="res://Scenes/UI/credits.tscn" id="5_kx7lw"]
 [ext_resource type="Texture2D" uid="uid://di3vnn00x1ytk" path="res://Assets/Textures/game_logo_v2.png" id="6_y6alw"]
+[ext_resource type="FontFile" uid="uid://b11wk7udkbr1a" path="res://Assets/Fonts/NanoPlus.ttf" id="8_1edbo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rkk1x"]
+font = ExtResource("8_1edbo")
+font_color = Color(0.0509804, 0.101961, 0.101961, 1)
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -75,3 +80,21 @@ text = "LEADERBOARD"
 layout_mode = 2
 theme = ExtResource("2_72ub3")
 text = "CREDITS"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -40.0
+offset_right = -24.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "V 1.1.0"
+label_settings = SubResource("LabelSettings_rkk1x")
+horizontal_alignment = 2
+vertical_alignment = 2
