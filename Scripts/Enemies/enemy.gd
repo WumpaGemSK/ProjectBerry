@@ -75,7 +75,7 @@ func _ready():
 	fov.rotation = facing_rotation[facing_direction]
 	health_component.health_depleted.connect(func(): call_deferred("death"))
 	movement_component.new_path_req.connect(new_path)
-	hitbox_component.damage_taken.connect(on_damage_taken)
+	hitbox_component.on_hit.connect(on_hit)
 
 func new_path():
 	movement_component.path = state.get_move_path(global_position)
@@ -104,7 +104,9 @@ func on_view(body: Node2D):
 func on_view_exit(body: Node2D):
 	state.on_view_exit(body)
 
-func on_damage_taken(impact_dir: Vector2):
+func on_hit(damage: int, impact_dir: Vector2):
+	if not health_component.take_damage(damage):
+		return
 	on_change_state(Enemy.States.HURTING)
 	AudioManager.play_effect_at(SoundEffect.SoundType.ENEMY_GETS_HURT, global_position)
 	velocity = impact_dir

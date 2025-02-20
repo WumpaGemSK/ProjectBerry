@@ -144,9 +144,8 @@ shape = SubResource("CapsuleShape2D_0kjx1")
 default_health = 10
 max_health = 10
 
-[node name="HitboxComponent" parent="Dozy" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
+[node name="HitboxComponent" parent="Dozy" instance=ExtResource("26_vsq0v")]
 collision_layer = 4
-health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dozy/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_iyxv6")
@@ -182,9 +181,8 @@ animation = &"damaged_down"
 default_health = 15
 max_health = 15
 
-[node name="HitboxComponent" parent="Patrol" node_paths=PackedStringArray("health_component") instance=ExtResource("26_vsq0v")]
+[node name="HitboxComponent" parent="Patrol" instance=ExtResource("26_vsq0v")]
 collision_layer = 4
-health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Patrol/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_4blwh")

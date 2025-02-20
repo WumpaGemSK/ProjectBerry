@@ -2330,4 +2330,4 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CapsuleShape2D_5ded8")
 
 [connection signal="visibility_changed" from="CanvasLayer/InGameMenu" to="CanvasLayer/InGameMenu" method="_on_in_game_menu_visibility_changed"]
-[connection signal="damage_taken" from="HitboxComponent" to="." method="on_damage_taken"]
+[connection signal="on_hit" from="HitboxComponent" to="." method="player_was_hit"]

@@ -122,20 +122,6 @@ func _physics_process(_delta: float) -> void:
 		state = PlayerStates.NORMAL
 	#endregion
 
-func on_damage_taken(impact_dir: Vector2):
-	velocity = impact_dir
-	state = PlayerStates.HURT
-	health_component.invulnerable = true
-	camera_2d.shake()
-	var tween = create_tween()
-	tween.tween_interval(1)
-	tween.tween_callback(func(): state = PlayerStates.NORMAL)
-	tween.chain()
-	tween = Utils.blink(tween, self, 2)
-	tween.tween_callback(func(): health_component.invulnerable = false)
-	move_and_slide()
-	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
-
 func death():
 	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_DEATH, global_position)
 	my_animated_sprite.play("death")
@@ -150,6 +136,25 @@ func on_death_animation_finish():
 # Called when the player attacks, either melee or ranged
 func on_attack():
 	pass
+
+func take_damage(amount: int, impact_dir: Vector2 = Vector2.ZERO):
+	player_was_hit(amount, impact_dir)
+
+func player_was_hit(damage: int, impact_dir: Vector2):
+	if not health_component.take_damage(damage):
+		return
+		velocity = impact_dir
+	state = PlayerStates.HURT
+	health_component.invulnerable = true
+	camera_2d.shake()
+	var tween = create_tween()
+	tween.tween_interval(1)
+	tween.tween_callback(func(): state = PlayerStates.NORMAL)
+	tween.chain()
+	tween = Utils.blink(tween, self, 2)
+	tween.tween_callback(func(): health_component.invulnerable = false)
+	move_and_slide()
+	AudioManager.play_effect_at(SoundEffect.SoundType.PLAYER_HURT, global_position)
 
 #region Items
 # TODO: Having this functions to return if item is used is messy.

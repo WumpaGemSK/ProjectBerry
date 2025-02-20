@@ -16,12 +16,14 @@ var invulnerable : bool = false
 func _ready():
 	health = default_health
 
-func take_damage(amount: int):
+## Returns false if no damage was taken, true otherwise
+func take_damage(amount: int) -> bool:
 	if health <= 0 or invulnerable:
-		return
+		return false
 	health = clampi(health - amount, 0, max_health)
 	if health <= 0:
 		health_depleted.emit()
+	return true
 
 func heal(item: Item):
 	if item.type != Item.Item_type.MEDIPACK:
