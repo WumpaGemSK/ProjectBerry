@@ -11,6 +11,8 @@ var scenes: Dictionary = {}
 func _ready():
 	EventBus.reset.connect(on_reset)
 
+# TODO: There's some weird AI behaviour when scene reloading if the enemies have being triggered in some way.
+# This might have something to do with how timers behave when saved.
 func change_scene(scene: PackedScene, trigger: ScenePortal):
 	if not player:
 		player = get_tree().get_nodes_in_group("Player")[0]
@@ -31,7 +33,6 @@ func change_scene(scene: PackedScene, trigger: ScenePortal):
 	prev_position.push_back(prev_pos)
 	get_scene_holder().call_deferred("add_child",new_scene)
 	player.set_deferred("global_position", spawn_point.global_position)
-	prev_position.push_back(spawn_point.global_position)
 	PathfindingManager.call_deferred("init")
 	
 func to_previous():
@@ -42,7 +43,6 @@ func to_previous():
 	await TransitionScreen.on_transition_finished
 	get_scene_holder().call_deferred("remove_child", get_current_scene())
 	get_scene_holder().call_deferred("add_child", prev_scene.pop_back())
-	prev_position.pop_back()
 	player.set_deferred("global_position", prev_position.pop_back())
 	PathfindingManager.call_deferred("init")
 
@@ -52,7 +52,7 @@ func get_current_scene() -> Node:
 	return current
 
 func get_scene_holder() -> Node:
-	return get_tree().root.get_child(-1).get_child(0)
+	return get_tree().root.get_node("/root/Main/SceneHolder")
 
 func reload_scene():
 	if not prev_position.is_empty():
