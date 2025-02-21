@@ -2297,7 +2297,7 @@ editor_draw_drag_margin = true
 script = ExtResource("10_4t6dd")
 
 [node name="FeetCollision" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeetCollision"]
 position = Vector2(0, 9)
@@ -2321,10 +2321,9 @@ unique_name_in_owner = true
 default_health = 3
 max_health = 5
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("15_lijdl")]
+[node name="HitboxComponent" parent="." instance=ExtResource("15_lijdl")]
 unique_name_in_owner = true
 collision_layer = 2
-health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CapsuleShape2D_5ded8")
