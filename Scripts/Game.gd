@@ -45,8 +45,8 @@ func on_code_try(code: String):
 		score = GameScore.new()
 		score = compute_score()
 		EventBus.code_correct.emit(score)
-		#TransitionScreen.transition()
-		#await TransitionScreen.on_transition_finished
+		TransitionScreen.transition()
+		await TransitionScreen.on_transition_finished
 		var next_scene: String = ""
 		match score.ranking:
 			Ranking.D:
