@@ -96,7 +96,7 @@ position = Vector2(270, 240)
 original_facing_dir = 0
 
 [node name="PatrollingSoldierNew" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state", "hurting_state") instance=ExtResource("9_v42ep")]
-position = Vector2(270, 240)
+position = Vector2(24, 288)
 idle_state = NodePath("Patrol")
 investigating_state = NodePath("Inv")
 chasing_state = NodePath("chase")
