@@ -111,9 +111,10 @@ sprite_frames = ExtResource("11_y0npx")
 animation = &"damaged_down"
 
 [node name="HealthComponent" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("12_fb4nc")]
+default_health = 15
+max_health = 15
 
-[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew" node_paths=PackedStringArray("health_component") instance=ExtResource("13_57ytf")]
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("13_57ytf")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_iaqhj")
