@@ -5,7 +5,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Game.selected_code == code:
-		pickable_item.visible = true
-	else:
+	if not Game.selected_code == code:
+		pickable_item.process_mode = Node.PROCESS_MODE_DISABLED
 		pickable_item.visible = false
