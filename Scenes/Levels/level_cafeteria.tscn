@@ -115,6 +115,7 @@ default_health = 15
 max_health = 15
 
 [node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("13_57ytf")]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_iaqhj")

@@ -33,9 +33,9 @@ height = 26.0
 
 [sub_resource type="Curve2D" id="Curve2D_jurtc"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 84, 24, 0, 0, 0, 0, 132, 24, 0, 0, 0, 0, 132, 264, 0, 0, 0, 0, 204, 264, 0, 0, 0, 0, 204, 24, 0, 0, 0, 0, 252, 24, 0, 0, 0, 0, 252, 276, 0, 0, 0, 0, 84, 276, 0, 0, 0, 0, 84, 24)
+"points": PackedVector2Array(0, 0, 0, 0, 84, 24, 0, 0, 0, 0, 132, 24, 0, 0, 0, 0, 132, 264, 0, 0, 0, 0, 204, 264, 0, 0, 0, 0, 204, 24, 0, 0, 0, 0, 252, 24, 0, 0, 0, 0, 252, 276, 0, 0, 0, 0, 84, 276, 0, 0, 0, 0, 79.4995, 28.9178, 0, 0, 0, 0, 84, 24)
 }
-point_count = 9
+point_count = 10
 
 [node name="Level_Dormitory" type="Node2D" node_paths=PackedStringArray("pickable_item")]
 script = ExtResource("1_57dhs")
@@ -166,6 +166,7 @@ default_health = 15
 max_health = 15
 
 [node name="HitboxComponent" parent="Enemies/PatrollingSoldierNew" instance=ExtResource("14_ft2pb")]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PatrollingSoldierNew/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_o65ur")
