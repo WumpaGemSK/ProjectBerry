@@ -49,9 +49,8 @@ chasing_speed = 60.0
 
 [node name="Hurting" parent="Enemy" instance=ExtResource("8_ns8hn")]
 
-[node name="HitboxComponent" parent="Enemy" node_paths=PackedStringArray("health_component") instance=ExtResource("9_bb15j")]
+[node name="HitboxComponent" parent="Enemy" instance=ExtResource("9_bb15j")]
 collision_layer = 4
-health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
 shape = SubResource("CapsuleShape2D_1xcwa")
