@@ -21,6 +21,7 @@ probability = 0.4
 item = ExtResource("3_poxgt")
 
 [node name="Enemy" type="CharacterBody2D" groups=["Damageable"]]
+collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_5gn1u")
 
