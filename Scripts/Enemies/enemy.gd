@@ -42,7 +42,6 @@ var dead: bool = false
 
 #region Faze in
 @export_category("Phase Time")
-@onready var phase_in : Timer = Timer.new()
 @export var phase_in_time: float = 1.0
 #endregion
 
@@ -67,15 +66,21 @@ func _ready():
 	state.enter()
 	prompt.texture = null
 	player = get_tree().get_nodes_in_group("Player")[0]
-	add_child(phase_in)
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
-	phase_in.timeout.connect(func(): paused=false)
 	facing_direction = original_facing_dir
 	fov.rotation = facing_rotation[facing_direction]
 	health_component.health_depleted.connect(func(): call_deferred("death"))
 	movement_component.new_path_req.connect(new_path)
 	hitbox_component.on_hit.connect(on_hit)
+
+func _enter_tree():
+	if not paused:
+		return
+	on_resume()
+
+func _exit_tree():
+	on_pause()
 
 func new_path():
 	movement_component.path = state.get_move_path(global_position)
@@ -198,9 +203,11 @@ func on_attack():
 
 func on_pause():
 	paused = true
-	phase_in.stop()
 	state.pause()
 
 func on_resume():
-	phase_in.start(phase_in_time)
+	if not is_inside_tree():
+		return
+	await get_tree().create_timer(phase_in_time).timeout
+	paused = false
 	state.resume()
