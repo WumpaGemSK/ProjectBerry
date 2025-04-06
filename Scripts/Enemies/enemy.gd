@@ -9,7 +9,6 @@ class_name Enemy
 signal change_speed(new_speed: float)
 
 var player: Player = null
-var collision : CollisionShape2D = null
 
 @onready var hearing = %Hearing
 @onready var fov = %FOV
@@ -54,6 +53,7 @@ enum States {
 var state : State
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = get_tree().get_nodes_in_group("Player")[0]
 	animated_sprite = get_node("AnimatedSprite2D")
 	weapon = weapon_scn.instantiate()
 	weapon.is_player = false
@@ -65,7 +65,6 @@ func _ready():
 	connect_state_signals()
 	state.enter()
 	prompt.texture = null
-	player = get_tree().get_nodes_in_group("Player")[0]
 	EventBus.pause.connect(on_pause)
 	EventBus.resume.connect(on_resume)
 	facing_direction = original_facing_dir

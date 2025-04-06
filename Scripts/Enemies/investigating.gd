@@ -64,11 +64,12 @@ func on_view(body: Node2D):
 		if raycast_to_player(enemy.global_position, body.global_position, enemy.collision_mask, INF, [self]):
 			state_change.emit(Enemy.States.CHASING)
 
-func should_switch_to_investigating(player_: Player):
+func should_switch_to_investigating():
 	timer.start(recheck_time)
-	if not player_.is_sneaking():
-		target = player_.global_position
+	var coll = enemy.hearing.get_child(0).shape as CircleShape2D
+	if is_player_near(enemy, enemy.player, coll.radius) and not enemy.player.is_sneaking():
+		target = enemy.player.global_position
 		move_to.emit()
 
 func on_recheck():
-	should_switch_to_investigating(enemy.player)
+	should_switch_to_investigating()

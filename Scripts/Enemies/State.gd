@@ -40,6 +40,10 @@ func raycast_to_player(origin: Vector2, dest: Vector2, collision_mask, max_dista
 	var result = space_state.intersect_ray(query)
 	return result.collider is Player and result.position.distance_to(origin) < max_distance
 
+func is_player_near(enemy: Enemy, player: Player, max_distance: float):
+	var coll = player.find_child("HitboxComponent").get_child(0).shape as CapsuleShape2D # Take into account the height of the collision
+	return enemy.global_position.distance_to(player.global_position) < max_distance + coll.height
+
 func pause():
 	return
 

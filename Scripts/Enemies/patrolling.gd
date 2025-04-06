@@ -65,5 +65,6 @@ func on_view(body: Node2D):
 
 func should_switch_to_investigating():
 	timer.start(recheck_time)
-	if not enemy.player.is_sneaking():
+	var coll = enemy.hearing.get_child(0).shape as CircleShape2D
+	if is_player_near(enemy, enemy.player,coll.radius) and not enemy.player.is_sneaking():
 		state_change.emit(Enemy.States.INVESTIGATING)
