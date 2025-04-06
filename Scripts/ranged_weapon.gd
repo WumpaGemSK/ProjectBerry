@@ -9,8 +9,9 @@ var facing_rotation = [0, 180, 90, 270]
 
 func _ready():
 	super()
-	EventBus.pistol_ammo_update.emit(ammo)
-	EventBus.pistol_ammo_upgrade.emit(max_ammo)
+	if is_player:
+		EventBus.pistol_ammo_update.emit(ammo)
+		EventBus.pistol_ammo_upgrade.emit(max_ammo)
 
 func attack(from: Vector2, dir: Vector2):
 	if cooldown_timer.is_stopped() and ammo > 0 and (enemy_in_line(from, dir) or is_player):
@@ -22,12 +23,14 @@ func attack(from: Vector2, dir: Vector2):
 			EventBus.pistol_ammo_update.emit(ammo)
 
 func reload(item: Item):
-	if ammo < max_ammo:
+	if is_player and ammo < max_ammo:
 		ammo = clampi(ammo + item.effect, 0, max_ammo)
 		EventBus.pistol_ammo_update.emit(ammo)
 		EventBus.item_used.emit(item)
 
 func upgrade(item: Item):
+	if not is_player:
+		return
 	match item.type:
 		Item.Item_type.PISTOL_DAMAGE_UPGRADE:
 			damage *= 2
