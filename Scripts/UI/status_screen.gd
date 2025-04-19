@@ -14,6 +14,7 @@ func _ready():
 		var time_string: String = Utils.format_time(score.total_time)
 		total_time.set_data("Total time", time_string)
 		secrets.set_data("Secrets", "%d/%d" % score.secrets)
+	initials.grab_focus()
 
 func _on_leaderboad_button_pressed():
 	if score != null:
