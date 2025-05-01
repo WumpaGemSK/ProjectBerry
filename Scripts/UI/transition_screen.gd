@@ -7,8 +7,16 @@ signal on_transition_finished
 
 func _ready():
 	
-	color_rect.visible = false
+	self.hide()
 	animation_player.animation_finished.connect(_on_animation_finished)
+
+func transition():
+	
+	animation_player.play("fade_to_black")
+
+func transition_white():
+	
+	animation_player.play("fade_to_white")
 
 func _on_animation_finished(anim_name):
 	
@@ -18,15 +26,3 @@ func _on_animation_finished(anim_name):
 	elif anim_name == "fade_to_white":
 		on_transition_finished.emit()
 		animation_player.play("fade_from_white")
-	elif anim_name == "fade_to_normal":
-		color_rect.visible = false
-
-func transition():
-	
-	color_rect.visible = true
-	animation_player.play("fade_to_black")
-
-func transition_white():
-	
-	color_rect.visible = true
-	animation_player.play("fade_to_white")
