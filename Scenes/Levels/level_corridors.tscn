@@ -144,14 +144,26 @@ door_tier = 3
 [node name="DozySoldier" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(204, 683)
 
+[node name="Enemy" parent="Enemies/DozySoldier" index="0"]
+original_facing_dir = 2
+
 [node name="DozySoldier2" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(348, 684)
+
+[node name="Enemy" parent="Enemies/DozySoldier2" index="0"]
+original_facing_dir = 2
 
 [node name="DozySoldier3" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(372, 324)
 
+[node name="Enemy" parent="Enemies/DozySoldier3" index="0"]
+original_facing_dir = 2
+
 [node name="DozySoldier4" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(180, 324)
+
+[node name="Enemy" parent="Enemies/DozySoldier4" index="0"]
+original_facing_dir = 2
 
 [node name="PatrollingSoldierNew" parent="Enemies" node_paths=PackedStringArray("idle_state", "investigating_state", "chasing_state", "hurting_state") instance=ExtResource("16_qiton")]
 position = Vector2(-290, 374)
@@ -282,3 +294,8 @@ item = ExtResource("26_s1qcd")
 [node name="LargeMedipack2" parent="Items" instance=ExtResource("25_7s0ju")]
 position = Vector2(60, 960)
 item = ExtResource("26_s1qcd")
+
+[editable path="Enemies/DozySoldier"]
+[editable path="Enemies/DozySoldier2"]
+[editable path="Enemies/DozySoldier3"]
+[editable path="Enemies/DozySoldier4"]
