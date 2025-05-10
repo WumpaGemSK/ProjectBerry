@@ -145,22 +145,19 @@ door_tier = 3
 position = Vector2(204, 683)
 
 [node name="Enemy" parent="Enemies/DozySoldier" index="0"]
-original_facing_dir = 2
+original_facing_dir = 0
 
 [node name="DozySoldier2" parent="Enemies" instance=ExtResource("14_vjsod")]
 position = Vector2(348, 684)
 
-[node name="Enemy" parent="Enemies/DozySoldier2" index="0"]
-original_facing_dir = 2
-
 [node name="DozySoldier3" parent="Enemies" instance=ExtResource("14_vjsod")]
-position = Vector2(372, 324)
+position = Vector2(360, 324)
 
 [node name="Enemy" parent="Enemies/DozySoldier3" index="0"]
 original_facing_dir = 2
 
 [node name="DozySoldier4" parent="Enemies" instance=ExtResource("14_vjsod")]
-position = Vector2(180, 324)
+position = Vector2(192, 324)
 
 [node name="Enemy" parent="Enemies/DozySoldier4" index="0"]
 original_facing_dir = 2
